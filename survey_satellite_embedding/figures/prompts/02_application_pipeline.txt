@@ -1,0 +1,20 @@
+Create a paper figure showing the downstream application pipeline for satellite embeddings.
+
+Visual requirements:
+- publication-quality vector infographic
+- wide landscape layout
+- white background
+- modern but restrained academic style
+- colors: blue for data, green for embeddings, orange for tasks, charcoal for text
+
+Pipeline stages from left to right:
+1. Region of interest on a map
+2. Satellite data acquisition window
+3. Embedding extraction across multiple model families
+4. Unified embedding store with pooled vectors and dense token grids
+5. Lightweight downstream heads
+6. Applications: classification, segmentation, regression, retrieval, operational monitoring
+
+Add a thin bottom row called "Evaluation signals" with latency, GPU memory, label efficiency, transfer quality.
+
+Use short English labels, arrows, and small icons. Keep the composition suitable for a LaTeX survey paper.

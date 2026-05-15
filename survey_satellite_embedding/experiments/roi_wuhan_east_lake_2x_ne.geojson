@@ -1,0 +1,30 @@
+{
+  "type": "FeatureCollection",
+  "name": "wuhan_east_lake_2x_ne",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Wuhan East Lake 2x North-East ROI",
+        "city": "Wuhan",
+        "country": "China",
+        "description": "Survey benchmark ROI expanded twofold in linear extent northward and eastward from the original Wuhan ROI southwest corner.",
+        "original_bounds": [114.29, 30.44, 114.53, 30.60],
+        "expanded_bounds": [114.29, 30.44, 114.77, 30.76],
+        "expansion_rule": "Keep minlon/minlat fixed; double original width eastward and double original height northward."
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [114.29, 30.44],
+            [114.77, 30.44],
+            [114.77, 30.76],
+            [114.29, 30.76],
+            [114.29, 30.44]
+          ]
+        ]
+      }
+    }
+  ]
+}

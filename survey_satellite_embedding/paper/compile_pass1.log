@@ -1,0 +1,1720 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+(./main.tex
+LaTeX2e <2020-10-01> patch level 4
+L3 programming layer <2021-02-18>
+(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2020/04/10 v1.4m Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size11.clo))
+(/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/ifvtex.sty
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty)))
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/lm/lmodern.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def)))
+(/usr/share/texlive/texmf-dist/tex/latex/booktabs/booktabs.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/longtable.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/tabularx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/tools/array.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/pdflscape/pdflscape.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/lscape.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/enumitem/enumitem.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+(/usr/share/texlive/texmf-dist/tex/generic/infwarerr/infwarerr.sty))
+(/usr/share/texlive/texmf-dist/tex/generic/kvsetkeys/kvsetkeys.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/pdfescape/pdfescape.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/hycolor/hycolor.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/letltxmacro/letltxmacro.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/auxhook/auxhook.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/kvoptions/kvoptions.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def)
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref-langpatches.def)
+(/usr/share/texlive/texmf-dist/tex/generic/intcalc/intcalc.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/etexcmds/etexcmds.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/puenc.def)
+(/usr/share/texlive/texmf-dist/tex/latex/url/url.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/bitset/bitset.sty
+(/usr/share/texlive/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/base/atbegshi-ltx.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
+(/usr/share/texlive/texmf-dist/tex/latex/base/atveryend-ltx.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+(/usr/share/texlive/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty)))
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg))
+(/usr/share/texlive/texmf-dist/tex/latex/natbib/natbib.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/lm/t1lmr.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def)
+(./main.aux)
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+(/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+(/usr/share/texlive/texmf-dist/tex/latex/grfext/grfext.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg))
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
+(/usr/share/texlive/texmf-dist/tex/latex/refcount/refcount.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty))
+(./main.out) (./main.out) (/usr/share/texlive/texmf-dist/tex/latex/lm/ot1lmr.fd
+) (/usr/share/texlive/texmf-dist/tex/latex/lm/omllmm.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/lm/omslmsy.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/lm/omxlmex.fd)
+(./sections/00_abstract.tex) (./sections/01_introduction.tex [1{/usr/share/texl
+ive/texmf-dist/fonts/map/pdftex/updmap/pdftex.map}] [2]
+(/usr/share/texlive/texmf-dist/tex/latex/lm/t1lmtt.fd))
+(./sections/02_concepts_taxonomy.tex
+Overfull \hbox (16.42148pt too wide) in paragraph at lines 5--6
+\T1/lmr/m/n/10.95 Most ex-ist-ing re-mote sens-ing foun-da-tion model sur-veys 
+are or-ga-nized around pre-train-ing paradigms,
+[3] [4 <../figures/generated//fig04_model_timeline.png (PNG copy)>])
+(./sections/03_model_landscape.tex [5 <../figures/generated//fig01_taxonomy_con
+cept_map.png (PNG copy)>] [6 <../figures/generated//fig06_family_precomputed_pr
+oducts.png>] [7 <../figures/generated//fig07_family_masked_autoencoder.png (PNG
+ copy)>] [8 <../figures/generated//fig08_family_vision_language.png>] [9 <../fi
+gures/generated//fig09_family_multimodal_generalist.png (PNG copy)>] [10 <../fi
+gures/generated//fig10_family_specialized.png>]
+(./tables/model_catalog_longtable.tex [11]
+Underfull \hbox (badness 5696) in paragraph at lines 10--10
+[]|\T1/lmr/m/n/8 Emb. /
+
+Underfull \hbox (badness 10000) in alignment at lines 7--12
+[] [] [] [] [] [] [] [] [] [] []
+
+Underfull \hbox (badness 5696) in paragraph at lines 15--15
+[]|\T1/lmr/m/n/8 Emb. /
+
+Underfull \hbox (badness 10000) in alignment at lines 12--17
+[] [] [] [] [] [] [] [] [] [] []
+
+Underfull \hbox (badness 10000) in alignment at lines 17--19
+[] [] [] [] [] [] [] [] [] [] []
+
+Overfull \hbox (21.14497pt too wide) in paragraph at lines 20--20
+[]|\T1/lmr/m/n/8 precomputed| 
+
+Underfull \hbox (badness 10000) in paragraph at lines 20--20
+[]|\T1/lmr/m/n/8 Precomputed
+
+Underfull \hbox (badness 10000) in paragraph at lines 20--20
+[]|\T1/lmr/m/n/8 10 m pre-com-
+
+Underfull \hbox (badness 10000) in paragraph at lines 20--20
+[]|\T1/lmr/m/n/8 annual lookup
+
+Underfull \hbox (badness 10000) in paragraph at lines 20--20
+\T1/lmr/m/n/8 over prod-uct
+
+Underfull \hbox (badness 10000) in paragraph at lines 20--20
+[]|\T1/lmr/m/n/8 128;
+
+Underfull \hbox (badness 10000) in paragraph at lines 20--20
+\T1/lmr/m/n/8 pooled,
+
+Overfull \hbox (21.14497pt too wide) in paragraph at lines 21--21
+[]|\T1/lmr/m/n/8 precomputed| 
+
+Underfull \hbox (badness 5008) in paragraph at lines 21--21
+\T1/lmr/m/n/8 nual em-bed-ding
+
+Underfull \hbox (badness 10000) in paragraph at lines 21--21
+[]|\T1/lmr/m/n/8 strict yearly
+
+Overfull \hbox (21.14497pt too wide) in paragraph at lines 22--22
+[]|\T1/lmr/m/n/8 precomputed| 
+
+Underfull \hbox (badness 10000) in paragraph at lines 22--22
+[]|\T1/lmr/m/n/8 Precomputed
+
+Underfull \hbox (badness 10000) in paragraph at lines 22--22
+[]|\T1/lmr/m/n/8 Copernicus
+
+Underfull \hbox (badness 10000) in paragraph at lines 22--22
+\T1/lmr/m/n/8 foun-da-tion
+
+Underfull \hbox (badness 4353) in paragraph at lines 22--22
+[]|\T1/lmr/m/n/8 Copernicus prod-uct
+(/usr/share/texlive/texmf-dist/tex/latex/lm/ts1lmr.fd)
+Underfull \hbox (badness 10000) in paragraph at lines 22--22
+[]|\T1/lmr/m/n/8 0.25\TS1/lmr/m/n/8 ° \T1/lmr/m/n/8 pre-com-
+
+Underfull \hbox (badness 10000) in paragraph at lines 22--22
+\T1/lmr/m/n/8 adapter (2021
+
+Underfull \hbox (badness 10000) in paragraph at lines 22--22
+[]|\T1/lmr/m/n/8 768;
+
+Underfull \hbox (badness 10000) in paragraph at lines 22--22
+\T1/lmr/m/n/8 pooled,
+
+Underfull \hbox (badness 6575) in paragraph at lines 22--23
+\T1/lmr/m/n/8 train-ing fol-lowed by
+
+Underfull \hbox (badness 10000) in paragraph at lines 23--23
+[]|\T1/lmr/m/n/8 IEEE
+
+Underfull \hbox (badness 10000) in paragraph at lines 23--23
+[]|\T1/lmr/m/n/8 on-the-
+
+Underfull \hbox (badness 10000) in paragraph at lines 23--23
+[]|\T1/lmr/m/n/8 Vision-language
+
+Underfull \hbox (badness 5578) in paragraph at lines 23--23
+\T1/lmr/m/n/8 satel-lite em-bed-
+
+Underfull \hbox (badness 7649) in paragraph at lines 23--23
+\T1/lmr/m/n/8 mote sens-ing cap-
+
+Underfull \hbox (badness 10000) in paragraph at lines 23--23
+[]|\T1/lmr/m/n/8 single com-pos-
+
+Underfull \hbox (badness 3646) in paragraph at lines 23--23
+\T1/lmr/m/n/8 ited ob-ser-va-tion
+
+Underfull \hbox (badness 10000) in paragraph at lines 23--23
+[]|\T1/lmr/m/n/8 768;
+
+Underfull \hbox (badness 10000) in paragraph at lines 23--23
+\T1/lmr/m/n/8 pooled,
+
+Underfull \hbox (badness 10000) in paragraph at lines 24--24
+[]|\T1/lmr/m/n/8 on-the-
+
+Underfull \hbox (badness 4254) in paragraph at lines 24--24
+[]|\T1/lmr/m/n/8 Masked au-toen-
+
+Underfull \hbox (badness 4024) in paragraph at lines 24--24
+[]|\T1/lmr/m/n/8 Sentinel-2 RGB or
+
+Underfull \hbox (badness 10000) in paragraph at lines 24--24
+\T1/lmr/m/n/8 multispectral/time-
+
+Underfull \hbox (badness 10000) in paragraph at lines 24--24
+\T1/lmr/m/n/8 series vari-ants in
+
+Underfull \hbox (badness 10000) in paragraph at lines 24--24
+[]|\T1/lmr/m/n/8 explicit tem-po-
+
+Underfull \hbox (badness 10000) in paragraph at lines 24--24
+\T1/lmr/m/n/8 ral em-bed-dings
+
+Underfull \hbox (badness 6842) in paragraph at lines 24--24
+\T1/lmr/m/n/8 in the orig-i-nal
+
+Underfull \hbox (badness 10000) in paragraph at lines 24--24
+\T1/lmr/m/n/8 adapter cur-
+
+Underfull \hbox (badness 10000) in paragraph at lines 24--24
+[]|\T1/lmr/m/n/8 1024;
+
+Underfull \hbox (badness 5847) in paragraph at lines 24--25
+[]|\T1/lmr/m/n/8 masked au-toen-cod-ing
+
+Underfull \hbox (badness 10000) in paragraph at lines 25--25
+[]|\T1/lmr/m/n/8 on-the-
+
+Underfull \hbox (badness 10000) in paragraph at lines 25--25
+[]|\T1/lmr/m/n/8 Improved
+
+Underfull \hbox (badness 10000) in paragraph at lines 25--25
+\T1/lmr/m/n/8 masked au-
+
+Underfull \hbox (badness 10000) in paragraph at lines 25--25
+\T1/lmr/m/n/8 toen-coder for
+
+Underfull \hbox (badness 4792) in paragraph at lines 25--25
+[]|\T1/lmr/m/n/8 ViT-L / Sat-
+
+Underfull \hbox (badness 4660) in paragraph at lines 25--25
+[]|\T1/lmr/m/n/8 Sentinel-2 RGB in
+
+Underfull \hbox (badness 4739) in paragraph at lines 25--25
+\T1/lmr/m/n/8 adapter, mul-ti-spec-
+
+Underfull \hbox (badness 10000) in paragraph at lines 25--25
+[]|\T1/lmr/m/n/8 single com-pos-
+
+Underfull \hbox (badness 3646) in paragraph at lines 25--25
+\T1/lmr/m/n/8 ited ob-ser-va-tion
+
+Underfull \hbox (badness 10000) in paragraph at lines 25--25
+\T1/lmr/m/n/8 win-dow in
+
+Underfull \hbox (badness 10000) in paragraph at lines 25--25
+[]|\T1/lmr/m/n/8 1024;
+
+Underfull \hbox (badness 3769) in paragraph at lines 25--26
+\T1/lmr/m/n/8 ing for mul-ti-spec-tral
+
+Overfull \hbox (27.76776pt too wide) in paragraph at lines 26--26
+[]|\T1/lmr/m/n/8 satmaepp_s2_10b| 
+
+Underfull \hbox (badness 10000) in paragraph at lines 26--26
+[]|\T1/lmr/m/n/8 on-the-
+
+Underfull \hbox (badness 10000) in paragraph at lines 26--26
+[]|\T1/lmr/m/n/8 Grouped-channel
+
+Underfull \hbox (badness 10000) in paragraph at lines 26--26
+\T1/lmr/m/n/8 mul-ti-spec-tral
+
+Underfull \hbox (badness 6332) in paragraph at lines 26--26
+\T1/lmr/m/n/8 masked au-toen-
+
+Underfull \hbox (badness 10000) in paragraph at lines 26--26
+[]|\T1/lmr/m/n/8 ViT-L /
+
+Underfull \hbox (badness 10000) in paragraph at lines 26--26
+\T1/lmr/m/n/8 grouped-
+
+Underfull \hbox (badness 10000) in paragraph at lines 26--26
+\T1/lmr/m/n/8 channel Sat-
+
+Underfull \hbox (badness 10000) in paragraph at lines 26--26
+[]|\T1/lmr/m/n/8 Sentinel-2 SR 10-
+
+Underfull \hbox (badness 10000) in paragraph at lines 26--26
+[]|\T1/lmr/m/n/8 single com-pos-
+
+Underfull \hbox (badness 3646) in paragraph at lines 26--26
+\T1/lmr/m/n/8 ited ob-ser-va-tion
+
+Underfull \hbox (badness 10000) in paragraph at lines 26--26
+\T1/lmr/m/n/8 win-dow in
+
+Underfull \hbox (badness 10000) in paragraph at lines 26--26
+[]|\T1/lmr/m/n/8 1024;
+
+Underfull \hbox (badness 10000) in paragraph at lines 26--27
+[]|\T1/lmr/m/n/8 grouped-channel
+
+Underfull \hbox (badness 10000) in paragraph at lines 27--27
+[]|\T1/lmr/m/n/8 on-the-
+
+Underfull \hbox (badness 10000) in paragraph at lines 27--27
+[]|\T1/lmr/m/n/8 Scale-aware
+
+Underfull \hbox (badness 6332) in paragraph at lines 27--27
+\T1/lmr/m/n/8 masked au-toen-
+
+Underfull \hbox (badness 4660) in paragraph at lines 27--27
+[]|\T1/lmr/m/n/8 Sentinel-2 RGB in
+
+Underfull \hbox (badness 7869) in paragraph at lines 27--27
+\T1/lmr/m/n/8 adapter, mul-ti-scale
+
+Underfull \hbox (badness 10000) in paragraph at lines 27--27
+\T1/lmr/m/n/8 RGB, plus ex-
+
+Underfull \hbox (badness 10000) in paragraph at lines 27--27
+\T1/lmr/m/n/8 plicit se-man-tic
+
+Underfull \hbox (badness 10000) in paragraph at lines 27--27
+[]|\T1/lmr/m/n/8 single com-pos-
+
+Underfull \hbox (badness 3646) in paragraph at lines 27--27
+\T1/lmr/m/n/8 ited ob-ser-va-tion
+
+Underfull \hbox (badness 10000) in paragraph at lines 27--27
+[]|\T1/lmr/m/n/8 1024;
+
+Underfull \hbox (badness 5847) in paragraph at lines 27--28
+[]|\T1/lmr/m/n/8 masked au-toen-cod-ing
+
+Underfull \hbox (badness 10000) in paragraph at lines 28--28
+[]|\T1/lmr/m/n/8 on-the-
+
+Underfull \hbox (badness 7081) in paragraph at lines 28--28
+\T1/lmr/m/n/8 modal EO en-
+
+Underfull \hbox (badness 7379) in paragraph at lines 28--28
+\T1/lmr/m/n/8 style EO en-
+
+Underfull \hbox (badness 1242) in paragraph at lines 28--28
+[]|\T1/lmr/m/n/8 Sentinel-2, Sentinel-
+
+Underfull \hbox (badness 2050) in paragraph at lines 28--28
+\T1/lmr/m/n/8 1, aerial/VHR and
+
+Underfull \hbox (badness 2302) in paragraph at lines 28--28
+\T1/lmr/m/n/8 other modal-i-ties in
+
+Underfull \hbox (badness 3219) in paragraph at lines 28--28
+[]|\T1/lmr/m/n/8 10 m Sentinel-2
+
+Underfull \hbox (badness 10000) in paragraph at lines 28--28
+[]|\T1/lmr/m/n/8 768;
+
+Underfull \hbox (badness 10000) in paragraph at lines 28--28
+\T1/lmr/m/n/8 pooled,
+
+Underfull \hbox (badness 10000) in paragraph at lines 28--29
+[]|\T1/lmr/m/n/8 self-supervised rep-
+
+Underfull \hbox (badness 10000) in paragraph at lines 28--29
+\T1/lmr/m/n/8 re-sen-ta-tion learn-ing
+
+Underfull \hbox (badness 10000) in paragraph at lines 29--29
+[]|\T1/lmr/m/n/8 on-the-
+
+Underfull \hbox (badness 10000) in paragraph at lines 29--29
+[]|\T1/lmr/m/n/8 Global-local
+
+Underfull \hbox (badness 10000) in paragraph at lines 29--29
+\T1/lmr/m/n/8 mul-ti-modal
+
+Underfull \hbox (badness 10000) in paragraph at lines 29--29
+\T1/lmr/m/n/8 time-series en-
+
+Underfull \hbox (badness 10000) in paragraph at lines 29--29
+[]|\T1/lmr/m/n/8 transformer
+
+Underfull \hbox (badness 10000) in paragraph at lines 29--29
+\T1/lmr/m/n/8 with
+
+Underfull \hbox (badness 10000) in paragraph at lines 29--29
+\T1/lmr/m/n/8 global/local
+
+Underfull \hbox (badness 3746) in paragraph at lines 29--29
+[]|\T1/lmr/m/n/8 Sentinel-2 time se-
+
+Underfull \hbox (badness 3219) in paragraph at lines 29--29
+[]|\T1/lmr/m/n/8 10 m Sentinel-2
+
+Underfull \hbox (badness 10000) in paragraph at lines 29--29
+[]|\T1/lmr/m/n/8 explicit month
+
+Underfull \hbox (badness 10000) in paragraph at lines 29--29
+[]|\T1/lmr/m/n/8 128;
+
+Underfull \hbox (badness 10000) in paragraph at lines 29--29
+\T1/lmr/m/n/8 pooled,
+
+Underfull \hbox (badness 10000) in paragraph at lines 29--30
+[]|\T1/lmr/m/n/8 self-supervised mul-ti-
+
+Underfull \hbox (badness 10000) in paragraph at lines 29--30
+\T1/lmr/m/n/8 modal rep-re-sen-ta-tion
+
+Underfull \hbox (badness 10000) in paragraph at lines 30--30
+[]|\T1/lmr/m/n/8 on-the-
+
+Underfull \hbox (badness 10000) in paragraph at lines 30--30
+[]|\T1/lmr/m/n/8 Remote sens-ing
+
+Underfull \hbox (badness 10000) in paragraph at lines 30--30
+\T1/lmr/m/n/8 rep-re-sen-ta-tion
+
+Underfull \hbox (badness 10000) in paragraph at lines 30--30
+\T1/lmr/m/n/8 learn-ing from
+
+Underfull \hbox (badness 10000) in paragraph at lines 30--30
+[]|\T1/lmr/m/n/8 Sentinel-2 RGB,
+
+Underfull \hbox (badness 1005) in paragraph at lines 30--30
+\T1/lmr/m/n/8 wildlife ob-ser-va-tions
+
+Underfull \hbox (badness 10000) in paragraph at lines 30--30
+[]|\T1/lmr/m/n/8 single com-pos-
+
+Underfull \hbox (badness 10000) in paragraph at lines 30--30
+\T1/lmr/m/n/8 ited op-ti-cal
+
+Underfull \hbox (badness 10000) in paragraph at lines 30--30
+[]|\T1/lmr/m/n/8 256;
+
+Underfull \hbox (badness 10000) in paragraph at lines 30--30
+\T1/lmr/m/n/8 pooled,
+
+Underfull \hbox (badness 10000) in paragraph at lines 31--31
+[]|\T1/lmr/m/n/8 on-the-
+
+Underfull \hbox (badness 10000) in paragraph at lines 31--31
+[]|\T1/lmr/m/n/8 Generalist
+
+Underfull \hbox (badness 4872) in paragraph at lines 31--31
+\T1/lmr/m/n/8 geospa-tial foun-
+
+Underfull \hbox (badness 10000) in paragraph at lines 31--31
+\T1/lmr/m/n/8 au-toen-coder
+
+Underfull \hbox (badness 10000) in paragraph at lines 31--31
+[]|\T1/lmr/m/n/8 HLS / Sentinel-
+
+Underfull \hbox (badness 10000) in paragraph at lines 31--31
+\T1/lmr/m/n/8 co-or-di-nates in
+
+Underfull \hbox (badness 10000) in paragraph at lines 31--31
+\T1/lmr/m/n/8 adapter and
+
+Underfull \hbox (badness 10000) in paragraph at lines 31--31
+[]|\T1/lmr/m/n/8 768;
+
+Underfull \hbox (badness 10000) in paragraph at lines 31--31
+\T1/lmr/m/n/8 pooled,
+
+Underfull \hbox (badness 10000) in paragraph at lines 32--32
+[]|\T1/lmr/m/n/8 on-the-
+
+Underfull \hbox (badness 10000) in paragraph at lines 32--32
+\T1/lmr/m/n/8 sor foun-da-tion
+
+Underfull \hbox (badness 10000) in paragraph at lines 32--32
+[]|\T1/lmr/m/n/8 multisensor
+
+Underfull \hbox (badness 10000) in paragraph at lines 32--32
+[]|\T1/lmr/m/n/8 single ob-ser-va-
+
+Underfull \hbox (badness 2726) in paragraph at lines 32--32
+\T1/lmr/m/n/8 tion win-dow in
+
+Underfull \hbox (badness 1910) in paragraph at lines 32--32
+\T1/lmr/m/n/8 cur-rent adapter;
+
+Underfull \hbox (badness 10000) in paragraph at lines 32--32
+\T1/lmr/m/n/8 pa-per fo-cuses
+
+Underfull \hbox (badness 10000) in paragraph at lines 32--32
+\T1/lmr/m/n/8 on mul-ti-sen-sor
+
+Underfull \hbox (badness 10000) in paragraph at lines 32--32
+[]|\T1/lmr/m/n/8 768;
+
+Underfull \hbox (badness 10000) in paragraph at lines 32--32
+\T1/lmr/m/n/8 pooled,
+
+Underfull \hbox (badness 10000) in paragraph at lines 33--33
+[]|\T1/lmr/m/n/8 on-the-
+
+Underfull \hbox (badness 2635) in paragraph at lines 33--33
+[]|\T1/lmr/m/n/8 Generative mul-
+
+Underfull \hbox (badness 10000) in paragraph at lines 33--33
+[]|\T1/lmr/m/n/8 large-scale
+
+Underfull \hbox (badness 10000) in paragraph at lines 33--33
+\T1/lmr/m/n/8 gen-er-a-tive
+
+Underfull \hbox (badness 10000) in paragraph at lines 33--33
+\T1/lmr/m/n/8 mul-ti-modal
+
+Underfull \hbox (badness 10000) in paragraph at lines 33--33
+\T1/lmr/m/n/8 wider mul-ti-modal
+
+Underfull \hbox (badness 1400) in paragraph at lines 33--33
+\T1/lmr/m/n/8 im-age re-sized to
+
+Underfull \hbox (badness 10000) in paragraph at lines 33--33
+[]|\T1/lmr/m/n/8 single com-pos-
+
+Underfull \hbox (badness 10000) in paragraph at lines 33--33
+[]|\T1/lmr/m/n/8 384;
+
+Underfull \hbox (badness 10000) in paragraph at lines 33--33
+\T1/lmr/m/n/8 pooled,
+
+Underfull \hbox (badness 10000) in paragraph at lines 33--34
+[]|\T1/lmr/m/n/8 large-scale gen-er-a-tive
+
+Underfull \hbox (badness 10000) in paragraph at lines 34--34
+[]|\T1/lmr/m/n/8 on-the-
+
+Underfull \hbox (badness 10000) in paragraph at lines 34--34
+[]|\T1/lmr/m/n/8 Wavelength-
+
+Underfull \hbox (badness 10000) in paragraph at lines 34--34
+\T1/lmr/m/n/8 aware mul-ti-
+
+Underfull \hbox (badness 10000) in paragraph at lines 34--34
+\T1/lmr/m/n/8 modal foun-da-
+
+Underfull \hbox (badness 10000) in paragraph at lines 34--34
+[]|\T1/lmr/m/n/8 transformer
+
+Underfull \hbox (badness 10000) in paragraph at lines 34--34
+\T1/lmr/m/n/8 with neu-ral
+
+Underfull \hbox (badness 10000) in paragraph at lines 34--34
+\T1/lmr/m/n/8 plas-tic-ity /
+
+Underfull \hbox (badness 1275) in paragraph at lines 34--34
+\T1/lmr/m/n/8 dy-namic wave-
+
+Underfull \hbox (badness 3503) in paragraph at lines 34--34
+\T1/lmr/m/n/8 puts, Sentinel-2 in
+
+Underfull \hbox (badness 10000) in paragraph at lines 34--34
+[]|\T1/lmr/m/n/8 single ob-ser-va-
+
+Underfull \hbox (badness 2726) in paragraph at lines 34--34
+\T1/lmr/m/n/8 tion win-dow in
+
+Underfull \hbox (badness 10000) in paragraph at lines 34--34
+[]|\T1/lmr/m/n/8 768;
+
+Underfull \hbox (badness 10000) in paragraph at lines 34--34
+\T1/lmr/m/n/8 pooled,
+
+Underfull \hbox (badness 10000) in paragraph at lines 34--35
+[]|\T1/lmr/m/n/8 self-supervised mul-ti-
+
+Underfull \hbox (badness 10000) in paragraph at lines 35--35
+[]|\T1/lmr/m/n/8 on-the-
+
+Underfull \hbox (badness 10000) in paragraph at lines 35--35
+[]|\T1/lmr/m/n/8 Forest-oriented
+
+Underfull \hbox (badness 4366) in paragraph at lines 35--35
+\T1/lmr/m/n/8 mul-ti-modal and
+
+Underfull \hbox (badness 4242) in paragraph at lines 35--35
+\T1/lmr/m/n/8 mul-ti-scale foun-
+
+Underfull \hbox (badness 10000) in paragraph at lines 35--35
+[]|\T1/lmr/m/n/8 multimodal
+
+Underfull \hbox (badness 10000) in paragraph at lines 35--35
+\T1/lmr/m/n/8 trans-former /
+
+Underfull \hbox (badness 10000) in paragraph at lines 35--35
+\T1/lmr/m/n/8 rep-re-sen-ta-tion
+
+Underfull \hbox (badness 10000) in paragraph at lines 35--35
+[]|\T1/lmr/m/n/8 Sentinel-2 SR in
+
+Underfull \hbox (badness 10000) in paragraph at lines 35--35
+\T1/lmr/m/n/8 adapter, mul-ti-ple
+
+Underfull \hbox (badness 1062) in paragraph at lines 35--35
+\T1/lmr/m/n/8 scales and tasks in
+
+Underfull \hbox (badness 10000) in paragraph at lines 35--35
+[]|\T1/lmr/m/n/8 single op-ti-cal
+
+Underfull \hbox (badness 10000) in paragraph at lines 35--35
+\T1/lmr/m/n/8 com-pos-ite in
+
+Underfull \hbox (badness 10000) in paragraph at lines 35--35
+[]|\T1/lmr/m/n/8 768;
+
+Underfull \hbox (badness 10000) in paragraph at lines 35--35
+\T1/lmr/m/n/8 pooled,
+
+Underfull \hbox (badness 10000) in paragraph at lines 36--36
+[]|\T1/lmr/m/n/8 on-the-
+
+Underfull \hbox (badness 10000) in paragraph at lines 36--36
+[]|\T1/lmr/m/n/8 Versatile EO
+
+Underfull \hbox (badness 10000) in paragraph at lines 36--36
+\T1/lmr/m/n/8 foun-da-tion
+
+Underfull \hbox (badness 10000) in paragraph at lines 36--36
+\T1/lmr/m/n/8 model for cli-
+
+Underfull \hbox (badness 10000) in paragraph at lines 36--36
+[]|\T1/lmr/m/n/8 Sentinel-2 SR 10-
+
+Underfull \hbox (badness 10000) in paragraph at lines 36--36
+[]|\T1/lmr/m/n/8 single op-ti-cal
+
+Underfull \hbox (badness 10000) in paragraph at lines 36--36
+\T1/lmr/m/n/8 com-pos-ite in
+
+Underfull \hbox (badness 10000) in paragraph at lines 36--36
+[]|\T1/lmr/m/n/8 768;
+
+Underfull \hbox (badness 10000) in paragraph at lines 36--36
+\T1/lmr/m/n/8 pooled,
+
+Underfull \hbox (badness 10000) in paragraph at lines 37--37
+[]|\T1/lmr/m/n/8 Remote
+
+Underfull \hbox (badness 10000) in paragraph at lines 37--37
+\T1/lmr/m/n/8 Sens-ing
+
+Underfull \hbox (badness 3229) in paragraph at lines 37--37
+\T1/lmr/m/n/8 of En-vi-
+
+Underfull \hbox (badness 10000) in paragraph at lines 37--37
+[]|\T1/lmr/m/n/8 on-the-
+
+Underfull \hbox (badness 10000) in paragraph at lines 37--37
+[]|\T1/lmr/m/n/8 Agriculture-
+
+Underfull \hbox (badness 10000) in paragraph at lines 37--37
+\T1/lmr/m/n/8 specific multi-
+
+Underfull \hbox (badness 3623) in paragraph at lines 37--37
+\T1/lmr/m/n/8 source tem-po-ral
+
+Underfull \hbox (badness 10000) in paragraph at lines 37--37
+\T1/lmr/m/n/8 foun-da-tion
+
+Underfull \hbox (badness 10000) in paragraph at lines 37--37
+[]|\T1/lmr/m/n/8 Video Swin
+
+Underfull \hbox (badness 3219) in paragraph at lines 37--37
+[]|\T1/lmr/m/n/8 10 m Sentinel-2
+
+Underfull \hbox (badness 6510) in paragraph at lines 37--37
+\T1/lmr/m/n/8 T-frame pack-ag-
+
+Underfull \hbox (badness 10000) in paragraph at lines 37--37
+[]|\T1/lmr/m/n/8 fixed-length
+
+Underfull \hbox (badness 10000) in paragraph at lines 37--37
+\T1/lmr/m/n/8 multi-frame
+
+Underfull \hbox (badness 10000) in paragraph at lines 37--37
+[]|\T1/lmr/m/n/8 1024;
+
+Underfull \hbox (badness 6428) in paragraph at lines 37--38
+[]|\T1/lmr/m/n/8 supervised land-cover
+
+Underfull \hbox (badness 10000) in paragraph at lines 37--38
+\T1/lmr/m/n/8 frac-tion pre-train-ing
+
+Underfull \hbox (badness 10000) in paragraph at lines 38--38
+[]|\T1/lmr/m/n/8 on-the-
+
+Underfull \hbox (badness 10000) in paragraph at lines 38--38
+[]|\T1/lmr/m/n/8 Coarse-
+
+Underfull \hbox (badness 10000) in paragraph at lines 38--38
+\T1/lmr/m/n/8 foun-da-tion
+
+Underfull \hbox (badness 10000) in paragraph at lines 38--38
+[]|\T1/lmr/m/n/8 SwinV2-style
+
+Underfull \hbox (badness 10000) in paragraph at lines 38--38
+[]|\T1/lmr/m/n/8 MODIS 14-band
+
+Underfull \hbox (badness 10000) in paragraph at lines 38--38
+[]|\T1/lmr/m/n/8 1000 m; 14-
+
+Underfull \hbox (badness 10000) in paragraph at lines 38--38
+\T1/lmr/m/n/8 channel TOA
+
+Underfull \hbox (badness 10000) in paragraph at lines 38--38
+[]|\T1/lmr/m/n/8 single coarse-
+
+Underfull \hbox (badness 10000) in paragraph at lines 38--38
+[]|\T1/lmr/m/n/8 4096;
+
+Underfull \hbox (badness 10000) in paragraph at lines 38--39
+\T1/lmr/m/n/8 on all-sky MODIS
+
+Underfull \hbox (badness 10000) in alignment at lines 19--39
+[] [] [] [] [] [] [] [] [] [] []
+[12] [13] [14])) (./sections/04_applications.tex [15 <../figures/generated//fig
+05_resolution_modality_matrix.png (PNG copy)>])
+(./sections/05_small_area_protocol.tex [16] [17 <../figures/generated//fig02_ap
+plication_pipeline.png (PNG copy)>]
+
+LaTeX Warning: Reference `tab:wuhan-pilot-results' on page 18 undefined on inpu
+t line 40.
+
+(./tables/wuhan_pilot_results.tex
+Overfull \hbox (6.40816pt too wide) in paragraph at lines 6--18
+ [][] 
+)) (./sections/06_system.tex) (./sections/07_discussion.tex [18])
+(./sections/08_conclusion.tex [19 <../figures/generated//fig03_system_overview.
+png (PNG copy)>]) (./sections/09_appendix_inventory.tex
+(./tables/model_catalog_appendix_longtable.tex [20]
+Underfull \hbox (badness 10000) in paragraph at lines 10--10
+[]|\T1/lmr/m/n/8 Peak
+
+Underfull \hbox (badness 10000) in paragraph at lines 10--10
+\T1/lmr/m/n/8 GPU
+
+Underfull \hbox (badness 3668) in paragraph at lines 10--11
+[]|\T1/lmr/m/n/8 Training data
+
+Underfull \hbox (badness 10000) in alignment at lines 7--12
+[] [] [] [] [] [] [] [] [] []
+
+Underfull \hbox (badness 10000) in paragraph at lines 15--15
+[]|\T1/lmr/m/n/8 Peak
+
+Underfull \hbox (badness 10000) in paragraph at lines 15--15
+\T1/lmr/m/n/8 GPU
+
+Underfull \hbox (badness 3668) in paragraph at lines 15--16
+[]|\T1/lmr/m/n/8 Training data
+
+Underfull \hbox (badness 10000) in alignment at lines 12--17
+[] [] [] [] [] [] [] [] [] []
+
+Underfull \hbox (badness 10000) in alignment at lines 17--19
+[] [] [] [] [] [] [] [] [] []
+
+Underfull \hbox (badness 10000) in paragraph at lines 20--20
+[]|\T1/lmr/m/n/8 Zhengpeng Feng,
+
+Underfull \hbox (badness 10000) in paragraph at lines 20--20
+\T1/lmr/m/n/8 Clement Atzberger,
+
+Underfull \hbox (badness 1389) in paragraph at lines 20--20
+\T1/lmr/m/n/8 Sadiq Jaf-fer, Jo-vana
+
+Underfull \hbox (badness 2894) in paragraph at lines 20--20
+\T1/lmr/m/n/8 Kneze-vic, Silja Sor-
+
+Underfull \hbox (badness 1215) in paragraph at lines 20--20
+\T1/lmr/m/n/8 Made-line C. Li-saius,
+
+Underfull \hbox (badness 10000) in paragraph at lines 20--20
+\T1/lmr/m/n/8 Markus Im-mitzer,
+
+Underfull \hbox (badness 3078) in paragraph at lines 20--20
+\T1/lmr/m/n/8 Coomes, Anil Mad-
+
+Underfull \hbox (badness 10000) in paragraph at lines 20--20
+\T1/lmr/m/n/8 havapeddy, An-drew
+
+Underfull \hbox (badness 10000) in paragraph at lines 20--20
+\T1/lmr/m/n/8 Blake, Srini-vasan
+
+Underfull \hbox (badness 10000) in paragraph at lines 20--20
+[]|\T1/lmr/m/n/8 surface spec-tra
+
+Underfull \hbox (badness 10000) in paragraph at lines 20--20
+[]|\T1/lmr/m/n/8 representation
+
+Underfull \hbox (badness 3758) in paragraph at lines 20--20
+\T1/lmr/m/n/8 lookup, re-gional
+
+Underfull \hbox (badness 2334) in paragraph at lines 20--20
+\T1/lmr/m/n/8 em-bed-ding anal-
+
+Underfull \hbox (badness 10000) in paragraph at lines 20--20
+\T1/lmr/m/n/8 y-sis, re-trieval,
+
+Underfull \hbox (badness 10000) in paragraph at lines 20--20
+\T1/lmr/m/n/8 down-stream
+
+Underfull \hbox (badness 10000) in paragraph at lines 20--21
+[]|\T1/lmr/m/n/8 global Earth
+
+Underfull \hbox (badness 10000) in paragraph at lines 20--21
+\T1/lmr/m/n/8 ob-ser-va-tion
+
+Underfull \hbox (badness 10000) in paragraph at lines 20--21
+\T1/lmr/m/n/8 spec-tra ag-
+
+Underfull \hbox (badness 10000) in paragraph at lines 20--21
+\T1/lmr/m/n/8 gre-gated into
+
+Underfull \hbox (badness 10000) in paragraph at lines 20--21
+\T1/lmr/m/n/8 tes-sel-lated
+
+Underfull \hbox (badness 10000) in paragraph at lines 20--21
+\T1/lmr/m/n/8 em-bed-ding
+
+Underfull \hbox (badness 10000) in paragraph at lines 21--21
+\T1/lmr/m/n/8 Masha Sam-sikova,
+
+Underfull \hbox (badness 1320) in paragraph at lines 21--21
+\T1/lmr/m/n/8 Shel-hamer, Es-te-fa-nia
+
+Underfull \hbox (badness 10000) in paragraph at lines 21--21
+\T1/lmr/m/n/8 Si-mon Ilyushchenko,
+
+Underfull \hbox (badness 1297) in paragraph at lines 21--21
+\T1/lmr/m/n/8 Noel Gore-lick, Li-hui
+
+Underfull \hbox (badness 5787) in paragraph at lines 21--21
+\T1/lmr/m/n/8 Sean Askay, Oliver
+
+Underfull \hbox (badness 10000) in paragraph at lines 21--21
+\T1/lmr/m/n/8 Guinan, Re-becca
+
+Underfull \hbox (badness 10000) in paragraph at lines 21--21
+\T1/lmr/m/n/8 ou-valas, Push-meet
+
+Underfull \hbox (badness 10000) in paragraph at lines 21--21
+[]|\T1/lmr/m/n/8 Google Satel-
+
+Underfull \hbox (badness 10000) in paragraph at lines 21--21
+\T1/lmr/m/n/8 lite Em-bed-ding
+
+Underfull \hbox (badness 7362) in paragraph at lines 21--21
+[]|\T1/lmr/m/n/8 global map-ping,
+
+Underfull \hbox (badness 10000) in paragraph at lines 21--21
+\T1/lmr/m/n/8 rapid trans-fer,
+
+Underfull \hbox (badness 10000) in paragraph at lines 21--22
+[]|\T1/lmr/m/n/8 global an-
+
+Underfull \hbox (badness 10000) in paragraph at lines 21--22
+\T1/lmr/m/n/8 nual satel-lite
+
+Underfull \hbox (badness 10000) in paragraph at lines 21--22
+\T1/lmr/m/n/8 em-bed-ding
+
+Overfull \hbox (0.60239pt too wide) in paragraph at lines 22--22
+[]|\T1/lmr/m/n/8 copernicus| 
+
+Underfull \hbox (badness 10000) in paragraph at lines 22--22
+[]|\T1/lmr/m/n/8 Yi Wang, Zhi-tong
+
+Underfull \hbox (badness 10000) in paragraph at lines 22--22
+\T1/lmr/m/n/8 Adam J. Stew-art,
+
+Underfull \hbox (badness 10000) in paragraph at lines 22--22
+\T1/lmr/m/n/8 Thomas Du-jardin,
+
+Underfull \hbox (badness 10000) in paragraph at lines 22--22
+\T1/lmr/m/n/8 Niko-laos Ioan-nis
+
+Underfull \hbox (badness 10000) in paragraph at lines 22--22
+\T1/lmr/m/n/8 Boun-tos, An-ge-los
+
+Underfull \hbox (badness 10000) in paragraph at lines 22--22
+\T1/lmr/m/n/8 Za-vras, Franziska
+
+Underfull \hbox (badness 10000) in paragraph at lines 22--22
+\T1/lmr/m/n/8 Gerken, Ioan-nis
+
+Underfull \hbox (badness 10000) in paragraph at lines 22--22
+\T1/lmr/m/n/8 Pa-pout-sis, Laura
+
+Underfull \hbox (badness 10000) in paragraph at lines 22--22
+\T1/lmr/m/n/8 Leal-Taixe, Xiao
+
+Underfull \hbox (badness 10000) in paragraph at lines 22--22
+[]|\T1/lmr/m/n/8 broad-area re-
+
+Underfull \hbox (badness 10000) in paragraph at lines 22--22
+\T1/lmr/m/n/8 trieval, fea-ture
+
+Underfull \hbox (badness 10000) in paragraph at lines 22--23
+[]|\T1/lmr/m/n/8 global
+
+Underfull \hbox (badness 10000) in paragraph at lines 22--23
+\T1/lmr/m/n/8 Copernicus-
+
+Underfull \hbox (badness 10000) in paragraph at lines 22--23
+\T1/lmr/m/n/8 scale EO
+
+Underfull \hbox (badness 1009) in paragraph at lines 22--23
+\T1/lmr/m/n/8 data com-piled
+
+Underfull \hbox (badness 1014) in paragraph at lines 22--23
+\T1/lmr/m/n/8 into a uni-fied
+
+Underfull \hbox (badness 2359) in paragraph at lines 23--23
+\T1/lmr/m/n/8 Zhangqingyun Guan,
+
+Underfull \hbox (badness 1533) in paragraph at lines 23--23
+[]|\T1/lmr/m/n/8 Sentinel-2 RGB,
+
+Underfull \hbox (badness 10000) in paragraph at lines 23--23
+\T1/lmr/m/n/8 re-mote sens-
+
+Underfull \hbox (badness 10000) in paragraph at lines 23--23
+\T1/lmr/m/n/8 ing cap-tions,
+
+Overfull \hbox (37.47243pt too wide) in paragraph at lines 23--23
+[]|\T1/lmr/m/n/8 S2_SR_HARMONIZED| 
+
+Underfull \hbox (badness 1917) in paragraph at lines 23--23
+\T1/lmr/m/n/8 ca-tion, re-trieval,
+
+Underfull \hbox (badness 3460) in paragraph at lines 23--23
+\T1/lmr/m/n/8 few-shot clas-si-fi-
+
+Underfull \hbox (badness 10000) in paragraph at lines 23--23
+\T1/lmr/m/n/8 open-vocabulary
+
+Underfull \hbox (badness 10000) in paragraph at lines 23--24
+[]|\T1/lmr/m/n/8 large image-
+
+Underfull \hbox (badness 10000) in paragraph at lines 23--24
+\T1/lmr/m/n/8 to-caption
+
+Underfull \hbox (badness 10000) in paragraph at lines 23--24
+\T1/lmr/m/n/8 and mask-
+
+Underfull \hbox (badness 10000) in paragraph at lines 23--24
+\T1/lmr/m/n/8 to-caption
+
+Underfull \hbox (badness 10000) in paragraph at lines 23--24
+\T1/lmr/m/n/8 con-ver-sion
+
+Underfull \hbox (badness 10000) in paragraph at lines 23--24
+\T1/lmr/m/n/8 plus UAV
+
+Underfull \hbox (badness 10000) in paragraph at lines 24--24
+\T1/lmr/m/n/8 Khanna, Chen-lin
+
+Underfull \hbox (badness 5878) in paragraph at lines 24--24
+\T1/lmr/m/n/8 Meng, Patrick Liu,
+
+Underfull \hbox (badness 10000) in paragraph at lines 24--24
+\T1/lmr/m/n/8 Erik Rozi, Yu-tong
+
+Underfull \hbox (badness 1303) in paragraph at lines 24--24
+\T1/lmr/m/n/8 He, Mar-shall Burke,
+
+Underfull \hbox (badness 10000) in paragraph at lines 24--24
+\T1/lmr/m/n/8 David B. Lo-bell,
+
+Underfull \hbox (badness 10000) in paragraph at lines 24--24
+[]|\T1/lmr/m/n/8 Sentinel-
+
+Underfull \hbox (badness 10000) in paragraph at lines 24--24
+\T1/lmr/m/n/8 2 RGB or
+
+Overfull \hbox (8.28743pt too wide) in paragraph at lines 24--24
+\T1/lmr/m/n/8 multispectral/time-
+
+Overfull \hbox (37.47243pt too wide) in paragraph at lines 24--24
+[]|\T1/lmr/m/n/8 S2_SR_HARMONIZED| 
+
+Underfull \hbox (badness 10000) in paragraph at lines 24--24
+[]|\T1/lmr/m/n/8 classification,
+
+Underfull \hbox (badness 10000) in paragraph at lines 24--24
+\T1/lmr/m/n/8 seg-men-ta-tion,
+
+Underfull \hbox (badness 10000) in paragraph at lines 24--24
+\T1/lmr/m/n/8 rep-re-sen-ta-tion
+
+Underfull \hbox (badness 10000) in paragraph at lines 24--25
+[]|\T1/lmr/m/n/8 fMoW-
+
+Underfull \hbox (badness 10000) in paragraph at lines 24--25
+\T1/lmr/m/n/8 Sentinel
+
+Underfull \hbox (badness 10000) in paragraph at lines 24--25
+\T1/lmr/m/n/8 and satel-
+
+Underfull \hbox (badness 10000) in paragraph at lines 24--25
+\T1/lmr/m/n/8 lite im-agery
+
+Underfull \hbox (badness 10000) in paragraph at lines 24--25
+\T1/lmr/m/n/8 and spec-tral
+
+Underfull \hbox (badness 10000) in paragraph at lines 25--25
+[]|\T1/lmr/m/n/8 Mubashir No-man,
+
+Underfull \hbox (badness 10000) in paragraph at lines 25--25
+\T1/lmr/m/n/8 Muza-m-mal Naseer,
+
+Underfull \hbox (badness 10000) in paragraph at lines 25--25
+\T1/lmr/m/n/8 Hisham Cholakkal,
+
+Underfull \hbox (badness 4621) in paragraph at lines 25--25
+\T1/lmr/m/n/8 wer, Salman Khan,
+
+Underfull \hbox (badness 7151) in paragraph at lines 25--25
+[]|\T1/lmr/m/n/8 Sentinel-2 RGB
+
+Underfull \hbox (badness 10000) in paragraph at lines 25--25
+\T1/lmr/m/n/8 in adapter,
+
+Underfull \hbox (badness 10000) in paragraph at lines 25--25
+\T1/lmr/m/n/8 mul-ti-spec-tral
+
+Underfull \hbox (badness 10000) in paragraph at lines 25--25
+\T1/lmr/m/n/8 Sentinel-2 in
+
+Overfull \hbox (37.47243pt too wide) in paragraph at lines 25--25
+[]|\T1/lmr/m/n/8 S2_SR_HARMONIZED| 
+
+Underfull \hbox (badness 10000) in paragraph at lines 25--25
+[]|\T1/lmr/m/n/8 classification,
+
+Underfull \hbox (badness 10000) in paragraph at lines 25--25
+\T1/lmr/m/n/8 seg-men-ta-tion,
+
+Underfull \hbox (badness 10000) in paragraph at lines 25--25
+\T1/lmr/m/n/8 rep-re-sen-ta-tion
+
+Underfull \hbox (badness 10000) in paragraph at lines 25--26
+[]|\T1/lmr/m/n/8 fMoW RGB
+
+Underfull \hbox (badness 10000) in paragraph at lines 25--26
+\T1/lmr/m/n/8 / mul-ti-spec-
+
+Underfull \hbox (badness 10000) in paragraph at lines 25--26
+\T1/lmr/m/n/8 tral and
+
+Underfull \hbox (badness 10000) in paragraph at lines 25--26
+\T1/lmr/m/n/8 pre-train-ing
+
+Overfull \hbox (30.61278pt too wide) in paragraph at lines 26--26
+[]|\T1/lmr/m/n/8 satmaepp_s2_10b| 
+
+Underfull \hbox (badness 10000) in paragraph at lines 26--26
+[]|\T1/lmr/m/n/8 Mubashir No-man,
+
+Underfull \hbox (badness 10000) in paragraph at lines 26--26
+\T1/lmr/m/n/8 Muza-m-mal Naseer,
+
+Underfull \hbox (badness 10000) in paragraph at lines 26--26
+\T1/lmr/m/n/8 Hisham Cholakkal,
+
+Underfull \hbox (badness 4621) in paragraph at lines 26--26
+\T1/lmr/m/n/8 wer, Salman Khan,
+
+Overfull \hbox (37.47243pt too wide) in paragraph at lines 26--26
+[]|\T1/lmr/m/n/8 S2_SR_HARMONIZED| 
+
+Underfull \hbox (badness 10000) in paragraph at lines 26--26
+[]|\T1/lmr/m/n/8 classification,
+
+Underfull \hbox (badness 10000) in paragraph at lines 26--26
+\T1/lmr/m/n/8 rep-re-sen-ta-tion
+
+Overfull \hbox (4.47417pt too wide) in paragraph at lines 26--27
+[]|\T1/lmr/m/n/8 Sentinel/fMoW-
+
+Underfull \hbox (badness 10000) in paragraph at lines 26--27
+\T1/lmr/m/n/8 style mul-
+
+Underfull \hbox (badness 10000) in paragraph at lines 26--27
+\T1/lmr/m/n/8 ti-spec-tral
+
+Underfull \hbox (badness 10000) in paragraph at lines 26--27
+\T1/lmr/m/n/8 pre-train-ing
+
+Underfull \hbox (badness 10000) in paragraph at lines 27--27
+[]|\T1/lmr/m/n/8 Colorado J. Reed,
+
+Underfull \hbox (badness 10000) in paragraph at lines 27--27
+\T1/lmr/m/n/8 Christo-pher Funk,
+
+Underfull \hbox (badness 10000) in paragraph at lines 27--27
+\T1/lmr/m/n/8 Brian Clipp, Kurt
+
+Underfull \hbox (badness 10000) in paragraph at lines 27--27
+\T1/lmr/m/n/8 Keutzer, Sal-va-tore
+
+Underfull \hbox (badness 1394) in paragraph at lines 27--27
+\T1/lmr/m/n/8 Can-dido, Matt Uyt-
+
+Underfull \hbox (badness 10000) in paragraph at lines 27--27
+\T1/lmr/m/n/8 ten-daele, Trevor
+
+Underfull \hbox (badness 7151) in paragraph at lines 27--27
+[]|\T1/lmr/m/n/8 Sentinel-2 RGB
+
+Underfull \hbox (badness 5077) in paragraph at lines 27--27
+\T1/lmr/m/n/8 ti-scale EO im-
+
+Overfull \hbox (37.47243pt too wide) in paragraph at lines 27--27
+[]|\T1/lmr/m/n/8 S2_SR_HARMONIZED| 
+
+Underfull \hbox (badness 10000) in paragraph at lines 27--27
+[]|\T1/lmr/m/n/8 cross-resolution
+
+Underfull \hbox (badness 1755) in paragraph at lines 27--27
+\T1/lmr/m/n/8 trans-fer, clas-si-fi-
+
+Underfull \hbox (badness 10000) in paragraph at lines 27--28
+[]|\T1/lmr/m/n/8 multiscale
+
+Underfull \hbox (badness 10000) in paragraph at lines 27--28
+\T1/lmr/m/n/8 geospa-tial
+
+Underfull \hbox (badness 10000) in paragraph at lines 27--28
+\T1/lmr/m/n/8 im-agery with
+
+Underfull \hbox (badness 10000) in paragraph at lines 28--28
+[]|\T1/lmr/m/n/8 Guillaume As-truc,
+
+Underfull \hbox (badness 10000) in paragraph at lines 28--28
+\T1/lmr/m/n/8 Nico-las Gonthier,
+
+Underfull \hbox (badness 10000) in paragraph at lines 28--28
+[]|\T1/lmr/m/n/8 Sentinel-2,
+
+Underfull \hbox (badness 10000) in paragraph at lines 28--28
+\T1/lmr/m/n/8 Sentinel-1,
+
+Underfull \hbox (badness 2150) in paragraph at lines 28--28
+\T1/lmr/m/n/8 aerial/VHR and
+
+Underfull \hbox (badness 1859) in paragraph at lines 28--28
+\T1/lmr/m/n/8 other modal-i-ties
+
+Overfull \hbox (39.83359pt too wide) in paragraph at lines 28--28
+[]|\T1/lmr/m/n/8 S2_SR_HARMONIZED,
+
+Underfull \hbox (badness 10000) in paragraph at lines 28--28
+\T1/lmr/m/n/8 split into T
+
+Underfull \hbox (badness 10000) in paragraph at lines 28--28
+[]|\T1/lmr/m/n/8 classification,
+
+Underfull \hbox (badness 10000) in paragraph at lines 28--28
+\T1/lmr/m/n/8 seg-men-ta-tion,
+
+Underfull \hbox (badness 10000) in paragraph at lines 28--28
+\T1/lmr/m/n/8 cross-modal
+
+Underfull \hbox (badness 10000) in paragraph at lines 28--29
+[]|\T1/lmr/m/n/8 GeoPlex-
+
+Underfull \hbox (badness 10000) in paragraph at lines 28--29
+\T1/lmr/m/n/8 like multi-
+
+Underfull \hbox (badness 10000) in paragraph at lines 28--29
+\T1/lmr/m/n/8 resolution
+
+Underfull \hbox (badness 10000) in paragraph at lines 28--29
+\T1/lmr/m/n/8 multi-modality
+
+Underfull \hbox (badness 4779) in paragraph at lines 29--29
+[]|\T1/lmr/m/n/8 Gabriel Tseng, An-
+
+Underfull \hbox (badness 2221) in paragraph at lines 29--29
+\T1/lmr/m/n/8 Reil, Henry Her-zog,
+
+Underfull \hbox (badness 10000) in paragraph at lines 29--29
+\T1/lmr/m/n/8 Patrick Beukema,
+
+Underfull \hbox (badness 10000) in paragraph at lines 29--29
+\T1/lmr/m/n/8 Favyen Bas-tani,
+
+Underfull \hbox (badness 10000) in paragraph at lines 29--29
+\T1/lmr/m/n/8 Shel-hamer, Han-nah
+
+Underfull \hbox (badness 10000) in paragraph at lines 29--29
+[]|\T1/lmr/m/n/8 Sentinel-2 time
+
+Underfull \hbox (badness 10000) in paragraph at lines 29--29
+\T1/lmr/m/n/8 se-ries, mul-ti-ple
+
+Underfull \hbox (badness 10000) in paragraph at lines 29--29
+\T1/lmr/m/n/8 re-mote sens-ing
+
+Underfull \hbox (badness 10000) in paragraph at lines 29--29
+\T1/lmr/m/n/8 modal-i-ties in
+
+Overfull \hbox (39.83359pt too wide) in paragraph at lines 29--29
+[]|\T1/lmr/m/n/8 S2_SR_HARMONIZED,
+
+Underfull \hbox (badness 10000) in paragraph at lines 29--29
+\T1/lmr/m/n/8 split into T
+
+Underfull \hbox (badness 10000) in paragraph at lines 29--29
+[]|\T1/lmr/m/n/8 classification,
+
+Underfull \hbox (badness 10000) in paragraph at lines 29--29
+\T1/lmr/m/n/8 seg-men-ta-tion,
+
+Underfull \hbox (badness 10000) in paragraph at lines 29--29
+\T1/lmr/m/n/8 re-trieval, time-
+
+Underfull \hbox (badness 10000) in paragraph at lines 29--30
+[]|\T1/lmr/m/n/8 many re-
+
+Underfull \hbox (badness 10000) in paragraph at lines 29--30
+\T1/lmr/m/n/8 mote sens-ing
+
+Underfull \hbox (badness 10000) in paragraph at lines 29--30
+\T1/lmr/m/n/8 modal-i-ties
+
+Underfull \hbox (badness 2221) in paragraph at lines 30--30
+[]|\T1/lmr/m/n/8 Rangel Daroya, Eli-
+
+Underfull \hbox (badness 7613) in paragraph at lines 30--30
+\T1/lmr/m/n/8 Aodha, Grant Van
+
+Underfull \hbox (badness 1533) in paragraph at lines 30--30
+[]|\T1/lmr/m/n/8 Sentinel-2 RGB,
+
+Underfull \hbox (badness 2229) in paragraph at lines 30--30
+\T1/lmr/m/n/8 wildlife ob-ser-va-
+
+Overfull \hbox (37.47243pt too wide) in paragraph at lines 30--30
+[]|\T1/lmr/m/n/8 S2_SR_HARMONIZED| 
+
+Underfull \hbox (badness 3118) in paragraph at lines 30--30
+[]|\T1/lmr/m/n/8 ecology trans-fer,
+
+Underfull \hbox (badness 10000) in paragraph at lines 30--31
+[]|\T1/lmr/m/n/8 satellite im-
+
+Underfull \hbox (badness 8075) in paragraph at lines 30--31
+\T1/lmr/m/n/8 agery aligned
+
+Underfull \hbox (badness 10000) in paragraph at lines 30--31
+\T1/lmr/m/n/8 with wildlife
+
+Underfull \hbox (badness 10000) in paragraph at lines 30--31
+\T1/lmr/m/n/8 ob-ser-va-tions
+
+Underfull \hbox (badness 8075) in paragraph at lines 30--31
+\T1/lmr/m/n/8 and bio-di-ver-
+
+Underfull \hbox (badness 10000) in paragraph at lines 31--31
+[]|\T1/lmr/m/n/8 Johannes Jaku-bik,
+
+Underfull \hbox (badness 10000) in paragraph at lines 31--31
+\T1/lmr/m/n/8 Su-jit Roy, C. E.
+
+Underfull \hbox (badness 10000) in paragraph at lines 31--31
+\T1/lmr/m/n/8 Bianca Zadrozny,
+
+Underfull \hbox (badness 10000) in paragraph at lines 31--31
+\T1/lmr/m/n/8 Daniela Szwar-c-man,
+
+Underfull \hbox (badness 6477) in paragraph at lines 31--31
+\T1/lmr/m/n/8 Nyir-jesy, Blair Ed-
+
+Underfull \hbox (badness 7759) in paragraph at lines 31--31
+\T1/lmr/m/n/8 Mukkav-illi, De-vyani
+
+Underfull \hbox (badness 10000) in paragraph at lines 31--31
+\T1/lmr/m/n/8 Lamb-hate, Ka-mal
+
+Underfull \hbox (badness 1874) in paragraph at lines 31--31
+\T1/lmr/m/n/8 lore, Dario Oliveira,
+
+Underfull \hbox (badness 10000) in paragraph at lines 31--31
+\T1/lmr/m/n/8 Michal Muszyn-
+
+Underfull \hbox (badness 5787) in paragraph at lines 31--31
+\T1/lmr/m/n/8 ski, Ku-mar Ankur,
+
+Underfull \hbox (badness 10000) in paragraph at lines 31--31
+\T1/lmr/m/n/8 Muthuku-maran Ra-
+
+Underfull \hbox (badness 10000) in paragraph at lines 31--31
+\T1/lmr/m/n/8 ma-sub-ra-ma-nian,
+
+Underfull \hbox (badness 3229) in paragraph at lines 31--31
+\T1/lmr/m/n/8 Ik-sha Gu-rung, Sam
+
+Underfull \hbox (badness 10000) in paragraph at lines 31--31
+\T1/lmr/m/n/8 Khal-laghi, Hanxi
+
+Underfull \hbox (badness 10000) in paragraph at lines 31--31
+\T1/lmr/m/n/8 Li, Michael Ce-cil,
+
+Underfull \hbox (badness 10000) in paragraph at lines 31--31
+\T1/lmr/m/n/8 Maryam Ah-madi,
+
+Underfull \hbox (badness 10000) in paragraph at lines 31--31
+\T1/lmr/m/n/8 Fate-meh Ko-rdi,
+
+Underfull \hbox (badness 10000) in paragraph at lines 31--31
+\T1/lmr/m/n/8 Hamed Ale-mo-ham-
+
+Underfull \hbox (badness 1248) in paragraph at lines 31--31
+\T1/lmr/m/n/8 mad, Manil Maskey,
+
+Underfull \hbox (badness 1377) in paragraph at lines 31--31
+\T1/lmr/m/n/8 Welde-mariam, Rahul
+
+Overfull \hbox (39.83359pt too wide) in paragraph at lines 31--31
+[]|\T1/lmr/m/n/8 S2_SR_HARMONIZED;
+
+Underfull \hbox (badness 10000) in paragraph at lines 31--31
+\T1/lmr/m/n/8 year is nor-
+
+Underfull \hbox (badness 3977) in paragraph at lines 31--31
+\T1/lmr/m/n/8 mal-ized to a
+
+Underfull \hbox (badness 10000) in paragraph at lines 31--31
+[]|\T1/lmr/m/n/8 classification,
+
+Underfull \hbox (badness 10000) in paragraph at lines 31--31
+\T1/lmr/m/n/8 seg-men-ta-tion,
+
+Underfull \hbox (badness 2922) in paragraph at lines 31--31
+\T1/lmr/m/n/8 map-ping, gen-er-
+
+Underfull \hbox (badness 10000) in paragraph at lines 31--32
+[]|\T1/lmr/m/n/8 NASA/IBM
+
+Underfull \hbox (badness 2582) in paragraph at lines 31--32
+\T1/lmr/m/n/8 pora de-signed
+
+Underfull \hbox (badness 10000) in paragraph at lines 31--32
+\T1/lmr/m/n/8 for gen-er-al-ist
+
+Underfull \hbox (badness 10000) in paragraph at lines 32--32
+[]|\T1/lmr/m/n/8 Muhammad So-hail
+
+Underfull \hbox (badness 10000) in paragraph at lines 32--32
+\T1/lmr/m/n/8 Dan-ish, Muham-
+
+Underfull \hbox (badness 3547) in paragraph at lines 32--32
+\T1/lmr/m/n/8 mad Akhtar Mu-nir,
+
+Underfull \hbox (badness 10000) in paragraph at lines 32--32
+\T1/lmr/m/n/8 Syed Roshaan Ali
+
+Underfull \hbox (badness 10000) in paragraph at lines 32--32
+\T1/lmr/m/n/8 Shah, Muham-mad
+
+Underfull \hbox (badness 10000) in paragraph at lines 32--32
+\T1/lmr/m/n/8 Haris Khan, Rao
+
+Underfull \hbox (badness 10000) in paragraph at lines 32--32
+\T1/lmr/m/n/8 Muham-mad An-wer,
+
+Underfull \hbox (badness 10000) in paragraph at lines 32--32
+\T1/lmr/m/n/8 Jorma Laak-so-nen,
+
+Underfull \hbox (badness 10000) in paragraph at lines 32--32
+[]|\T1/lmr/m/n/8 Sentinel-2,
+
+Underfull \hbox (badness 10000) in paragraph at lines 32--32
+[]|\T1/lmr/m/n/8 range(...)
+
+Underfull \hbox (badness 10000) in paragraph at lines 32--32
+\T1/lmr/m/n/8 over ei-ther
+
+Underfull \hbox (badness 10000) in paragraph at lines 32--32
+\T1/lmr/m/n/8 Sentinel-2
+
+Underfull \hbox (badness 10000) in paragraph at lines 32--32
+\T1/lmr/m/n/8 or Sentinel-1
+
+Underfull \hbox (badness 10000) in paragraph at lines 32--32
+[]|\T1/lmr/m/n/8 classification,
+
+Underfull \hbox (badness 10000) in paragraph at lines 32--32
+\T1/lmr/m/n/8 seg-men-ta-tion,
+
+Underfull \hbox (badness 10000) in paragraph at lines 32--32
+\T1/lmr/m/n/8 cross-sensor
+
+Underfull \hbox (badness 10000) in paragraph at lines 32--32
+\T1/lmr/m/n/8 trans-fer, rep-
+
+Underfull \hbox (badness 10000) in paragraph at lines 32--32
+\T1/lmr/m/n/8 re-sen-ta-tion
+
+Underfull \hbox (badness 10000) in paragraph at lines 32--33
+[]|\T1/lmr/m/n/8 large mul-ti-
+
+Underfull \hbox (badness 10000) in paragraph at lines 32--33
+\T1/lmr/m/n/8 sen-sor Earth
+
+Underfull \hbox (badness 10000) in paragraph at lines 32--33
+\T1/lmr/m/n/8 ob-ser-va-tion
+
+Underfull \hbox (badness 10000) in paragraph at lines 32--33
+\T1/lmr/m/n/8 cor-pus span-
+
+Underfull \hbox (badness 5985) in paragraph at lines 32--33
+\T1/lmr/m/n/8 ning S1 and
+
+Underfull \hbox (badness 10000) in paragraph at lines 33--33
+[]|\T1/lmr/m/n/8 Johannes Jaku-bik,
+
+Underfull \hbox (badness 10000) in paragraph at lines 33--33
+\T1/lmr/m/n/8 Blu-men-stiel, Erik
+
+Underfull \hbox (badness 10000) in paragraph at lines 33--33
+\T1/lmr/m/n/8 Scheurer, Rocco
+
+Underfull \hbox (badness 10000) in paragraph at lines 33--33
+\T1/lmr/m/n/8 ro-gio-vanni, Jente
+
+Underfull \hbox (badness 10000) in paragraph at lines 33--33
+\T1/lmr/m/n/8 Bosmans, Niko-laos
+
+Underfull \hbox (badness 4242) in paragraph at lines 33--33
+\T1/lmr/m/n/8 socci, Niklas Kopp,
+
+Underfull \hbox (badness 10000) in paragraph at lines 33--33
+\T1/lmr/m/n/8 Rahul Ra-machan-
+
+Underfull \hbox (badness 10000) in paragraph at lines 33--33
+\T1/lmr/m/n/8 Gabriele Cav-al-laro,
+
+Underfull \hbox (badness 10000) in paragraph at lines 33--33
+\T1/lmr/m/n/8 Juan Bernabe-
+
+Underfull \hbox (badness 10000) in paragraph at lines 33--33
+\T1/lmr/m/n/8 Moreno, Nico-las
+
+Underfull \hbox (badness 10000) in paragraph at lines 33--33
+[]|\T1/lmr/m/n/8 Sentinel-2 in
+
+Underfull \hbox (badness 10000) in paragraph at lines 33--33
+\T1/lmr/m/n/8 adapter, wider
+
+Underfull \hbox (badness 10000) in paragraph at lines 33--33
+\T1/lmr/m/n/8 mul-ti-modal EO
+
+Overfull \hbox (37.47243pt too wide) in paragraph at lines 33--33
+[]|\T1/lmr/m/n/8 S2_SR_HARMONIZED| 
+
+Underfull \hbox (badness 10000) in paragraph at lines 33--33
+[]|\T1/lmr/m/n/8 representation
+
+Underfull \hbox (badness 10000) in paragraph at lines 33--34
+[]|\T1/lmr/m/n/8 large mul-ti-
+
+Underfull \hbox (badness 10000) in paragraph at lines 33--34
+\T1/lmr/m/n/8 modal Earth
+
+Underfull \hbox (badness 10000) in paragraph at lines 33--34
+\T1/lmr/m/n/8 ob-ser-va-tion
+
+Underfull \hbox (badness 1881) in paragraph at lines 33--34
+\T1/lmr/m/n/8 data for gen-
+
+Underfull \hbox (badness 10000) in paragraph at lines 33--34
+\T1/lmr/m/n/8 er-a-tion and
+
+Underfull \hbox (badness 10000) in paragraph at lines 33--34
+\T1/lmr/m/n/8 rep-re-sen-ta-tion
+
+Underfull \hbox (badness 10000) in paragraph at lines 34--34
+[]|\T1/lmr/m/n/8 Zhitong Xiong, Yi
+
+Underfull \hbox (badness 10000) in paragraph at lines 34--34
+\T1/lmr/m/n/8 Adam J. Stew-art,
+
+Underfull \hbox (badness 7631) in paragraph at lines 34--34
+\T1/lmr/m/n/8 Borth, Ioan-nis Pa-
+
+Underfull \hbox (badness 10000) in paragraph at lines 34--34
+\T1/lmr/m/n/8 Valls, Xiao Xi-ang
+
+Underfull \hbox (badness 10000) in paragraph at lines 34--34
+[]|\T1/lmr/m/n/8 multispectral
+
+Underfull \hbox (badness 10000) in paragraph at lines 34--34
+\T1/lmr/m/n/8 and hy-per-spec-
+
+Underfull \hbox (badness 10000) in paragraph at lines 34--34
+\T1/lmr/m/n/8 Sentinel-2 in
+
+Overfull \hbox (37.47243pt too wide) in paragraph at lines 34--34
+[]|\T1/lmr/m/n/8 S2_SR_HARMONIZED| 
+
+Underfull \hbox (badness 10000) in paragraph at lines 34--34
+[]|\T1/lmr/m/n/8 classification,
+
+Underfull \hbox (badness 10000) in paragraph at lines 34--34
+\T1/lmr/m/n/8 cross-sensor
+
+Underfull \hbox (badness 10000) in paragraph at lines 34--34
+\T1/lmr/m/n/8 trans-fer, hy-per-
+
+Underfull \hbox (badness 10000) in paragraph at lines 34--35
+[]|\T1/lmr/m/n/8 multimodal
+
+Underfull \hbox (badness 10000) in paragraph at lines 34--35
+\T1/lmr/m/n/8 EO cor-
+
+Underfull \hbox (badness 10000) in paragraph at lines 34--35
+\T1/lmr/m/n/8 pora with
+
+Underfull \hbox (badness 10000) in paragraph at lines 34--35
+\T1/lmr/m/n/8 wave-length
+
+Underfull \hbox (badness 10000) in paragraph at lines 35--35
+[]|\T1/lmr/m/n/8 Nikolaos Ioan-nis
+
+Underfull \hbox (badness 10000) in paragraph at lines 35--35
+\T1/lmr/m/n/8 Boun-tos, Arthur
+
+Underfull \hbox (badness 10000) in paragraph at lines 35--35
+\T1/lmr/m/n/8 Ouak-nine, Ioan-nis
+
+Underfull \hbox (badness 10000) in paragraph at lines 35--35
+\T1/lmr/m/n/8 Pa-pout-sis, David
+
+Overfull \hbox (37.47243pt too wide) in paragraph at lines 35--35
+[]|\T1/lmr/m/n/8 S2_SR_HARMONIZED| 
+
+Underfull \hbox (badness 10000) in paragraph at lines 35--35
+\T1/lmr/m/n/8 ping, biomass-
+
+Underfull \hbox (badness 8000) in paragraph at lines 35--35
+\T1/lmr/m/n/8 related trans-fer,
+
+Underfull \hbox (badness 10000) in paragraph at lines 35--35
+\T1/lmr/m/n/8 clas-si-fi-ca-tion,
+
+Underfull \hbox (badness 10000) in paragraph at lines 35--36
+[]|\T1/lmr/m/n/8 forest mon-i-
+
+Underfull \hbox (badness 10000) in paragraph at lines 36--36
+[]|\T1/lmr/m/n/8 Theodor For-gaard,
+
+Underfull \hbox (badness 10000) in paragraph at lines 36--36
+\T1/lmr/m/n/8 Walde-land, Va-le-rio
+
+Underfull \hbox (badness 10000) in paragraph at lines 36--36
+\T1/lmr/m/n/8 Mar-socci, Nico-las
+
+Underfull \hbox (badness 10000) in paragraph at lines 36--36
+\T1/lmr/m/n/8 Longepe, Michael
+
+Underfull \hbox (badness 6691) in paragraph at lines 36--36
+\T1/lmr/m/n/8 Kampffmeyer, Arnt-
+
+Overfull \hbox (37.47243pt too wide) in paragraph at lines 36--36
+[]|\T1/lmr/m/n/8 S2_SR_HARMONIZED| 
+
+Underfull \hbox (badness 10000) in paragraph at lines 36--36
+[]|\T1/lmr/m/n/8 classification,
+
+Underfull \hbox (badness 2096) in paragraph at lines 36--36
+\T1/lmr/m/n/8 re-gres-sion, map-
+
+Underfull \hbox (badness 10000) in paragraph at lines 36--36
+\T1/lmr/m/n/8 ping, broad
+
+Underfull \hbox (badness 10000) in paragraph at lines 36--37
+\T1/lmr/m/n/8 pus ori-ented
+
+Underfull \hbox (badness 7151) in paragraph at lines 36--37
+\T1/lmr/m/n/8 to-ward broad
+
+Underfull \hbox (badness 10000) in paragraph at lines 36--37
+\T1/lmr/m/n/8 so-ci-etal and
+
+Underfull \hbox (badness 1742) in paragraph at lines 37--37
+\T1/lmr/m/n/8 Liang, Keyan Chen,
+
+Underfull \hbox (badness 1975) in paragraph at lines 37--37
+\T1/lmr/m/n/8 Yongzhe Chen, Han
+
+Underfull \hbox (badness 10000) in paragraph at lines 37--37
+\T1/lmr/m/n/8 Ma, Jian-glei Xu,
+
+Underfull \hbox (badness 5245) in paragraph at lines 37--37
+\T1/lmr/m/n/8 Yichuan Ma, Yux-i-
+
+Underfull \hbox (badness 1968) in paragraph at lines 37--37
+\T1/lmr/m/n/8 ang Zhang, Shikang
+
+Underfull \hbox (badness 10000) in paragraph at lines 37--37
+[]|\T1/lmr/m/n/8 Sentinel-2
+
+Underfull \hbox (badness 10000) in paragraph at lines 37--37
+\T1/lmr/m/n/8 in adapter,
+
+Underfull \hbox (badness 10000) in paragraph at lines 37--37
+\T1/lmr/m/n/8 Sentinel-2,
+
+Underfull \hbox (badness 10000) in paragraph at lines 37--37
+\T1/lmr/m/n/8 Landsat-8/9,
+
+Overfull \hbox (39.83359pt too wide) in paragraph at lines 37--37
+[]|\T1/lmr/m/n/8 S2_SR_HARMONIZED,
+
+Underfull \hbox (badness 10000) in paragraph at lines 37--37
+\T1/lmr/m/n/8 split into T
+
+Underfull \hbox (badness 10000) in paragraph at lines 37--37
+[]|\T1/lmr/m/n/8 cropland map-
+
+Underfull \hbox (badness 10000) in paragraph at lines 37--37
+\T1/lmr/m/n/8 ary de-lin-eation,
+
+Underfull \hbox (badness 2726) in paragraph at lines 37--37
+\T1/lmr/m/n/8 crop type map-
+
+Underfull \hbox (badness 10000) in paragraph at lines 37--38
+\T1/lmr/m/n/8 source tem-
+
+Underfull \hbox (badness 7012) in paragraph at lines 37--38
+\T1/lmr/m/n/8 po-ral patches
+
+Underfull \hbox (badness 2941) in paragraph at lines 37--38
+\T1/lmr/m/n/8 from MODIS,
+
+Underfull \hbox (badness 5359) in paragraph at lines 37--38
+\T1/lmr/m/n/8 Land-sat, and
+
+Underfull \hbox (badness 10000) in paragraph at lines 38--38
+[]|\T1/lmr/m/n/8 Caleb S. Spradlin,
+
+Underfull \hbox (badness 10000) in paragraph at lines 38--38
+[]|\T1/lmr/m/n/8 default
+
+Overfull \hbox (42.45403pt too wide) in paragraph at lines 38--38
+\T1/lmr/m/n/8 MODIS/061/MOD021KM| 
+
+Underfull \hbox (badness 10000) in paragraph at lines 38--38
+[]|\T1/lmr/m/n/8 atmospheric
+
+Underfull \hbox (badness 10000) in paragraph at lines 38--38
+\T1/lmr/m/n/8 sci-ence, en-
+
+Underfull \hbox (badness 10000) in paragraph at lines 38--38
+\T1/lmr/m/n/8 vi-ron-men-tal
+
+Underfull \hbox (badness 10000) in paragraph at lines 38--38
+\T1/lmr/m/n/8 mon-i-tor-ing,
+
+Underfull \hbox (badness 10000) in paragraph at lines 38--38
+\T1/lmr/m/n/8 coarse-resolution
+
+Underfull \hbox (badness 10000) in paragraph at lines 38--39
+[]|\T1/lmr/m/n/8 14-band
+
+Underfull \hbox (badness 4673) in paragraph at lines 38--39
+\T1/lmr/m/n/8 MODIS TOA
+
+Underfull \hbox (badness 10000) in paragraph at lines 38--39
+\T1/lmr/m/n/8 im-agery cap-
+
+Underfull \hbox (badness 2582) in paragraph at lines 38--39
+\T1/lmr/m/n/8 tur-ing vis-i-ble,
+
+Underfull \hbox (badness 10000) in paragraph at lines 38--39
+\T1/lmr/m/n/8 NIR, and
+
+Underfull \hbox (badness 10000) in paragraph at lines 38--39
+\T1/lmr/m/n/8 un-der all-sky
+
+Underfull \hbox (badness 10000) in alignment at lines 19--39
+[] [] [] [] [] [] [] [] [] []
+[21] [22] [23] [24] [25] [26])) (./main.bbl [27] [28]) [29] (./main.aux)
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package rerunfilecheck Warning: File `main.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+ )
+(see the transcript file for additional information){/usr/share/texlive/texmf-d
+ist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texlive/texmf-dist/fonts/enc/d
+vips/lm/lm-rm.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}</usr/share/texlive
+/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></usr/share/texlive/texmf-dist/fon
+ts/type1/public/lm/lmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
+/lm/lmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/lm/lmr12.pfb></
+usr/share/texlive/texmf-dist/fonts/type1/public/lm/lmr17.pfb></usr/share/texliv
+e/texmf-dist/fonts/type1/public/lm/lmr8.pfb></usr/share/texlive/texmf-dist/font
+s/type1/public/lm/lmri10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
+lm/lmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/lm/lmsy8.pfb></
+usr/share/texlive/texmf-dist/fonts/type1/public/lm/lmtt10.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/lm/lmtt8.pfb>
+Output written on main.pdf (29 pages, 37761103 bytes).
+Transcript written on main.log.

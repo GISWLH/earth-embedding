@@ -1,0 +1,72 @@
+{
+  "model": "copernicus",
+  "status": "ok",
+  "reason": null,
+  "output_json": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/part2_model_map_figure/copernicus_2x.json",
+  "output_npz": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/part2_model_map_figure/copernicus_2x.npz",
+  "output_png": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/part2_model_map_figure/copernicus_2x.png",
+  "block_dir": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/part2_model_map_figure/blocks_2x/copernicus",
+  "n_blocks": 4,
+  "temporal": "year",
+  "shape": [
+    4,
+    768,
+    3,
+    2
+  ],
+  "grid_hw": [
+    5,
+    4
+  ],
+  "blocks": [
+    {
+      "block_id": "block_r01_c01",
+      "status": "ok",
+      "source": "run",
+      "shape": [
+        768,
+        3,
+        2
+      ],
+      "output_npz": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/part2_model_map_figure/blocks_2x/copernicus/block_r01_c01.npz",
+      "output_json": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/part2_model_map_figure/blocks_2x/copernicus/block_r01_c01.json"
+    },
+    {
+      "block_id": "block_r01_c02",
+      "status": "ok",
+      "source": "run",
+      "shape": [
+        768,
+        3,
+        2
+      ],
+      "output_npz": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/part2_model_map_figure/blocks_2x/copernicus/block_r01_c02.npz",
+      "output_json": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/part2_model_map_figure/blocks_2x/copernicus/block_r01_c02.json"
+    },
+    {
+      "block_id": "block_r02_c01",
+      "status": "ok",
+      "source": "run",
+      "shape": [
+        768,
+        2,
+        2
+      ],
+      "output_npz": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/part2_model_map_figure/blocks_2x/copernicus/block_r02_c01.npz",
+      "output_json": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/part2_model_map_figure/blocks_2x/copernicus/block_r02_c01.json"
+    },
+    {
+      "block_id": "block_r02_c02",
+      "status": "ok",
+      "source": "run",
+      "shape": [
+        768,
+        2,
+        2
+      ],
+      "output_npz": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/part2_model_map_figure/blocks_2x/copernicus/block_r02_c02.npz",
+      "output_json": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/part2_model_map_figure/blocks_2x/copernicus/block_r02_c02.json"
+    }
+  ],
+  "elapsed_s": 38.351
+}

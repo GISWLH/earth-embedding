@@ -1,0 +1,12 @@
+{
+  "model": "thor",
+  "split": "region_a",
+  "status": "ok",
+  "type": "on_the_fly",
+  "elapsed_s": 41.053,
+  "per_item_s": 2.566,
+  "peak_gpu_mb": 404.36,
+  "dim": 768,
+  "n_items": 16,
+  "errors": []
+}

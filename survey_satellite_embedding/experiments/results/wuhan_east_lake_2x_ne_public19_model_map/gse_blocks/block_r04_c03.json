@@ -1,0 +1,21 @@
+{
+  "block_id": "block_r04_c03",
+  "status": "ok",
+  "source": "download",
+  "model": "gse",
+  "row": 4,
+  "col": 3,
+  "bbox": [
+    114.47,
+    30.6,
+    114.53,
+    30.64
+  ],
+  "shape": [
+    64
+  ],
+  "finite_dims": 64,
+  "valid_pixel_fraction": 0.9980732177263969,
+  "elapsed_s": 92.989,
+  "output_npz": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/wuhan_east_lake_2x_ne_public19_model_map/gse_blocks/block_r04_c03.npz"
+}

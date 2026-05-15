@@ -1,0 +1,80 @@
+{
+  "region": "region_b",
+  "data_dir": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/data/part2_20260502_full",
+  "smoke_dir": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/all_models_smoke_20260502",
+  "summary_figure": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/part2_region_b_model_map_figure/part2_region_b_coarse_embedding_maps.png",
+  "models": [
+    {
+      "model": "copernicus",
+      "ids": [
+        "cell_r00_c47",
+        "cell_r01_c36",
+        "cell_r12_c45",
+        "cell_r13_c01",
+        "cell_r13_c45",
+        "cell_r14_c01",
+        "cell_r14_c02",
+        "cell_r14_c41",
+        "cell_r17_c08",
+        "cell_r17_c10",
+        "cell_r18_c18",
+        "cell_r19_c45",
+        "cell_r20_c44",
+        "cell_r21_c30",
+        "cell_r21_c44"
+      ],
+      "shape": [
+        15,
+        768
+      ],
+      "plotted_items": 15,
+      "output_npz": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/all_models_smoke_20260502/embeddings_copernicus.npz",
+      "output_json": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/all_models_smoke_20260502/embeddings_copernicus.json"
+    },
+    {
+      "model": "tessera",
+      "ids": [
+        "tessera_anchor_2024"
+      ],
+      "shape": [
+        1,
+        128
+      ],
+      "plotted_items": 1,
+      "output_npz": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/all_models_smoke_20260502/embeddings_tessera.npz",
+      "output_json": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/all_models_smoke_20260502/embeddings_tessera.json"
+    },
+    {
+      "model": "satvision",
+      "ids": [
+        "cell_r00_c47",
+        "cell_r01_c36",
+        "cell_r12_c45",
+        "cell_r13_c01",
+        "cell_r13_c45",
+        "cell_r14_c01",
+        "cell_r14_c02",
+        "cell_r14_c41",
+        "cell_r17_c08",
+        "cell_r17_c10",
+        "cell_r18_c18",
+        "cell_r19_c45",
+        "cell_r20_c44",
+        "cell_r21_c30",
+        "cell_r21_c44"
+      ],
+      "shape": [
+        15,
+        4096
+      ],
+      "plotted_items": 15,
+      "output_npz": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/all_models_smoke_20260502/embeddings_satvision.npz",
+      "output_json": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/all_models_smoke_20260502/embeddings_satvision.json"
+    }
+  ],
+  "notes": [
+    "Region B preparation is manifest-only: 1056 coarse 0.25 degree cells.",
+    "Current Region B smoke embeddings exist for copernicus, tessera, and satvision.",
+    "Panels render pooled embedding matrices as PCA RGB colors on sampled cells."
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "model": "satvision",
+  "split": "region_b",
+  "status": "ok",
+  "type": "on_the_fly",
+  "elapsed_s": 98.751,
+  "per_item_s": 6.583,
+  "peak_gpu_mb": 16376.16,
+  "dim": 4096,
+  "n_items": 15,
+  "errors": []
+}

@@ -1,0 +1,28 @@
+Use the first input image as the style reference and the second input image as the content reference.
+
+Target:
+Redraw the "Family III: Vision-language and cross-modal embeddings" figure in the same style as the masked autoencoder family figure, but with more explicit model structure.
+
+Style direction:
+- wax crayon hand-drawn scientific sketch
+- clean white paper background
+- same balanced spacing, same simple block layout, same palette as the masked autoencoder figure
+- concise and elegant
+- English labels only
+- avoid vague symbolic blobs or rings
+- no clutter, no decorative concept cloud in the center
+
+Content to show clearly:
+- upper branch: satellite image -> image encoder (CNN / ViT) -> image projection head
+- lower branch: caption / habitat text -> text encoder (Transformer) -> text projection head
+- center: shared embedding matrix or aligned latent table, clearly rectangular and quantitative-looking
+- add a small similarity matrix or contrastive alignment symbol between the two projected outputs
+- right: retrieval and zero-shot classification outputs
+
+Important:
+- the center must be concrete and structural, not metaphorical
+- show arrows from both branches into the shared embedding matrix
+- keep only 4 to 5 major modules total
+- the final figure should look like one coherent series with Family II
+
+Keep the overall composition sparse and easy to read.

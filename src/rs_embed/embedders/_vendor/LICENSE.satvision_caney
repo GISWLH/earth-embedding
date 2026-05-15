@@ -1,0 +1,16 @@
+Apache License 2.0
+
+Vendored files:
+- satvision_caney.py
+
+Original sources:
+- https://github.com/nasa-nccs-hpda/pytorch-caney/blob/main/pytorch_caney/models/encoders/swinv2.py
+- https://github.com/nasa-nccs-hpda/pytorch-caney/blob/main/pytorch_caney/models/mim.py
+
+Original project:
+- https://github.com/nasa-nccs-hpda/pytorch-caney
+
+Original copyright:
+- Copyright contributors to pytorch-caney / NASA NCCS HPDA
+
+The vendored source is adapted to keep only the inference/runtime pieces used by rs-embed.

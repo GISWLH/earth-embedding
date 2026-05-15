@@ -1,0 +1,180 @@
+\section{Model Families of Satellite Embeddings}
+
+The current \texttt{rs-embed} workspace exposes \modelcount{} canonical models, and the accompanying dossier records their publication metadata, supported sensors, output forms, and runtime summaries. For a review article, however, the reader should not face these as a flat inventory. A more natural structure is to first divide the field into a few broad model families, then summarize the common architecture and data logic of each family, and only after that return to a unified comparison table.
+
+\subsection{Family I: Precomputed embedding products}
+
+This family treats the embedding itself as a distributed geospatial product rather than as a checkpoint that must be run by the user. Examples include GSE, TESSERA, and Copernicus-style feature maps \citep{gse,tessera,copernicus}. Their main strengths are immediate access, large-area consistency, and low inference burden at use time. Their main limitations are temporal rigidity, storage requirements, and dependence on a fixed upstream production workflow.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\textwidth]{fig06_family_precomputed_products.png}
+  \caption{Unified architecture sketch for precomputed embedding products. The dominant pattern is offline large-scale representation learning followed by annual or static embedding map generation, cataloging, and fast ROI-level feature access.}
+  \label{fig:family-precomputed-products}
+\end{figure}
+
+\paragraph{Architecture summary.}
+The central architectural move is to shift most computation from user-time to production-time. A large Earth observation archive is first condensed into a precomputed feature layer, often annualized or otherwise temporally summarized. Downstream users query that layer by ROI, tile, or pixel rather than rerunning the encoder. This architecture is especially attractive for wide-area monitoring and rapid transfer when access latency matters more than flexible temporal conditioning.
+
+\paragraph{Pseudo-code template.}
+\begin{pseudocode}
+Input:
+  Earth observation archive A
+  temporal grouping rule T
+  query ROI q
+
+Offline stage:
+  train encoder f_theta on large EO archive A
+  for each period t in T:
+      E_t <- f_theta(A_t)
+      store embedding map E_t in product catalog
+
+Online stage:
+  crop or sample features z <- E_t[q]
+  optionally pool or aggregate z
+  train lightweight head g on sampled embeddings
+  return prediction or retrieved features
+\end{pseudocode}
+
+\subsection{Family II: Masked autoencoder and pure vision encoders}
+
+This group includes models such as SatMAE, SatMAE++, and ScaleMAE \citep{satmae,satmaepp,scalemae}. These methods are usually strongest when the goal is to learn transferable visual structure from optical or multispectral imagery through reconstruction-style pretraining. They are also among the clearest examples of the modern remote sensing foundation model trend, and many later systems can be interpreted as extending this lineage in scale, modality, or temporal handling.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\textwidth]{fig07_family_masked_autoencoder.png}
+  \caption{Unified architecture sketch for masked autoencoder and pure vision satellite embedding models. Satellite tiles are partially masked, encoded by a transformer-style vision backbone, and supervised through reconstruction while the latent tokens are reused as transferable embeddings.}
+  \label{fig:family-mae}
+\end{figure}
+
+\paragraph{Architecture summary.}
+The shared logic is to learn a compact latent representation from partial visual evidence. Randomly masked patches, channels, or scale-aware inputs are passed through a vision encoder, while a reconstruction module encourages the latent space to preserve transferable visual structure. These embeddings often work well for classification and segmentation because they retain strong spatial cues without requiring language supervision.
+
+\paragraph{Pseudo-code template.}
+\begin{pseudocode}
+Input:
+  satellite tile x
+  masking policy M
+
+visible, hidden <- apply_mask(x, M)
+tokens <- patch_embed(visible)
+latent <- encoder(tokens)
+recon <- decoder(latent, hidden)
+loss <- reconstruction_loss(recon, x)
+update model parameters
+
+at inference:
+  z_pool, z_grid <- read encoder representations
+  return transferable embedding features
+\end{pseudocode}
+
+\subsection{Family III: Vision-language and cross-modal embeddings}
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\textwidth]{fig08_family_vision_language.png}
+  \caption{Unified architecture sketch for vision-language and cross-modal satellite embeddings. The core pattern is image and text or ecological side-information encoding into a shared latent space trained by contrastive or alignment objectives.}
+  \label{fig:family-vision-language}
+\end{figure}
+
+RemoteCLIP and WildSAT \citep{remoteclip,wildsat} illustrate the main idea of this family: satellite imagery is no longer embedded only against itself, but aligned with text, captions, habitat descriptions, or ecological side observations. This changes the representation from a purely visual latent space into a semantic one, which is why these models are especially important for retrieval, zero-shot transfer, and open-vocabulary interaction.
+
+\paragraph{Architecture summary.}
+Two encoders, one visual and one language or cross-modal, are trained to bring matched image-text or image-side-information pairs closer in a shared embedding space. The representation becomes useful not just for supervised transfer but also for semantic search and weakly supervised reasoning. In practice, this family adds a form of interpretability and open-vocabulary access that reconstruction-only models typically lack.
+
+\paragraph{Pseudo-code template.}
+\begin{pseudocode}
+Input:
+  satellite image x
+  text or side-information y
+
+z_img <- image_encoder(x)
+z_txt <- text_encoder(y)
+loss <- contrastive_alignment(z_img, z_txt)
+update both encoders
+
+at inference:
+  use z_img for retrieval, zero-shot matching, or downstream probes
+  optionally compare z_img against text prompt embeddings
+\end{pseudocode}
+
+\subsection{Family IV: Multimodal generalist EO encoders}
+
+AnySat, Galileo, Prithvi, TerraFM, TerraMind, and DOFA represent a broader push toward modality-flexible or sensor-flexible Earth observation representation learning \citep{anysat,galileo,prithvi,terrafm,terramind,dofa}. These models are important because they move the field closer to a genuinely general EO representation space. Their distinguishing features include explicit handling of temporal stacks, wavelength metadata, modality routing, and cross-sensor alignment.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\textwidth]{fig09_family_multimodal_generalist.png}
+  \caption{Unified architecture sketch for multimodal generalist EO encoders. Multiple sensor streams are tokenized, routed or aligned, fused by a shared backbone, and exported as pooled or dense representations for broad downstream transfer.}
+  \label{fig:family-generalist}
+\end{figure}
+
+\paragraph{Architecture summary.}
+The defining goal of this family is not simply to process more inputs, but to learn a common representation space across sensors, scales, time, and metadata. Architecturally, that often means modality-specific tokenization combined with a shared transformer or fusion backbone. These models are closest to a true Earth observation foundation layer because they seek one latent space that remains useful under heterogeneous sensing conditions.
+
+\paragraph{Pseudo-code template.}
+\begin{pseudocode}
+Input:
+  modalities {x_1, x_2, ..., x_m}
+  temporal or metadata context c
+
+for each modality x_i:
+    t_i <- modality_tokenizer_i(x_i, c)
+
+t_shared <- temporal_align_and_route({t_i}, c)
+h <- multimodal_backbone(t_shared)
+z_pool, z_grid <- readout(h)
+optimize self-supervised or multimodal objective
+
+return shared embeddings for cross-sensor downstream transfer
+\end{pseudocode}
+
+\subsection{Family V: Domain-specialized embedding models}
+
+Not all useful satellite embeddings aim at maximal generality. AgriFM, FoMo, THOR, and SatVision show that domain-oriented models can remain highly valuable when their sensor assumptions and application context are well matched \citep{agrifm,fomo,thor,satvision}. In a remote sensing review, these models should appear as a major family rather than as outliers, because they often reflect the real structure of EO practice: agriculture, forestry, biodiversity, atmosphere, climate, and societal monitoring all impose different representation demands.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\textwidth]{fig10_family_specialized.png}
+  \caption{Unified architecture sketch for domain-specialized satellite embedding models. Domain-specific sensing pipelines and inductive biases are used to produce embeddings that are narrower in scope but often better matched to particular application regimes.}
+  \label{fig:family-specialized}
+\end{figure}
+
+\paragraph{Architecture summary.}
+This family accepts a narrower operating domain in exchange for stronger inductive bias. Agricultural time series, forest monitoring stacks, climate-oriented inputs, or coarse all-sky observations are processed with task-aware temporal packaging, scale handling, or specialized supervision. These models remind us that the best EO embedding is not always the most general one; in many real applications, domain fit matters more than universality.
+
+\paragraph{Pseudo-code template.}
+\begin{pseudocode}
+Input:
+  domain-specific sensor stream x
+  domain labels or weak supervision y
+  domain prior pi
+
+x_tilde <- domain_preprocess(x, pi)
+h <- specialized_encoder(x_tilde, pi)
+z <- domain_embedding_head(h)
+loss <- domain_objective(z, y, pi)
+update model parameters
+
+at deployment:
+  reuse z for domain-focused mapping, monitoring, or regression
+\end{pseudocode}
+
+\subsection{Cross-family comparison}
+
+After the family-level discussion, the review can return to a unified comparison table. This ordering is closer to the way remote sensing surveys are usually read: first understand the main branches of the field, then inspect the full inventory.
+
+Table~\ref{tab:model-catalog} turns the structured dossier into a paper-ready catalog. Unlike a compact leaderboard, it keeps the deployment type, sensing assumptions, temporal semantics, and pretraining regime visible, because these details strongly determine whether a model is suitable for retrieval, dense prediction, or operational mapping. Appendix Table~\ref{tab:model-appendix-catalog} extends this inventory with authorship, task hints, runtime, GPU memory, and implementation-facing metadata.
+
+\input{tables/model_catalog_longtable}
+
+Three contrasts recur across families. First, precomputed layers prioritize access and coverage, while on-the-fly encoders prioritize flexibility. Second, multimodal and time-aware systems attempt to absorb sensor heterogeneity at training time, whereas narrower families often compensate with stronger specialization and simpler deployment. Third, vision-language models add open-vocabulary semantics that are mostly absent from pure masked reconstruction pipelines. These contrasts matter more for a review paper than a single benchmark leaderboard, because they explain why different families remain competitive under different downstream conditions.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\textwidth]{fig05_resolution_modality_matrix.png}
+  \caption{Resolution-modality matrix for current satellite embedding models. The same model family can occupy very different parts of the sensing space, from coarse-resolution all-sky imagery to high-resolution optical-SAR or multimodal temporal embeddings.}
+  \label{fig:resolution-modality-matrix}
+\end{figure}
+
+Figure~\ref{fig:resolution-modality-matrix} closes this section by summarizing the sensing space covered by current models. In a remote sensing context, this figure is often more informative than a single ranking table because it makes sensor assumptions and scale mismatch immediately visible.

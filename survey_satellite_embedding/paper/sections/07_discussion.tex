@@ -1,0 +1,18 @@
+\section{Challenges and Future Directions}
+
+Several unresolved issues cut across the current satellite embedding landscape.
+
+\paragraph{Temporal ambiguity.}
+Many models mix annual products, temporal stacks, and short compositing windows under the same broad label of ``embedding.'' A stronger standard is needed for reporting what time information the representation actually preserves.
+
+\paragraph{Scale mismatch.}
+Embeddings generated at 10\,m, 30\,m, 1\,km, or 0.25$^\circ$ are not interchangeable, even when they are benchmarked on nominally similar tasks. A review must therefore report native scale explicitly and treat resampling as a methodological choice rather than a neutral preprocessing step.
+
+\paragraph{Product versus model comparison.}
+Precomputed layers and on-the-fly encoders are often compared as if they were the same object. They are not. Products optimize access and reuse, whereas checkpoints optimize flexibility. Future work should evaluate these regimes with metrics that acknowledge both predictive quality and deployment cost.
+
+\paragraph{Application realism.}
+Most current benchmarking practice still favors standard datasets over operational mapping settings. Embedding evaluation would benefit from more geographically grounded protocols, richer regression tasks, and stronger attention to low-label and cross-year transfer.
+
+\paragraph{Open interfaces.}
+The field lacks a common access layer analogous to model hubs in natural image or language processing. A robust embedding interface should expose not only the checkpoint but also sensor assumptions, temporal requirements, output forms, and recommended downstream usage patterns.

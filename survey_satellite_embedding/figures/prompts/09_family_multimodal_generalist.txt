@@ -1,0 +1,19 @@
+Create a publication-quality scientific architecture diagram for the model family "Multimodal Generalist Earth Observation Encoders".
+
+Style requirements:
+- wax crayon hand-drawn style
+- refined academic sketch on white paper
+- same palette and style as the other family figures
+- landscape 16:9
+- English labels only
+
+Content:
+- left: multiple synchronized inputs including optical, SAR, temporal stack, metadata, elevation, weather
+- next: modality-specific tokenization or routing blocks
+- center: shared multimodal transformer / fusion backbone
+- upper right: pooled embedding and dense token outputs
+- lower right: downstream transfer across many tasks and sensors
+- representative model labels: AnySat, Galileo, Prithvi, TerraFM, TerraMind, DOFA
+- callouts for "sensor flexibility", "temporal alignment", "shared latent space"
+
+The figure should look like a coherent survey architecture diagram, not decorative art.

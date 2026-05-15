@@ -1,0 +1,14 @@
+.venv/
+__pycache__/
+*.py[cod]
+.ruff_cache/
+.pytest_cache/
+.mypy_cache/
+.ipynb_checkpoints/
+dist/
+build/
+*.egg-info/
+data/
+research_outputs/model_cache/
+global_0.1_degree_representation/
+global_0.1_degree_tiff_all/

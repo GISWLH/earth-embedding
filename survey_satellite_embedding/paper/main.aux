@@ -1,0 +1,172 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyperFirstAtBeginDocument{\AtBeginDocument}
+\HyperFirstAtBeginDocument{\ifx\hyper@anchor\@undefined
+\global\let\oldcontentsline\contentsline
+\gdef\contentsline#1#2#3#4{\oldcontentsline{#1}{#2}{#3}}
+\global\let\oldnewlabel\newlabel
+\gdef\newlabel#1#2{\newlabelxx{#1}#2}
+\gdef\newlabelxx#1#2#3#4#5#6{\oldnewlabel{#1}{{#2}{#3}}}
+\AtEndDocument{\ifx\hyper@anchor\@undefined
+\let\contentsline\oldcontentsline
+\let\newlabel\oldnewlabel
+\fi}
+\fi}
+\global\let\hyper@last\relax 
+\gdef\HyperFirstAtBeginDocument#1{#1}
+\providecommand\HyField@AuxAddToFields[1]{}
+\providecommand\HyField@AuxAddToCoFields[2]{}
+\citation{survey1,survey3,survey4}
+\citation{skysensepp}
+\citation{gse,tessera}
+\citation{castelluccio2015}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}{section.1}\protected@file@percent }
+\citation{gee2017}
+\citation{seco2021,vit2021,vitrs2021}
+\citation{satmae,scalemae,remoteclip,prithvi,dofa,galileo}
+\citation{survey1,survey3,survey4}
+\citation{primer_eo}
+\citation{remoteclip}
+\citation{satmae,satmaepp}
+\citation{prithvi,dofa}
+\citation{gse,tessera}
+\citation{reobench}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Overall Landscape of Satellite Embeddings}{3}{section.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Why an embedding-centered review?}{3}{subsection.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}What is a satellite embedding?}{3}{subsection.2.2}\protected@file@percent }
+\citation{gse,tessera,copernicus}
+\citation{remoteclip,wildsat}
+\citation{satmae,satmaepp,scalemae}
+\citation{anysat,galileo,prithvi,terrafm,terramind,dofa}
+\citation{agrifm,fomo,thor,satvision}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Model timeline view for the satellite embedding landscape. The figure emphasizes how precomputed products, masked autoencoder lineages, multimodal generalists, and application-specific encoders accumulate over time rather than appearing as a single homogeneous wave.}}{4}{figure.1}\protected@file@percent }
+\newlabel{fig:model-timeline}{{1}{4}{Model timeline view for the satellite embedding landscape. The figure emphasizes how precomputed products, masked autoencoder lineages, multimodal generalists, and application-specific encoders accumulate over time rather than appearing as a single homogeneous wave}{figure.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Field evolution and major design axes}{4}{subsection.2.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Conceptual map of the satellite embedding landscape. The review is structured around four linked components: data space, model family, representation type, and downstream application. This framing is intentionally embedding-centered rather than checkpoint-centered.}}{5}{figure.2}\protected@file@percent }
+\newlabel{fig:taxonomy-concept-map}{{2}{5}{Conceptual map of the satellite embedding landscape. The review is structured around four linked components: data space, model family, representation type, and downstream application. This framing is intentionally embedding-centered rather than checkpoint-centered}{figure.2}{}}
+\@writefile{toc}{\contentsline {paragraph}{Model family.}{5}{section*.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Data and modality.}{5}{section*.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Deployment mode.}{5}{section*.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4}Scope of this review}{5}{subsection.2.4}\protected@file@percent }
+\citation{gse,tessera,copernicus}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Unified architecture sketch for precomputed embedding products. The dominant pattern is offline large-scale representation learning followed by annual or static embedding map generation, cataloging, and fast ROI-level feature access.}}{6}{figure.3}\protected@file@percent }
+\newlabel{fig:family-precomputed-products}{{3}{6}{Unified architecture sketch for precomputed embedding products. The dominant pattern is offline large-scale representation learning followed by annual or static embedding map generation, cataloging, and fast ROI-level feature access}{figure.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Model Families of Satellite Embeddings}{6}{section.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Family I: Precomputed embedding products}{6}{subsection.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Architecture summary.}{6}{section*.4}\protected@file@percent }
+\citation{satmae,satmaepp,scalemae}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Unified architecture sketch for masked autoencoder and pure vision satellite embedding models. Satellite tiles are partially masked, encoded by a transformer-style vision backbone, and supervised through reconstruction while the latent tokens are reused as transferable embeddings.}}{7}{figure.4}\protected@file@percent }
+\newlabel{fig:family-mae}{{4}{7}{Unified architecture sketch for masked autoencoder and pure vision satellite embedding models. Satellite tiles are partially masked, encoded by a transformer-style vision backbone, and supervised through reconstruction while the latent tokens are reused as transferable embeddings}{figure.4}{}}
+\@writefile{toc}{\contentsline {paragraph}{Pseudo-code template.}{7}{section*.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Family II: Masked autoencoder and pure vision encoders}{7}{subsection.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Architecture summary.}{7}{section*.6}\protected@file@percent }
+\citation{remoteclip,wildsat}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Unified architecture sketch for vision-language and cross-modal satellite embeddings. The core pattern is image and text or ecological side-information encoding into a shared latent space trained by contrastive or alignment objectives.}}{8}{figure.5}\protected@file@percent }
+\newlabel{fig:family-vision-language}{{5}{8}{Unified architecture sketch for vision-language and cross-modal satellite embeddings. The core pattern is image and text or ecological side-information encoding into a shared latent space trained by contrastive or alignment objectives}{figure.5}{}}
+\@writefile{toc}{\contentsline {paragraph}{Pseudo-code template.}{8}{section*.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Family III: Vision-language and cross-modal embeddings}{8}{subsection.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Architecture summary.}{8}{section*.8}\protected@file@percent }
+\citation{anysat,galileo,prithvi,terrafm,terramind,dofa}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Unified architecture sketch for multimodal generalist EO encoders. Multiple sensor streams are tokenized, routed or aligned, fused by a shared backbone, and exported as pooled or dense representations for broad downstream transfer.}}{9}{figure.6}\protected@file@percent }
+\newlabel{fig:family-generalist}{{6}{9}{Unified architecture sketch for multimodal generalist EO encoders. Multiple sensor streams are tokenized, routed or aligned, fused by a shared backbone, and exported as pooled or dense representations for broad downstream transfer}{figure.6}{}}
+\@writefile{toc}{\contentsline {paragraph}{Pseudo-code template.}{9}{section*.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Family IV: Multimodal generalist EO encoders}{9}{subsection.3.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Architecture summary.}{9}{section*.10}\protected@file@percent }
+\citation{agrifm,fomo,thor,satvision}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Unified architecture sketch for domain-specialized satellite embedding models. Domain-specific sensing pipelines and inductive biases are used to produce embeddings that are narrower in scope but often better matched to particular application regimes.}}{10}{figure.7}\protected@file@percent }
+\newlabel{fig:family-specialized}{{7}{10}{Unified architecture sketch for domain-specialized satellite embedding models. Domain-specific sensing pipelines and inductive biases are used to produce embeddings that are narrower in scope but often better matched to particular application regimes}{figure.7}{}}
+\@writefile{toc}{\contentsline {paragraph}{Pseudo-code template.}{10}{section*.11}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5}Family V: Domain-specialized embedding models}{10}{subsection.3.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Architecture summary.}{10}{section*.12}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Pseudo-code template.}{11}{section*.13}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.6}Cross-family comparison}{11}{subsection.3.6}\protected@file@percent }
+\gdef \LT@i {\LT@entry 
+    {1}{47.25641pt}\LT@entry 
+    {1}{27.33955pt}\LT@entry 
+    {1}{40.14322pt}\LT@entry 
+    {1}{33.03003pt}\LT@entry 
+    {1}{70.01869pt}\LT@entry 
+    {1}{64.32823pt}\LT@entry 
+    {1}{84.24507pt}\LT@entry 
+    {1}{72.86414pt}\LT@entry 
+    {1}{70.01869pt}\LT@entry 
+    {1}{50.10185pt}\LT@entry 
+    {1}{91.35826pt}}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{Comprehensive model summary for the 19{} canonical satellite embedding models currently exposed in \texttt  {rs-embed}. The table emphasizes deployment-relevant details rather than only benchmark scores.}}{12}{table.1}\protected@file@percent }
+\newlabel{tab:model-catalog}{{1}{12}{Comprehensive model summary for the \modelcount {} canonical satellite embedding models currently exposed in \texttt {rs-embed}. The table emphasizes deployment-relevant details rather than only benchmark scores}{table.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Resolution-modality matrix for current satellite embedding models. The same model family can occupy very different parts of the sensing space, from coarse-resolution all-sky imagery to high-resolution optical-SAR or multimodal temporal embeddings.}}{15}{figure.8}\protected@file@percent }
+\newlabel{fig:resolution-modality-matrix}{{8}{15}{Resolution-modality matrix for current satellite embedding models. The same model family can occupy very different parts of the sensing space, from coarse-resolution all-sky imagery to high-resolution optical-SAR or multimodal temporal embeddings}{figure.8}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Data Resources and Application Space}{15}{section.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Pretraining data and sensor regimes}{15}{subsection.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Classification and mapping}{16}{subsection.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Segmentation and dense prediction}{16}{subsection.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Regression and continuous estimation}{16}{subsection.4.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5}Retrieval and multimodal interaction}{16}{subsection.4.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.6}Operational considerations}{16}{subsection.4.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5}Comparative Evaluation Protocol}{16}{section.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Pilot study area}{16}{subsection.5.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Application-oriented benchmark pipeline. A shared region of interest is converted into a unified embedding extraction workflow, lightweight probe heads, and downstream evaluation targets spanning classification, segmentation, regression, and retrieval.}}{17}{figure.9}\protected@file@percent }
+\newlabel{fig:application-pipeline}{{9}{17}{Application-oriented benchmark pipeline. A shared region of interest is converted into a unified embedding extraction workflow, lightweight probe heads, and downstream evaluation targets spanning classification, segmentation, regression, and retrieval}{figure.9}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Benchmark tasks and protocol}{17}{subsection.5.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Why a small-area protocol is still informative}{17}{subsection.5.3}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces First executed Wuhan pilot benchmark on a balanced 15-tile subset (5 water, 5 green, 5 built). The pilot uses 500\,m square buffers, frozen pooled embeddings, 3-class dominant land-cover classification, and tile-level fraction regression.}}{18}{table.2}\protected@file@percent }
+\newlabel{tab:wuhan-pilot-results}{{2}{18}{First executed Wuhan pilot benchmark on a balanced 15-tile subset (5 water, 5 green, 5 built). The pilot uses 500\,m square buffers, frozen pooled embeddings, 3-class dominant land-cover classification, and tile-level fraction regression}{table.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}Expected outputs}{18}{subsection.5.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.5}First executed pilot}{18}{subsection.5.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6}System Layer and Interactive Access}{18}{section.6}\protected@file@percent }
+\newlabel{sec:system-layer}{{6}{18}{System Layer and Interactive Access}{section.6}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces System layer for the proposed Satellite Embedding Explorer. The same structured assets used by the review can also drive metadata browsing, ROI selection, model comparison, and later benchmark services.}}{19}{figure.10}\protected@file@percent }
+\newlabel{fig:system-overview}{{10}{19}{System layer for the proposed Satellite Embedding Explorer. The same structured assets used by the review can also drive metadata browsing, ROI selection, model comparison, and later benchmark services}{figure.10}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Challenges and Future Directions}{19}{section.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Temporal ambiguity.}{19}{section*.14}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Scale mismatch.}{19}{section*.15}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Product versus model comparison.}{19}{section*.16}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Application realism.}{20}{section*.17}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Open interfaces.}{20}{section*.18}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {8}Conclusion}{20}{section.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {A}Extended Model Inventory}{20}{appendix.A}\protected@file@percent }
+\gdef \LT@ii {\LT@entry 
+    {1}{44.41139pt}\LT@entry 
+    {1}{88.51282pt}\LT@entry 
+    {1}{70.01869pt}\LT@entry 
+    {1}{61.48277pt}\LT@entry 
+    {1}{52.94687pt}\LT@entry 
+    {1}{71.44142pt}\LT@entry 
+    {1}{47.25641pt}\LT@entry 
+    {1}{44.41139pt}\LT@entry 
+    {1}{82.82234pt}\LT@entry 
+    {1}{61.48277pt}}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{Extended implementation-oriented inventory for the canonical \texttt  {rs-embed} model set. This appendix table adds authorship, output modes, application hints, and runtime metadata beyond the main-text catalog.}}{21}{table.3}\protected@file@percent }
+\newlabel{tab:model-appendix-catalog}{{3}{21}{Extended implementation-oriented inventory for the canonical \texttt {rs-embed} model set. This appendix table adds authorship, output modes, application hints, and runtime metadata beyond the main-text catalog}{table.3}{}}
+\bibstyle{plainnat}
+\bibdata{references}
+\bibcite{anysat}{{1}{2025}{{Astruc et~al.}}{{Astruc, Gonthier, Mallet, and Landrieu}}}
+\bibcite{vitrs2021}{{2}{2021}{{Bian et~al.}}{{Bian, Tao, Xu, Lu, Kwan, and hsiang Tseng}}}
+\bibcite{fomo}{{3}{2025}{{Bountos et~al.}}{{Bountos, Ouaknine, Papoutsis, and Rolnick}}}
+\bibcite{gse}{{4}{2025}{{Brown et~al.}}{{Brown, Kazmierski, Pasquarella, Rucklidge, Samsikova, Zhang, Shelhamer, Lahera, Wiles, Ilyushchenko, Gorelick, Zhang, Alj, Schechter, Askay, Guinan, Moore, Boukouvalas, and Kohli}}}
+\bibcite{castelluccio2015}{{5}{2015}{{Castelluccio et~al.}}{{Castelluccio, Poggi, Sansone, and Verdoliva}}}
+\bibcite{satmae}{{6}{2022}{{Cong et~al.}}{{Cong, Khanna, Meng, Liu, Rozi, He, Burke, Lobell, and Ermon}}}
+\bibcite{terrafm}{{7}{2026}{{Danish et~al.}}{{Danish, Munir, Shah, Khan, Anwer, Laaksonen, Khan, and Khan}}}
+\bibcite{wildsat}{{8}{2025}{{Daroya et~al.}}{{Daroya, Cole, Aodha, Horn, and Maji}}}
+\bibcite{vit2021}{{9}{2021}{{Dosovitskiy et~al.}}{{Dosovitskiy, Beyer, Kolesnikov, Weissenborn, Zhai, Unterthiner, Dehghani, Minderer, Heigold, Gelly, Uszkoreit, and Houlsby}}}
+\bibcite{tessera}{{10}{2026}{{Feng et~al.}}{{Feng, Atzberger, Jaffer, Knezevic, Sormunen, Young, Lisaius, Immitzer, Ball, Coomes, Madhavapeddy, Blake, and Keshav}}}
+\bibcite{thor}{{11}{2026}{{Forgaard et~al.}}{{Forgaard, Reksten, Waldeland, Marsocci, Longepe, Kampffmeyer, and Salberg}}}
+\bibcite{gee2017}{{12}{2017}{{Gorelick et~al.}}{{Gorelick, Hancher, Dixon, Ilyushchenko, Thau, and Moore}}}
+\bibcite{survey4}{{13}{2025}{{Huang et~al.}}{{Huang, Yan, Zhan, Yang, Zhang, Zhang, Lei, Liu, Liu, and Wang}}}
+\bibcite{survey3}{{14}{2025}{{Huo et~al.}}{{Huo, Chen, Zhang, Wang, Yan, Shen, Hong, Qi, Fang, and Wang}}}
+\bibcite{prithvi}{{15}{2023}{{Jakubik et~al.}}{{Jakubik, Roy, Phillips, Fraccaro, Godwin, Zadrozny, Szwarcman, Gomes, Nyirjesy, Edwards, Kimura, Simumba, Chu, Mukkavilli, Lambhate, Das, Bangalore, Oliveira, Muszynski, Ankur, Ramasubramanian, Gurung, Khallaghi, Li, Cecil, Ahmadi, Kordi, Alemohammad, Maskey, Ganti, Weldemariam, and Ramachandran}}}
+\bibcite{terramind}{{16}{2025}{{Jakubik et~al.}}{{Jakubik, Yang, Blumenstiel, Scheurer, Sedona, Maurogiovanni, Bosmans, Dionelis, Marsocci, Kopp, Ramachandran, Fraccaro, Brunschwiler, Cavallaro, Bernabe-Moreno, and Longepe}}}
+\bibcite{agrifm}{{17}{2026}{{Li et~al.}}{{Li, Liang, Chen, Chen, Ma, Xu, Ma, Zhang, Guan, Fang, and Shi}}}
+\bibcite{reobench}{{18}{2025}{{Li et~al.}}{{Li, Tao, Zhang, Liu, Xiong, Luo, Liu, Pechenizkiy, Zhu, and Huang}}}
+\bibcite{remoteclip}{{19}{2024}{{Liu et~al.}}{{Liu, Chen, Guan, Zhou, Zhu, Ye, Fu, and Zhou}}}
+\bibcite{survey1}{{20}{2025}{{Lu et~al.}}{{Lu, Guo, Zimmer-Dauphinee, Nieusma, Wang, vanValkenburgh, Wernke, and Huo}}}
+\bibcite{seco2021}{{21}{2021}{{Ma{\~n}as et~al.}}{{Ma{\~n}as, Lacoste, i~Nieto, V{\'a}zquez, and Rodr{\'\i }guez}}}
+\bibcite{satmaepp}{{22}{2024}{{Noman et~al.}}{{Noman, Naseer, Cholakkal, Anwer, Khan, and Khan}}}
+\bibcite{primer_eo}{{23}{2025}{{Ramachandran et~al.}}{{Ramachandran, Roy, Maskey, Szwarcman, and Fraccaro}}}
+\bibcite{scalemae}{{24}{2023}{{Reed et~al.}}{{Reed, Gupta, Li, Brockman, Funk, Clipp, Keutzer, Candido, Uyttendaele, and Darrell}}}
+\bibcite{satvision}{{25}{2024}{{Spradlin et~al.}}{{Spradlin, Caraballo-Vega, Li, Carroll, Gong, and Montesano}}}
+\bibcite{galileo}{{26}{2025}{{Tseng et~al.}}{{Tseng, Fuller, Reil, Herzog, Beukema, Bastani, Green, Shelhamer, Kerner, and Rolnick}}}
+\bibcite{copernicus}{{27}{2025}{{Wang et~al.}}{{Wang, Xiong, Liu, Stewart, Dujardin, Bountos, Zavras, Gerken, Papoutsis, Leal-Taixe, and Zhu}}}
+\bibcite{skysensepp}{{28}{2025}{{Wu et~al.}}{{Wu, Zhang, Ru, Dang, Lao, Yu, Luo, Zhu, Sun, Zhang, Zhu, Wang, Yang, Chen, Zhang, and Li}}}
+\bibcite{dofa}{{29}{2024}{{Xiong et~al.}}{{Xiong, Wang, Zhang, Stewart, Hanna, Borth, Papoutsis, Saux, Camps-Valls, and Zhu}}}
+\gdef \@abspage@last{29}

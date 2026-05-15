@@ -1,0 +1,2 @@
+model,status,elapsed_s,per_tile_s,peak_gpu_mb,dim,errors,n_tiles_total,n_tiles_valid,cls_macro_f1,cls_balanced_acc,built_mae,built_rmse,built_spearman,green_mae,green_rmse,green_spearman,water_mae,water_rmse,water_spearman
+satmaepp_s2_10b,ok,36.925,2.462,1353.75,1024,[],15,15,1.0,1.0,0.06698104490836461,0.08285520846645038,0.6222953096184501,0.054526131600141525,0.07058521235982577,0.9333333333333331,0.19976045687993368,0.2637171149253845,0.7694837640638656

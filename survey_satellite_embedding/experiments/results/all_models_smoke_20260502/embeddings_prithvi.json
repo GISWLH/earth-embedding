@@ -1,0 +1,12 @@
+{
+  "model": "prithvi",
+  "split": "region_a",
+  "status": "ok",
+  "type": "onthefly",
+  "elapsed_s": 27.984,
+  "per_item_s": 1.749,
+  "peak_gpu_mb": 2061.03,
+  "dim": 768,
+  "n_items": 16,
+  "errors": []
+}

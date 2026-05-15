@@ -1,0 +1,41 @@
+\begin{landscape}
+\scriptsize
+\setlength{\LTleft}{0pt}
+\setlength{\LTright}{0pt}
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.15}
+\begin{longtable}{p{1.45cm}p{0.75cm}p{1.2cm}p{0.95cm}p{2.25cm}p{2.05cm}p{2.75cm}p{2.35cm}p{2.25cm}p{1.55cm}p{3.0cm}}
+\caption{Comprehensive model summary for the \modelcount{} canonical satellite embedding models currently exposed in \texttt{rs-embed}. The table emphasizes deployment-relevant details rather than only benchmark scores.}\label{tab:model-catalog}\\
+\toprule
+Model & Year & Venue & Type & Family & Backbone & Sensors / data & Resolution & Temporal semantics & Emb. / output & Pretraining signal \\
+\midrule
+\endfirsthead
+\caption[]{Comprehensive model summary for the canonical \texttt{rs-embed} model set (continued).}\\
+\toprule
+Model & Year & Venue & Type & Family & Backbone & Sensors / data & Resolution & Temporal semantics & Emb. / output & Pretraining signal \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+tessera & 2026 & CVPR & precomputed & Precomputed temporal embedding field & field model over surface spectra embeddings & surface spectra product & 10 m precomputed embedding tiles & annual lookup over product years & 128; pooled, grid & embedding field regression / product training \\
+gse & 2025 & arXiv & precomputed & Precomputed annual embedding product & embedding field model & Google Satellite Embedding annual product & 10 m annual embedding product & strict yearly product & 64; pooled, grid & global embedding field learning from sparse labels \\
+copernicus & 2025 & ICCV & precomputed & Precomputed foundation map & Copernicus foundation model product & Copernicus product stack & 0.25\textdegree{} precomputed grid & static in current adapter (2021 only) & 768; pooled, grid & foundation model pretraining followed by product distillation \\
+remoteclip & 2024 & IEEE TGRS & on-the-fly & Vision-language satellite embedding & CLIP / ViT-B-32 & Sentinel-2 RGB, remote sensing captions, UAV imagery in pretraining & 10 m; Sentinel-2 RGB & single composited observation window at inference & 768; pooled, grid & contrastive image-text alignment (InfoNCE) \\
+satmae & 2022 & NeurIPS & on-the-fly & Masked autoencoder for temporal or multispectral EO & ViT-MAE & Sentinel-2 RGB or multispectral/time-series variants in original paper & 10 m; Sentinel-2 RGB & explicit temporal embeddings in the original paper; rs-embed adapter currently uses RGB composite path & 1024; pooled, grid & masked autoencoding with temporal/spectral positional encoding \\
+satmaepp & 2024 & CVPR & on-the-fly & Improved masked autoencoder for EO & ViT-L / SatMAE++ & Sentinel-2 RGB in adapter, multispectral Sentinel-2 in paper & 10 m; Sentinel-2 RGB & single composited observation window in adapter & 1024; pooled, grid & revised MAE pretraining for multispectral satellite imagery \\
+satmaepp\_s2\_10b & 2024 & CVPR & on-the-fly & Grouped-channel multispectral masked autoencoder & ViT-L / grouped-channel SatMAE++ & Sentinel-2 SR 10-band & 10 m; Sentinel-2 SR 10-band input & single composited observation window in adapter & 1024; pooled, grid & grouped-channel masked autoencoding \\
+scalemae & 2023 & ICCV & on-the-fly & Scale-aware masked autoencoder & ViT-L / MAE & Sentinel-2 RGB in adapter, multiscale EO imagery in paper & 10 m; Sentinel-2 RGB, plus explicit semantic scale input & single composited observation window & 1024; pooled, grid & masked autoencoding with explicit resolution conditioning \\
+anysat & 2025 & CVPR & on-the-fly & Generalist multi-resolution multimodal EO encoder & versatile JEPA-style EO encoder & Sentinel-2, Sentinel-1, aerial/VHR and other modalities in original paper & 10 m Sentinel-2 time-series input; default per-frame resize 24 px & multi-frame optical sequence with date tokens & 768; pooled, grid & self-supervised representation learning across many configurations \\
+galileo & 2025 & ICML & on-the-fly & Global-local multimodal time-series encoder & transformer with global/local branches & Sentinel-2 time series, multiple remote sensing modalities in original work & 10 m Sentinel-2 time-series input; default frame size 64 px, patch size 8 & explicit month tokens and frame masks & 128; pooled, grid & self-supervised multimodal representation learning \\
+wildsat & 2025 & ICCV & on-the-fly & Remote sensing representation learning from weak labels & ViT-B-16 & Sentinel-2 RGB, wildlife observations as supervision & 10 m; Sentinel-2 RGB & single composited optical patch & 256; pooled, grid & supervised / weakly supervised representation learning from wildlife observations \\
+prithvi & 2023 & arXiv & on-the-fly & Generalist geospatial foundation model & ViT / masked autoencoder lineage & HLS / Sentinel-Landsat style 6-band optical imagery & 30 m in current adapter; Sentinel-2 6-band input & explicit temporal coordinates in adapter and paper family & 768; pooled, grid & self-supervised geospatial pretraining \\
+terrafm & 2026 & ICLR & on-the-fly & Unified multisensor foundation model & multisensor transformer & Sentinel-2, Sentinel-1 & 10 m for both S2 and S1 paths; image resized to 224 px & single observation window in current adapter; paper focuses on multisensor unification & 768; pooled, grid & scalable unified multisensor pretraining \\
+terramind & 2025 & ICCV & on-the-fly & Generative multimodal EO foundation model & large-scale generative multimodal transformer & Sentinel-2 in adapter, wider multimodal EO stack in paper & 10 m; Sentinel-2 SR 12-band input; image resized to 224 px & single composited optical path in adapter & 384; pooled, grid & large-scale generative multimodal learning \\
+dofa & 2024 & arXiv & on-the-fly & Wavelength-aware multimodal foundation model & transformer with neural plasticity / dynamic wavelength handling & multispectral and hyperspectral style inputs, Sentinel-2 in adapter & 10 m for S2 path; fixed resize to 224 px & single observation window in adapter & 768; pooled, grid & self-supervised multimodal EO foundation modeling \\
+fomo & 2025 & AAAI & on-the-fly & Forest-oriented multimodal and multiscale foundation model & multimodal transformer / representation learner & Sentinel-2 SR in adapter, multiple scales and tasks in original work & 10 m; Sentinel-2 SR 12-band input; default image size 64 px & single optical composite in adapter & 768; pooled, grid & multi-task forest monitoring pretraining \\
+thor & 2026 & arXiv & on-the-fly & Versatile EO foundation model for climate and society & versatile transformer & Sentinel-2 SR 10-band & 10 m; Sentinel-2 SR 10-band input; default image size 288 px & single optical composite in adapter & 768; pooled, grid & foundation pretraining for climate and society applications \\
+agrifm & 2026 & Remote Sensing of Environment & on-the-fly & Agriculture-specific multi-source temporal foundation model & Video Swin Transformer & Sentinel-2 in adapter, Sentinel-2, Landsat-8/9, MODIS in original paper & 10 m Sentinel-2 time-series input; default image size 224 px with fixed T-frame packaging & fixed-length multi-frame temporal stack & 1024; pooled, grid & supervised land-cover fraction pretraining with EMA teacher \\
+satvision & 2024 & arXiv & on-the-fly & Coarse-resolution all-sky foundation model & SwinV2-style encoder & MODIS 14-band TOA & 1000 m; 14-channel TOA input & single coarse-resolution observation window in adapter & 4096; pooled, grid & foundation pretraining on all-sky MODIS TOA data \\
+\end{longtable}
+\normalsize
+\end{landscape}

@@ -1,0 +1,24 @@
+Use the first two input images as style references.
+
+Target:
+Redraw the "Vision-language and cross-modal embeddings" family figure as a V2 version.
+
+Style direction:
+- preserve the conceptual charm of the current vision-language figure
+- adopt the simple, disciplined block arrangement of the masked autoencoder figure
+- wax crayon hand-drawn scientific sketch
+- white background
+- elegant, poetic, minimal
+- English labels only
+- 4 to 5 main modules only
+- avoid clutter and too many tiny elements
+- keep the figure visually consistent with the masked autoencoder V2 figure
+
+Content to show:
+- satellite image encoder branch
+- text / caption / habitat description encoder branch
+- shared embedding space in the center
+- alignment arrows
+- outputs for retrieval and zero-shot classification
+
+The figure should feel lightweight, semantic, and visually coherent with the full family figure set.

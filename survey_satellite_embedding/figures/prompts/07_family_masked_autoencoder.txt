@@ -1,0 +1,20 @@
+Create a publication-quality scientific architecture diagram for the model family "Masked Autoencoder and Pure Vision Satellite Embeddings".
+
+Style requirements:
+- wax crayon hand-drawn style
+- careful scientific sketch on white paper
+- same palette and visual language as the other family figures
+- landscape 16:9
+- English labels only
+
+Content:
+- left: satellite image patches or multispectral tiles
+- next: masking module that hides random patches or channels
+- center: transformer encoder / vision backbone
+- upper branch: latent token representation / pooled embedding
+- lower branch: lightweight decoder reconstructing masked content
+- right: downstream transfer to classification, segmentation, and feature reuse
+- representative model labels: SatMAE, SatMAE++, ScaleMAE
+- small callouts for "masked reconstruction", "visual structure learning", "transferable tokens"
+
+The figure should feel like a survey-paper architecture diagram, not a generic concept illustration.

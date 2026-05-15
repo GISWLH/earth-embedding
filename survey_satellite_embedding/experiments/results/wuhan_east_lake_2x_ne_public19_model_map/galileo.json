@@ -1,0 +1,20 @@
+{
+  "model": "galileo",
+  "status": "ok",
+  "reason": null,
+  "output_json": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/wuhan_east_lake_2x_ne_public19_model_map/galileo.json",
+  "output_npz": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/wuhan_east_lake_2x_ne_public19_model_map/galileo.npz",
+  "output_png": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/wuhan_east_lake_2x_ne_public19_model_map/galileo.png",
+  "n_blocks": 64,
+  "chunk_size": 4,
+  "temporal": "range",
+  "shape": [
+    64,
+    128
+  ],
+  "grid_hw": [
+    8,
+    8
+  ],
+  "elapsed_s": 45.955
+}

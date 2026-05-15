@@ -1,0 +1,12 @@
+{
+  "model": "copernicus",
+  "split": "region_b",
+  "status": "ok",
+  "type": "precomputed",
+  "elapsed_s": 11.115,
+  "per_item_s": 0.741,
+  "peak_gpu_mb": 883.18,
+  "dim": 768,
+  "n_items": 15,
+  "errors": []
+}

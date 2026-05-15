@@ -1,0 +1,42 @@
+{
+  "type": "FeatureCollection",
+  "name": "wuhan_east_lake_pilot",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Wuhan East Lake Pilot ROI",
+        "city": "Wuhan",
+        "country": "China",
+        "description": "Mixed urban-water-vegetation pilot area for the satellite embedding benchmark."
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              114.29,
+              30.44
+            ],
+            [
+              114.53,
+              30.44
+            ],
+            [
+              114.53,
+              30.60
+            ],
+            [
+              114.29,
+              30.60
+            ],
+            [
+              114.29,
+              30.44
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "model": "tessera",
+  "status": "ok",
+  "reason": null,
+  "output_json": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/part2_model_map_figure/tessera_2x.json",
+  "output_npz": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/part2_model_map_figure/tessera_2x.npz",
+  "output_png": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/part2_model_map_figure/tessera_2x.png",
+  "block_dir": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/part2_model_map_figure/blocks_2x/tessera",
+  "n_blocks": 4,
+  "temporal": "year",
+  "shape": [
+    4,
+    128,
+    431,
+    587
+  ],
+  "grid_hw": [
+    863,
+    1174
+  ],
+  "blocks": [
+    {
+      "block_id": "block_r01_c01",
+      "status": "ok",
+      "source": "run",
+      "shape": [
+        128,
+        431,
+        587
+      ],
+      "output_npz": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/part2_model_map_figure/blocks_2x/tessera/block_r01_c01.npz",
+      "output_json": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/part2_model_map_figure/blocks_2x/tessera/block_r01_c01.json"
+    },
+    {
+      "block_id": "block_r01_c02",
+      "status": "ok",
+      "source": "run",
+      "shape": [
+        128,
+        431,
+        587
+      ],
+      "output_npz": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/part2_model_map_figure/blocks_2x/tessera/block_r01_c02.npz",
+      "output_json": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/part2_model_map_figure/blocks_2x/tessera/block_r01_c02.json"
+    },
+    {
+      "block_id": "block_r02_c01",
+      "status": "ok",
+      "source": "run",
+      "shape": [
+        128,
+        431,
+        587
+      ],
+      "output_npz": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/part2_model_map_figure/blocks_2x/tessera/block_r02_c01.npz",
+      "output_json": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/part2_model_map_figure/blocks_2x/tessera/block_r02_c01.json"
+    },
+    {
+      "block_id": "block_r02_c02",
+      "status": "ok",
+      "source": "run",
+      "shape": [
+        128,
+        432,
+        586
+      ],
+      "output_npz": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/part2_model_map_figure/blocks_2x/tessera/block_r02_c02.npz",
+      "output_json": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/part2_model_map_figure/blocks_2x/tessera/block_r02_c02.json"
+    }
+  ],
+  "elapsed_s": 197.607
+}

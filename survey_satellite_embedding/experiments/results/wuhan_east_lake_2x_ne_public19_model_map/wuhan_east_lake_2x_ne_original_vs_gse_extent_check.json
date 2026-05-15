@@ -1,0 +1,31 @@
+{
+  "output_png": "survey_satellite_embedding/experiments/results/wuhan_east_lake_2x_ne_public19_model_map/wuhan_east_lake_2x_ne_original_vs_gse_extent_check.png",
+  "original_canvas_npz": "survey_satellite_embedding/experiments/results/wuhan_east_lake_2x_ne_original_rgb/wuhan_east_lake_2x_ne_original_rgb_canvas.npz",
+  "gse_npz": "survey_satellite_embedding/experiments/results/wuhan_east_lake_2x_ne_public19_model_map/gse.npz",
+  "gse_block_dir": "survey_satellite_embedding/experiments/results/wuhan_east_lake_2x_ne_public19_model_map/gse_blocks",
+  "coverage": [
+    114.29,
+    30.44,
+    114.77,
+    30.76
+  ],
+  "original_canvas_shape": [
+    4146,
+    5344,
+    3
+  ],
+  "gse_canvas_shape": [
+    4146,
+    5344,
+    3
+  ],
+  "canvas_shapes_match": true,
+  "n_gse_blocks": 64,
+  "embedding_shape": [
+    64,
+    64
+  ],
+  "bad_gse_blocks": [],
+  "valid_pixel_fraction_min": 0.9980666041374207,
+  "valid_pixel_fraction_max": 1.0
+}

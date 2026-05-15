@@ -1,0 +1,12 @@
+{
+  "model": "anysat",
+  "split": "region_a",
+  "status": "ok",
+  "type": "on_the_fly",
+  "elapsed_s": 75.656,
+  "per_item_s": 4.729,
+  "peak_gpu_mb": 939.67,
+  "dim": 768,
+  "n_items": 16,
+  "errors": []
+}

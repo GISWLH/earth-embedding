@@ -1,0 +1,15 @@
+{
+  "n_tiles": 2173,
+  "n_usable_t2": 2173,
+  "split_counts": {
+    "train": 1272,
+    "val": 424,
+    "test": 477
+  },
+  "target_means": {
+    "built": 0.4232430497008744,
+    "vegetation": 0.3178348610216291,
+    "cropland": 0.0828138462954441,
+    "water": 0.17610823838011969
+  }
+}

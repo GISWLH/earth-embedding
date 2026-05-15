@@ -1,0 +1,265 @@
+\begin{thebibliography}{29}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Astruc et~al.(2025)Astruc, Gonthier, Mallet, and Landrieu]{anysat}
+Guillaume Astruc, Nicolas Gonthier, Clement Mallet, and Loic Landrieu.
+\newblock One earth observation model for many resolutions, scales, and
+  modalities, 2025.
+\newblock URL \url{https://arxiv.org/abs/2412.14123}.
+
+\bibitem[Bian et~al.(2021)Bian, Tao, Xu, Lu, Kwan, and hsiang Tseng]{vitrs2021}
+Yingzhe Bian, Junsheng Tao, Jiaming Xu, X.~Lu, Jiayi Kwan, and Yuan hsiang
+  Tseng.
+\newblock Vision transformer for remote sensing image classification.
+\newblock \emph{Remote Sensing}, 13\penalty0 (3):\penalty0 516, 2021.
+\newblock \doi{10.3390/rs13030516}.
+\newblock URL \url{https://www.mdpi.com/2072-4292/13/3/516}.
+
+\bibitem[Bountos et~al.(2025)Bountos, Ouaknine, Papoutsis, and Rolnick]{fomo}
+Nikolaos~Ioannis Bountos, Arthur Ouaknine, Ioannis Papoutsis, and David
+  Rolnick.
+\newblock Multi-modal, multi-scale and multi-task remote sensing foundation
+  models for forest monitoring, 2025.
+\newblock URL \url{https://arxiv.org/abs/2312.10114}.
+
+\bibitem[Brown et~al.(2025)Brown, Kazmierski, Pasquarella, Rucklidge,
+  Samsikova, Zhang, Shelhamer, Lahera, Wiles, Ilyushchenko, Gorelick, Zhang,
+  Alj, Schechter, Askay, Guinan, Moore, Boukouvalas, and Kohli]{gse}
+Christopher~F. Brown, Michal~R. Kazmierski, Valerie~J. Pasquarella, William~J.
+  Rucklidge, Masha Samsikova, Chenhui Zhang, Evan Shelhamer, Estefania Lahera,
+  Olivia Wiles, Simon Ilyushchenko, Noel Gorelick, Lihui~Lydia Zhang, Sophia
+  Alj, Emily Schechter, Sean Askay, Oliver Guinan, Rebecca Moore, Alexis
+  Boukouvalas, and Pushmeet Kohli.
+\newblock An embedding field model for accurate and efficient global mapping
+  from sparse label data, 2025.
+\newblock URL \url{https://arxiv.org/abs/2507.22291}.
+
+\bibitem[Castelluccio et~al.(2015)Castelluccio, Poggi, Sansone, and
+  Verdoliva]{castelluccio2015}
+Marco Castelluccio, Giovanni Poggi, Carlo Sansone, and Luisa Verdoliva.
+\newblock Land use classification in remote sensing images by convolutional
+  neural networks.
+\newblock In \emph{arXiv preprint arXiv:1508.00092}, 2015.
+\newblock URL \url{https://arxiv.org/abs/1508.00092}.
+
+\bibitem[Cong et~al.(2022)Cong, Khanna, Meng, Liu, Rozi, He, Burke, Lobell, and
+  Ermon]{satmae}
+Yezhen Cong, Samar Khanna, Chenlin Meng, Patrick Liu, Erik Rozi, Yutong He,
+  Marshall Burke, David~B. Lobell, and Stefano Ermon.
+\newblock Pre-training transformers for temporal and multi-spectral satellite
+  imagery, 2022.
+\newblock URL \url{https://arxiv.org/abs/2207.08051}.
+
+\bibitem[Danish et~al.(2026)Danish, Munir, Shah, Khan, Anwer, Laaksonen, Khan,
+  and Khan]{terrafm}
+Muhammad~Sohail Danish, Muhammad~Akhtar Munir, Syed Roshaan~Ali Shah,
+  Muhammad~Haris Khan, Rao~Muhammad Anwer, Jorma Laaksonen, Fahad~Shahbaz Khan,
+  and Salman Khan.
+\newblock A scalable foundation model for unified multisensor earth
+  observation, 2026.
+\newblock URL \url{https://arxiv.org/abs/2506.06281}.
+
+\bibitem[Daroya et~al.(2025)Daroya, Cole, Aodha, Horn, and Maji]{wildsat}
+Rangel Daroya, Elijah Cole, Oisin~Mac Aodha, Grant~Van Horn, and Subhransu
+  Maji.
+\newblock Learning satellite image representations from wildlife observations,
+  2025.
+\newblock URL \url{https://arxiv.org/abs/2412.14428}.
+
+\bibitem[Dosovitskiy et~al.(2021)Dosovitskiy, Beyer, Kolesnikov, Weissenborn,
+  Zhai, Unterthiner, Dehghani, Minderer, Heigold, Gelly, Uszkoreit, and
+  Houlsby]{vit2021}
+Alexey Dosovitskiy, Lucas Beyer, Alexander Kolesnikov, Dirk Weissenborn,
+  Xiaohua Zhai, Thomas Unterthiner, Mostafa Dehghani, Matthias Minderer, Georg
+  Heigold, Sylvain Gelly, Jakob Uszkoreit, and Neil Houlsby.
+\newblock An image is worth 16x16 words: Transformers for image recognition at
+  scale.
+\newblock In \emph{ICLR}, 2021.
+\newblock URL \url{https://arxiv.org/abs/2010.11929}.
+
+\bibitem[Feng et~al.(2026)Feng, Atzberger, Jaffer, Knezevic, Sormunen, Young,
+  Lisaius, Immitzer, Ball, Coomes, Madhavapeddy, Blake, and Keshav]{tessera}
+Zhengpeng Feng, Clement Atzberger, Sadiq Jaffer, Jovana Knezevic, Silja
+  Sormunen, Robin Young, Madeline~C. Lisaius, Markus Immitzer, James Ball,
+  David~A. Coomes, Anil Madhavapeddy, Andrew Blake, and Srinivasan Keshav.
+\newblock Temporal embeddings of surface spectra for earth representation and
+  analysis, 2026.
+\newblock URL \url{https://arxiv.org/abs/2506.20380v4}.
+
+\bibitem[Forgaard et~al.(2026)Forgaard, Reksten, Waldeland, Marsocci, Longepe,
+  Kampffmeyer, and Salberg]{thor}
+Theodor Forgaard, Jarle Reksten, Anders Waldeland, Valerio Marsocci, Nicolas
+  Longepe, Michael Kampffmeyer, and Arnt-Borre Salberg.
+\newblock A versatile foundation model for earth observation climate and
+  society applications, 2026.
+\newblock URL \url{https://arxiv.org/abs/2601.16011}.
+
+\bibitem[Gorelick et~al.(2017)Gorelick, Hancher, Dixon, Ilyushchenko, Thau, and
+  Moore]{gee2017}
+Noel Gorelick, Matt Hancher, Mike Dixon, Simon Ilyushchenko, David Thau, and
+  Rebecca Moore.
+\newblock Google earth engine: Planetary-scale geospatial analysis for
+  everyone.
+\newblock \emph{Remote Sensing of Environment}, 202:\penalty0 18--27, 2017.
+\newblock \doi{10.1016/j.rse.2017.06.031}.
+\newblock URL
+  \url{https://www.sciencedirect.com/science/article/pii/S0034425717302900}.
+
+\bibitem[Huang et~al.(2025)Huang, Yan, Zhan, Yang, Zhang, Zhang, Lei, Liu, Liu,
+  and Wang]{survey4}
+Ziyue Huang, Hongxi Yan, Qiqi Zhan, Shuai Yang, Mingming Zhang, Chenkai Zhang,
+  Yiming Lei, Zeming Liu, Qingjie Liu, and Yunhong Wang.
+\newblock A survey on remote sensing foundation models: From vision to
+  multimodality, 2025.
+\newblock URL \url{https://arxiv.org/abs/2503.22081}.
+
+\bibitem[Huo et~al.(2025)Huo, Chen, Zhang, Wang, Yan, Shen, Hong, Qi, Fang, and
+  Wang]{survey3}
+Chunlei Huo, Keming Chen, Shuaihao Zhang, Zeyu Wang, Heyu Yan, Jing Shen,
+  Yuyang Hong, Geqi Qi, Hongmei Fang, and Zihan Wang.
+\newblock When remote sensing meets foundation model: A survey and beyond,
+  2025.
+\newblock URL \url{https://www.mdpi.com/2072-4292/17/2/179}.
+
+\bibitem[Jakubik et~al.(2023)Jakubik, Roy, Phillips, Fraccaro, Godwin,
+  Zadrozny, Szwarcman, Gomes, Nyirjesy, Edwards, Kimura, Simumba, Chu,
+  Mukkavilli, Lambhate, Das, Bangalore, Oliveira, Muszynski, Ankur,
+  Ramasubramanian, Gurung, Khallaghi, Li, Cecil, Ahmadi, Kordi, Alemohammad,
+  Maskey, Ganti, Weldemariam, and Ramachandran]{prithvi}
+Johannes Jakubik, Sujit Roy, C.~E. Phillips, Paolo Fraccaro, Denys Godwin,
+  Bianca Zadrozny, Daniela Szwarcman, Carlos Gomes, Gabby Nyirjesy, Blair
+  Edwards, Daiki Kimura, Naomi Simumba, Linsong Chu, S.~Karthik Mukkavilli,
+  Devyani Lambhate, Kamal Das, Ranjini Bangalore, Dario Oliveira, Michal
+  Muszynski, Kumar Ankur, Muthukumaran Ramasubramanian, Iksha Gurung, Sam
+  Khallaghi, Hanxi Li, Michael Cecil, Maryam Ahmadi, Fatemeh Kordi, Hamed
+  Alemohammad, Manil Maskey, Raghu Ganti, Kommy Weldemariam, and Rahul
+  Ramachandran.
+\newblock Foundation models for generalist geospatial artificial intelligence,
+  2023.
+\newblock URL \url{https://arxiv.org/abs/2310.18660}.
+
+\bibitem[Jakubik et~al.(2025)Jakubik, Yang, Blumenstiel, Scheurer, Sedona,
+  Maurogiovanni, Bosmans, Dionelis, Marsocci, Kopp, Ramachandran, Fraccaro,
+  Brunschwiler, Cavallaro, Bernabe-Moreno, and Longepe]{terramind}
+Johannes Jakubik, Felix Yang, Benedikt Blumenstiel, Erik Scheurer, Rocco
+  Sedona, Stefano Maurogiovanni, Jente Bosmans, Nikolaos Dionelis, Valerio
+  Marsocci, Niklas Kopp, Rahul Ramachandran, Paolo Fraccaro, Thomas
+  Brunschwiler, Gabriele Cavallaro, Juan Bernabe-Moreno, and Nicolas Longepe.
+\newblock Large-scale generative multimodality for earth observation, 2025.
+\newblock URL \url{https://arxiv.org/abs/2504.11171}.
+
+\bibitem[Li et~al.(2026)Li, Liang, Chen, Chen, Ma, Xu, Ma, Zhang, Guan, Fang,
+  and Shi]{agrifm}
+Wenyuan Li, Shunlin Liang, Keyan Chen, Yongzhe Chen, Han Ma, Jianglei Xu,
+  Yichuan Ma, Yuxiang Zhang, Shikang Guan, Husheng Fang, and Zhenwei Shi.
+\newblock Agrifm: A multi-source temporal remote sensing foundation model for
+  agriculture mapping, 2026.
+\newblock URL
+  \url{https://www.sciencedirect.com/science/article/pii/S0034425726000040}.
+
+\bibitem[Li et~al.(2025)Li, Tao, Zhang, Liu, Xiong, Luo, Liu, Pechenizkiy, Zhu,
+  and Huang]{reobench}
+Xiang Li, Yong Tao, Siyuan Zhang, Siwei Liu, Zhitong Xiong, Chunbo Luo, Lu~Liu,
+  Mykola Pechenizkiy, Xiao~Xiang Zhu, and Tianjin Huang.
+\newblock Reobench: Benchmarking robustness of earth observation foundation
+  models, 2025.
+\newblock URL \url{https://arxiv.org/abs/2505.16793}.
+
+\bibitem[Liu et~al.(2024)Liu, Chen, Guan, Zhou, Zhu, Ye, Fu, and
+  Zhou]{remoteclip}
+Fan Liu, Delong Chen, Zhangqingyun Guan, Xiaocong Zhou, Jiale Zhu, Qiaolin Ye,
+  Liyong Fu, and Jun Zhou.
+\newblock A vision language foundation model for remote sensing, 2024.
+\newblock URL \url{https://arxiv.org/abs/2306.11029}.
+
+\bibitem[Lu et~al.(2025)Lu, Guo, Zimmer-Dauphinee, Nieusma, Wang,
+  vanValkenburgh, Wernke, and Huo]{survey1}
+Siqi Lu, Junlin Guo, James~R. Zimmer-Dauphinee, Jordan~M. Nieusma, Xiao Wang,
+  Parker vanValkenburgh, Steven~A. Wernke, and Yuankai Huo.
+\newblock Vision foundation models in remote sensing: A survey, 2025.
+\newblock URL \url{https://www.osti.gov/biblio/2573563}.
+
+\bibitem[Ma{\~n}as et~al.(2021)Ma{\~n}as, Lacoste, i~Nieto, V{\'a}zquez, and
+  Rodr{\'\i}guez]{seco2021}
+Oscar Ma{\~n}as, Alexandre Lacoste, Xavier~Giro i~Nieto, David V{\'a}zquez, and
+  Pau Rodr{\'\i}guez.
+\newblock Seasonal contrast: Unsupervised pre-training from uncurated remote
+  sensing data.
+\newblock In \emph{ICCV}, 2021.
+\newblock URL \url{https://arxiv.org/abs/2103.16607}.
+
+\bibitem[Noman et~al.(2024)Noman, Naseer, Cholakkal, Anwer, Khan, and
+  Khan]{satmaepp}
+Mubashir Noman, Muzammal Naseer, Hisham Cholakkal, Rao~Muhammad Anwer, Salman
+  Khan, and Fahad~Shahbaz Khan.
+\newblock Rethinking transformers pre-training for multi-spectral satellite
+  imagery, 2024.
+\newblock URL \url{https://arxiv.org/abs/2403.05419}.
+
+\bibitem[Ramachandran et~al.(2025)Ramachandran, Roy, Maskey, Szwarcman, and
+  Fraccaro]{primer_eo}
+Rahul Ramachandran, Sujit Roy, Manil Maskey, Daniela Szwarcman, and Paolo
+  Fraccaro.
+\newblock A primer for assessing foundation models for earth observation, 2025.
+\newblock URL \url{https://ntrs.nasa.gov/citations/20250005271}.
+\newblock NASA Technical Reports Server preprint.
+
+\bibitem[Reed et~al.(2023)Reed, Gupta, Li, Brockman, Funk, Clipp, Keutzer,
+  Candido, Uyttendaele, and Darrell]{scalemae}
+Colorado~J. Reed, Ritwik Gupta, Shufan Li, Sarah Brockman, Christopher Funk,
+  Brian Clipp, Kurt Keutzer, Salvatore Candido, Matt Uyttendaele, and Trevor
+  Darrell.
+\newblock A scale-aware masked autoencoder for multiscale geospatial
+  representation learning, 2023.
+\newblock URL \url{https://arxiv.org/abs/2212.14532}.
+
+\bibitem[Spradlin et~al.(2024)Spradlin, Caraballo-Vega, Li, Carroll, Gong, and
+  Montesano]{satvision}
+Caleb~S. Spradlin, Jordan~A. Caraballo-Vega, Jian Li, Mark~L. Carroll, Jie
+  Gong, and Paul~M. Montesano.
+\newblock A geospatial foundation model for coarse-resolution all-sky remote
+  sensing imagery, 2024.
+\newblock URL \url{https://arxiv.org/abs/2411.17000}.
+
+\bibitem[Tseng et~al.(2025)Tseng, Fuller, Reil, Herzog, Beukema, Bastani,
+  Green, Shelhamer, Kerner, and Rolnick]{galileo}
+Gabriel Tseng, Anthony Fuller, Marlena Reil, Henry Herzog, Patrick Beukema,
+  Favyen Bastani, James~R. Green, Evan Shelhamer, Hannah Kerner, and David
+  Rolnick.
+\newblock Learning global \& local features of many remote sensing modalities,
+  2025.
+\newblock URL \url{https://arxiv.org/abs/2502.09356}.
+
+\bibitem[Wang et~al.(2025)Wang, Xiong, Liu, Stewart, Dujardin, Bountos, Zavras,
+  Gerken, Papoutsis, Leal-Taixe, and Zhu]{copernicus}
+Yi~Wang, Zhitong Xiong, Chenying Liu, Adam~J. Stewart, Thomas Dujardin,
+  Nikolaos~Ioannis Bountos, Angelos Zavras, Franziska Gerken, Ioannis
+  Papoutsis, Laura Leal-Taixe, and Xiao~Xiang Zhu.
+\newblock Towards a unified copernicus foundation model for earth vision, 2025.
+\newblock URL \url{https://arxiv.org/abs/2503.11849}.
+
+\bibitem[Wu et~al.(2025)Wu, Zhang, Ru, Dang, Lao, Yu, Luo, Zhu, Sun, Zhang,
+  Zhu, Wang, Yang, Chen, Zhang, and Li]{skysensepp}
+Kang Wu, Yingying Zhang, Lixiang Ru, Bo~Dang, Jiangwei Lao, Lei Yu, Junwei Luo,
+  Zifan Zhu, Yue Sun, Jiahao Zhang, Qi~Zhu, Jian Wang, Ming Yang, Jingdong
+  Chen, Yongjun Zhang, and Yansheng Li.
+\newblock A semantic-enhanced multi-modal remote sensing foundation model for
+  earth observation.
+\newblock \emph{Nature Machine Intelligence}, 7:\penalty0 1235--1249, 2025.
+\newblock \doi{10.1038/s42256-025-01078-8}.
+\newblock URL \url{https://www.nature.com/articles/s42256-025-01078-8}.
+
+\bibitem[Xiong et~al.(2024)Xiong, Wang, Zhang, Stewart, Hanna, Borth,
+  Papoutsis, Saux, Camps-Valls, and Zhu]{dofa}
+Zhitong Xiong, Yi~Wang, Fahong Zhang, Adam~J. Stewart, Joelle Hanna, Damian
+  Borth, Ioannis Papoutsis, Bertrand~Le Saux, Gustau Camps-Valls, and
+  Xiao~Xiang Zhu.
+\newblock Neural plasticity-inspired multimodal foundation model for earth
+  observation, 2024.
+\newblock URL \url{https://arxiv.org/abs/2403.15356}.
+
+\end{thebibliography}

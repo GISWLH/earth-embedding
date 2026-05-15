@@ -1,0 +1,26 @@
+[
+  {
+    "model":"satmaepp_s2_10b",
+    "status":"ok",
+    "elapsed_s":36.925,
+    "per_tile_s":2.462,
+    "peak_gpu_mb":1353.75,
+    "dim":1024,
+    "errors":[
+
+    ],
+    "n_tiles_total":15,
+    "n_tiles_valid":15,
+    "cls_macro_f1":1.0,
+    "cls_balanced_acc":1.0,
+    "built_mae":0.0669810449,
+    "built_rmse":0.0828552085,
+    "built_spearman":0.6222953096,
+    "green_mae":0.0545261316,
+    "green_rmse":0.0705852124,
+    "green_spearman":0.9333333333,
+    "water_mae":0.1997604569,
+    "water_rmse":0.2637171149,
+    "water_spearman":0.7694837641
+  }
+]

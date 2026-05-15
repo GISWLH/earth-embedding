@@ -1,0 +1,23 @@
+Use the first two input images as style references and use the last input image as a content reference.
+
+Target:
+Redraw the "Domain-specialized satellite embedding models" family figure as a V2 version.
+
+Style direction:
+- same wax crayon hand-drawn scientific sketch style as the other V2 family figures
+- same simple composition language
+- same restrained palette and generous white space
+- concise, elegant, and slightly poetic
+- 4 to 5 main modules only
+- no clutter, no crowded annotations
+
+Content to show:
+- domain-specific inputs such as agriculture, forest, climate or all-sky observations
+- specialized encoder with domain prior
+- domain embedding output
+- focused downstream tasks
+
+Important:
+- make the figure simpler than the current version
+- keep the differences from the generalist model clear but visually subtle
+- ensure the whole four-figure set looks like one coherent series

@@ -1,0 +1,63 @@
+name: Bug report
+description: Report a reproducible bug with the key details needed to investigate it.
+title: "[Bug]: "
+labels:
+  - bug
+body:
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: What did you try, and what went wrong?
+      placeholder: I expected..., but instead...
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction
+      description: Paste the smallest code snippet or list the steps needed to reproduce the bug.
+      render: python
+      placeholder: |
+        from rs_embed import ...
+
+        ...
+    validations:
+      required: true
+  - type: textarea
+    id: expected_actual
+    attributes:
+      label: Expected vs actual
+      description: Include the traceback, incorrect output, or a short description of the mismatch.
+      render: text
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Include versions and setup details that might matter.
+      render: text
+      placeholder: |
+        rs-embed:
+        Python:
+        OS:
+        Backend / model:
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Add links, notebooks, scripts, screenshots, or anything else helpful.
+      placeholder: |
+        Related docs:
+        Related issue:
+        Notebook or script:
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checks
+      options:
+        - label: I included a plain-text reproduction or clear steps to reproduce.
+          required: true

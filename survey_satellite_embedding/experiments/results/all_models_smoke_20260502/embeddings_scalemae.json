@@ -1,0 +1,12 @@
+{
+  "model": "scalemae",
+  "split": "region_a",
+  "status": "ok",
+  "type": "onthefly",
+  "elapsed_s": 36.188,
+  "per_item_s": 2.262,
+  "peak_gpu_mb": 17456.62,
+  "dim": 1024,
+  "n_items": 16,
+  "errors": []
+}

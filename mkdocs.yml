@@ -1,0 +1,104 @@
+site_name: rs-embed
+site_description: A unified Python toolkit for Remote Sensing Foundation Model embeddings
+repo_url: https://github.com/cybergis/rs-embed
+repo_name: cybergis/rs-embed
+
+theme:
+  name: material
+  font:
+    text: IBM Plex Sans
+    code: IBM Plex Mono
+  palette:
+    - scheme: default
+      primary: white
+      accent: teal
+  icon:
+    annotation: material/arrow-right-circle
+  features:
+    - navigation.tabs
+    - navigation.indexes
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - toc.follow
+    - content.code.copy
+    - content.code.annotate
+    - content.tabs.link
+    - search.suggest
+    - search.highlight
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - pymdownx.details
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.arithmatex:
+      generic: true
+  - toc:
+      permalink: true
+
+extra:
+  version:
+    provider: mike
+    default: latest
+    alias: true
+
+extra_javascript:
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+extra_css:
+  - stylesheets/extra.css
+
+not_in_nav: |
+  /concepts.md
+  /workflows.md
+  /limitations.md
+  /model_detail_template.md
+
+nav:
+  - Home:
+      - Overview: index.md
+      - Quickstart: quickstart.md
+  - Models:
+      - Overview: models.md
+      - Advanced Reference: models_reference.md
+      - Precomputed:
+          - Tessera: models/tessera.md
+          - GSE: models/gse.md
+          - Copernicus: models/copernicus.md
+      - On-the-fly:
+          - RemoteCLIP: models/remoteclip.md
+          - SatMAE: models/satmae.md
+          - SatMAE++: models/satmaepp.md
+          - ScaleMAE: models/scalemae.md
+          - WildSAT: models/wildsat.md
+          - Prithvi: models/prithvi.md
+          - TerraFM: models/terrafm.md
+          - TerraMind: models/terramind.md
+          - DOFA: models/dofa.md
+          - FoMo: models/fomo.md
+          - THOR: models/thor.md
+          - SatVision: models/satvision.md
+          - AnySat: models/anysat.md
+          - Galileo: models/galileo.md
+          - AgriFM: models/agrifm.md
+  - API:
+      - Overview: api.md
+      - Specs & Data Structures: api_specs.md
+      - Embedding API: api_embedding.md
+      - Export API: api_export.md
+      - Load API: api_load.md
+      - Inspect API: api_inspect.md
+  - Extending:
+      - Overview: extending.md
+      - Contributing Guide: contributing.md
+  - Project:
+      - Releases and Versioning: releases.md

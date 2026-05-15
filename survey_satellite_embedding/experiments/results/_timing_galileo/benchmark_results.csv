@@ -1,0 +1,2 @@
+model,status,elapsed_s,per_tile_s,peak_gpu_mb,dim,errors,n_tiles_total,n_tiles_valid,cls_macro_f1,cls_balanced_acc,built_mae,built_rmse,built_spearman,green_mae,green_rmse,green_spearman,water_mae,water_rmse,water_spearman
+galileo,ok,87.626,5.842,277.27,128,[],15,15,1.0,1.0,0.13015969842672348,0.16079109907150269,0.6880960312156116,0.09185152004162471,0.1103462278842926,0.6999999999999998,0.2375645935535431,0.30503904819488525,0.34199278402838473

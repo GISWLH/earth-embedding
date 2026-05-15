@@ -1,0 +1,45 @@
+{
+  "model": "copernicus",
+  "block_id": "block_r02_c01",
+  "status": "ok",
+  "source": "run",
+  "row": 2,
+  "col": 1,
+  "bbox": [
+    114.35000000000001,
+    30.520000000000003,
+    114.41,
+    30.560000000000002
+  ],
+  "shape": [
+    768,
+    2,
+    2
+  ],
+  "elapsed_s": 0.002,
+  "output_npz": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/part2_model_map_figure/blocks_2x/copernicus/block_r02_c01.npz",
+  "meta": {
+    "model": "copernicus",
+    "type": "precomputed",
+    "backend": "vendored_geotiff",
+    "source": "hf://torchgeo/copernicus_embed/embed_map_310k.tif",
+    "sensor": "None",
+    "temporal": "{'mode': None}",
+    "image_size": "None",
+    "data_dir": "/home/lhwang/Desktop/test/rs-embed/data/copernicus_embed",
+    "download": "True",
+    "bbox_4326": "(114.22354969619892, 30.40525332375135, 114.53645030380108, 30.674746676248656)",
+    "chw_shape": "(768, 2, 2)",
+    "dataset_path": "/home/lhwang/Desktop/test/rs-embed/data/copernicus_embed/embed_map_310k.tif",
+    "input_crs": "EPSG:4326",
+    "output_crs": "EPSG:4326",
+    "projection_mode": "product_native_fixed",
+    "projection_note": "Copernicus returns embeddings on its fixed product grid in EPSG:4326 (0.25 deg pixels), which differs from the common provider-backed default grid in EPSG:3857. Input spatial specs still use EPSG:4326.",
+    "product_resolution_deg": "(0.25, 0.25)",
+    "grid_orientation_policy": "north_up",
+    "grid_native_y_axis_direction": "unknown",
+    "grid_native_orientation_reason": "no orientation metadata",
+    "grid_orientation_applied": "False",
+    "y_axis_direction": "unknown"
+  }
+}

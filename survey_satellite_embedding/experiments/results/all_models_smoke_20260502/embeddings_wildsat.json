@@ -1,0 +1,12 @@
+{
+  "model": "wildsat",
+  "split": "region_a",
+  "status": "ok",
+  "type": "on_the_fly",
+  "elapsed_s": 31.977,
+  "per_item_s": 1.999,
+  "peak_gpu_mb": 707.43,
+  "dim": 256,
+  "n_items": 16,
+  "errors": []
+}

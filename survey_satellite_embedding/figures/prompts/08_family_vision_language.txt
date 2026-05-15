@@ -1,0 +1,19 @@
+Create a publication-quality scientific architecture diagram for the model family "Vision-Language and Cross-Modal Satellite Embeddings".
+
+Style requirements:
+- wax crayon hand-drawn style
+- scientific sketch on white paper
+- same palette and style as the other family architecture figures
+- landscape 16:9
+- English labels only
+
+Content:
+- left top: satellite image encoder branch
+- left bottom: text / caption / habitat description encoder branch
+- center: shared embedding space with contrastive alignment arrows
+- right: retrieval, zero-shot classification, semantic search, cross-modal transfer
+- include optional side inputs like wildlife observations or captions
+- representative model labels: RemoteCLIP, WildSAT
+- one small annotation bubble: "language adds open-vocabulary semantics"
+
+Keep composition clean and suitable for inclusion in a survey paper.

@@ -1,0 +1,1409 @@
+{
+  "roi_geojson": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/roi_wuhan_east_lake_2x_ne.geojson",
+  "roi_bounds": [
+    114.29,
+    30.44,
+    114.77,
+    30.76
+  ],
+  "roi_properties": {
+    "name": "Wuhan East Lake 2x North-East ROI",
+    "city": "Wuhan",
+    "country": "China",
+    "description": "Survey benchmark ROI expanded twofold in linear extent northward and eastward from the original Wuhan ROI southwest corner.",
+    "original_bounds": [
+      114.29,
+      30.44,
+      114.53,
+      30.6
+    ],
+    "expanded_bounds": [
+      114.29,
+      30.44,
+      114.77,
+      30.76
+    ],
+    "expansion_rule": "Keep minlon/minlat fixed; double original width eastward and double original height northward."
+  },
+  "available_s2_coverage": [
+    114.29,
+    30.44,
+    114.77,
+    30.76
+  ],
+  "coverage_matches_roi": true,
+  "grid_validation": {
+    "n_blocks": 64,
+    "n_rows": 8,
+    "n_cols": 8,
+    "coverage": [
+      114.29,
+      30.44,
+      114.77,
+      30.76
+    ],
+    "coverage_matches_roi": true,
+    "rows_continuous": true,
+    "cols_continuous": true,
+    "row_order_for_mosaic": [
+      7,
+      6,
+      5,
+      4,
+      3,
+      2,
+      1,
+      0
+    ],
+    "col_order_for_mosaic": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "row_ranges": [
+      {
+        "row": 0,
+        "lat_range": [
+          30.44,
+          30.48
+        ],
+        "lon_edges": [
+          114.29,
+          114.35000000000001,
+          114.41,
+          114.47,
+          114.53,
+          114.59,
+          114.65,
+          114.71,
+          114.77
+        ],
+        "continuous_west_to_east": true
+      },
+      {
+        "row": 1,
+        "lat_range": [
+          30.48,
+          30.52
+        ],
+        "lon_edges": [
+          114.29,
+          114.35000000000001,
+          114.41,
+          114.47,
+          114.53,
+          114.59,
+          114.65,
+          114.71,
+          114.77
+        ],
+        "continuous_west_to_east": true
+      },
+      {
+        "row": 2,
+        "lat_range": [
+          30.52,
+          30.56
+        ],
+        "lon_edges": [
+          114.29,
+          114.35000000000001,
+          114.41,
+          114.47,
+          114.53,
+          114.59,
+          114.65,
+          114.71,
+          114.77
+        ],
+        "continuous_west_to_east": true
+      },
+      {
+        "row": 3,
+        "lat_range": [
+          30.56,
+          30.6
+        ],
+        "lon_edges": [
+          114.29,
+          114.35000000000001,
+          114.41,
+          114.47,
+          114.53,
+          114.59,
+          114.65,
+          114.71,
+          114.77
+        ],
+        "continuous_west_to_east": true
+      },
+      {
+        "row": 4,
+        "lat_range": [
+          30.6,
+          30.64
+        ],
+        "lon_edges": [
+          114.29,
+          114.35000000000001,
+          114.41,
+          114.47,
+          114.53,
+          114.59,
+          114.65,
+          114.71,
+          114.77
+        ],
+        "continuous_west_to_east": true
+      },
+      {
+        "row": 5,
+        "lat_range": [
+          30.64,
+          30.68
+        ],
+        "lon_edges": [
+          114.29,
+          114.35000000000001,
+          114.41,
+          114.47,
+          114.53,
+          114.59,
+          114.65,
+          114.71,
+          114.77
+        ],
+        "continuous_west_to_east": true
+      },
+      {
+        "row": 6,
+        "lat_range": [
+          30.68,
+          30.72
+        ],
+        "lon_edges": [
+          114.29,
+          114.35000000000001,
+          114.41,
+          114.47,
+          114.53,
+          114.59,
+          114.65,
+          114.71,
+          114.77
+        ],
+        "continuous_west_to_east": true
+      },
+      {
+        "row": 7,
+        "lat_range": [
+          30.72,
+          30.76
+        ],
+        "lon_edges": [
+          114.29,
+          114.35000000000001,
+          114.41,
+          114.47,
+          114.53,
+          114.59,
+          114.65,
+          114.71,
+          114.77
+        ],
+        "continuous_west_to_east": true
+      }
+    ],
+    "col_ranges": [
+      {
+        "col": 0,
+        "lon_range": [
+          114.29,
+          114.35
+        ],
+        "lat_edges": [
+          30.44,
+          30.48,
+          30.520000000000003,
+          30.560000000000002,
+          30.6,
+          30.64,
+          30.68,
+          30.720000000000002,
+          30.76
+        ],
+        "continuous_south_to_north": true
+      },
+      {
+        "col": 1,
+        "lon_range": [
+          114.35,
+          114.41
+        ],
+        "lat_edges": [
+          30.44,
+          30.48,
+          30.520000000000003,
+          30.560000000000002,
+          30.6,
+          30.64,
+          30.68,
+          30.720000000000002,
+          30.76
+        ],
+        "continuous_south_to_north": true
+      },
+      {
+        "col": 2,
+        "lon_range": [
+          114.41,
+          114.47
+        ],
+        "lat_edges": [
+          30.44,
+          30.48,
+          30.520000000000003,
+          30.560000000000002,
+          30.6,
+          30.64,
+          30.68,
+          30.720000000000002,
+          30.76
+        ],
+        "continuous_south_to_north": true
+      },
+      {
+        "col": 3,
+        "lon_range": [
+          114.47,
+          114.53
+        ],
+        "lat_edges": [
+          30.44,
+          30.48,
+          30.520000000000003,
+          30.560000000000002,
+          30.6,
+          30.64,
+          30.68,
+          30.720000000000002,
+          30.76
+        ],
+        "continuous_south_to_north": true
+      },
+      {
+        "col": 4,
+        "lon_range": [
+          114.53,
+          114.59
+        ],
+        "lat_edges": [
+          30.44,
+          30.48,
+          30.520000000000003,
+          30.560000000000002,
+          30.6,
+          30.64,
+          30.68,
+          30.720000000000002,
+          30.76
+        ],
+        "continuous_south_to_north": true
+      },
+      {
+        "col": 5,
+        "lon_range": [
+          114.59,
+          114.65
+        ],
+        "lat_edges": [
+          30.44,
+          30.48,
+          30.520000000000003,
+          30.560000000000002,
+          30.6,
+          30.64,
+          30.68,
+          30.720000000000002,
+          30.76
+        ],
+        "continuous_south_to_north": true
+      },
+      {
+        "col": 6,
+        "lon_range": [
+          114.65,
+          114.71
+        ],
+        "lat_edges": [
+          30.44,
+          30.48,
+          30.520000000000003,
+          30.560000000000002,
+          30.6,
+          30.64,
+          30.68,
+          30.720000000000002,
+          30.76
+        ],
+        "continuous_south_to_north": true
+      },
+      {
+        "col": 7,
+        "lon_range": [
+          114.71,
+          114.77
+        ],
+        "lat_edges": [
+          30.44,
+          30.48,
+          30.520000000000003,
+          30.560000000000002,
+          30.6,
+          30.64,
+          30.68,
+          30.720000000000002,
+          30.76
+        ],
+        "continuous_south_to_north": true
+      }
+    ]
+  },
+  "output_png": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/wuhan_east_lake_2x_ne_original_rgb/wuhan_east_lake_2x_ne_original_rgb.png",
+  "output_npz": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/wuhan_east_lake_2x_ne_original_rgb/wuhan_east_lake_2x_ne_original_rgb_canvas.npz",
+  "blocks": [
+    {
+      "path": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/data/part2_20260507_2x_ne/region_a/imagery_s2_20210501_20211031/block_r00_c00.npz",
+      "bbox": [
+        114.29,
+        30.44,
+        114.35000000000001,
+        30.48
+      ],
+      "shape": [
+        517,
+        668,
+        3
+      ],
+      "row": 0,
+      "col": 0
+    },
+    {
+      "path": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/data/part2_20260507_2x_ne/region_a/imagery_s2_20210501_20211031/block_r00_c01.npz",
+      "bbox": [
+        114.35000000000001,
+        30.44,
+        114.41,
+        30.48
+      ],
+      "shape": [
+        517,
+        668,
+        3
+      ],
+      "row": 0,
+      "col": 1
+    },
+    {
+      "path": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/data/part2_20260507_2x_ne/region_a/imagery_s2_20210501_20211031/block_r00_c02.npz",
+      "bbox": [
+        114.41,
+        30.44,
+        114.47,
+        30.48
+      ],
+      "shape": [
+        517,
+        668,
+        3
+      ],
+      "row": 0,
+      "col": 2
+    },
+    {
+      "path": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/data/part2_20260507_2x_ne/region_a/imagery_s2_20210501_20211031/block_r00_c03.npz",
+      "bbox": [
+        114.47,
+        30.44,
+        114.53,
+        30.48
+      ],
+      "shape": [
+        517,
+        668,
+        3
+      ],
+      "row": 0,
+      "col": 3
+    },
+    {
+      "path": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/data/part2_20260507_2x_ne/region_a/imagery_s2_20210501_20211031/block_r00_c04.npz",
+      "bbox": [
+        114.53,
+        30.44,
+        114.59,
+        30.48
+      ],
+      "shape": [
+        517,
+        668,
+        3
+      ],
+      "row": 0,
+      "col": 4
+    },
+    {
+      "path": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/data/part2_20260507_2x_ne/region_a/imagery_s2_20210501_20211031/block_r00_c05.npz",
+      "bbox": [
+        114.59,
+        30.44,
+        114.65,
+        30.48
+      ],
+      "shape": [
+        517,
+        668,
+        3
+      ],
+      "row": 0,
+      "col": 5
+    },
+    {
+      "path": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/data/part2_20260507_2x_ne/region_a/imagery_s2_20210501_20211031/block_r00_c06.npz",
+      "bbox": [
+        114.65,
+        30.44,
+        114.71,
+        30.48
+      ],
+      "shape": [
+        517,
+        668,
+        3
+      ],
+      "row": 0,
+      "col": 6
+    },
+    {
+      "path": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/data/part2_20260507_2x_ne/region_a/imagery_s2_20210501_20211031/block_r00_c07.npz",
+      "bbox": [
+        114.71,
+        30.44,
+        114.77,
+        30.48
+      ],
+      "shape": [
+        517,
+        668,
+        3
+      ],
+      "row": 0,
+      "col": 7
+    },
+    {
+      "path": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/data/part2_20260507_2x_ne/region_a/imagery_s2_20210501_20211031/block_r01_c00.npz",
+      "bbox": [
+        114.29,
+        30.48,
+        114.35000000000001,
+        30.520000000000003
+      ],
+      "shape": [
+        518,
+        668,
+        3
+      ],
+      "row": 1,
+      "col": 0
+    },
+    {
+      "path": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/data/part2_20260507_2x_ne/region_a/imagery_s2_20210501_20211031/block_r01_c01.npz",
+      "bbox": [
+        114.35000000000001,
+        30.48,
+        114.41,
+        30.520000000000003
+      ],
+      "shape": [
+        518,
+        668,
+        3
+      ],
+      "row": 1,
+      "col": 1
+    },
+    {
+      "path": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/data/part2_20260507_2x_ne/region_a/imagery_s2_20210501_20211031/block_r01_c02.npz",
+      "bbox": [
+        114.41,
+        30.48,
+        114.47,
+        30.520000000000003
+      ],
+      "shape": [
+        518,
+        668,
+        3
+      ],
+      "row": 1,
+      "col": 2
+    },
+    {
+      "path": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/data/part2_20260507_2x_ne/region_a/imagery_s2_20210501_20211031/block_r01_c03.npz",
+      "bbox": [
+        114.47,
+        30.48,
+        114.53,
+        30.520000000000003
+      ],
+      "shape": [
+        518,
+        668,
+        3
+      ],
+      "row": 1,
+      "col": 3
+    },
+    {
+      "path": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/data/part2_20260507_2x_ne/region_a/imagery_s2_20210501_20211031/block_r01_c04.npz",
+      "bbox": [
+        114.53,
+        30.48,
+        114.59,
+        30.520000000000003
+      ],
+      "shape": [
+        518,
+        668,
+        3
+      ],
+      "row": 1,
+      "col": 4
+    },
+    {
+      "path": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/data/part2_20260507_2x_ne/region_a/imagery_s2_20210501_20211031/block_r01_c05.npz",
+      "bbox": [
+        114.59,
+        30.48,
+        114.65,
+        30.520000000000003
+      ],
+      "shape": [
+        518,
+        668,
+        3
+      ],
+      "row": 1,
+      "col": 5
+    },
+    {
+      "path": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/data/part2_20260507_2x_ne/region_a/imagery_s2_20210501_20211031/block_r01_c06.npz",
+      "bbox": [
+        114.65,
+        30.48,
+        114.71,
+        30.520000000000003
+      ],
+      "shape": [
+        518,
+        668,
+        3
+      ],
+      "row": 1,
+      "col": 6
+    },
+    {
+      "path": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/data/part2_20260507_2x_ne/region_a/imagery_s2_20210501_20211031/block_r01_c07.npz",
+      "bbox": [
+        114.71,
+        30.48,
+        114.77,
+        30.520000000000003
+      ],
+      "shape": [
+        518,
+        668,
+        3
+      ],
+      "row": 1,
+      "col": 7
+    },
+    {
+      "path": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/data/part2_20260507_2x_ne/region_a/imagery_s2_20210501_20211031/block_r02_c00.npz",
+      "bbox": [
+        114.29,
+        30.520000000000003,
+        114.35000000000001,
+        30.560000000000002
+      ],
+      "shape": [
+        518,
+        668,
+        3
+      ],
+      "row": 2,
+      "col": 0
+    },
+    {
+      "path": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/data/part2_20260507_2x_ne/region_a/imagery_s2_20210501_20211031/block_r02_c01.npz",
+      "bbox": [
+        114.35000000000001,
+        30.520000000000003,
+        114.41,
+        30.560000000000002
+      ],
+      "shape": [
+        518,
+        668,
+        3
+      ],
+      "row": 2,
+      "col": 1
+    },
+    {
+      "path": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/data/part2_20260507_2x_ne/region_a/imagery_s2_20210501_20211031/block_r02_c02.npz",
+      "bbox": [
+        114.41,
+        30.520000000000003,
+        114.47,
+        30.560000000000002
+      ],
+      "shape": [
+        518,
+        668,
+        3
+      ],
+      "row": 2,
+      "col": 2
+    },
+    {
+      "path": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/data/part2_20260507_2x_ne/region_a/imagery_s2_20210501_20211031/block_r02_c03.npz",
+      "bbox": [
+        114.47,
+        30.520000000000003,
+        114.53,
+        30.560000000000002
+      ],
+      "shape": [
+        518,
+        668,
+        3
+      ],
+      "row": 2,
+      "col": 3
+    },
+    {
+      "path": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/data/part2_20260507_2x_ne/region_a/imagery_s2_20210501_20211031/block_r02_c04.npz",
+      "bbox": [
+        114.53,
+        30.520000000000003,
+        114.59,
+        30.560000000000002
+      ],
+      "shape": [
+        518,
+        668,
+        3
+      ],
+      "row": 2,
+      "col": 4
+    },
+    {
+      "path": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/data/part2_20260507_2x_ne/region_a/imagery_s2_20210501_20211031/block_r02_c05.npz",
+      "bbox": [
+        114.59,
+        30.520000000000003,
+        114.65,
+        30.560000000000002
+      ],
+      "shape": [
+        518,
+        668,
+        3
+      ],
+      "row": 2,
+      "col": 5
+    },
+    {
+      "path": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/data/part2_20260507_2x_ne/region_a/imagery_s2_20210501_20211031/block_r02_c06.npz",
+      "bbox": [
+        114.65,
+        30.520000000000003,
+        114.71,
+        30.560000000000002
+      ],
+      "shape": [
+        518,
+        668,
+        3
+      ],
+      "row": 2,
+      "col": 6
+    },
+    {
+      "path": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/data/part2_20260507_2x_ne/region_a/imagery_s2_20210501_20211031/block_r02_c07.npz",
+      "bbox": [
+        114.71,
+        30.520000000000003,
+        114.77,
+        30.560000000000002
+      ],
+      "shape": [
+        518,
+        668,
+        3
+      ],
+      "row": 2,
+      "col": 7
+    },
+    {
+      "path": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/data/part2_20260507_2x_ne/region_a/imagery_s2_20210501_20211031/block_r03_c00.npz",
+      "bbox": [
+        114.29,
+        30.560000000000002,
+        114.35000000000001,
+        30.6
+      ],
+      "shape": [
+        518,
+        668,
+        3
+      ],
+      "row": 3,
+      "col": 0
+    },
+    {
+      "path": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/data/part2_20260507_2x_ne/region_a/imagery_s2_20210501_20211031/block_r03_c01.npz",
+      "bbox": [
+        114.35000000000001,
+        30.560000000000002,
+        114.41,
+        30.6
+      ],
+      "shape": [
+        518,
+        668,
+        3
+      ],
+      "row": 3,
+      "col": 1
+    },
+    {
+      "path": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/data/part2_20260507_2x_ne/region_a/imagery_s2_20210501_20211031/block_r03_c02.npz",
+      "bbox": [
+        114.41,
+        30.560000000000002,
+        114.47,
+        30.6
+      ],
+      "shape": [
+        518,
+        668,
+        3
+      ],
+      "row": 3,
+      "col": 2
+    },
+    {
+      "path": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/data/part2_20260507_2x_ne/region_a/imagery_s2_20210501_20211031/block_r03_c03.npz",
+      "bbox": [
+        114.47,
+        30.560000000000002,
+        114.53,
+        30.6
+      ],
+      "shape": [
+        518,
+        668,
+        3
+      ],
+      "row": 3,
+      "col": 3
+    },
+    {
+      "path": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/data/part2_20260507_2x_ne/region_a/imagery_s2_20210501_20211031/block_r03_c04.npz",
+      "bbox": [
+        114.53,
+        30.560000000000002,
+        114.59,
+        30.6
+      ],
+      "shape": [
+        518,
+        668,
+        3
+      ],
+      "row": 3,
+      "col": 4
+    },
+    {
+      "path": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/data/part2_20260507_2x_ne/region_a/imagery_s2_20210501_20211031/block_r03_c05.npz",
+      "bbox": [
+        114.59,
+        30.560000000000002,
+        114.65,
+        30.6
+      ],
+      "shape": [
+        518,
+        668,
+        3
+      ],
+      "row": 3,
+      "col": 5
+    },
+    {
+      "path": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/data/part2_20260507_2x_ne/region_a/imagery_s2_20210501_20211031/block_r03_c06.npz",
+      "bbox": [
+        114.65,
+        30.560000000000002,
+        114.71,
+        30.6
+      ],
+      "shape": [
+        518,
+        668,
+        3
+      ],
+      "row": 3,
+      "col": 6
+    },
+    {
+      "path": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/data/part2_20260507_2x_ne/region_a/imagery_s2_20210501_20211031/block_r03_c07.npz",
+      "bbox": [
+        114.71,
+        30.560000000000002,
+        114.77,
+        30.6
+      ],
+      "shape": [
+        518,
+        668,
+        3
+      ],
+      "row": 3,
+      "col": 7
+    },
+    {
+      "path": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/data/part2_20260507_2x_ne/region_a/imagery_s2_20210501_20211031/block_r04_c00.npz",
+      "bbox": [
+        114.29,
+        30.6,
+        114.35000000000001,
+        30.64
+      ],
+      "shape": [
+        519,
+        668,
+        3
+      ],
+      "row": 4,
+      "col": 0
+    },
+    {
+      "path": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/data/part2_20260507_2x_ne/region_a/imagery_s2_20210501_20211031/block_r04_c01.npz",
+      "bbox": [
+        114.35000000000001,
+        30.6,
+        114.41,
+        30.64
+      ],
+      "shape": [
+        519,
+        668,
+        3
+      ],
+      "row": 4,
+      "col": 1
+    },
+    {
+      "path": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/data/part2_20260507_2x_ne/region_a/imagery_s2_20210501_20211031/block_r04_c02.npz",
+      "bbox": [
+        114.41,
+        30.6,
+        114.47,
+        30.64
+      ],
+      "shape": [
+        519,
+        668,
+        3
+      ],
+      "row": 4,
+      "col": 2
+    },
+    {
+      "path": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/data/part2_20260507_2x_ne/region_a/imagery_s2_20210501_20211031/block_r04_c03.npz",
+      "bbox": [
+        114.47,
+        30.6,
+        114.53,
+        30.64
+      ],
+      "shape": [
+        519,
+        668,
+        3
+      ],
+      "row": 4,
+      "col": 3
+    },
+    {
+      "path": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/data/part2_20260507_2x_ne/region_a/imagery_s2_20210501_20211031/block_r04_c04.npz",
+      "bbox": [
+        114.53,
+        30.6,
+        114.59,
+        30.64
+      ],
+      "shape": [
+        519,
+        668,
+        3
+      ],
+      "row": 4,
+      "col": 4
+    },
+    {
+      "path": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/data/part2_20260507_2x_ne/region_a/imagery_s2_20210501_20211031/block_r04_c05.npz",
+      "bbox": [
+        114.59,
+        30.6,
+        114.65,
+        30.64
+      ],
+      "shape": [
+        519,
+        668,
+        3
+      ],
+      "row": 4,
+      "col": 5
+    },
+    {
+      "path": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/data/part2_20260507_2x_ne/region_a/imagery_s2_20210501_20211031/block_r04_c06.npz",
+      "bbox": [
+        114.65,
+        30.6,
+        114.71,
+        30.64
+      ],
+      "shape": [
+        519,
+        668,
+        3
+      ],
+      "row": 4,
+      "col": 6
+    },
+    {
+      "path": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/data/part2_20260507_2x_ne/region_a/imagery_s2_20210501_20211031/block_r04_c07.npz",
+      "bbox": [
+        114.71,
+        30.6,
+        114.77,
+        30.64
+      ],
+      "shape": [
+        519,
+        668,
+        3
+      ],
+      "row": 4,
+      "col": 7
+    },
+    {
+      "path": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/data/part2_20260507_2x_ne/region_a/imagery_s2_20210501_20211031/block_r05_c00.npz",
+      "bbox": [
+        114.29,
+        30.64,
+        114.35000000000001,
+        30.68
+      ],
+      "shape": [
+        519,
+        668,
+        3
+      ],
+      "row": 5,
+      "col": 0
+    },
+    {
+      "path": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/data/part2_20260507_2x_ne/region_a/imagery_s2_20210501_20211031/block_r05_c01.npz",
+      "bbox": [
+        114.35000000000001,
+        30.64,
+        114.41,
+        30.68
+      ],
+      "shape": [
+        519,
+        668,
+        3
+      ],
+      "row": 5,
+      "col": 1
+    },
+    {
+      "path": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/data/part2_20260507_2x_ne/region_a/imagery_s2_20210501_20211031/block_r05_c02.npz",
+      "bbox": [
+        114.41,
+        30.64,
+        114.47,
+        30.68
+      ],
+      "shape": [
+        519,
+        668,
+        3
+      ],
+      "row": 5,
+      "col": 2
+    },
+    {
+      "path": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/data/part2_20260507_2x_ne/region_a/imagery_s2_20210501_20211031/block_r05_c03.npz",
+      "bbox": [
+        114.47,
+        30.64,
+        114.53,
+        30.68
+      ],
+      "shape": [
+        519,
+        668,
+        3
+      ],
+      "row": 5,
+      "col": 3
+    },
+    {
+      "path": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/data/part2_20260507_2x_ne/region_a/imagery_s2_20210501_20211031/block_r05_c04.npz",
+      "bbox": [
+        114.53,
+        30.64,
+        114.59,
+        30.68
+      ],
+      "shape": [
+        519,
+        668,
+        3
+      ],
+      "row": 5,
+      "col": 4
+    },
+    {
+      "path": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/data/part2_20260507_2x_ne/region_a/imagery_s2_20210501_20211031/block_r05_c05.npz",
+      "bbox": [
+        114.59,
+        30.64,
+        114.65,
+        30.68
+      ],
+      "shape": [
+        519,
+        668,
+        3
+      ],
+      "row": 5,
+      "col": 5
+    },
+    {
+      "path": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/data/part2_20260507_2x_ne/region_a/imagery_s2_20210501_20211031/block_r05_c06.npz",
+      "bbox": [
+        114.65,
+        30.64,
+        114.71,
+        30.68
+      ],
+      "shape": [
+        519,
+        668,
+        3
+      ],
+      "row": 5,
+      "col": 6
+    },
+    {
+      "path": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/data/part2_20260507_2x_ne/region_a/imagery_s2_20210501_20211031/block_r05_c07.npz",
+      "bbox": [
+        114.71,
+        30.64,
+        114.77,
+        30.68
+      ],
+      "shape": [
+        519,
+        668,
+        3
+      ],
+      "row": 5,
+      "col": 7
+    },
+    {
+      "path": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/data/part2_20260507_2x_ne/region_a/imagery_s2_20210501_20211031/block_r06_c00.npz",
+      "bbox": [
+        114.29,
+        30.68,
+        114.35000000000001,
+        30.720000000000002
+      ],
+      "shape": [
+        518,
+        668,
+        3
+      ],
+      "row": 6,
+      "col": 0
+    },
+    {
+      "path": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/data/part2_20260507_2x_ne/region_a/imagery_s2_20210501_20211031/block_r06_c01.npz",
+      "bbox": [
+        114.35000000000001,
+        30.68,
+        114.41,
+        30.720000000000002
+      ],
+      "shape": [
+        518,
+        668,
+        3
+      ],
+      "row": 6,
+      "col": 1
+    },
+    {
+      "path": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/data/part2_20260507_2x_ne/region_a/imagery_s2_20210501_20211031/block_r06_c02.npz",
+      "bbox": [
+        114.41,
+        30.68,
+        114.47,
+        30.720000000000002
+      ],
+      "shape": [
+        518,
+        668,
+        3
+      ],
+      "row": 6,
+      "col": 2
+    },
+    {
+      "path": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/data/part2_20260507_2x_ne/region_a/imagery_s2_20210501_20211031/block_r06_c03.npz",
+      "bbox": [
+        114.47,
+        30.68,
+        114.53,
+        30.720000000000002
+      ],
+      "shape": [
+        518,
+        668,
+        3
+      ],
+      "row": 6,
+      "col": 3
+    },
+    {
+      "path": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/data/part2_20260507_2x_ne/region_a/imagery_s2_20210501_20211031/block_r06_c04.npz",
+      "bbox": [
+        114.53,
+        30.68,
+        114.59,
+        30.720000000000002
+      ],
+      "shape": [
+        518,
+        668,
+        3
+      ],
+      "row": 6,
+      "col": 4
+    },
+    {
+      "path": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/data/part2_20260507_2x_ne/region_a/imagery_s2_20210501_20211031/block_r06_c05.npz",
+      "bbox": [
+        114.59,
+        30.68,
+        114.65,
+        30.720000000000002
+      ],
+      "shape": [
+        518,
+        668,
+        3
+      ],
+      "row": 6,
+      "col": 5
+    },
+    {
+      "path": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/data/part2_20260507_2x_ne/region_a/imagery_s2_20210501_20211031/block_r06_c06.npz",
+      "bbox": [
+        114.65,
+        30.68,
+        114.71,
+        30.720000000000002
+      ],
+      "shape": [
+        518,
+        668,
+        3
+      ],
+      "row": 6,
+      "col": 6
+    },
+    {
+      "path": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/data/part2_20260507_2x_ne/region_a/imagery_s2_20210501_20211031/block_r06_c07.npz",
+      "bbox": [
+        114.71,
+        30.68,
+        114.77,
+        30.720000000000002
+      ],
+      "shape": [
+        518,
+        668,
+        3
+      ],
+      "row": 6,
+      "col": 7
+    },
+    {
+      "path": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/data/part2_20260507_2x_ne/region_a/imagery_s2_20210501_20211031/block_r07_c00.npz",
+      "bbox": [
+        114.29,
+        30.720000000000002,
+        114.35000000000001,
+        30.76
+      ],
+      "shape": [
+        519,
+        668,
+        3
+      ],
+      "row": 7,
+      "col": 0
+    },
+    {
+      "path": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/data/part2_20260507_2x_ne/region_a/imagery_s2_20210501_20211031/block_r07_c01.npz",
+      "bbox": [
+        114.35000000000001,
+        30.720000000000002,
+        114.41,
+        30.76
+      ],
+      "shape": [
+        519,
+        668,
+        3
+      ],
+      "row": 7,
+      "col": 1
+    },
+    {
+      "path": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/data/part2_20260507_2x_ne/region_a/imagery_s2_20210501_20211031/block_r07_c02.npz",
+      "bbox": [
+        114.41,
+        30.720000000000002,
+        114.47,
+        30.76
+      ],
+      "shape": [
+        519,
+        668,
+        3
+      ],
+      "row": 7,
+      "col": 2
+    },
+    {
+      "path": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/data/part2_20260507_2x_ne/region_a/imagery_s2_20210501_20211031/block_r07_c03.npz",
+      "bbox": [
+        114.47,
+        30.720000000000002,
+        114.53,
+        30.76
+      ],
+      "shape": [
+        519,
+        668,
+        3
+      ],
+      "row": 7,
+      "col": 3
+    },
+    {
+      "path": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/data/part2_20260507_2x_ne/region_a/imagery_s2_20210501_20211031/block_r07_c04.npz",
+      "bbox": [
+        114.53,
+        30.720000000000002,
+        114.59,
+        30.76
+      ],
+      "shape": [
+        519,
+        668,
+        3
+      ],
+      "row": 7,
+      "col": 4
+    },
+    {
+      "path": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/data/part2_20260507_2x_ne/region_a/imagery_s2_20210501_20211031/block_r07_c05.npz",
+      "bbox": [
+        114.59,
+        30.720000000000002,
+        114.65,
+        30.76
+      ],
+      "shape": [
+        519,
+        668,
+        3
+      ],
+      "row": 7,
+      "col": 5
+    },
+    {
+      "path": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/data/part2_20260507_2x_ne/region_a/imagery_s2_20210501_20211031/block_r07_c06.npz",
+      "bbox": [
+        114.65,
+        30.720000000000002,
+        114.71,
+        30.76
+      ],
+      "shape": [
+        519,
+        668,
+        3
+      ],
+      "row": 7,
+      "col": 6
+    },
+    {
+      "path": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/data/part2_20260507_2x_ne/region_a/imagery_s2_20210501_20211031/block_r07_c07.npz",
+      "bbox": [
+        114.71,
+        30.720000000000002,
+        114.77,
+        30.76
+      ],
+      "shape": [
+        519,
+        668,
+        3
+      ],
+      "row": 7,
+      "col": 7
+    }
+  ],
+  "notes": [
+    "RGB rendering uses the same per-band 2-98 percentile robust stretch as the public19 reference figure.",
+    "The requested 2x NE ROI is fully covered by downloaded Sentinel-2 blocks."
+  ]
+}

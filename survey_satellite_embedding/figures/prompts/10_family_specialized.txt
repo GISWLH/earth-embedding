@@ -1,0 +1,18 @@
+Create a publication-quality scientific architecture diagram for the model family "Domain-Specialized Satellite Embedding Models".
+
+Style requirements:
+- wax crayon hand-drawn style
+- scientific sketch on white paper
+- same palette and drawing language as the other family figures
+- landscape 16:9
+- English labels only
+
+Content:
+- left: domain-targeted sensor and data streams such as agriculture time series, forest monitoring stacks, climate or all-sky observations
+- center: specialized encoder with domain priors or task-aware design choices
+- right: domain-focused embedding outputs and downstream tasks
+- split the right side into example task areas: agriculture, forestry, climate/society, coarse all-sky monitoring
+- representative model labels: AgriFM, FoMo, THOR, SatVision
+- annotation bubble: "strong inductive bias, narrower scope, high task relevance"
+
+The result should clearly communicate how specialized embedding models differ from fully generalist EO encoders.

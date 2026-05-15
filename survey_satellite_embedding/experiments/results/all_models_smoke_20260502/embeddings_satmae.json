@@ -1,0 +1,12 @@
+{
+  "model": "satmae",
+  "split": "region_a",
+  "status": "ok",
+  "type": "onthefly",
+  "elapsed_s": 37.962,
+  "per_item_s": 2.373,
+  "peak_gpu_mb": 3877.21,
+  "dim": 1024,
+  "n_items": 16,
+  "errors": []
+}

@@ -1,0 +1,2 @@
+model,status,elapsed_s,per_tile_s,peak_gpu_mb,dim,errors,n_tiles_total,n_tiles_valid,cls_macro_f1,cls_balanced_acc,built_mae,built_rmse,built_spearman,green_mae,green_rmse,green_spearman,water_mae,water_rmse,water_spearman
+gse,ok,35.628,2.375,0.0,64,[],15,12,1.0,1.0,0.05145980355640253,0.060941774398088455,0.8495610993501712,0.08989267796278,0.10411809136470158,0.6,0.29715517659982044,0.3477212091286977,0.31622776601683794

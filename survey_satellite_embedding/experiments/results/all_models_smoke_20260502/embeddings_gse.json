@@ -1,0 +1,12 @@
+{
+  "model": "gse",
+  "split": "region_a",
+  "status": "ok",
+  "type": "precomputed",
+  "elapsed_s": 23.07,
+  "per_item_s": 1.442,
+  "peak_gpu_mb": 1570.94,
+  "dim": 64,
+  "n_items": 16,
+  "errors": []
+}

@@ -1,0 +1,36 @@
+{
+  "data_dir": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/data/part2_20260502_full",
+  "smoke_dir": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/all_models_smoke_20260502",
+  "generated_files": {
+    "region_overview": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/all_models_smoke_20260502/figures/part2_region_overview.png",
+    "embedding_overview": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/all_models_smoke_20260502/figures/part2_embedding_overview_public19.png"
+  },
+  "public_model_count": 19,
+  "public_models": [
+    "gse",
+    "remoteclip",
+    "copernicus",
+    "tessera",
+    "satmae",
+    "satmaepp",
+    "satmaepp_s2_10b",
+    "scalemae",
+    "anysat",
+    "galileo",
+    "wildsat",
+    "prithvi",
+    "terrafm",
+    "terramind",
+    "dofa",
+    "fomo",
+    "thor",
+    "agrifm",
+    "satvision"
+  ],
+  "private_models_found": [],
+  "notes": [
+    "Region A is rendered from the downloaded Sentinel-2 block mosaic.",
+    "Region B is rendered from the prepared coarse manifest because current prep is manifest-only.",
+    "No verified private-model embedding outputs were found in repository result folders."
+  ]
+}

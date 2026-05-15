@@ -1,0 +1,12 @@
+{
+  "model": "galileo",
+  "split": "region_a",
+  "status": "ok",
+  "type": "on_the_fly",
+  "elapsed_s": 59.969,
+  "per_item_s": 3.748,
+  "peak_gpu_mb": 1836.64,
+  "dim": 128,
+  "n_items": 16,
+  "errors": []
+}

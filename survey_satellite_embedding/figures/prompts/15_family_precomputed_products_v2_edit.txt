@@ -1,0 +1,29 @@
+Use the first input image as the style reference and the second input image as the content reference.
+
+Target:
+Redraw the "Family I: Precomputed embedding products" figure so it matches the clean scientific sketch style of the masked autoencoder family figure.
+
+Style direction:
+- wax crayon hand-drawn scientific sketch
+- same calm white paper background and restrained palette as the masked autoencoder figure
+- same left-to-right composition language
+- simple, elegant, minimal, not busy
+- English labels only
+- only 4 or 5 major modules
+- generous whitespace
+- no dense workflow icons, no crowded catalog graphics, no many tiny callouts
+
+Content to show clearly:
+- left: Earth observation archive as a stack of satellite tiles or yearly images
+- next: one explicit encoder / feature extractor block, labeled CNN / ViT encoder or feature encoder
+- next: annual or static embedding map product, shown as a spatial feature grid or embedding raster with small matrix-like cells
+- next: product store / catalog block, simple and compact
+- right: ROI crop or pixel lookup yielding an embedding vector for downstream tasks
+
+Important structural cues:
+- make it obvious that encoding is done offline once, then reused
+- add one small note bubble such as "offline encoding, online query"
+- include a small embedding vector or token strip on the right
+- the figure must feel like an architecture diagram, not an operational infographic
+
+Keep the title concise and visually similar to the masked autoencoder figure.

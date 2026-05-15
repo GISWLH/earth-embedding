@@ -1,0 +1,27 @@
+Create a publication-quality academic matrix figure titled "Resolution-Modality Matrix of Satellite Embedding Models".
+
+Requirements:
+- flat vector infographic
+- white background
+- landscape 16:9
+- English labels only
+- journal-ready style
+- crisp grid and labels
+- colors should be restrained and scientific: blue, green, amber, gray
+
+Content:
+- x-axis: spatial scale / nominal resolution
+  - subregions: coarse (>500 m), medium (30 m), fine (10 m), variable / multiscale
+- y-axis: modality family
+  - optical RGB
+  - multispectral optical
+  - optical + SAR
+  - multimodal / metadata-aware
+  - vision-language
+  - precomputed product layers
+- place model names into cells as clean tags
+- examples should include: RemoteCLIP, SatMAE, SatMAE++, ScaleMAE, Prithvi, AnySat, Galileo, WildSAT, DOFA, TerraFM, TerraMind, FoMo, THOR, AgriFM, SatVision, Copernicus, GSE, TESSERA
+- use small arrows or side note labels for models that span multiple modalities or multiple scales
+- include a short caption-like footer phrase inside the figure: "Models differ jointly by sensing modality, temporal semantics, and deployment form."
+
+The result must resemble a strong survey-paper figure rather than a decorative concept art image.

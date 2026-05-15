@@ -1,0 +1,30 @@
+{
+  "dense_dir": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/wuhan_east_lake_2x_ne_public19_model_map/gse_dense_blocks",
+  "model": "gse",
+  "output": "grid",
+  "temporal": {
+    "mode": "year",
+    "year": 2021
+  },
+  "n_blocks": 64,
+  "n_ok": 1,
+  "n_failed": 0,
+  "n_done": 1,
+  "complete": false,
+  "elapsed_s": 132.64,
+  "blocks": [
+    {
+      "block_id": "block_r00_c00",
+      "status": "ok",
+      "source": "download",
+      "shape": [
+        64,
+        517,
+        668
+      ],
+      "elapsed_s": 129.276,
+      "output_npz": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/wuhan_east_lake_2x_ne_public19_model_map/gse_dense_blocks/block_r00_c00.npz",
+      "output_json": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/wuhan_east_lake_2x_ne_public19_model_map/gse_dense_blocks/block_r00_c00.json"
+    }
+  ]
+}

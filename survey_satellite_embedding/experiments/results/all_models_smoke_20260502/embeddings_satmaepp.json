@@ -1,0 +1,12 @@
+{
+  "model": "satmaepp",
+  "split": "region_a",
+  "status": "ok",
+  "type": "onthefly",
+  "elapsed_s": 39.306,
+  "per_item_s": 2.457,
+  "peak_gpu_mb": 5135.84,
+  "dim": 1024,
+  "n_items": 16,
+  "errors": []
+}

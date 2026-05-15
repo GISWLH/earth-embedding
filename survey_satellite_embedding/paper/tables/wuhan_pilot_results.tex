@@ -1,0 +1,18 @@
+\begin{table*}[t]
+\centering
+\caption{First executed Wuhan pilot benchmark on a balanced 15-tile subset (5 water, 5 green, 5 built). The pilot uses 500\,m square buffers, frozen pooled embeddings, 3-class dominant land-cover classification, and tile-level fraction regression.}
+\label{tab:wuhan-pilot-results}
+\small
+\begin{tabular}{lcccccc}
+\toprule
+Model & Status & Macro F1 & Built RMSE & Water RMSE & Time (s) & Peak GPU MB \\
+\midrule
+GSE & pass & 1.000 & 0.061 & 0.348 & 35.6 & 0.0 \\
+SatMAE++ S2-10B & pass & 1.000 & 0.083 & 0.264 & 36.9 & 1353.8 \\
+Galileo & pass & 1.000 & 0.161 & 0.305 & 87.6 & 277.3 \\
+AgriFM & pass & 1.000 & 0.238 & 0.836 & 88.7 & 591.1 \\
+RemoteCLIP & pass & 0.852 & 0.187 & 0.300 & 44.6 & 602.6 \\
+Copernicus & fail & --- & --- & --- & --- & --- \\
+\bottomrule
+\end{tabular}
+\end{table*}

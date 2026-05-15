@@ -1,0 +1,72 @@
+{
+  "model": "satmaepp",
+  "status": "ok",
+  "reason": null,
+  "output_json": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/part2_model_map_figure/satmaepp_2x.json",
+  "output_npz": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/part2_model_map_figure/satmaepp_2x.npz",
+  "output_png": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/part2_model_map_figure/satmaepp_2x.png",
+  "block_dir": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/part2_model_map_figure/blocks_2x/satmaepp",
+  "n_blocks": 4,
+  "temporal": "range",
+  "shape": [
+    4,
+    1024,
+    14,
+    14
+  ],
+  "grid_hw": [
+    28,
+    28
+  ],
+  "blocks": [
+    {
+      "block_id": "block_r01_c01",
+      "status": "ok",
+      "source": "run",
+      "shape": [
+        1024,
+        14,
+        14
+      ],
+      "output_npz": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/part2_model_map_figure/blocks_2x/satmaepp/block_r01_c01.npz",
+      "output_json": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/part2_model_map_figure/blocks_2x/satmaepp/block_r01_c01.json"
+    },
+    {
+      "block_id": "block_r01_c02",
+      "status": "ok",
+      "source": "run",
+      "shape": [
+        1024,
+        14,
+        14
+      ],
+      "output_npz": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/part2_model_map_figure/blocks_2x/satmaepp/block_r01_c02.npz",
+      "output_json": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/part2_model_map_figure/blocks_2x/satmaepp/block_r01_c02.json"
+    },
+    {
+      "block_id": "block_r02_c01",
+      "status": "ok",
+      "source": "run",
+      "shape": [
+        1024,
+        14,
+        14
+      ],
+      "output_npz": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/part2_model_map_figure/blocks_2x/satmaepp/block_r02_c01.npz",
+      "output_json": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/part2_model_map_figure/blocks_2x/satmaepp/block_r02_c01.json"
+    },
+    {
+      "block_id": "block_r02_c02",
+      "status": "ok",
+      "source": "run",
+      "shape": [
+        1024,
+        14,
+        14
+      ],
+      "output_npz": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/part2_model_map_figure/blocks_2x/satmaepp/block_r02_c02.npz",
+      "output_json": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/part2_model_map_figure/blocks_2x/satmaepp/block_r02_c02.json"
+    }
+  ],
+  "elapsed_s": 56.537
+}

@@ -1,0 +1,62 @@
+\documentclass[11pt]{article}
+
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{textcomp}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{tabularx}
+\usepackage{pdflscape}
+\usepackage{fancyvrb}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage[numbers,sort&compress]{natbib}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue!55!black,
+  citecolor=blue!55!black,
+  urlcolor=blue!55!black
+}
+
+\graphicspath{{../figures/generated/}{../figures/}}
+
+\newcommand{\modelcount}{19}
+\DefineVerbatimEnvironment{pseudocode}{Verbatim}{
+  fontsize=\scriptsize,
+  frame=single,
+  framesep=6pt,
+  rulecolor=\color{black!25}
+}
+
+\title{Satellite Embedding: A Review}
+\author{Draft Survey Workspace}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+\input{sections/00_abstract}
+\end{abstract}
+
+\input{sections/01_introduction}
+\input{sections/02_concepts_taxonomy}
+\input{sections/03_model_landscape}
+\input{sections/04_applications}
+\input{sections/05_small_area_protocol}
+\input{sections/06_system}
+\input{sections/07_discussion}
+\input{sections/08_conclusion}
+\appendix
+\input{sections/09_appendix_inventory}
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\end{document}

@@ -1,0 +1,141 @@
+# Workflows
+
+This page is a recipe collection for common tasks after you already know the basic APIs.
+Use [Quickstart](quickstart.md) for the first-run path and [API](api.md) for exact signatures.
+
+---
+
+## One ROI Prototype
+
+Use `get_embedding(...)` when you want one ROI embedding now and want the smallest possible call.
+
+```python
+from rs_embed import FetchSpec, PointBuffer, TemporalSpec, OutputSpec, get_embedding
+
+emb = get_embedding(
+    "remoteclip",
+    spatial=PointBuffer(lon=121.5, lat=31.2, buffer_m=2048),
+    temporal=TemporalSpec.range("2022-06-01", "2022-09-01"),
+    output=OutputSpec.pooled(),
+    fetch=FetchSpec(scale_m=10),
+    backend="auto",
+    device="auto",
+)
+```
+
+This is the right path when you are prototyping, inspecting metadata, debugging one location, or applying a quick sampling override through `fetch=FetchSpec(...)`.
+
+---
+
+## Many ROIs, One Model
+
+Use `get_embeddings_batch(...)` when the model is fixed and you have multiple ROIs.
+
+```python
+from rs_embed import PointBuffer, TemporalSpec, OutputSpec, get_embeddings_batch
+
+spatials = [
+    PointBuffer(121.5, 31.2, 2048),
+    PointBuffer(120.5, 30.2, 2048),
+]
+
+embs = get_embeddings_batch(
+    "remoteclip",
+    spatials=spatials,
+    temporal=TemporalSpec.range("2022-06-01", "2022-09-01"),
+    output=OutputSpec.pooled(),
+    backend="auto",
+)
+```
+
+This path is best when the model is fixed, the ROI list is larger than one point, and you want simpler code than a manual loop while still benefiting from any embedder-level batch inference.
+
+---
+
+## Build a Dataset Export
+
+Use `export_batch(...)` for reproducible data pipelines and downstream experiments.
+For new code, prefer `target=ExportTarget(...)` plus `config=ExportConfig(...)`.
+
+```python
+from rs_embed import FetchSpec, export_batch, ExportConfig, ExportTarget, PointBuffer, TemporalSpec
+
+spatials = [
+    PointBuffer(121.5, 31.2, 2048),
+    PointBuffer(120.5, 30.2, 2048),
+]
+
+export_batch(
+    spatials=spatials,
+    temporal=TemporalSpec.range("2022-06-01", "2022-09-01"),
+    models=["remoteclip", "prithvi"],
+    target=ExportTarget.per_item("exports", names=["p1", "p2"]),
+    fetch=FetchSpec(scale_m=10),
+    backend="auto",
+    config=ExportConfig(save_inputs=True, save_embeddings=True, resume=True),
+)
+```
+
+Stable ROI names make exports and manifests easier to track. Keep one temporal policy across all items for fair comparisons, and mix multiple models in one job when you are building benchmark datasets. `per_item` keeps each ROI grouped together, which helps with inspection and resume. Move runtime knobs into `ExportConfig(...)` rather than adding more top-level keywords, and use one shared `FetchSpec` when you want to normalize resolution or compositing across models.
+
+---
+
+## Inspect Inputs Before Modeling
+
+Use patch inspection when outputs look suspicious (clouds, wrong band order, bad dynamic range, etc.).
+
+### Preferred: provider-agnostic
+
+```python
+from rs_embed import inspect_provider_patch, PointBuffer, TemporalSpec, SensorSpec
+
+report = inspect_provider_patch(
+    spatial=PointBuffer(121.5, 31.2, 2048),
+    temporal=TemporalSpec.range("2022-06-01", "2022-09-01"),
+    sensor=SensorSpec(
+        collection="COPERNICUS/S2_SR_HARMONIZED",
+        bands=("B4", "B3", "B2"),
+        scale_m=10,
+    ),
+    backend="gee",
+)
+```
+
+### Backward-compatible alias
+
+`inspect_gee_patch(...)` calls the same underlying inspection flow for GEE paths.
+
+---
+
+## Large ROI with Tiling
+
+If you request large ROIs for on-the-fly models, try API-side tiling:
+
+```python
+from rs_embed import get_embedding, PointBuffer, TemporalSpec, OutputSpec
+
+emb = get_embedding(
+    "remoteclip",
+    spatial=PointBuffer(121.5, 31.2, 8000),
+    temporal=TemporalSpec.range("2022-06-01", "2022-09-01"),
+    output=OutputSpec.grid(),
+    backend="auto",
+    input_prep="tile",
+)
+```
+
+Use `input_prep="tile"` when `OutputSpec.grid()` matters, when a large-ROI resize would lose too much detail, and when you accept extra runtime cost in exchange for better spatial structure preservation.
+
+---
+
+## Fair Cross-Model Comparison
+
+When benchmarking models, keep the ROI list, temporal window, and compositing policy fixed, start with `OutputSpec.pooled()`, and prefer each model's default normalization unless you are deliberately replicating an original training setup.
+
+Then use [Supported Models](models.md) to review model-specific preprocessing and required side inputs.
+
+---
+
+## See Also
+
+See [Quickstart](quickstart.md) for first-run setup, [Concepts](concepts.md) for the semantic meaning of temporal, output, backend, and sensor, [Models](models.md) for the capability matrix and detail links, and [API](api.md) for exact signatures and parameter docs.

@@ -1,0 +1,26 @@
+[
+  {
+    "model":"remoteclip",
+    "status":"ok",
+    "elapsed_s":44.591,
+    "per_tile_s":2.973,
+    "peak_gpu_mb":602.6,
+    "dim":512,
+    "errors":[
+
+    ],
+    "n_tiles_total":15,
+    "n_tiles_valid":15,
+    "cls_macro_f1":0.8518518519,
+    "cls_balanced_acc":0.8888888889,
+    "built_mae":0.1546053688,
+    "built_rmse":0.1869819462,
+    "built_spearman":0.9582264782,
+    "green_mae":0.1927758654,
+    "green_rmse":0.2604873131,
+    "green_spearman":0.8666666667,
+    "water_mae":0.2431931049,
+    "water_rmse":0.2999325693,
+    "water_spearman":0.6668859289
+  }
+]

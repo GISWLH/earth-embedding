@@ -1,0 +1,46 @@
+{
+  "model": "tessera",
+  "status": "ok",
+  "reason": "No local tessera tiles were pre-cached for the Wuhan ROI.",
+  "output_json": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/part2_model_map_figure/tessera.json",
+  "output_npz": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/part2_model_map_figure/tessera.npz",
+  "output_png": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/part2_model_map_figure/tessera.png",
+  "temporal": "year",
+  "spatial_type": "BBox",
+  "shape": [
+    128,
+    431,
+    587
+  ],
+  "grid_hw": [
+    431,
+    587
+  ],
+  "meta": {
+    "model": "tessera",
+    "type": "precomputed",
+    "backend": "auto",
+    "source": "geotessera.GeoTessera",
+    "sensor": "None",
+    "temporal": "{'mode': 'year', 'year': 2024, 'start': '2024-01-01', 'end': '2025-01-01'}",
+    "image_size": "None",
+    "cache_dir": "/home/lhwang/Desktop/test/rs-embed/research_outputs/model_cache/geotessera_cache",
+    "bbox_4326": "(114.35000000000001, 30.48, 114.41, 30.520000000000003)",
+    "preferred_year": "2024",
+    "chw_shape": "(128, 431, 587)",
+    "input_crs": "EPSG:4326",
+    "output_crs": "PROJCS[\"WGS 84 / UTM zone 50N\",GEOGCS[\"WGS 84\",DATUM[\"World Geodetic System 1984\",SPHEROID[\"WGS 84\",6378137,298.257223563]],PRIMEM[\"Greenwich\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Transverse_Mercator\"],PARAMETER[\"latitude_of_origin\",0],PARAMETER[\"central_meridian\",117],PARAMETER[\"scale_factor\",0.9996],PARAMETER[\"false_easting\",500000],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+    "projection_mode": "product_native_fixed",
+    "projection_note": "Tessera returns embeddings on the product-native tile CRS (PROJCS[\"WGS 84 / UTM zone 50N\",GEOGCS[\"WGS 84\",DATUM[\"World Geodetic System 1984\",SPHEROID[\"WGS 84\",6378137,298.257223563]],PRIMEM[\"Greenwich\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Transverse_Mercator\"],PARAMETER[\"latitude_of_origin\",0],PARAMETER[\"central_meridian\",117],PARAMETER[\"scale_factor\",0.9996],PARAMETER[\"false_easting\",500000],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]), which may differ from the common provider-backed default grid in EPSG:3857. Input spatial specs still use EPSG:4326.",
+    "tile_crs": "PROJCS[\"WGS 84 / UTM zone 50N\",GEOGCS[\"WGS 84\",DATUM[\"World Geodetic System 1984\",SPHEROID[\"WGS 84\",6378137,298.257223563]],PRIMEM[\"Greenwich\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Transverse_Mercator\"],PARAMETER[\"latitude_of_origin\",0],PARAMETER[\"central_meridian\",117],PARAMETER[\"scale_factor\",0.9996],PARAMETER[\"false_easting\",500000],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+    "mosaic_hw": "(2262, 1972)",
+    "crop_px_window": "(501, 911, 1088, 1342)",
+    "crop_hw": "(431, 587)",
+    "global_transform": "| 10.00, 0.00, 240594.75|\n| 0.00,-10.00, 3388379.64|\n| 0.00, 0.00, 1.00|",
+    "grid_orientation_policy": "north_up",
+    "grid_native_y_axis_direction": "north_to_south",
+    "grid_native_orientation_reason": "transform.e=-10 (<0)",
+    "grid_orientation_applied": "False",
+    "y_axis_direction": "north_to_south"
+  }
+}

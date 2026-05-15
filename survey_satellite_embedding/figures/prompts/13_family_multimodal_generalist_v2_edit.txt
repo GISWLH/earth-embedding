@@ -1,0 +1,24 @@
+Use the first two input images as style references and use the last input image as a content reference.
+
+Target:
+Redraw the "Multimodal generalist EO encoders" family figure as a V2 version.
+
+Style direction:
+- same wax crayon scientific sketch style as the masked autoencoder and vision-language V2 figures
+- same sparse composition, same calm white background, same restrained palette
+- poetic but minimal
+- 5 modules maximum
+- no crowded modality explosion
+- very clean and survey-paper friendly
+
+Content to show:
+- a compact group of multimodal inputs: optical, SAR, temporal stack, metadata
+- modality tokenization / routing
+- shared multimodal fusion backbone
+- pooled and dense embedding outputs
+- broad downstream transfer
+
+Important:
+- simplify the current multimodal figure heavily
+- keep only the essential differences from the other families
+- visually match the style of the first two reference images

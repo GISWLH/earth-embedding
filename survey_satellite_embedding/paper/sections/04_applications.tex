@@ -1,0 +1,27 @@
+\section{Data Resources and Application Space}
+
+Existing satellite embeddings are already used across a wide range of downstream settings, but the literature often mixes tasks with very different supervision, output granularity, and deployment constraints. A remote sensing review usually benefits from connecting application space back to the data resources and sensor regimes that produced the embeddings in the first place.
+
+\subsection{Pretraining data and sensor regimes}
+
+Current models are built on a few recurring data regimes: medium-resolution optical archives such as Sentinel-2 and Landsat; optical-SAR combinations centered on Sentinel-1 and Sentinel-2; multimodal stacks that combine imagery with metadata, elevation, weather, or labels; and precomputed annual product layers. The choice of data regime strongly shapes what type of embedding can be learned, which downstream tasks transfer well, and how much temporal or cross-sensor flexibility remains at deployment time.
+
+\subsection{Classification and mapping}
+
+The most common use is still transfer to classification-style mapping tasks, including land cover, crop type, forest condition, and other regional labels. Here pooled embeddings are often sufficient, and simple linear probes already reveal large differences in representation quality. This is the mandatory baseline in the proposed benchmark because it is shared across all model families.
+
+\subsection{Segmentation and dense prediction}
+
+Dense token grids or spatially structured product layers support water extraction, land-cover segmentation, flood extent mapping, and similar pixel-level tasks. Not all models expose dense outputs in the same form, which makes segmentation a useful but secondary benchmark axis. It reveals whether spatial structure is preserved in the representation rather than collapsed too early by pooling.
+
+\subsection{Regression and continuous estimation}
+
+Many practical Earth observation tasks are continuous rather than categorical: canopy height, biomass, built-up fraction, crop yield proxies, or environmental indices. Regression therefore provides a cleaner view of whether an embedding preserves smoothly varying physical or semantic structure. It is also compatible with both precomputed annual layers and on-the-fly encoders.
+
+\subsection{Retrieval and multimodal interaction}
+
+Vision-language or broader multimodal representations enable text-to-region retrieval, cross-modal search, and weakly supervised triage. These use cases are particularly relevant for systems such as RemoteCLIP and WildSAT, but they also motivate future extensions for metadata-aware or instruction-conditioned EO representation learning.
+
+\subsection{Operational considerations}
+
+Application fit depends on more than headline accuracy. Practitioners must also account for native spatial scale, time coverage, whether embeddings are analysis-ready products, and whether dense outputs can be produced under realistic memory budgets. This is one reason the benchmark in this repository records runtime and peak memory alongside downstream metrics.

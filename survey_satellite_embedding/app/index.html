@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Satellite Embedding Explorer</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <script
+      defer
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+    <script defer src="./app.js"></script>
+  </head>
+  <body>
+    <div class="shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Survey Prototype</p>
+          <h1>Satellite Embedding Explorer</h1>
+        </div>
+        <p class="topbar-note">
+          Browse the model dossier, inspect a pilot ROI, and prepare benchmark runs from one place.
+        </p>
+      </header>
+
+      <div class="workspace">
+        <aside class="sidebar">
+          <section class="panel controls-panel">
+            <div class="panel-heading">
+              <h2>Controls</h2>
+              <p>Static prototype backed by the local dossier JSON.</p>
+            </div>
+
+            <label class="field">
+              <span>Model</span>
+              <select id="modelSelect"></select>
+            </label>
+
+            <label class="field">
+              <span>Task lens</span>
+              <select id="taskSelect">
+                <option value="classification">Tile classification</option>
+                <option value="segmentation">Water segmentation</option>
+                <option value="regression">Fraction regression</option>
+                <option value="retrieval">Text-region retrieval</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span>ROI width <strong id="roiSizeValue">10 km</strong></span>
+              <input id="roiSize" type="range" min="4" max="40" step="2" value="10" />
+            </label>
+
+            <div class="button-row">
+              <button id="focusPilot" type="button">Load pilot ROI</button>
+              <button id="resetView" type="button" class="secondary">Reset view</button>
+            </div>
+          </section>
+
+          <section class="panel">
+            <div class="panel-heading">
+              <h2>Repository Snapshot</h2>
+              <p id="inventorySummary">Loading dossier...</p>
+            </div>
+          </section>
+
+          <section class="panel">
+            <div class="panel-heading">
+              <h2>Model Card</h2>
+              <p>Directly populated from <code>model_dossier.json</code>.</p>
+            </div>
+            <div id="modelSummary" class="stack"></div>
+          </section>
+
+          <section class="panel">
+            <div class="panel-heading">
+              <h2>Taxonomy Labels</h2>
+              <p>Review-facing tags for paper tables and filters.</p>
+            </div>
+            <div id="taxonomyChips" class="chips"></div>
+          </section>
+        </aside>
+
+        <main class="map-column">
+          <section class="map-panel">
+            <div id="map"></div>
+            <div id="mapStatus" class="map-status">
+              Click on the map to move the benchmark extraction window.
+            </div>
+          </section>
+
+          <section class="info-grid">
+            <article class="panel">
+              <div class="panel-heading">
+                <h2>Pilot ROI</h2>
+                <p>Wuhan East Lake and Tangxun Lake corridor.</p>
+              </div>
+              <div id="roiSummary" class="stack"></div>
+            </article>
+
+            <article class="panel">
+              <div class="panel-heading">
+                <h2>Benchmark Readout</h2>
+                <p>Current runtime metadata from the existing GPU benchmark.</p>
+              </div>
+              <div id="benchmarkSummary" class="stack"></div>
+            </article>
+
+            <article class="panel">
+              <div class="panel-heading">
+                <h2>Task Guidance</h2>
+                <p>How to interpret the selected model for the chosen task lens.</p>
+              </div>
+              <div id="taskGuidance" class="stack"></div>
+            </article>
+
+            <article class="panel">
+              <div class="panel-heading">
+                <h2>API Preview</h2>
+                <p>Draft request payload for a future service endpoint.</p>
+              </div>
+              <pre id="apiPreview" class="code-block"></pre>
+            </article>
+          </section>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

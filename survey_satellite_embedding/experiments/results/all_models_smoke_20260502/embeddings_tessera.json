@@ -1,0 +1,15 @@
+{
+  "model": "tessera",
+  "split": "region_b",
+  "status": "ok",
+  "type": "precomputed",
+  "elapsed_s": 5.048,
+  "per_item_s": 5.048,
+  "peak_gpu_mb": 0.0,
+  "dim": 128,
+  "n_items": 1,
+  "errors": [],
+  "notes": [
+    "direct geotessera cache pooling workaround"
+  ]
+}

@@ -1,0 +1,25 @@
+Use the first two input images as style references.
+
+Target:
+Redraw the "Masked autoencoder and pure vision encoders" family figure as a V2 version.
+
+Style direction:
+- keep the sparse, balanced, left-to-right composition of the masked autoencoder figure
+- borrow the poetic conceptual elements from the vision-language figure
+- wax crayon hand-drawn scientific sketch
+- white paper background
+- generous whitespace
+- English labels only
+- very simple and clean
+- 4 to 5 major modules only
+- no dense callouts, no clutter, no extra decorative icons
+- the whole figure should feel calm, elegant, and consistent with a research survey
+
+Content to show:
+- satellite tile input
+- masking operation
+- transformer encoder
+- lightweight decoder / reconstruction branch
+- reusable embedding output for downstream tasks
+
+Please simplify the current figure and make it more visually unified and refined.

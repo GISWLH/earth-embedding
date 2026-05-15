@@ -1,0 +1,41 @@
+{
+  "coverage": [
+    114.35000000000001,
+    30.48,
+    114.47,
+    30.560000000000002
+  ],
+  "n_tiles": 567,
+  "classes": [
+    "built",
+    "vegetation",
+    "cropland",
+    "water"
+  ],
+  "class_counts": {
+    "built": 241,
+    "vegetation": 200,
+    "water": 121,
+    "cropland": 5
+  },
+  "split_counts": {
+    "train": {
+      "built": 145,
+      "vegetation": 120,
+      "water": 73,
+      "cropland": 3
+    },
+    "val": {
+      "built": 48,
+      "vegetation": 40,
+      "water": 24,
+      "cropland": 1
+    },
+    "test": {
+      "built": 48,
+      "vegetation": 40,
+      "water": 24,
+      "cropland": 1
+    }
+  }
+}

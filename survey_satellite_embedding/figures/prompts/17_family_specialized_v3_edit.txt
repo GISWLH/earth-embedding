@@ -1,0 +1,27 @@
+Use the first input image as the style reference and the second input image as the content reference.
+
+Target:
+Redraw the "Family V: Domain-specialized embedding models" figure so it has the same visual language as the masked autoencoder family figure and a more explicit architecture.
+
+Style direction:
+- wax crayon hand-drawn scientific sketch
+- white paper background
+- same sparse, calm, elegant composition as the masked autoencoder figure
+- English labels only
+- minimal and consistent across the family figure set
+- avoid conceptual icons that replace architecture
+
+Content to show clearly:
+- left: domain-specific inputs such as agriculture time series, forestry stack, climate or all-sky observations
+- next: preprocessing / temporal packaging block
+- next: specialized encoder block with explicit architecture cues such as convolution windows, temporal tokens, or transformer blocks
+- next: domain embedding output shown as token strip or feature vector
+- right: focused task heads for agriculture, forestry, and climate
+
+Important structural cues:
+- the specialized encoder should visibly contain matrix patches, conv windows, or stacked temporal tokens
+- keep the figure simple, but make the model structure readable at a glance
+- include one small note bubble such as "strong inductive bias"
+- do not make this a general workflow poster; it must read as an architecture sketch
+
+Keep the typography and composition consistent with Family II.

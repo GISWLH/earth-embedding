@@ -1,0 +1,12 @@
+Apache License 2.0
+
+Vendored file:
+- prithvi_mae.py
+
+Original source:
+- https://huggingface.co/ibm-nasa-geospatial/Prithvi-EO-2.0-100M-TL/blob/main/prithvi_mae.py
+
+Original copyright:
+- Copyright (c) IBM Corp. 2024. All rights reserved.
+
+The vendored source retains its upstream Apache-2.0 license header.

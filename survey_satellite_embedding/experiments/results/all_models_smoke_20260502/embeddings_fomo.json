@@ -1,0 +1,12 @@
+{
+  "model": "fomo",
+  "split": "region_a",
+  "status": "ok",
+  "type": "on_the_fly",
+  "elapsed_s": 25.08,
+  "per_item_s": 1.567,
+  "peak_gpu_mb": 1577.03,
+  "dim": 768,
+  "n_items": 16,
+  "errors": []
+}

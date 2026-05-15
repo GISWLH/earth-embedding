@@ -1,0 +1,12 @@
+{
+  "model": "terramind",
+  "split": "region_a",
+  "status": "ok",
+  "type": "on_the_fly",
+  "elapsed_s": 61.263,
+  "per_item_s": 3.829,
+  "peak_gpu_mb": 17992.76,
+  "dim": 384,
+  "n_items": 16,
+  "errors": []
+}

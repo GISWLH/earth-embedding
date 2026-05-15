@@ -1,0 +1,396 @@
+{
+  "data_dir": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/data/part2_20260507_2x_ne",
+  "original_png": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/wuhan_east_lake_2x_ne_original_rgb/wuhan_east_lake_2x_ne_original_rgb.png",
+  "summary_figure": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/wuhan_east_lake_2x_ne_public19_model_map/wuhan_east_lake_2x_ne_original_with_public19_models.png",
+  "grid_definition": "8x8 downloaded Sentinel-2 blocks for the 2x NE ROI",
+  "models": [
+    {
+      "model": "gse",
+      "status": "ok",
+      "reason": null,
+      "output_json": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/wuhan_east_lake_2x_ne_public19_model_map/gse.json",
+      "output_npz": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/wuhan_east_lake_2x_ne_public19_model_map/gse.npz",
+      "output_png": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/wuhan_east_lake_2x_ne_public19_model_map/gse.png",
+      "n_blocks": 64,
+      "chunk_size": 4,
+      "temporal": "year",
+      "block_checkpoint_dir": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/wuhan_east_lake_2x_ne_public19_model_map/gse_blocks",
+      "block_checkpoint_n_ok": 64,
+      "block_checkpoint_n_failed": 0,
+      "shape": [
+        64,
+        64
+      ],
+      "grid_hw": [
+        8,
+        8
+      ],
+      "elapsed_s": 7.01
+    },
+    {
+      "model": "remoteclip",
+      "status": "ok",
+      "reason": null,
+      "output_json": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/wuhan_east_lake_2x_ne_public19_model_map/remoteclip.json",
+      "output_npz": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/wuhan_east_lake_2x_ne_public19_model_map/remoteclip.npz",
+      "output_png": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/wuhan_east_lake_2x_ne_public19_model_map/remoteclip.png",
+      "n_blocks": 64,
+      "chunk_size": 4,
+      "temporal": "range",
+      "shape": [
+        64,
+        512
+      ],
+      "grid_hw": [
+        8,
+        8
+      ],
+      "elapsed_s": 100.937
+    },
+    {
+      "model": "copernicus",
+      "status": "ok",
+      "reason": null,
+      "output_json": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/wuhan_east_lake_2x_ne_public19_model_map/copernicus.json",
+      "output_npz": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/wuhan_east_lake_2x_ne_public19_model_map/copernicus.npz",
+      "output_png": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/wuhan_east_lake_2x_ne_public19_model_map/copernicus.png",
+      "n_blocks": 64,
+      "chunk_size": 4,
+      "temporal": "year",
+      "shape": [
+        64,
+        768
+      ],
+      "grid_hw": [
+        8,
+        8
+      ],
+      "elapsed_s": 10.839
+    },
+    {
+      "model": "tessera",
+      "status": "ok",
+      "reason": null,
+      "output_json": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/wuhan_east_lake_2x_ne_public19_model_map/tessera.json",
+      "output_npz": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/wuhan_east_lake_2x_ne_public19_model_map/tessera.npz",
+      "output_png": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/wuhan_east_lake_2x_ne_public19_model_map/tessera.png",
+      "n_blocks": 64,
+      "chunk_size": 4,
+      "temporal": "year",
+      "shape": [
+        64,
+        128
+      ],
+      "grid_hw": [
+        8,
+        8
+      ],
+      "elapsed_s": 77.434
+    },
+    {
+      "model": "satmae",
+      "status": "ok",
+      "reason": null,
+      "output_json": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/wuhan_east_lake_2x_ne_public19_model_map/satmae.json",
+      "output_npz": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/wuhan_east_lake_2x_ne_public19_model_map/satmae.npz",
+      "output_png": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/wuhan_east_lake_2x_ne_public19_model_map/satmae.png",
+      "n_blocks": 64,
+      "chunk_size": 1,
+      "temporal": "range",
+      "shape": [
+        64,
+        1024
+      ],
+      "grid_hw": [
+        8,
+        8
+      ],
+      "elapsed_s": 22.744
+    },
+    {
+      "model": "satmaepp",
+      "status": "ok",
+      "reason": null,
+      "output_json": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/wuhan_east_lake_2x_ne_public19_model_map/satmaepp.json",
+      "output_npz": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/wuhan_east_lake_2x_ne_public19_model_map/satmaepp.npz",
+      "output_png": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/wuhan_east_lake_2x_ne_public19_model_map/satmaepp.png",
+      "n_blocks": 64,
+      "chunk_size": 1,
+      "temporal": "range",
+      "shape": [
+        64,
+        1024
+      ],
+      "grid_hw": [
+        8,
+        8
+      ],
+      "elapsed_s": 13.633
+    },
+    {
+      "model": "satmaepp_s2_10b",
+      "status": "ok",
+      "reason": null,
+      "output_json": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/wuhan_east_lake_2x_ne_public19_model_map/satmaepp_s2_10b.json",
+      "output_npz": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/wuhan_east_lake_2x_ne_public19_model_map/satmaepp_s2_10b.npz",
+      "output_png": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/wuhan_east_lake_2x_ne_public19_model_map/satmaepp_s2_10b.png",
+      "n_blocks": 64,
+      "chunk_size": 1,
+      "temporal": "range",
+      "shape": [
+        64,
+        1024
+      ],
+      "grid_hw": [
+        8,
+        8
+      ],
+      "elapsed_s": 30.865
+    },
+    {
+      "model": "scalemae",
+      "status": "ok",
+      "reason": null,
+      "output_json": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/wuhan_east_lake_2x_ne_public19_model_map/scalemae.json",
+      "output_npz": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/wuhan_east_lake_2x_ne_public19_model_map/scalemae.npz",
+      "output_png": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/wuhan_east_lake_2x_ne_public19_model_map/scalemae.png",
+      "n_blocks": 64,
+      "chunk_size": 1,
+      "temporal": "range",
+      "shape": [
+        64,
+        1024
+      ],
+      "grid_hw": [
+        8,
+        8
+      ],
+      "elapsed_s": 6.51
+    },
+    {
+      "model": "anysat",
+      "status": "ok",
+      "reason": null,
+      "output_json": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/wuhan_east_lake_2x_ne_public19_model_map/anysat.json",
+      "output_npz": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/wuhan_east_lake_2x_ne_public19_model_map/anysat.npz",
+      "output_png": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/wuhan_east_lake_2x_ne_public19_model_map/anysat.png",
+      "n_blocks": 64,
+      "chunk_size": 4,
+      "temporal": "range",
+      "shape": [
+        64,
+        768
+      ],
+      "grid_hw": [
+        8,
+        8
+      ],
+      "elapsed_s": 56.774
+    },
+    {
+      "model": "galileo",
+      "status": "ok",
+      "reason": null,
+      "output_json": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/wuhan_east_lake_2x_ne_public19_model_map/galileo.json",
+      "output_npz": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/wuhan_east_lake_2x_ne_public19_model_map/galileo.npz",
+      "output_png": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/wuhan_east_lake_2x_ne_public19_model_map/galileo.png",
+      "n_blocks": 64,
+      "chunk_size": 4,
+      "temporal": "range",
+      "shape": [
+        64,
+        128
+      ],
+      "grid_hw": [
+        8,
+        8
+      ],
+      "elapsed_s": 45.955
+    },
+    {
+      "model": "wildsat",
+      "status": "ok",
+      "reason": null,
+      "output_json": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/wuhan_east_lake_2x_ne_public19_model_map/wildsat.json",
+      "output_npz": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/wuhan_east_lake_2x_ne_public19_model_map/wildsat.npz",
+      "output_png": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/wuhan_east_lake_2x_ne_public19_model_map/wildsat.png",
+      "n_blocks": 64,
+      "chunk_size": 4,
+      "temporal": "range",
+      "shape": [
+        64,
+        256
+      ],
+      "grid_hw": [
+        8,
+        8
+      ],
+      "elapsed_s": 9.196
+    },
+    {
+      "model": "prithvi",
+      "status": "ok",
+      "reason": null,
+      "output_json": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/wuhan_east_lake_2x_ne_public19_model_map/prithvi.json",
+      "output_npz": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/wuhan_east_lake_2x_ne_public19_model_map/prithvi.npz",
+      "output_png": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/wuhan_east_lake_2x_ne_public19_model_map/prithvi.png",
+      "n_blocks": 64,
+      "chunk_size": 4,
+      "temporal": "range",
+      "shape": [
+        64,
+        768
+      ],
+      "grid_hw": [
+        8,
+        8
+      ],
+      "elapsed_s": 9.062
+    },
+    {
+      "model": "terrafm",
+      "status": "ok",
+      "reason": null,
+      "output_json": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/wuhan_east_lake_2x_ne_public19_model_map/terrafm.json",
+      "output_npz": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/wuhan_east_lake_2x_ne_public19_model_map/terrafm.npz",
+      "output_png": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/wuhan_east_lake_2x_ne_public19_model_map/terrafm.png",
+      "n_blocks": 64,
+      "chunk_size": 1,
+      "temporal": "range",
+      "shape": [
+        64,
+        768
+      ],
+      "grid_hw": [
+        8,
+        8
+      ],
+      "elapsed_s": 15.666
+    },
+    {
+      "model": "terramind",
+      "status": "ok",
+      "reason": null,
+      "output_json": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/wuhan_east_lake_2x_ne_public19_model_map/terramind.json",
+      "output_npz": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/wuhan_east_lake_2x_ne_public19_model_map/terramind.npz",
+      "output_png": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/wuhan_east_lake_2x_ne_public19_model_map/terramind.png",
+      "n_blocks": 64,
+      "chunk_size": 1,
+      "temporal": "range",
+      "shape": [
+        64,
+        384
+      ],
+      "grid_hw": [
+        8,
+        8
+      ],
+      "elapsed_s": 34.032
+    },
+    {
+      "model": "dofa",
+      "status": "ok",
+      "reason": null,
+      "output_json": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/wuhan_east_lake_2x_ne_public19_model_map/dofa.json",
+      "output_npz": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/wuhan_east_lake_2x_ne_public19_model_map/dofa.npz",
+      "output_png": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/wuhan_east_lake_2x_ne_public19_model_map/dofa.png",
+      "n_blocks": 64,
+      "chunk_size": 1,
+      "temporal": "range",
+      "shape": [
+        64,
+        768
+      ],
+      "grid_hw": [
+        8,
+        8
+      ],
+      "elapsed_s": 9.289
+    },
+    {
+      "model": "fomo",
+      "status": "ok",
+      "reason": null,
+      "output_json": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/wuhan_east_lake_2x_ne_public19_model_map/fomo.json",
+      "output_npz": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/wuhan_east_lake_2x_ne_public19_model_map/fomo.npz",
+      "output_png": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/wuhan_east_lake_2x_ne_public19_model_map/fomo.png",
+      "n_blocks": 64,
+      "chunk_size": 4,
+      "temporal": "range",
+      "shape": [
+        64,
+        768
+      ],
+      "grid_hw": [
+        8,
+        8
+      ],
+      "elapsed_s": 8.701
+    },
+    {
+      "model": "thor",
+      "status": "ok",
+      "reason": null,
+      "output_json": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/wuhan_east_lake_2x_ne_public19_model_map/thor.json",
+      "output_npz": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/wuhan_east_lake_2x_ne_public19_model_map/thor.npz",
+      "output_png": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/wuhan_east_lake_2x_ne_public19_model_map/thor.png",
+      "n_blocks": 64,
+      "chunk_size": 1,
+      "temporal": "range",
+      "shape": [
+        64,
+        768
+      ],
+      "grid_hw": [
+        8,
+        8
+      ],
+      "elapsed_s": 16.49
+    },
+    {
+      "model": "agrifm",
+      "status": "ok",
+      "reason": null,
+      "output_json": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/wuhan_east_lake_2x_ne_public19_model_map/agrifm.json",
+      "output_npz": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/wuhan_east_lake_2x_ne_public19_model_map/agrifm.npz",
+      "output_png": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/wuhan_east_lake_2x_ne_public19_model_map/agrifm.png",
+      "n_blocks": 64,
+      "chunk_size": 1,
+      "temporal": "range",
+      "shape": [
+        64,
+        1024
+      ],
+      "grid_hw": [
+        8,
+        8
+      ],
+      "elapsed_s": 105.475
+    },
+    {
+      "model": "satvision",
+      "status": "ok",
+      "reason": null,
+      "output_json": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/wuhan_east_lake_2x_ne_public19_model_map/satvision.json",
+      "output_npz": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/wuhan_east_lake_2x_ne_public19_model_map/satvision.npz",
+      "output_png": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/wuhan_east_lake_2x_ne_public19_model_map/satvision.png",
+      "n_blocks": 64,
+      "chunk_size": 1,
+      "temporal": "range",
+      "shape": [
+        64,
+        4096
+      ],
+      "grid_hw": [
+        8,
+        8
+      ],
+      "elapsed_s": 524.44
+    }
+  ],
+  "notes": [
+    "Each model panel is built from pooled embeddings over all downloaded region-A blocks.",
+    "Block colors are the first three PCA components of the 64 pooled block embeddings.",
+    "Panels are intended as acceptance visuals aligned with the earlier public19 template."
+  ]
+}

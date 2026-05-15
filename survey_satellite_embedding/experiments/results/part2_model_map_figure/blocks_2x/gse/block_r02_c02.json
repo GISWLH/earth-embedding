@@ -1,0 +1,39 @@
+{
+  "model": "gse",
+  "block_id": "block_r02_c02",
+  "status": "ok",
+  "source": "run",
+  "row": 2,
+  "col": 2,
+  "bbox": [
+    114.41,
+    30.520000000000003,
+    114.47,
+    30.560000000000002
+  ],
+  "shape": [
+    64,
+    518,
+    668
+  ],
+  "elapsed_s": 105.641,
+  "output_npz": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/part2_model_map_figure/blocks_2x/gse/block_r02_c02.npz",
+  "meta": {
+    "model": "gse",
+    "type": "precomputed",
+    "backend": "gee",
+    "source": "GOOGLE/SATELLITE_EMBEDDING/V1/ANNUAL",
+    "sensor": "None",
+    "temporal": "{'mode': 'year', 'year': 2021, 'start': '2021-01-01', 'end': '2022-01-01'}",
+    "image_size": "None",
+    "year": "2021",
+    "scale_m": "10",
+    "bands": "('A00', 'A01', 'A02', 'A03', 'A04', 'A05', 'A06', 'A07', 'A08', 'A09', 'A10', 'A11', 'A12', 'A13', 'A14', 'A15', 'A16', 'A17', 'A18', 'A19', 'A20', 'A21', 'A22', 'A23', 'A24', 'A25', 'A26', 'A27', 'A28', 'A29', 'A30', 'A31', 'A32', 'A33', 'A34', 'A35', 'A36', 'A37', 'A38', 'A39', 'A40', 'A41', 'A42', 'A43', 'A44', 'A45', 'A46', 'A47', 'A48', 'A49', 'A50', 'A51', 'A52', 'A53', 'A54', 'A55', 'A56', 'A57', 'A58', 'A59', 'A60', 'A61', 'A62', 'A63')",
+    "valid_pixel_fraction": "1.0",
+    "grid_orientation_policy": "north_up",
+    "grid_native_y_axis_direction": "unknown",
+    "grid_native_orientation_reason": "no orientation metadata",
+    "grid_orientation_applied": "False",
+    "y_axis_direction": "unknown"
+  }
+}

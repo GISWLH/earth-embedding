@@ -1,0 +1,26 @@
+[
+  {
+    "model":"gse",
+    "status":"ok",
+    "elapsed_s":35.628,
+    "per_tile_s":2.375,
+    "peak_gpu_mb":0.0,
+    "dim":64,
+    "errors":[
+
+    ],
+    "n_tiles_total":15,
+    "n_tiles_valid":12,
+    "cls_macro_f1":1.0,
+    "cls_balanced_acc":1.0,
+    "built_mae":0.0514598036,
+    "built_rmse":0.0609417744,
+    "built_spearman":0.8495610994,
+    "green_mae":0.089892678,
+    "green_rmse":0.1041180914,
+    "green_spearman":0.6,
+    "water_mae":0.2971551766,
+    "water_rmse":0.3477212091,
+    "water_spearman":0.316227766
+  }
+]

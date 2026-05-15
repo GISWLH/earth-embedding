@@ -1,0 +1,26 @@
+[
+  {
+    "model":"agrifm",
+    "status":"ok",
+    "elapsed_s":88.68,
+    "per_tile_s":5.912,
+    "peak_gpu_mb":591.05,
+    "dim":1024,
+    "errors":[
+
+    ],
+    "n_tiles_total":15,
+    "n_tiles_valid":15,
+    "cls_macro_f1":1.0,
+    "cls_balanced_acc":1.0,
+    "built_mae":0.1850702688,
+    "built_rmse":0.2382682463,
+    "built_spearman":0.7915598115,
+    "green_mae":0.0764345862,
+    "green_rmse":0.0916575876,
+    "green_spearman":0.3,
+    "water_mae":0.5793805917,
+    "water_rmse":0.8360848129,
+    "water_spearman":0.1196974744
+  }
+]

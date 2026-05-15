@@ -1,0 +1,50 @@
+[
+  {
+    "model":"remoteclip",
+    "status":"ok",
+    "elapsed_s":32.948,
+    "per_tile_s":5.491,
+    "peak_gpu_mb":600.82,
+    "dim":512,
+    "errors":[
+
+    ],
+    "n_tiles_total":6,
+    "n_tiles_valid":6,
+    "cls_macro_f1":1.0,
+    "cls_balanced_acc":1.0,
+    "built_mae":0.2328918328,
+    "built_rmse":0.2821414421,
+    "built_spearman":1.0,
+    "green_mae":0.2535231511,
+    "green_rmse":0.2823652526,
+    "green_spearman":1.0,
+    "water_mae":0.2815967401,
+    "water_rmse":0.3458681405,
+    "water_spearman":0.3333333333
+  },
+  {
+    "model":"gse",
+    "status":"ok",
+    "elapsed_s":19.558,
+    "per_tile_s":3.26,
+    "peak_gpu_mb":0.0,
+    "dim":64,
+    "errors":[
+
+    ],
+    "n_tiles_total":6,
+    "n_tiles_valid":5,
+    "cls_macro_f1":null,
+    "cls_balanced_acc":null,
+    "built_mae":0.1330170408,
+    "built_rmse":0.1731813904,
+    "built_spearman":1.0,
+    "green_mae":0.2794455439,
+    "green_rmse":0.3173535864,
+    "green_spearman":0.0,
+    "water_mae":0.2682785988,
+    "water_rmse":0.2966666408,
+    "water_spearman":0.0
+  }
+]

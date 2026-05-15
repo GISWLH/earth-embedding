@@ -1,0 +1,12 @@
+{
+  "model": "agrifm",
+  "split": "region_a",
+  "status": "ok",
+  "type": "on_the_fly",
+  "elapsed_s": 94.56,
+  "per_item_s": 5.91,
+  "peak_gpu_mb": 591.05,
+  "dim": 1024,
+  "n_items": 16,
+  "errors": []
+}

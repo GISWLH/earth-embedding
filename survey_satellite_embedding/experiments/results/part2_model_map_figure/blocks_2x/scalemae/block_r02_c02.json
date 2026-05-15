@@ -1,0 +1,51 @@
+{
+  "model": "scalemae",
+  "block_id": "block_r02_c02",
+  "status": "ok",
+  "source": "run",
+  "row": 2,
+  "col": 2,
+  "bbox": [
+    114.41,
+    30.520000000000003,
+    114.47,
+    30.560000000000002
+  ],
+  "shape": [
+    1024,
+    14,
+    14
+  ],
+  "elapsed_s": 11.071,
+  "output_npz": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/part2_model_map_figure/blocks_2x/scalemae/block_r02_c02.npz",
+  "meta": {
+    "model": "scalemae",
+    "type": "on_the_fly",
+    "backend": "auto",
+    "source": "COPERNICUS/S2_SR_HARMONIZED",
+    "sensor": "{'collection': 'COPERNICUS/S2_SR_HARMONIZED', 'bands': ('B4', 'B3', 'B2'), 'scale_m': 10, 'cloudy_pct': 30, 'fill_value': 0.0, 'composite': 'median', 'modality': None, 'orbit': None, 'use_float_linear': True, 's1_require_iw': True, 's1_relax_iw_on_empty': True, 'check_input': False, 'check_raise': True, 'check_save_dir': None}",
+    "temporal": "{'mode': 'range', 'start': '2021-05-01', 'end': '2021-10-31'}",
+    "image_size": "224",
+    "hf_id": "MVRL/scalemae-vitlarge-800",
+    "used_scale_m": "10.0",
+    "tokens_kind": "tokens_forward_features",
+    "forward_features_owner": "model",
+    "input_res_m": "20.234375",
+    "used_patch_size": "16",
+    "tokens_shape": "(1, 197, 1024)",
+    "preprocess_name": "imagenet_eval",
+    "norm_mean": "(0.485, 0.456, 0.406)",
+    "norm_std": "(0.229, 0.224, 0.225)",
+    "resize_short_side": "256",
+    "center_crop": "224",
+    "out_shape": "(197, 1024)",
+    "grid_hw": "(14, 14)",
+    "grid_kind": "patch_tokens",
+    "cls_removed": "True",
+    "grid_orientation_policy": "north_up",
+    "grid_native_y_axis_direction": "unknown",
+    "grid_native_orientation_reason": "no orientation metadata",
+    "grid_orientation_applied": "False",
+    "y_axis_direction": "unknown"
+  }
+}

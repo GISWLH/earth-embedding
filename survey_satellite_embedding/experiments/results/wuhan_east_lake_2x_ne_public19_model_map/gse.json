@@ -1,0 +1,23 @@
+{
+  "model": "gse",
+  "status": "ok",
+  "reason": null,
+  "output_json": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/wuhan_east_lake_2x_ne_public19_model_map/gse.json",
+  "output_npz": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/wuhan_east_lake_2x_ne_public19_model_map/gse.npz",
+  "output_png": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/wuhan_east_lake_2x_ne_public19_model_map/gse.png",
+  "n_blocks": 64,
+  "chunk_size": 4,
+  "temporal": "year",
+  "block_checkpoint_dir": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/wuhan_east_lake_2x_ne_public19_model_map/gse_blocks",
+  "block_checkpoint_n_ok": 64,
+  "block_checkpoint_n_failed": 0,
+  "shape": [
+    64,
+    64
+  ],
+  "grid_hw": [
+    8,
+    8
+  ],
+  "elapsed_s": 7.01
+}

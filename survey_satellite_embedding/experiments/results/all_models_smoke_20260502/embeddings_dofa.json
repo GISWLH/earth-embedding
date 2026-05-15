@@ -1,0 +1,12 @@
+{
+  "model": "dofa",
+  "split": "region_a",
+  "status": "ok",
+  "type": "on_the_fly",
+  "elapsed_s": 36.322,
+  "per_item_s": 2.27,
+  "peak_gpu_mb": 1353.81,
+  "dim": 768,
+  "n_items": 16,
+  "errors": []
+}

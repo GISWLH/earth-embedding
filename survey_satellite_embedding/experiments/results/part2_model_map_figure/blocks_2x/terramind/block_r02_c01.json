@@ -1,0 +1,52 @@
+{
+  "model": "terramind",
+  "block_id": "block_r02_c01",
+  "status": "ok",
+  "source": "run",
+  "row": 2,
+  "col": 1,
+  "bbox": [
+    114.35000000000001,
+    30.520000000000003,
+    114.41,
+    30.560000000000002
+  ],
+  "shape": [
+    384,
+    14,
+    14
+  ],
+  "elapsed_s": 15.736,
+  "output_npz": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/part2_model_map_figure/blocks_2x/terramind/block_r02_c01.npz",
+  "meta": {
+    "model": "terramind",
+    "type": "on_the_fly",
+    "backend": "auto",
+    "source": "COPERNICUS/S2_SR_HARMONIZED",
+    "sensor": "{'collection': 'COPERNICUS/S2_SR_HARMONIZED', 'bands': ('B1', 'B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'B8', 'B8A', 'B9', 'B11', 'B12'), 'bands_terramind': ('COASTAL_AEROSOL', 'BLUE', 'GREEN', 'RED', 'RED_EDGE_1', 'RED_EDGE_2', 'RED_EDGE_3', 'NIR_BROAD', 'NIR_NARROW', 'WATER_VAPOR', 'SWIR_1', 'SWIR_2'), 'scale_m': 10, 'cloudy_pct': 30, 'composite': 'median', 'fill_value': 0.0}",
+    "temporal": "{'mode': 'range', 'start': '2021-05-01', 'end': '2021-10-31'}",
+    "image_size": "224",
+    "model_key": "terramind_v1_small",
+    "modality": "S2L2A",
+    "bands": "('B1', 'B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'B8', 'B8A', 'B9', 'B11', 'B12')",
+    "bands_terramind": "('COASTAL_AEROSOL', 'BLUE', 'GREEN', 'RED', 'RED_EDGE_1', 'RED_EDGE_2', 'RED_EDGE_3', 'NIR_BROAD', 'NIR_NARROW', 'WATER_VAPOR', 'SWIR_1', 'SWIR_2')",
+    "normalization": "zscore",
+    "device": "cpu",
+    "pretrained": "True",
+    "param_mean": "-0.00022271765919867903",
+    "param_std": "0.052257075905799866",
+    "param_absmax": "0.2624579966068268",
+    "tokens_shape": "(196, 384)",
+    "layer_index": "-1",
+    "tokens_include_cls": "False",
+    "grid_type": "vit_patch_tokens",
+    "grid_hw": "(14, 14)",
+    "grid_shape": "(384, 14, 14)",
+    "cls_removed": "False",
+    "grid_orientation_policy": "north_up",
+    "grid_native_y_axis_direction": "unknown",
+    "grid_native_orientation_reason": "no orientation metadata",
+    "grid_orientation_applied": "False",
+    "y_axis_direction": "unknown"
+  }
+}

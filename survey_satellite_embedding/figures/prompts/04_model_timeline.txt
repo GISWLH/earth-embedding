@@ -1,0 +1,26 @@
+Create a publication-quality academic infographic titled "Timeline of Satellite Embedding Models".
+
+Requirements:
+- flat vector style
+- white background
+- landscape 16:9
+- journal-ready layout, not poster-like
+- restrained earth-observation palette: deep blue, forest green, warm ochre, slate gray
+- English labels only
+- very clean typography and spacing
+
+Content:
+- horizontal timeline from 2022 to 2026
+- place model names as labeled nodes on the timeline
+- group nodes by color-coded families:
+  - precomputed embedding products
+  - vision-language models
+  - masked autoencoder family
+  - multimodal generalist EO encoders
+  - application-specialized EO encoders
+- show representative models including SatMAE, ScaleMAE, Prithvi, RemoteCLIP, SatVision, SatMAE++, DOFA, Copernicus, AnySat, Galileo, WildSAT, TerraMind, FoMo, GSE, AgriFM, TerraFM, TESSERA, THOR
+- include a compact legend on the right
+- avoid tiny unreadable labels; optimize for inclusion in a survey paper
+- use subtle callout annotations like "vision-language", "precomputed annual product", "multimodal generalist" where helpful
+
+The output should look like a polished scientific figure, not a generic AI art poster.

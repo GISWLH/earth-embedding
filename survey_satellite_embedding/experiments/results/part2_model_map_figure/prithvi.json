@@ -1,0 +1,50 @@
+{
+  "model": "prithvi",
+  "status": "ok",
+  "reason": null,
+  "output_json": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/part2_model_map_figure/prithvi.json",
+  "output_npz": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/part2_model_map_figure/prithvi.npz",
+  "output_png": "/home/lhwang/Desktop/test/rs-embed/survey_satellite_embedding/experiments/results/part2_model_map_figure/prithvi.png",
+  "temporal": "range",
+  "spatial_type": "BBox",
+  "shape": [
+    768,
+    14,
+    14
+  ],
+  "grid_hw": [
+    14,
+    14
+  ],
+  "meta": {
+    "model": "prithvi",
+    "type": "on_the_fly",
+    "backend": "auto",
+    "source": "COPERNICUS/S2_SR_HARMONIZED",
+    "sensor": "{'collection': 'COPERNICUS/S2_SR_HARMONIZED', 'bands': ('BLUE', 'GREEN', 'RED', 'NIR_NARROW', 'SWIR_1', 'SWIR_2'), 'scale_m': 30, 'cloudy_pct': 30, 'fill_value': 0.0, 'composite': 'median', 'modality': None, 'orbit': None, 'use_float_linear': True, 's1_require_iw': True, 's1_relax_iw_on_empty': True, 'check_input': False, 'check_raise': True, 'check_save_dir': None}",
+    "temporal": "{'mode': 'range', 'start': '2021-05-01', 'end': '2021-10-31'}",
+    "image_size": "224",
+    "hf_id": "ibm-nasa-geospatial/Prithvi-EO-2.0-100M-TL",
+    "temporal_range": "('2021-05-01', '2021-10-31')",
+    "coords_date": "2021-07-31",
+    "coords_lonlat": "(114.38, 30.5)",
+    "tokens_shape": "(197, 768)",
+    "model_key": "prithvi_eo_v2_100_tl",
+    "variant": "prithvi_eo_v2_100_tl",
+    "pretrained": "True",
+    "coords_encoding": "('time', 'location')",
+    "num_frames": "1",
+    "input_hw": "(224, 224)",
+    "prep_mode": "resize",
+    "patch_mult": "16",
+    "target_image_size": "224",
+    "grid_hw": "(14, 14)",
+    "grid_kind": "patch_tokens",
+    "cls_removed": "True",
+    "grid_orientation_policy": "north_up",
+    "grid_native_y_axis_direction": "unknown",
+    "grid_native_orientation_reason": "no orientation metadata",
+    "grid_orientation_applied": "False",
+    "y_axis_direction": "unknown"
+  }
+}

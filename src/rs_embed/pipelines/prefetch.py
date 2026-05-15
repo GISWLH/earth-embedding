@@ -1,0 +1,288 @@
+"""GEE input prefetch manager.
+
+This module owns prefetch planning, threaded fetch execution, and cache/error
+tracking for provider-backed input tensors used during export.
+"""
+
+from __future__ import annotations
+
+from collections.abc import Callable
+from concurrent.futures import ThreadPoolExecutor, as_completed
+from typing import Any
+
+import numpy as np
+
+from ..core.specs import SensorSpec, SpatialSpec, TemporalSpec
+from ..core.types import ExportConfig, FetchResult
+from ..providers import gee_utils as _gee_utils
+from ..providers.prefetch_plan import (
+    build_gee_prefetch_plan,
+    select_prefetched_channels,
+)
+from ..tools.normalization import normalize_input_array
+from .runner import run_with_retry
+
+
+class PrefetchManager:
+    """Manages GEE input prefetching, caching, and error tracking.
+
+    After construction, call :meth:`plan` to build the fetch plan, then
+    :meth:`fetch_chunk` for each batch of spatial indices.  Cached inputs
+    are available via :meth:`get_input`.
+
+    Parameters
+    ----------
+    provider : optional
+        A ready provider instance (e.g. GEEProvider).  ``None`` disables
+        prefetching.
+    models : list of str
+        Model names in the export.
+    resolved_sensor : dict
+        ``{model_name: SensorSpec | None}`` resolved per model.
+    model_type : dict
+        ``{model_name: type_str}`` from ``describe()``.
+    config : ExportConfig
+        Behavioral flags (retries, workers, fail_on_bad_input, …).
+    """
+
+    def __init__(
+        self,
+        *,
+        provider: Any | None,
+        models: list[str],
+        resolved_sensor: dict[str, SensorSpec | None],
+        model_type: dict[str, str],
+        config: ExportConfig,
+        fetch_fn: Callable[..., np.ndarray] | None = None,
+        inspect_fn: Callable[..., dict[str, Any]] | None = None,
+        fetcher_by_key: dict[str, Any] | None = None,
+    ) -> None:
+        self.provider = provider
+        self.models = models
+        self.resolved_sensor = resolved_sensor
+        self.model_type = model_type
+        self.config = config
+        self.fetch_fn = fetch_fn or _gee_utils.fetch_gee_patch_raw
+        self.inspect_fn = inspect_fn or _gee_utils.inspect_input_raw
+        self.fetcher_by_key: dict[str, Any] = fetcher_by_key or {}
+
+        # Caches populated by fetch_chunk / restored from checkpoint
+        self.cache: dict[tuple[int, str], np.ndarray] = {}
+        self.errors: dict[tuple[int, str], str] = {}
+        self.input_reports: dict[tuple[int, str], dict[str, Any]] = {}
+        self.fetch_meta: dict[tuple[int, str], dict[str, Any]] = {}
+
+        # Populated by plan()
+        self.sensor_by_key: dict[str, SensorSpec] = {}
+        self.fetch_sensor_by_key: dict[str, SensorSpec] = {}
+        self.sensor_to_fetch: dict[str, tuple[str, tuple[int, ...]]] = {}
+        self.sensor_models: dict[str, list[str]] = {}
+        self.fetch_members: dict[str, list[str]] = {}
+
+    @property
+    def enabled(self) -> bool:
+        return self.provider is not None
+
+    # ── plan ───────────────────────────────────────────────────────
+
+    def plan(self, resolve_bands_fn: Callable[..., Any] | None = None) -> None:
+        """Build the prefetch plan (sensor dedup + band unions)."""
+        (
+            self.sensor_by_key,
+            self.fetch_sensor_by_key,
+            self.sensor_to_fetch,
+            self.sensor_models,
+            self.fetch_members,
+        ) = build_gee_prefetch_plan(
+            models=self.models,
+            resolved_sensor=self.resolved_sensor,
+            model_type=self.model_type,
+            resolve_bands_fn=resolve_bands_fn,
+        )
+
+    # ── fetch ──────────────────────────────────────────────────────
+
+    def build_tasks(
+        self, idxs: list[int], spatials: list[SpatialSpec]
+    ) -> list[tuple[int, str, SensorSpec]]:
+        """Return list of ``(spatial_idx, fetch_key, fetch_sensor)`` needing fetch."""
+        tasks: list[tuple[int, str, SensorSpec]] = []
+        if not self.enabled:
+            return tasks
+        for i in idxs:
+            for fetch_key, fetch_sensor in self.fetch_sensor_by_key.items():
+                member_keys = self.fetch_members.get(fetch_key, [])
+                if member_keys and all((i, mk) in self.cache for mk in member_keys):
+                    continue
+                tasks.append((i, fetch_key, fetch_sensor))
+        return tasks
+
+    def fetch_chunk(
+        self,
+        idxs: list[int],
+        spatials: list[SpatialSpec],
+        temporal: TemporalSpec | None,
+        *,
+        progress: Any = None,
+    ) -> None:
+        """Prefetch GEE inputs for *idxs* into ``self.cache``."""
+        if not self.enabled or self.provider is None:
+            return
+
+        tasks = self.build_tasks(idxs, spatials)
+        if not tasks:
+            return
+
+        cfg = self.config
+        provider = self.provider
+
+        def _fetch_one(
+            i: int,
+            skey: str,
+            sspec: SensorSpec,
+        ) -> tuple[int, str, np.ndarray, dict[str, Any]]:
+            fetcher = self.fetcher_by_key.get(skey)
+            if fetcher is not None:
+                fr: FetchResult = run_with_retry(
+                    lambda: fetcher.fetch_input(
+                        provider,
+                        spatial=spatials[i],
+                        temporal=temporal,
+                        sensor=sspec,
+                    ),
+                    retries=cfg.max_retries,
+                    backoff_s=cfg.retry_backoff_s,
+                )
+                return i, skey, fr.data, fr.meta
+            x = run_with_retry(
+                lambda: self.fetch_fn(
+                    provider, spatial=spatials[i], temporal=temporal, sensor=sspec
+                ),
+                retries=cfg.max_retries,
+                backoff_s=cfg.retry_backoff_s,
+            )
+            return i, skey, x, {}
+
+        mw = max(1, cfg.num_workers)
+        with ThreadPoolExecutor(max_workers=mw) as ex:
+            fut_map = {ex.submit(_fetch_one, i, sk, ss): (i, sk) for (i, sk, ss) in tasks}
+            for fut in as_completed(fut_map):
+                i, skey = fut_map[fut]
+                try:
+                    i, skey, x, fmeta = fut.result()
+                except Exception as e:
+                    if not cfg.continue_on_error:
+                        raise
+                    err_s = repr(e)
+                    for member_skey in self.fetch_members.get(skey, []):
+                        self.errors[(i, member_skey)] = err_s
+                    if progress is not None:
+                        progress.update(1)
+                    continue
+
+                for member_skey in self.fetch_members.get(skey, []):
+                    member_idx = self.sensor_to_fetch[member_skey][1]
+                    x_member = normalize_input_array(
+                        select_prefetched_channels(x, member_idx),
+                        expected_channels=len(member_idx),
+                        name=f"gee_input_{member_skey}",
+                    )
+                    if cfg.fail_on_bad_input:
+                        sspec_member = self.sensor_by_key[member_skey]
+                        rep = self.inspect_fn(
+                            x_member,
+                            sensor=sspec_member,
+                            name=f"gee_input_{member_skey}",
+                        )
+                        if not bool(rep.get("ok", True)):
+                            issues = (rep.get("report", {}) or {}).get("issues", [])
+                            mlist = sorted(set(self.sensor_models.get(member_skey, [])))
+                            err = RuntimeError(
+                                f"Input inspection failed for index={i}, models={mlist}, sensor={member_skey}: {issues}"
+                            )
+                            if not cfg.continue_on_error:
+                                raise err
+                            self.errors[(i, member_skey)] = repr(err)
+                            continue
+                        self.input_reports[(i, member_skey)] = rep
+                    self.cache[(i, member_skey)] = x_member
+                    if fmeta:
+                        self.fetch_meta[(i, member_skey)] = fmeta
+
+                if progress is not None:
+                    progress.update(1)
+
+    # ── lookup ─────────────────────────────────────────────────────
+
+    def get_input(self, idx: int, sensor_key: str) -> np.ndarray:
+        """Return cached input, raising on miss or prior error."""
+        hit = self.cache.get((idx, sensor_key))
+        if hit is not None:
+            return hit
+        err = self.errors.get((idx, sensor_key))
+        if err:
+            raise RuntimeError(f"Prefetch failed for index={idx}, sensor={sensor_key}: {err}")
+        raise RuntimeError(f"Missing prefetched input for index={idx}, sensor={sensor_key}")
+
+    def get_or_fetch(
+        self,
+        idx: int,
+        skey: str,
+        sspec: SensorSpec,
+        spatial: SpatialSpec,
+        temporal: TemporalSpec | None,
+    ) -> np.ndarray:
+        """Return cached input, or fetch on demand if not cached."""
+        hit = self.cache.get((idx, skey))
+        if hit is not None:
+            return hit
+        err = self.errors.get((idx, skey))
+        if err:
+            raise RuntimeError(f"Prefetch previously failed for index={idx}, sensor={skey}: {err}")
+        if self.provider is None:
+            raise RuntimeError(f"Missing provider for input fetch: index={idx}, sensor={skey}")
+        cfg = self.config
+        fetcher = self.fetcher_by_key.get(skey)
+        if fetcher is not None:
+            fr: FetchResult = run_with_retry(
+                lambda: fetcher.fetch_input(
+                    self.provider,
+                    spatial=spatial,
+                    temporal=temporal,
+                    sensor=sspec,
+                ),
+                retries=cfg.max_retries,
+                backoff_s=cfg.retry_backoff_s,
+            )
+            x = fr.data
+            if fr.meta:
+                self.fetch_meta[(idx, skey)] = fr.meta
+        else:
+            x = run_with_retry(
+                lambda: self.fetch_fn(
+                    self.provider, spatial=spatial, temporal=temporal, sensor=sspec
+                ),
+                retries=cfg.max_retries,
+                backoff_s=cfg.retry_backoff_s,
+            )
+        rep = self.inspect_fn(x, sensor=sspec, name=f"gee_input_{skey}")
+        if cfg.fail_on_bad_input and (not bool(rep.get("ok", True))):
+            issues = (rep.get("report", {}) or {}).get("issues", [])
+            raise RuntimeError(f"Input inspection failed for index={idx}, sensor={skey}: {issues}")
+        self.cache[(idx, skey)] = x
+        self.input_reports[(idx, skey)] = rep
+        return x
+
+    def get_fetch_meta(self, idx: int, sensor_key: str) -> dict[str, Any]:
+        """Return fetch metadata for a cached input, or empty dict."""
+        return self.fetch_meta.get((idx, sensor_key), {})
+
+    def has_error(self, idx: int, sensor_key: str) -> str | None:
+        return self.errors.get((idx, sensor_key))
+
+    def clear_chunk(self) -> None:
+        """Clear caches between chunks to bound memory."""
+        self.cache.clear()
+        self.errors.clear()
+        self.input_reports.clear()
+        self.fetch_meta.clear()

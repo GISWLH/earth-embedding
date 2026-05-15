@@ -1,0 +1,276 @@
+:root {
+  --bg: #f3f0e7;
+  --panel: rgba(255, 252, 246, 0.88);
+  --panel-border: rgba(36, 58, 48, 0.14);
+  --text: #1f2f2b;
+  --muted: #61706a;
+  --accent: #1f5f58;
+  --accent-2: #ba7d38;
+  --accent-3: #315f93;
+  --chip: #e6efe8;
+  --shadow: 0 20px 60px rgba(35, 42, 37, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "IBM Plex Sans", "Segoe UI", sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at top left, rgba(49, 95, 147, 0.14), transparent 24rem),
+    radial-gradient(circle at bottom right, rgba(186, 125, 56, 0.16), transparent 20rem),
+    linear-gradient(180deg, #f8f5ed, var(--bg));
+}
+
+code,
+pre {
+  font-family: "IBM Plex Mono", "SFMono-Regular", monospace;
+}
+
+.shell {
+  min-height: 100vh;
+  padding: 1.25rem;
+}
+
+.topbar {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.eyebrow {
+  margin: 0 0 0.35rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.72rem;
+  color: var(--accent);
+}
+
+.topbar h1 {
+  margin: 0;
+  font-family: "IBM Plex Serif", "Georgia", serif;
+  font-size: clamp(1.8rem, 2vw, 2.4rem);
+}
+
+.topbar-note {
+  max-width: 34rem;
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.workspace {
+  display: grid;
+  grid-template-columns: minmax(20rem, 25rem) minmax(0, 1fr);
+  gap: 1rem;
+}
+
+.sidebar,
+.map-column,
+.info-grid,
+.stack {
+  display: grid;
+  gap: 1rem;
+}
+
+.panel {
+  backdrop-filter: blur(12px);
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  border-radius: 1.2rem;
+  box-shadow: var(--shadow);
+  padding: 1rem;
+}
+
+.panel-heading {
+  margin-bottom: 0.9rem;
+}
+
+.panel-heading h2 {
+  margin: 0 0 0.2rem;
+  font-size: 1rem;
+}
+
+.panel-heading p,
+.field span,
+.metric-label,
+.list-label {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
+.controls-panel {
+  position: sticky;
+  top: 1.25rem;
+}
+
+.field {
+  display: grid;
+  gap: 0.45rem;
+  margin-bottom: 0.95rem;
+}
+
+select,
+input[type="range"],
+button {
+  width: 100%;
+}
+
+select,
+button {
+  border-radius: 0.85rem;
+  border: 1px solid rgba(31, 95, 88, 0.18);
+  background: #fffdf8;
+  color: var(--text);
+  padding: 0.75rem 0.9rem;
+  font: inherit;
+}
+
+input[type="range"] {
+  accent-color: var(--accent);
+}
+
+button {
+  cursor: pointer;
+  background: linear-gradient(180deg, rgba(31, 95, 88, 0.96), rgba(28, 74, 71, 0.96));
+  color: #fff;
+  font-weight: 600;
+}
+
+button.secondary {
+  background: #fffdf8;
+  color: var(--text);
+}
+
+.button-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.map-panel {
+  position: relative;
+  min-height: 30rem;
+}
+
+#map {
+  height: 100%;
+  min-height: 30rem;
+  border-radius: 1.4rem;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.map-status {
+  position: absolute;
+  left: 1rem;
+  bottom: 1rem;
+  max-width: 26rem;
+  padding: 0.75rem 0.9rem;
+  border-radius: 0.9rem;
+  background: rgba(255, 252, 246, 0.92);
+  border: 1px solid rgba(36, 58, 48, 0.14);
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.info-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.chip {
+  padding: 0.45rem 0.7rem;
+  border-radius: 999px;
+  background: var(--chip);
+  color: var(--accent);
+  font-size: 0.84rem;
+  line-height: 1.2;
+}
+
+.metric {
+  display: grid;
+  gap: 0.14rem;
+}
+
+.metric-value {
+  font-weight: 700;
+  font-size: 1.02rem;
+}
+
+.detail-list {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.detail-item {
+  display: grid;
+  gap: 0.18rem;
+  padding-bottom: 0.7rem;
+  border-bottom: 1px solid rgba(36, 58, 48, 0.08);
+}
+
+.detail-item:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.detail-value {
+  line-height: 1.45;
+}
+
+.code-block {
+  margin: 0;
+  overflow: auto;
+  border-radius: 0.9rem;
+  background: #1f2524;
+  color: #d9e7df;
+  padding: 1rem;
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+
+.leaflet-container {
+  font: inherit;
+}
+
+@media (max-width: 1100px) {
+  .workspace {
+    grid-template-columns: 1fr;
+  }
+
+  .controls-panel {
+    position: static;
+  }
+
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  .shell {
+    padding: 0.9rem;
+  }
+
+  .topbar {
+    align-items: start;
+    flex-direction: column;
+  }
+
+  .button-row {
+    grid-template-columns: 1fr;
+  }
+}

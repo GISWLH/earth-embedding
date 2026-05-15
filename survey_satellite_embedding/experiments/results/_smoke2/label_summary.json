@@ -1,0 +1,16 @@
+{
+  "all_tiles": 100,
+  "selected_tiles": 6,
+  "dominant_3class_all": {
+    "green": 38,
+    "water": 17,
+    "built": 45
+  },
+  "dominant_3class_selected": {
+    "water": 2,
+    "green": 2,
+    "built": 2
+  },
+  "dominance_threshold": 0.5,
+  "max_per_class": 2
+}

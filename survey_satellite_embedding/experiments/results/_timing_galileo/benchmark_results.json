@@ -1,0 +1,26 @@
+[
+  {
+    "model":"galileo",
+    "status":"ok",
+    "elapsed_s":87.626,
+    "per_tile_s":5.842,
+    "peak_gpu_mb":277.27,
+    "dim":128,
+    "errors":[
+
+    ],
+    "n_tiles_total":15,
+    "n_tiles_valid":15,
+    "cls_macro_f1":1.0,
+    "cls_balanced_acc":1.0,
+    "built_mae":0.1301596984,
+    "built_rmse":0.1607910991,
+    "built_spearman":0.6880960312,
+    "green_mae":0.09185152,
+    "green_rmse":0.1103462279,
+    "green_spearman":0.7,
+    "water_mae":0.2375645936,
+    "water_rmse":0.3050390482,
+    "water_spearman":0.341992784
+  }
+]

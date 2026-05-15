@@ -1,0 +1,21 @@
+Create a publication-quality concept figure for an academic review titled "Satellite Embedding: A Review".
+
+Style requirements:
+- flat vector infographic
+- white background
+- clean journal-ready design
+- subtle earth-tone palette: dark green, deep blue, warm ochre, muted gray
+- no 3D effects, no cartoon style, no decorative clutter
+- English labels only
+- landscape 16:9 layout
+
+Content:
+- center hub: "Satellite Embeddings"
+- left branch: "Data Space" with icons and labels for optical, SAR, multispectral, hyperspectral, coarse-resolution, temporal series, multimodal fusion
+- top branch: "Model Families" with five color-coded groups: precomputed embedding products, vision-language models, masked autoencoder family, multimodal generalist EO encoders, application-specialized EO encoders
+- right branch: "Representation Types" with pooled scene vector, dense token grid, annual embedding field, image-text joint space, multimodal latent space
+- bottom branch: "Applications" with land-cover classification, water extraction, crop monitoring, regression/mapping, retrieval, multimodal analysis
+- add a small side legend called "Key axes" listing modality, temporal semantics, spatial scale, deployment mode
+- include thin arrows showing flow from data space -> model family -> representation -> application
+
+Text should be concise, aligned, and readable at paper scale.

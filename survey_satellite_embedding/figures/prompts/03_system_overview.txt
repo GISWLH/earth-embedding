@@ -1,0 +1,26 @@
+Create a clean academic system diagram for an interactive platform called "Satellite Embedding Explorer".
+
+Requirements:
+- flat vector style
+- white or very light neutral background
+- 16:9 landscape
+- English labels
+- high clarity for inclusion in a paper
+
+Show three layers:
+1. Data and models: satellite imagery, precomputed embedding products, model dossier, benchmark results
+2. Backend services: embedding extraction API, metadata service, benchmark cache, export service
+3. Frontend interface: Leaflet map, model selector, ROI panel, metadata cards, task launcher
+
+Include user interactions:
+- select region
+- choose model
+- compare embeddings
+- run quick downstream task
+- export results
+
+Design direction:
+- simple academic information architecture
+- no photorealism
+- clean boxes, arrows, and small map thumbnails
+- restrained earth observation color palette

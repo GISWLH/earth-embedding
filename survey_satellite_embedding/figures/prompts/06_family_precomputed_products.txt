@@ -1,0 +1,22 @@
+Create a publication-quality scientific architecture diagram for the model family "Precomputed Satellite Embedding Products".
+
+Style requirements:
+- wax crayon hand-drawn style
+- looks like a careful research sketch on clean white paper
+- consistent academic figure design, not childish
+- landscape 16:9
+- English labels only
+- restrained palette reused across the full figure set: deep blue, dark green, ochre, slate gray, muted red accents
+- same visual language should be easy to reuse for other family diagrams
+
+Content:
+- left: raw Earth observation archives and multimodal observations
+- next: large-scale pretraining / representation learning stage
+- next: annual or static embedding map generation stage
+- next: tiled storage / catalog / Earth Engine or raster product distribution
+- right: downstream access by ROI crop, pixel lookup, feature sampling, transfer learning
+- emphasize that users query a precomputed embedding layer instead of running the encoder online
+- add small callouts for representative models: GSE, TESSERA, Copernicus
+- include one note bubble: "fast access, strong coverage, limited temporal flexibility"
+
+The result should read like a scientific architecture figure for a survey paper.
