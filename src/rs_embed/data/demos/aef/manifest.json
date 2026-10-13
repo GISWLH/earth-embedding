@@ -1,0 +1,25 @@
+{
+  "name": "Wuhan 64x64 AEF point sample",
+  "year": 2021,
+  "tiles": [
+    "https://storage.googleapis.com/alphaearth_foundations/satellite_embedding/v1/annual/2021/50N/xwrlcmce8pjj58pho-0000008192-0000000000.tiff"
+  ],
+  "license": "CC-BY-4.0",
+  "source": "https://developers.google.com/earth-engine/guides/aef_on_gcs_readme",
+  "attribution": "The AlphaEarth Foundations Satellite Embedding dataset is produced by Google and Google DeepMind.",
+  "selection": "Uniform 64x64 WGS84 cell centers in [114.40,30.51,114.42,30.53]; nearest native 10m COG pixel, not area means. Display cells approximately 30m apart.",
+  "features": "64 float32 channels decoded sign(x)*(x/127.5)^2 from official signed int8 pixels; no interpolation",
+  "index_sha256": "5d216665ff2e4b8871157d217230cc42d542f1ac9a4b224c16d5c1dbff9cb947",
+  "access": "Anonymous HTTPS range reads; no EE credentials; entire COG and global index not bundled",
+  "files": {
+    "samples.csv": {
+      "sha256": "6dcb5df25c62390daebc30ed8eb69c9c0a1c59ee1bef1314c6ead20850507f61",
+      "bytes": 421251
+    },
+    "features.npz": {
+      "sha256": "e9d09330c16439a5dc551f35c71d2762a4634c81ca82667ce12faf1668a29160",
+      "bytes": 363395
+    }
+  },
+  "array_sha256": "b230d8a5b74014bd8c0d638d1359c82990095c92066c74c21207c5b02673fb98"
+}

@@ -1,0 +1,45 @@
+{
+  "python": "3.12.2",
+  "platform": "Linux",
+  "packages": {
+    "numpy": "2.4.6",
+    "scikit-learn": "1.8.0",
+    "torch": "2.12.0",
+    "matplotlib": "3.10.9",
+    "nbclient": "0.10.2"
+  },
+  "notebooks": [
+    {
+      "name": "01_first_embedding_map.ipynb",
+      "status": "passed",
+      "seconds": 3.23,
+      "executed_cells": 3,
+      "image_outputs": 1,
+      "sha256": "3f9c32b4d4f37a8a77646d2725ddb7c3f1977af669c709601d18bf909d7b97f8"
+    },
+    {
+      "name": "02_esri_locations.ipynb",
+      "status": "passed",
+      "seconds": 8.1,
+      "executed_cells": 4,
+      "image_outputs": 1,
+      "sha256": "bf8ba179adec6bc6cb627e0056476cc8f233f266285e29a79a9793e7dcf46269"
+    },
+    {
+      "name": "03_wuhan_classification.ipynb",
+      "status": "passed",
+      "seconds": 5.28,
+      "executed_cells": 4,
+      "image_outputs": 1,
+      "sha256": "8ac343305fe7b577002063d1d8188e10e01c6b4fa6eef55f7018e30c0481c59b"
+    },
+    {
+      "name": "04_export_and_reuse.ipynb",
+      "status": "passed",
+      "seconds": 3.09,
+      "executed_cells": 4,
+      "image_outputs": 1,
+      "sha256": "109132726eacbaf9b5087f6db25d47b96e64d4e76298c3e1abcc2e267c93e9bc"
+    }
+  ]
+}

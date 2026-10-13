@@ -1,0 +1,31 @@
+{
+  "name": "Wuhan historical 567-tile software demo",
+  "year": 2021,
+  "scope": "Historical local diagnostics, not the current global manuscript benchmark",
+  "license": "CC-BY-4.0 (AEF and WorldCover derived data)",
+  "attribution": "The AlphaEarth Foundations Satellite Embedding dataset is produced by Google and Google DeepMind. Contains modified Copernicus Sentinel data (2021) processed by ESA WorldCover consortium.",
+  "sources": [
+    "https://developers.google.com/earth-engine/datasets/catalog/GOOGLE_SATELLITE_EMBEDDING_V1_ANNUAL",
+    "https://doi.org/10.5281/zenodo.7254221"
+  ],
+  "source_artifacts": {
+    "paper/experiments/results/downstream_core_2x/downstream_labels_500m_2x.csv": "6d3b514d7ac6f3f7770239482bae9f6efb917893d0a0bb428ae3b70056d7c37b",
+    "paper/experiments/results/downstream_core_2x/embeddings_2x_tile/gse.npz": "d96079a55e5312a248dea272012193df76b902f5158e36384b9cb7e4ef972dfe"
+  },
+  "selection": "All 567 centers in [114.35,30.48,114.47,30.56]; no quality or score selection",
+  "features": "64 float32 channels, historical arithmetic mean of valid EE float pixels per tile; not GCS int8 and not renormalized",
+  "labels": "Dominant grouped ESA WorldCover v200 (2021) class; vegetation combines trees, shrubland, grassland, wetland, mangroves, moss/lichen; built, cropland and water separate",
+  "historical_split": "Original seed-42 stratified random train/val/test retained in split column; not used in this spatial demo",
+  "geometry": "Original projected nominal-500m grid converted to WGS84 bounds; physical widths differ from 500m at this latitude",
+  "files": {
+    "samples.csv": {
+      "sha256": "538f5517506e8840f832e9c0dfed65ae896a6c2fd005abee76197af00654a3d4",
+      "bytes": 108970
+    },
+    "features.npz": {
+      "sha256": "556a521e4366af8ee3220d7610d18f0441cefe6fc003a2de4ec31a5466183e61",
+      "bytes": 136764
+    }
+  },
+  "array_sha256": "00d4942cb049f758c636282a95676428d2f57da2f4bb7aa1beab8791e34b1822"
+}

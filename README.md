@@ -24,6 +24,87 @@
   <img src="docs/assets/earth-embedding-hero.svg" width="100%" alt="Images, longitude and latitude, and precomputed products connect through Earth Embedding to geospatial analysis workflows.">
 </picture>
 
+<!-- REAL_DEMOS_START -->
+## Five lines to a real map
+
+Python 3.12+, CPU. Install from this Git repository; no PyPI release is assumed. The small real samples are bundled and SHA-256 verified. No Earth Engine login or private paths are needed.
+
+```bash
+git clone https://github.com/GISWLH/earth-embedding.git
+cd earth-embedding
+python -m pip install -e ".[demo,aef]"
+```
+
+
+<picture>
+  <source media="(max-width: 760px)" srcset="docs/assets/earth-embedding-demos-mobile.svg">
+  <img src="docs/assets/earth-embedding-demos.svg" width="100%" alt="Location to embedding to map; features and labels to spatial holdout, classifier and measured results.">
+</picture>
+
+
+### 1. AEF 2021 → PCA map
+
+```python
+from earth_embedding.demo import load_demo, pca_colors, plot_map
+data = load_demo("aef")
+colors = pca_colors(data.features)
+fig = plot_map(data.samples, colors, title="Wuhan | AEF 2021 | PCA RGB")
+fig.savefig("aef-pca.png", dpi=160)
+```
+
+![AEF 2021 PCA](docs/assets/demos/aef-pca.png)
+
+
+Wuhan, 114.40–114.42° E / 30.51–30.53° N. A 64 × 64 sample of real Google / Google DeepMind AEF 2021 vectors. RGB shows descriptive principal components, **not land-cover classes**. Sampling and licenses: [full tutorial](docs/tutorials/real-demos.md). To repeat official GCS reads use `fetch_aef_demo()` from `earth_embedding.demo`; the first map above works offline.
+
+### 2. Esri GLE → location map
+
+```python
+from earth_embedding import get_location_embeddings
+from earth_embedding.demo import load_demo, pca_colors, plot_map
+data = load_demo("wuhan")
+points = data.samples[["center_lon", "center_lat"]].to_numpy()
+gle = get_location_embeddings("esri_gle", points, device="cpu", batch_size=128)
+fig = plot_map(data.samples, pca_colors(gle.data), title="Wuhan | Esri GLE | PCA RGB")
+fig.savefig("esri-gle-pca.png", dpi=160)
+```
+
+![Esri GLE PCA](docs/assets/demos/esri-gle-pca.png)
+
+
+567 Wuhan locations; official ~3.7 MB weights download once and run directly in PyTorch. No ArcGIS/ArcPy. GLE has **no observation year**; colors show a geographic prior, not a dated land-cover map.
+
+### 3. Embeddings + labels → classification
+
+```python
+from earth_embedding.demo import classify_demo, plot_classification
+result = classify_demo()
+print({k: result["metrics"][k] for k in ("oa", "macro_f1", "balanced_accuracy")})
+fig = plot_classification(result)
+fig.savefig("wuhan-classification.png", dpi=160)
+```
+
+![Wuhan reference, held-out predictions, errors and confusion matrix](docs/assets/demos/wuhan-classification.png)
+
+| OA | Macro-F1 | Balanced Accuracy | Train / test / buffer / excluded |
+| ---: | ---: | ---: | --- |
+| 93.81% | 91.92% | 90.52% | 310 / 210 / 42 / 5 |
+
+
+Newly computed historical Wuhan **software demo**, not current global paper results. Three classes: built, vegetation, water. East trains, west tests, two columns buffer; five rare cropland cells are excluded. Scaler and Logistic Regression fit training rows only (seed 42). Gray cells are unscored. [Class counts, source/license, split, metrics and limits](docs/tutorials/real-demos.md).
+
+### Four executed notebooks
+
+[01 · AEF](examples/notebooks/01_first_embedding_map.ipynb) ·
+[02 · Esri GLE](examples/notebooks/02_esri_locations.ipynb) ·
+[03 · Classification](examples/notebooks/03_wuhan_classification.ipynb) ·
+[04 · Export / reuse](examples/notebooks/04_export_and_reuse.ipynb)
+
+
+Each notebook contains real execution outputs and maps. [Execution receipt](docs/validation/demo-notebooks.json) · [Complete tutorial](docs/tutorials/real-demos.md) · [Editable Excalidraw](docs/assets/earth-embedding-demos.excalidraw). Notebook 04 exports and safely reloads batches; it does not rank products with unequal spatial support.
+<!-- REAL_DEMOS_END -->
+
+
 ## Why Earth Embedding?
 
 Remote sensing models expose different inputs, preprocessing rules, spatial supports, and access methods. Earth Embedding makes those differences explicit while providing reusable interfaces for obtaining features. Start with satellite imagery, a list of locations, or an existing embedding product; receive embedding values and provenance metadata for your own analysis.

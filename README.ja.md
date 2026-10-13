@@ -24,6 +24,87 @@
   <img src="docs/assets/earth-embedding-hero.svg" width="100%" alt="画像エンコーダー、位置エンコーダー、事前計算済みプロダクトから地理空間分析へつなぐ Earth Embedding。">
 </picture>
 
+<!-- REAL_DEMOS_START -->
+## 5 行で最初の実データ地図を作る
+
+Python 3.12 以降、CPU で実行できます。この Git リポジトリからインストールし、PyPI 公開は前提にしません。小さな実データを同梱し、読み込み時に SHA-256 を検証します。Earth Engine 認証や個人環境のパスは不要です。
+
+```bash
+git clone https://github.com/GISWLH/earth-embedding.git
+cd earth-embedding
+python -m pip install -e ".[demo,aef]"
+```
+
+
+<picture>
+  <source media="(max-width: 760px)" srcset="docs/assets/earth-embedding-demos-mobile.svg">
+  <img src="docs/assets/earth-embedding-demos.svg" width="100%" alt="Location to embedding to map; features and labels to spatial holdout, classifier and measured results.">
+</picture>
+
+
+### 1. AEF 2021 → PCA マップ
+
+```python
+from earth_embedding.demo import load_demo, pca_colors, plot_map
+data = load_demo("aef")
+colors = pca_colors(data.features)
+fig = plot_map(data.samples, colors, title="Wuhan | AEF 2021 | PCA RGB")
+fig.savefig("aef-pca.png", dpi=160)
+```
+
+![AEF 2021 PCA](docs/assets/demos/aef-pca.png)
+
+
+武漢、東経 114.40–114.42° / 北緯 30.51–30.53°。Google / Google DeepMind AEF 2021 の実際のベクトルを 64 × 64 点でサンプリングしました。RGB は記述的な主成分であり、**土地被覆クラスではありません**。[取得方法とライセンス](docs/tutorials/real-demos.md)。公式 GCS を再取得する場合は `earth_embedding.demo` の `fetch_aef_demo()` を使用します。上の例はオフラインで動作します。
+
+### 2. Esri GLE → 位置の埋め込みマップ
+
+```python
+from earth_embedding import get_location_embeddings
+from earth_embedding.demo import load_demo, pca_colors, plot_map
+data = load_demo("wuhan")
+points = data.samples[["center_lon", "center_lat"]].to_numpy()
+gle = get_location_embeddings("esri_gle", points, device="cpu", batch_size=128)
+fig = plot_map(data.samples, pca_colors(gle.data), title="Wuhan | Esri GLE | PCA RGB")
+fig.savefig("esri-gle-pca.png", dpi=160)
+```
+
+![Esri GLE PCA](docs/assets/demos/esri-gle-pca.png)
+
+
+武漢の 567 地点をバッチ処理します。初回のみ約 3.7 MB の公式重みを取得し、PyTorch で直接推論します。ArcGIS/ArcPy は不要です。GLE に**観測年はなく**、色は位置の事前表現であり、特定年の土地被覆図ではありません。
+
+### 3. 埋め込み + ラベル → 分類
+
+```python
+from earth_embedding.demo import classify_demo, plot_classification
+result = classify_demo()
+print({k: result["metrics"][k] for k in ("oa", "macro_f1", "balanced_accuracy")})
+fig = plot_classification(result)
+fig.savefig("wuhan-classification.png", dpi=160)
+```
+
+![Wuhan reference, held-out predictions, errors and confusion matrix](docs/assets/demos/wuhan-classification.png)
+
+| OA | Macro-F1 | Balanced Accuracy | Train / test / buffer / excluded |
+| ---: | ---: | ---: | --- |
+| 93.81% | 91.92% | 90.52% | 310 / 210 / 42 / 5 |
+
+
+今回再計算した過去の武漢データによる**ソフトウェア実演**であり、現在の論文の全球結果ではありません。建物域・植生・水域の 3 クラス。東部を学習、西部をテスト、2 列をバッファとし、希少な農地 5 セルを除外します。標準化とロジスティック回帰は学習データだけで推定します（seed 42）。灰色部分は評価対象外です。[クラス数・出典・分割・制約](docs/tutorials/real-demos.md)。
+
+### 実行済みの 4 つの Notebook
+
+[01 · AEF](examples/notebooks/01_first_embedding_map.ipynb) ·
+[02 · Esri GLE](examples/notebooks/02_esri_locations.ipynb) ·
+[03 · Classification](examples/notebooks/03_wuhan_classification.ipynb) ·
+[04 · Export / reuse](examples/notebooks/04_export_and_reuse.ipynb)
+
+
+実際の出力と地図を保存しています。[実行記録](docs/validation/demo-notebooks.json) · [詳細チュートリアル](docs/tutorials/real-demos.md) · [編集可能な Excalidraw](docs/assets/earth-embedding-demos.excalidraw)。04 は分割出力と ID による再利用を扱い、空間的な支持範囲が異なる製品の順位付けは行いません。
+<!-- REAL_DEMOS_END -->
+
+
 ## Earth Embedding でできること
 
 リモートセンシングのモデルは、入力バンド、前処理、空間的な支持範囲、時系列、データ取得方法が異なります。Earth Embedding は、それらの違いを明示したまま、特徴量を取得する共通インターフェースを提供します。画像、経緯度の配列、事前計算済みプロダクトから、下流タスクに使える埋め込みと来歴メタデータを取得できます。

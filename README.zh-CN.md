@@ -24,6 +24,87 @@
   <img src="docs/assets/earth-embedding-hero.svg" width="100%" alt="影像编码器、位置编码器和预计算产品通过 Earth Embedding 接入地理空间分析流程。">
 </picture>
 
+<!-- REAL_DEMOS_START -->
+## 五行代码，得到第一张真实地图
+
+Python 3.12+，CPU 可运行。从本 Git 仓库安装，不假设已发布到 PyPI。小型真实样例随包提供，读取时验证 SHA-256；无需 Earth Engine 登录或私人路径。
+
+```bash
+git clone https://github.com/GISWLH/earth-embedding.git
+cd earth-embedding
+python -m pip install -e ".[demo,aef]"
+```
+
+
+<picture>
+  <source media="(max-width: 760px)" srcset="docs/assets/earth-embedding-demos-mobile.svg">
+  <img src="docs/assets/earth-embedding-demos.svg" width="100%" alt="Location to embedding to map; features and labels to spatial holdout, classifier and measured results.">
+</picture>
+
+
+### 1. AEF 2021 → PCA 空间图
+
+```python
+from earth_embedding.demo import load_demo, pca_colors, plot_map
+data = load_demo("aef")
+colors = pca_colors(data.features)
+fig = plot_map(data.samples, colors, title="Wuhan | AEF 2021 | PCA RGB")
+fig.savefig("aef-pca.png", dpi=160)
+```
+
+![AEF 2021 PCA](docs/assets/demos/aef-pca.png)
+
+
+武汉，东经 114.40–114.42°、北纬 30.51–30.53°。64 × 64 个真实 Google / Google DeepMind AEF 2021 向量；RGB 表示描述性主成分，**不代表地物类别**。抽样和许可见[完整教程](docs/tutorials/real-demos.md)。如需重新读取官方 GCS，可调用 `earth_embedding.demo` 中的 `fetch_aef_demo()`；上面的第一张地图可离线生成。
+
+### 2. Esri GLE → 经纬度嵌入地图
+
+```python
+from earth_embedding import get_location_embeddings
+from earth_embedding.demo import load_demo, pca_colors, plot_map
+data = load_demo("wuhan")
+points = data.samples[["center_lon", "center_lat"]].to_numpy()
+gle = get_location_embeddings("esri_gle", points, device="cpu", batch_size=128)
+fig = plot_map(data.samples, pca_colors(gle.data), title="Wuhan | Esri GLE | PCA RGB")
+fig.savefig("esri-gle-pca.png", dpi=160)
+```
+
+![Esri GLE PCA](docs/assets/demos/esri-gle-pca.png)
+
+
+批量编码武汉 567 个位置；首次下载约 3.7 MB 官方权重，直接使用 PyTorch，无需 ArcGIS/ArcPy。GLE **没有观测年份**，颜色展示位置先验，不能视为某一年的土地覆盖图。
+
+### 3. 嵌入 + 标签 → 分类结果
+
+```python
+from earth_embedding.demo import classify_demo, plot_classification
+result = classify_demo()
+print({k: result["metrics"][k] for k in ("oa", "macro_f1", "balanced_accuracy")})
+fig = plot_classification(result)
+fig.savefig("wuhan-classification.png", dpi=160)
+```
+
+![Wuhan reference, held-out predictions, errors and confusion matrix](docs/assets/demos/wuhan-classification.png)
+
+| OA | Macro-F1 | Balanced Accuracy | Train / test / buffer / excluded |
+| ---: | ---: | ---: | --- |
+| 93.81% | 91.92% | 90.52% | 310 / 210 / 42 / 5 |
+
+
+本次重新计算的历史武汉**软件演示**，不是当前论文全球实验结果。建成区、植被、水体三分类；东部训练、西部测试，中间两列为缓冲，5 个稀有耕地格网排除。标准化和逻辑回归仅用训练集拟合（种子 42）。灰色区域不评分。[类别数量、来源许可、划分和限制](docs/tutorials/real-demos.md)。
+
+### 四个已执行的导览 Notebook
+
+[01 · AEF](examples/notebooks/01_first_embedding_map.ipynb) ·
+[02 · Esri GLE](examples/notebooks/02_esri_locations.ipynb) ·
+[03 · Classification](examples/notebooks/03_wuhan_classification.ipynb) ·
+[04 · Export / reuse](examples/notebooks/04_export_and_reuse.ipynb)
+
+
+均保存真实运行输出和图像。[执行记录](docs/validation/demo-notebooks.json) · [完整教程](docs/tutorials/real-demos.md) · [可编辑 Excalidraw](docs/assets/earth-embedding-demos.excalidraw)。第 04 个演示分批导出和按 ID 安全复用，不对空间支持范围不一致的产品进行排名。
+<!-- REAL_DEMOS_END -->
+
+
 ## 为什么使用 Earth Embedding？
 
 不同遥感模型对输入波段、预处理、空间尺度、时间序列和数据访问方式有不同要求。Earth Embedding 用可复用接口获取特征，同时明确保留这些差异。你可以从已有影像、经纬度列表或预计算产品出发，得到用于下游分析的嵌入值及来源元数据。

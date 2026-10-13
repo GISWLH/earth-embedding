@@ -1,0 +1,25 @@
+{
+  "scope": "Actual official COG reads and README snippet execution; not unit substitutes",
+  "aef": {
+    "status": "passed",
+    "shape": [
+      4096,
+      64
+    ],
+    "seconds": 65.46,
+    "array_sha256": "b230d8a5b74014bd8c0d638d1359c82990095c92066c74c21207c5b02673fb98",
+    "sources": [
+      "https://storage.googleapis.com/alphaearth_foundations/satellite_embedding/v1/annual/2021/50N/xwrlcmce8pjj58pho-0000008192-0000000000.tiff"
+    ],
+    "cache_existed_before_run": false
+  },
+  "readme": {
+    "status": "passed",
+    "identical_languages": 3,
+    "executed_snippets": 3,
+    "seconds": 3.75
+  },
+  "python": "3.13.12",
+  "platform": "Windows",
+  "remote_attempt": "Separate Linux fresh COG probe stopped after more than 4 minutes without completion; Windows fresh read and cache equality passed."
+}

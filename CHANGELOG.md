@@ -8,6 +8,11 @@ The format is based on Keep a Changelog, and the project follows Semantic Versio
 
 ## [Unreleased]
 
+- Add checksummed real AEF/Wuhan samples, ID-safe loading, PCA mapping, a buffered
+  spatial CPU classification demo, and four executed guided notebooks.
+- Publish regenerated maps, measured downstream metrics, editable workflow artwork,
+  and matching English, Chinese and Japanese quickstarts.
+
 ### Earth Embedding extension (0.2.0 development)
 
 - Rename the GISWLH repository and distribution to `earth-embedding`; add `earth_embedding` imports and the `earth-embedding` CLI while preserving `rs_embed` and `rs-embed` compatibility.

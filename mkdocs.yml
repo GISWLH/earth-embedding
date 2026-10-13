@@ -70,6 +70,7 @@ nav:
   - Home:
       - Overview: index.md
       - Quickstart: quickstart.md
+      - Real data tutorials: tutorials/real-demos.md
       - Research connections: research.md
   - Models:
       - Overview: models.md
