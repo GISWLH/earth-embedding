@@ -70,10 +70,12 @@ nav:
   - Home:
       - Overview: index.md
       - Quickstart: quickstart.md
+      - Multi-model comparison: tutorials/model-comparison.md
       - Real data tutorials: tutorials/real-demos.md
       - Research connections: research.md
   - Models:
       - Overview: models.md
+      - Hugging Face & official resources: model-resources.md
       - Advanced Reference: models_reference.md
       - Precomputed:
           - Tessera: models/tessera.md

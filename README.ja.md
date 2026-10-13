@@ -17,6 +17,27 @@
 
 </div>
 
+## 同じ API で 22 モデルを比較
+
+```python
+emb = get_embedding("prithvi", spatial=spatial, temporal=temporal, output=output)
+```
+
+![同じ武漢地域における22モデルの実データ出力](docs/assets/comparison/all-models.png)
+
+画像モデル、SatCLIP・GeoCLIP・Esri GLE の位置モデル、事前計算済み製品を
+`compare_embeddings(...)` と `plot_embedding_comparison(...)` で一枚に表示できます。
+各パネルの PCA 色と空間サポートはモデル固有であり、性能順位を示す図ではありません。
+
+```bash
+python examples/compare_models.py --models all --out outputs/comparison
+python examples/compare_models.py --models satclip geoclip esri_gle --device cpu
+```
+
+[比較チュートリアル](docs/tutorials/model-comparison.md) ·
+[Notebook](examples/notebooks/05_compare_models.ipynb) ·
+[Hugging Face・公式リソース](docs/model-resources.md)
+
 > **開発の経緯。** Earth Embedding は、Dingqi Ye 氏とコントリビューターによる [CyberGIS rs-embed](https://github.com/cybergis/rs-embed) を基にした、独立して保守される拡張プロジェクトです。Apache-2.0 ライセンスと原著者の表記を維持し、元の API、アダプター、実装基盤を継承しています。[元の rs-embed 論文](https://arxiv.org/abs/2602.23678)と本プロジェクトの研究原稿は別の成果です。[来歴と謝辞](docs/provenance.md)をご覧ください。
 
 <picture>
@@ -140,7 +161,7 @@ python -m pip install -e ".[location,aef]"
 | `.[location]` | GeoCLIP の公式 Python パッケージ。SatCLIP と Esri GLE は同梱の実装を使用 |
 | `.[aef]` | Rasterio / PyArrow による AEF COG と Parquet インデックスの読み込み |
 | `.[benchmark]` | 空間ホールドアウト評価の例で使う Scikit-learn など |
-| `.[terratorch]` | TerraMind と現在の Prithvi 統合で使用する TerraTorch |
+| `.[terratorch]` | TerraMind 用の TerraTorch。Prithvi は同梱ランタイムを使用 |
 | `.[dev,full,location,aef,benchmark]` | 開発用チェックとこれらの任意統合 |
 
 PyTorch はハードウェアに合うものを用意してください。初回実行時には重みのダウンロードが発生する場合があり、大きなモデルには十分なメモリが必要です。次の一覧・説明コマンドは推論を実行しません。

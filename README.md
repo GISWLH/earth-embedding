@@ -12,10 +12,102 @@
 [![Models](https://img.shields.io/badge/Catalog-22%20adapters-267b72)](docs/models.md)
 [![Validation](https://img.shields.io/badge/Validation-evidence%20%26%20limits-d98950)](docs/validation.md)
 [![Tests](https://github.com/GISWLH/earth-embedding/actions/workflows/tests.yml/badge.svg)](https://github.com/GISWLH/earth-embedding/actions/workflows/tests.yml)
+[![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-models%20%26%20data-FFD21E)](docs/model-resources.md)
+[![Docs](https://img.shields.io/badge/Docs-online-267b72)](https://giswlh.github.io/earth-embedding/)
 
-[Get started](#installation) · [Model catalog](#model-catalog) · [Documentation](docs/index.md) · [Validation](docs/validation.md) · [Contribute](CONTRIBUTING.md)
+[Quickstart](#one-call-any-model) · [Compare 22 models](#22-models-one-figure) · [Hugging Face & resources](docs/model-resources.md) · [Notebooks](examples/notebooks/) · [Docs](https://giswlh.github.io/earth-embedding/) · [Contribute](CONTRIBUTING.md)
 
 </div>
+
+## One call, any model
+
+```python
+emb = get_embedding("prithvi", spatial=spatial, temporal=temporal, output=output)
+```
+
+Choose a place, a time window, and an output. Swap the model name to explore
+**16 image configurations, 3 location encoders, and 3 precomputed products**.
+The familiar [rs-embed](https://github.com/cybergis/rs-embed) geographic API is
+preserved; Earth Embedding adds location models, direct product access, and
+multi-model comparison.
+
+```bash
+git clone https://github.com/GISWLH/earth-embedding.git
+cd earth-embedding
+python -m pip install -e ".[plot,location]"
+# For image/product routes that use Earth Engine:
+earthengine authenticate
+```
+
+```python
+from earth_embedding import PointBuffer, TemporalSpec, OutputSpec, get_embedding
+
+spatial = PointBuffer(lon=114.41, lat=30.52, buffer_m=640)
+temporal = TemporalSpec.range("2021-05-01", "2021-10-31")
+output = OutputSpec.grid()  # Or OutputSpec.pooled() for a feature vector.
+
+emb = get_embedding("prithvi", spatial=spatial, temporal=temporal, output=output)
+
+# The same geographic interface also works for Esri's location encoder.
+gle = get_embedding("esri_gle", spatial=spatial, output=output, grid_step_m=80)
+```
+
+Use Python 3.12+. First use downloads the selected weights. Image routes need
+their [model dependencies](docs/models.md) and imagery access; Esri GLE runs
+directly in PyTorch without Earth Engine or ArcGIS. Annual products use
+`TemporalSpec.year(2021)`; location encoders need no date.
+
+## 22 models, one figure
+
+![Real Wuhan comparison: Sentinel-2 reference and all 22 model configurations](docs/assets/comparison/all-models.png)
+
+**One region, 22 real outputs.** Image encoders, location encoders (including
+Esri GLE), and precomputed products appear together. This is a qualitative
+gallery: each panel uses its own PCA colors and retains its own spatial
+support. Equal colors across panels do not indicate equal features or classes.
+The gallery reuses verified historical Wuhan image/product outputs and adds
+real location inference. [Inputs, provenance, and reproduction](docs/tutorials/model-comparison.md).
+Dates differ across these archived runs; SatVision's historical proxy input and
+Copernicus's coarse product window are labeled in the figure and provenance.
+
+```python
+from earth_embedding import compare_embeddings, plot_embedding_comparison
+
+comparison = compare_embeddings(
+    ["prithvi", "dofa", "remoteclip", "satclip", "geoclip", "esri_gle"],
+    spatial=spatial,
+    temporal=temporal,
+    output=output,
+    model_options={name: {"grid_step_m": 80}
+                   for name in ("satclip", "geoclip", "esri_gle")},
+    on_error="record",  # Keep successful panels; show each failure explicitly.
+)
+fig = plot_embedding_comparison(comparison, columns=3)
+fig.savefig("comparison.png", dpi=180, bbox_inches="tight")
+```
+
+Set `models=None` to select the **entire 22-entry catalog**. Give annual
+products a year through `model_options`; the [complete example](examples/compare_models.py)
+does this for you and saves the figure, feature arrays, and a run report:
+
+```bash
+# All catalog models, one PNG. Requires their runtimes, weights and data access.
+python examples/compare_models.py --models all --out outputs/comparison
+# A smaller CPU run with no imagery download or Earth Engine authentication.
+python examples/compare_models.py --models satclip geoclip esri_gle --device cpu
+```
+
+Results are available as `comparison.embeddings["prithvi"]`; failures are
+reported in `comparison.errors`. Models run sequentially and release their
+cached runtimes between requests by default. [Comparison notebook](examples/notebooks/05_compare_models.ipynb).
+
+### Compare location encoders at global and local scales
+
+![SatCLIP, GeoCLIP and Esri GLE on shared global and Wuhan coordinate grids](docs/assets/comparison/location-encoders.png)
+
+These encoders use **longitude and latitude**, with no satellite observation
+date. Their spatial patterns show learned geographic priors. Adjust the region
+and sampling spacing with the same `spatial` and `grid_step_m` arguments.
 
 > **Origin and attribution.** Earth Embedding is an independently maintained extension of [CyberGIS rs-embed](https://github.com/cybergis/rs-embed), created by Dingqi Ye and contributors. We retain its Apache-2.0 license and acknowledge its APIs, adapters, and engineering foundation. The [upstream paper](https://arxiv.org/abs/2602.23678) describes rs-embed; our manuscript and extensions are separate work. See [provenance](docs/provenance.md).
 
@@ -25,7 +117,7 @@
 </picture>
 
 <!-- REAL_DEMOS_START -->
-## Five lines to a real map
+## More runnable examples
 
 Python 3.12+, CPU. Install from this Git repository; no PyPI release is assumed. The small real samples are bundled and SHA-256 verified. No Earth Engine login or private paths are needed.
 
@@ -93,7 +185,7 @@ fig.savefig("bayarea-classification.png", dpi=160)
 
 Newly computed regional **software demo**, not current global paper results. Four classes: built, vegetation, cropland, water. South trains, north tests, with a ≥5.5 km geographic gap; two bare cells are excluded. There are only 9 cropland training cells, so class imbalance limits this fixed holdout. Scaler and Logistic Regression fit training rows only (seed 42). Gray cells are unscored. [Class counts, source/license, split, metrics and limits](docs/tutorials/real-demos.md).
 
-### Four executed notebooks
+### Notebooks
 
 [01 · AEF](examples/notebooks/01_first_embedding_map.ipynb) ·
 [02 · Esri GLE](examples/notebooks/02_esri_locations.ipynb) ·
@@ -101,7 +193,7 @@ Newly computed regional **software demo**, not current global paper results. Fou
 [04 · Export / reuse](examples/notebooks/04_export_and_reuse.ipynb)
 
 
-Each notebook contains real execution outputs and maps. [Execution receipt](docs/validation/demo-notebooks.json) · [Complete tutorial](docs/tutorials/real-demos.md) · [Editable Excalidraw](docs/assets/earth-embedding-demos.excalidraw). Notebook 04 exports and safely reloads batches; it does not rank products with unequal spatial support.
+Notebooks 01–04 contain real execution outputs and maps. [Execution receipt](docs/validation/demo-notebooks.json) · [Complete tutorial](docs/tutorials/real-demos.md) · [Editable Excalidraw](docs/assets/earth-embedding-demos.excalidraw). Notebook 04 exports and safely reloads batches; it does not rank products with unequal spatial support. [05 · Compare models](examples/notebooks/05_compare_models.ipynb) includes executed three-model CPU comparison outputs and an optional full-catalog cell; see its [execution receipt](docs/validation/comparison-notebook.json).
 <!-- REAL_DEMOS_END -->
 
 
@@ -140,7 +232,7 @@ python -m pip install -e ".[location,aef]"
 | `.[location]` | GeoCLIP's official Python package; SatCLIP and Esri GLE use bundled runtimes |
 | `.[aef]` | Rasterio and PyArrow for direct AlphaEarth COG sampling and Parquet indexes |
 | `.[benchmark]` | Scikit-learn for the spatial-holdout evaluation example |
-| `.[terratorch]` | TerraTorch-backed models, including TerraMind and the current Prithvi integration |
+| `.[terratorch]` | TerraMind's TerraTorch runtime; Prithvi uses a bundled runtime |
 | `.[dev,full,location,aef,benchmark]` | Development checks and these optional integrations |
 
 PyTorch must match your hardware. Model weights may download on first use; image encoders can require substantial memory. Neither the catalog command nor the describe command performs model inference:
@@ -227,30 +319,32 @@ Google's [official GCS guide](https://developers.google.com/earth-engine/guides/
 
 Classification follows the delivered object and evaluated input contract. Architecture, resolution, learning signal, and evaluation eligibility are separate properties. An adapter's presence is an integration statement; it is not a guarantee of current data access, checkpoint availability, or successful execution on your machine.
 
-| Class | Model ID | Model / release | Input or access contract |
-| --- | --- | --- | --- |
-| A1 · RGB | `remoteclip` | [RemoteCLIP](docs/models/remoteclip.md) | Three-channel optical imagery |
-| A1 · RGB | `satmae` | [SatMAE](docs/models/satmae.md) | RGB configuration |
-| A1 · RGB | `satmaepp` | [SatMAE++](docs/models/satmaepp.md) | RGB configuration |
-| A1 · RGB | `scalemae` | [Scale-MAE](docs/models/scalemae.md) | RGB and spatial scale |
-| A1 · RGB | `wildsat` | [WildSAT](docs/models/wildsat.md) | RGB; backbone depends on configuration |
-| A2 · Fixed-schema | `satmaepp_s2_10b` | [SatMAE++ Sentinel-2](docs/models/satmaepp.md) | Ordered 10-band input |
-| A2 · Fixed-schema | `prithvi` | [Prithvi-EO-2.0](docs/models/prithvi.md) | Adapter's six-band input contract |
-| A2 · Fixed-schema | `terramind` | [TerraMind](docs/models/terramind.md) | Sentinel-2 path in this configuration |
-| A2 · Fixed-schema | `terrafm` | [TerraFM](docs/models/terrafm.md) | Sentinel-2 path in this configuration |
-| A2 · Fixed-schema | `satvision` | [SatVision-TOA](docs/models/satvision.md) | 14-channel MODIS TOA; coarse support |
-| A3 · Channel-adaptive | `dofa` | [DOFA](docs/models/dofa.md) | Spectral channels and wavelengths |
-| A3 · Channel-adaptive | `fomo` | [FoMo](docs/models/fomo.md) | Model-specific channel identities |
-| A3 · Channel-adaptive | `thor` | [THOR](docs/models/thor.md) | Model-specific band/schema metadata |
-| A4 · Multitemporal | `galileo` | [Galileo](docs/models/galileo.md) | Dated Sentinel-2 sequence |
-| A4 · Multitemporal | `anysat` | [AnySat](docs/models/anysat.md) | Dated Sentinel-2 sequence |
-| A4 · Multitemporal | `agrifm` | [AgriFM](docs/models/agrifm.md) | Dated Sentinel-2 sequence |
-| B · Location | `satclip` | [SatCLIP](docs/models/satclip.md) | Longitude/latitude; 256 dimensions |
-| B · Location | `geoclip` | [GeoCLIP](docs/models/geoclip.md) | Longitude/latitude; 512 dimensions; optional package |
-| B · Location | `esri_gle` | [Esri Global Location Encoder](docs/models/esri_gle.md) | Longitude/latitude; 256 dimensions; direct PyTorch, ~3.7 MB download |
-| C1 · Gridded product | `gse` | [Google Satellite Embedding / AEF](docs/models/gse.md) | 10 m annual product; 64 dimensions; GEE or separate GCS helpers |
-| C1 · Gridded product | `tessera` | [TESSERA](docs/models/tessera.md) | 10 m annual product; GeoTessera access/cache |
-| C1 · Gridded product | `copernicus` | [Copernicus-Embed-025deg](docs/models/copernicus.md) | Precomputed 0.25° grid |
+| Model ID / guide | Class | Current adapter input | Upstream source | Weights or product |
+| --- | --- | --- | --- | --- |
+| [`remoteclip`](docs/models/remoteclip.md) | A · image | Sentinel-2 RGB | [Source](https://github.com/ChenDelong1999/RemoteCLIP) | [Hugging Face model](https://huggingface.co/MVRL/remote-clip-vit-base-patch32) |
+| [`satmae`](docs/models/satmae.md) | A · image | Sentinel-2 RGB | [Source](https://github.com/sustainlab-group/SatMAE) | [Hugging Face model](https://huggingface.co/MVRL/satmae-vitlarge-fmow-pretrain-800) |
+| [`satmaepp`](docs/models/satmaepp.md) | A · image | Sentinel-2 RGB | [Source](https://github.com/techmn/satmae_pp) | [Hugging Face model](https://huggingface.co/MVRL/satmaepp_ViT-L_pretrain_fmow_rgb) |
+| [`satmaepp_s2_10b`](docs/models/satmaepp.md) | A · image | Sentinel-2 10 bands | [Source](https://github.com/techmn/satmae_pp) | [Hugging Face model](https://huggingface.co/mubashir04/checkpoint_ViT-L_pretrain_fmow_sentinel) |
+| [`scalemae`](docs/models/scalemae.md) | A · image | Sentinel-2 RGB + ground resolution | [Source](https://github.com/bair-climate-initiative/scale-mae) | [Hugging Face model](https://huggingface.co/MVRL/scalemae-vitlarge-800) |
+| [`wildsat`](docs/models/wildsat.md) | A · image | Sentinel-2 RGB | [Source](https://github.com/cvl-umass/wildsat) | [official download](https://github.com/cvl-umass/wildsat#quickstart) |
+| [`prithvi`](docs/models/prithvi.md) | A · image | Sentinel-2 6 bands + time/location | [Source](https://github.com/NASA-IMPACT/Prithvi-EO-2.0) | [Hugging Face model](https://huggingface.co/ibm-nasa-geospatial/Prithvi-EO-2.0-100M-TL) |
+| [`terrafm`](docs/models/terrafm.md) | A · image | Sentinel-2 12 bands or Sentinel-1 VV/VH | [Source](https://github.com/mbzuai-oryx/TerraFM) | [Hugging Face model](https://huggingface.co/MBZUAI/TerraFM) |
+| [`terramind`](docs/models/terramind.md) | A · image | Sentinel-2 12 bands | [Source](https://github.com/IBM/terramind) | [Hugging Face model](https://huggingface.co/ibm-esa-geospatial/TerraMind-1.0-small) |
+| [`dofa`](docs/models/dofa.md) | A · image | Multispectral imagery + wavelengths | [Source](https://github.com/zhu-xlab/DOFA) | [Hugging Face model](https://huggingface.co/earthflow/DOFA) |
+| [`fomo`](docs/models/fomo.md) | A · image | Sentinel-2 12 bands | [Source](https://github.com/RolnickLab/FoMo-Bench) | [official download](https://github.com/RolnickLab/FoMo-Bench#loading-pretrained-fomo-net) |
+| [`thor`](docs/models/thor.md) | A · image | Sentinel-2 10 bands | [Source](https://github.com/FM4CS/THOR) | [Hugging Face model](https://huggingface.co/FM4CS/THOR-1.0-base) |
+| [`satvision`](docs/models/satvision.md) | A · image | 14 calibrated TOA channels | [Source](https://github.com/nasa-nccs-hpda/pytorch-caney) | [Hugging Face model](https://huggingface.co/nasa-cisto-data-science-group/satvision-toa-giant-patch8-window8-128) |
+| [`anysat`](docs/models/anysat.md) | A · image | Sentinel-2 10-band time series | [Source](https://github.com/gastruc/anysat) | [Hugging Face model](https://huggingface.co/g-astruc/AnySat) |
+| [`galileo`](docs/models/galileo.md) | A · image | Sentinel-2 10-band time series | [Source](https://github.com/nasaharvest/galileo) | [Hugging Face model](https://huggingface.co/nasaharvest/galileo) |
+| [`agrifm`](docs/models/agrifm.md) | A · image | Sentinel-2 10-band time series | [Source](https://github.com/flyakon/AgriFM) | [official download](https://github.com/flyakon/AgriFM#model-training) |
+| [`satclip`](docs/models/satclip.md) | B · location | Longitude/latitude only | [Source](https://github.com/microsoft/satclip) | [Hugging Face model](https://huggingface.co/microsoft/SatCLIP-ViT16-L40) |
+| [`geoclip`](docs/models/geoclip.md) | B · location | Longitude/latitude only | [Source](https://github.com/VicenteVivan/geo-clip) | [official download](https://github.com/VicenteVivan/geo-clip#usage-pre-trained-location-encoder) |
+| [`esri_gle`](docs/models/esri_gle.md) | B · location | Longitude/latitude only | [Source](https://doc.arcgis.com/en/pretrained-models/latest/vector/introduction-to-global-location-encoder-sentinel-2-.htm) | [official download](https://www.arcgis.com/home/item.html?id=b0664ef297c04d4aaa44191cf21e07f3) |
+| [`tessera`](docs/models/tessera.md) | C · product | Published GeoTessera embedding tiles | [Source](https://github.com/ucam-eo/geotessera) | [official product](https://github.com/ucam-eo/geotessera#dataset-versions-and-variants) |
+| [`gse`](docs/models/gse.md) | C · product | Annual Google Satellite Embedding product | [Source](https://developers.google.com/earth-engine/datasets/catalog/GOOGLE_SATELLITE_EMBEDDING_V1_ANNUAL) | [official product](https://developers.google.com/earth-engine/datasets/catalog/GOOGLE_SATELLITE_EMBEDDING_V1_ANNUAL) |
+| [`copernicus`](docs/models/copernicus.md) | C · product | 0.25-degree embedding product | [Source](https://huggingface.co/datasets/wangyi111/Copernicus-Embed-025deg) | [Hugging Face dataset](https://huggingface.co/datasets/torchgeo/copernicus_embed) |
+
+[Checkpoint packaging, default variants and model terms](docs/model-resources.md#which-artifact-am-i-opening). These are upstream resources, not weights republished by this project.
 
 The taxonomy also includes **C2 sampled embedding collections**. No C2 adapter is claimed in this 22-entry catalog. Model-lineage names alone do not determine a class: published weights and a precomputed product can be separate releases.
 

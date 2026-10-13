@@ -12,6 +12,29 @@ imagery is suitable for checking checkpoint loading, tensor handling, and finite
 outputs; it says nothing about representation quality, accuracy, or generalization.
 Additional integrations do not change the paper's frozen 20-system benchmark.
 
+## Comparison gallery and unified API checks
+
+The [22-model gallery](tutorials/model-comparison.md) adds a different evidence
+layer: 19 retained historical Wuhan image/product outputs, plus fresh SatCLIP,
+GeoCLIP and Esri GLE coordinate inference. It does **not** turn the blocked live
+Tessera/Copernicus access checks below into passes. Dates and spatial support
+differ; the historical SatVision proxy input is labeled, and the coarse Copernicus
+window is displayed without duplicating overlapping product cells.
+
+The new `compare_embeddings` CLI was also [executed with real weights](validation/comparison-api.json) for all
+three location encoders on CPU, with identical 320 m query settings. It returned
+672 coordinate samples per model and saved real feature arrays, a combined PNG,
+and a run report. The [comparison notebook receipt](validation/comparison-notebook.json)
+records its separate 5 km, three-model execution; full 22-model extraction in
+that notebook remains an optional, unexecuted cell.
+
+Regression checks for this change passed on Windows/Python 3.13
+(774 passed, 1 skipped) and Linux/Python 3.12 (773 passed, 2 skipped).
+Tests cover shared location sampling, finite spacing and size limits, explicit
+failure reports, per-model dates, visualization shapes, and offline resource
+discovery. [Gallery source hashes and provenance](assets/comparison/provenance.json)
+document the displayed data independently of those interface tests.
+
 ## Per-model evidence
 
 PASS means a real pretrained output or real product array was returned and checked

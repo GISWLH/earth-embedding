@@ -75,7 +75,7 @@ def run_auto_demo(*, run_export: bool, out_dir: Path) -> None:
         "tessera",
         spatial=spatial,
         temporal=temporal,
-        output=OutputSpec.grid(scale_m=10),
+        output=OutputSpec.grid(),
         backend="auto",
     )
     _show_embedding("single/grid", grid)

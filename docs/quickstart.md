@@ -52,7 +52,34 @@ print(result.data.shape)  # (1, 256), downloads weights on first use
 
 ---
 
-## The Three Core APIs
+## One place, several models
+
+The same spatial and output specs work for image encoders, location encoders,
+and products. Use the comparison helper to collect and plot several models:
+
+```python
+from earth_embedding import (
+    BBox, OutputSpec, compare_embeddings, plot_embedding_comparison,
+)
+
+models = ["satclip", "geoclip", "esri_gle"]
+comparison = compare_embeddings(
+    models,
+    spatial=BBox(113.9, 30.2, 114.7, 30.9),
+    output=OutputSpec.grid(),
+    model_options={model: {"grid_step_m": 2000} for model in models},
+    device="cpu",
+)
+fig = plot_embedding_comparison(comparison, columns=3)
+fig.savefig("location-comparison.png", dpi=180)
+```
+
+Install `.[plot,location]` for this example. It downloads location-model weights
+on first use and needs no Earth Engine account. See the
+[22-model tutorial](tutorials/model-comparison.md) for imagery/product models,
+per-model dates, failure reports, and native-resolution interpretation.
+
+## Core extraction APIs
 
 ### 1. One ROI: `get_embedding(...)`
 

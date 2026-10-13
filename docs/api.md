@@ -32,6 +32,24 @@ See [data access](data-access.md) and [location models](models.md#location-encod
 
 Most users only need five public entry points: `get_embedding(...)`, `get_embeddings_batch(...)`, `export_batch(...)`, `load_export(...)`, and `inspect_provider_patch(...)`.
 
+### Multi-model comparison and discovery
+
+- `compare_embeddings(models=None, *, spatial, temporal=None, output=OutputSpec.grid(), model_options=None, on_error="raise", release_models=True, **shared_kwargs)`
+  calls the geographic API for each selected model. `models=None` selects the
+  complete catalog; `model_options` maps model IDs to per-model keyword overrides.
+  The returned `EmbeddingComparison` keeps canonical model order, successful
+  `embeddings`, and explicit `errors`. `on_error="record"` retains partial runs.
+  Cached model runtimes are cleared between requests by default.
+- `plot_embedding_comparison(comparison_or_mapping, *, columns=5, reference=None, reference_title="Reference image", title=None, lonlat=None, save_path=None, dpi=160)`
+  returns a Matplotlib figure. Spatial grids use independent PCA RGB; pooled
+  vectors are shown as feature profiles; point matrices need `lonlat` for a map.
+  Error panels retain failed model IDs. Requires the `plot` extra.
+- `get_model_resources(model)` and `list_model_resources()` expose lightweight
+  upstream code, checkpoint, dataset, and documentation links without inference.
+
+See the [comparison tutorial](tutorials/model-comparison.md) and
+[resource directory](model-resources.md).
+
 ---
 
 ## Choose by Task

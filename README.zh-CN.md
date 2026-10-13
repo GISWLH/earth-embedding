@@ -17,6 +17,60 @@
 
 </div>
 
+## 一个函数，切换模型
+
+```python
+from earth_embedding import PointBuffer, TemporalSpec, OutputSpec, get_embedding
+
+spatial = PointBuffer(lon=114.41, lat=30.52, buffer_m=640)
+temporal = TemporalSpec.range("2021-05-01", "2021-10-31")
+output = OutputSpec.grid()
+emb = get_embedding("prithvi", spatial=spatial, temporal=temporal, output=output)
+
+# 位置模型也使用同一个地理接口，无需影像或日期。
+gle = get_embedding("esri_gle", spatial=spatial, output=output, grid_step_m=80)
+```
+
+从本仓库安装后即可使用；影像模型需要相应依赖、权重和数据访问权限。
+[在线文档](https://giswlh.github.io/earth-embedding/) ·
+[Hugging Face 权重 / 数据与官方资源](docs/model-resources.md) ·
+[完整模型比较教程](docs/tutorials/model-comparison.md)
+
+## 22 个模型，一张对比图
+
+![同一武汉区域的 Sentinel-2 参考影像与 22 个真实模型结果](docs/assets/comparison/all-models.png)
+
+16 个影像配置、3 个位置编码器、3 个预计算产品同图展示。影像与产品结果复用
+已有真实武汉缓存，位置模型使用真实权重推理。每个模型独立计算 PCA 颜色，
+保留各自空间支持；同色不代表同类，也不将此图作为模型性能排名。
+
+```python
+from earth_embedding import compare_embeddings, plot_embedding_comparison
+
+models = ["prithvi", "dofa", "remoteclip", "satclip", "geoclip", "esri_gle"]
+comparison = compare_embeddings(
+    models, spatial=spatial, temporal=temporal, output=output,
+    model_options={m: {"grid_step_m": 80} for m in ("satclip", "geoclip", "esri_gle")},
+    on_error="record",
+)
+fig = plot_embedding_comparison(comparison, columns=3)
+fig.savefig("comparison.png", dpi=180, bbox_inches="tight")
+```
+
+`models=None` 选择整个目录；年度产品通过 `model_options` 指定
+`TemporalSpec.year(2021)`。[完整脚本](examples/compare_models.py) 已处理这些差异，
+保存对比图、特征文件与运行报告。失败会在图中标明，不会用替代数据填充。
+
+```bash
+python examples/compare_models.py --models all --out outputs/comparison
+python examples/compare_models.py --models satclip geoclip esri_gle --device cpu
+```
+
+![SatCLIP、GeoCLIP 与 Esri GLE 在全球和武汉两个尺度的位置特征](docs/assets/comparison/location-encoders.png)
+
+[比较 Notebook](examples/notebooks/05_compare_models.ipynb) 展示如何更换模型、区域、
+日期和输出形式。位置编码器体现学习到的地理先验，不携带影像观测年份。
+
 > **项目来源。** Earth Embedding 基于 Dingqi Ye 及贡献者开发的 [CyberGIS rs-embed](https://github.com/cybergis/rs-embed) 二次开发并独立维护，保留 Apache-2.0 许可证及原作者署名。原项目的 API、适配器和工程框架是本项目的重要基础。[原 rs-embed 论文](https://arxiv.org/abs/2602.23678)与我们的研究论文是不同工作；详见[来源与致谢](docs/provenance.md)。
 
 <picture>
@@ -140,7 +194,7 @@ python -m pip install -e ".[location,aef]"
 | `.[location]` | 安装 GeoCLIP 官方 Python 包；SatCLIP 和 Esri GLE 使用项目包含的运行时代码 |
 | `.[aef]` | 通过 Rasterio / PyArrow 读取 AEF COG 和 Parquet 索引 |
 | `.[benchmark]` | 运行空间留出评估示例所需的 Scikit-learn 等依赖 |
-| `.[terratorch]` | TerraMind 及当前 Prithvi 集成所需的 TerraTorch |
+| `.[terratorch]` | TerraMind 所需的 TerraTorch；Prithvi 使用包内运行时 |
 | `.[dev,full,location,aef,benchmark]` | 开发检查及上述可选集成 |
 
 请为硬件安装合适的 PyTorch。首次使用模型可能下载权重，部分影像模型需要较多内存或显存。查看目录与接口说明无需运行推理：
