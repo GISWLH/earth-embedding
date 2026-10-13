@@ -15,6 +15,7 @@ The format is based on Keep a Changelog, and the project follows Semantic Versio
 - Add direct AEF GCS index selection, COG sampling, signed-int8 dequantization and mask handling without Earth Engine authentication.
 - Introduce English, Simplified Chinese and Japanese project guides, original editable Excalidraw artwork, explicit upstream attribution and model-validation evidence.
 - Add weight-free `models` and `describe` CLI commands.
+- Verify contract tests with an empty offline model cache, provide source-install dependency hints, and preserve document readability on narrow screens.
 
 ### Changed
 

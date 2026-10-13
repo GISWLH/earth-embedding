@@ -33,17 +33,21 @@ def test_remoteclip_batch_prefetch_passes_input_chw(monkeypatch):
     monkeypatch.setattr(
         rc,
         "_fetch_s2_rgb_chw",
-        lambda provider, spatial, temporal, **kw: np.full((3, 8, 8), 0.5, dtype=np.float32),
+        lambda provider, spatial, temporal, **kw: np.full(
+            (3, 8, 8), 0.5 + 0.1 * spatial.lon, dtype=np.float32
+        ),
     )
 
     seen = []
 
-    def _fake_get_embedding(**kw):
-        arr = kw["input_chw"]
-        seen.append(float(arr.max()))
-        return Embedding(data=np.array([kw["spatial"].lon], dtype=np.float32), meta={})
+    def _fake_batch_from_inputs(*, spatials, input_chws, **kw):
+        assert len(spatials) == len(input_chws)
+        assert all(arr.shape == (3, 8, 8) for arr in input_chws)
+        seen.extend(float(arr.max()) for arr in input_chws)
+        return [Embedding(data=np.array([sp.lon], dtype=np.float32), meta={}) for sp in spatials]
 
-    monkeypatch.setattr(emb, "get_embedding", _fake_get_embedding)
+    # Prefetch delegates to the batch-input boundary, not get_embedding.
+    monkeypatch.setattr(emb, "get_embeddings_batch_from_inputs", _fake_batch_from_inputs)
 
     out = emb.get_embeddings_batch(
         spatials=_spatials(3),
@@ -54,6 +58,8 @@ def test_remoteclip_batch_prefetch_passes_input_chw(monkeypatch):
 
     assert len(out) == 3
     assert all(v >= 4999.0 for v in seen)  # 0.5 * 10000
+    np.testing.assert_allclose(seen, [5000.0, 6000.0, 7000.0])
+    assert [float(item.data[0]) for item in out] == [0.0, 1.0, 2.0]
 
 
 def test_scalemae_batch_prefetch_and_single_model_load(monkeypatch):
@@ -105,16 +111,21 @@ def test_prithvi_batch_prefetch_passes_raw_input(monkeypatch):
     monkeypatch.setattr(
         pr,
         "_fetch_s2_prithvi6_chw",
-        lambda provider, spatial, temporal, **kw: np.full((6, 8, 8), 0.25, dtype=np.float32),
+        lambda provider, spatial, temporal, **kw: np.full(
+            (6, 8, 8), 0.25 + 0.1 * spatial.lon, dtype=np.float32
+        ),
     )
 
     seen = []
 
-    def _fake_get_embedding(**kw):
-        seen.append(float(kw["input_chw"].max()))
-        return Embedding(data=np.array([kw["spatial"].lon], dtype=np.float32), meta={})
+    def _fake_batch_from_inputs(*, spatials, input_chws, **kw):
+        assert len(spatials) == len(input_chws)
+        assert all(arr.shape == (6, 8, 8) for arr in input_chws)
+        seen.extend(float(arr.max()) for arr in input_chws)
+        return [Embedding(data=np.array([sp.lon], dtype=np.float32), meta={}) for sp in spatials]
 
-    monkeypatch.setattr(emb, "get_embedding", _fake_get_embedding)
+    # Isolate raw-input forwarding from checkpoint loading and model inference.
+    monkeypatch.setattr(emb, "get_embeddings_batch_from_inputs", _fake_batch_from_inputs)
 
     out = emb.get_embeddings_batch(
         spatials=_spatials(3),
@@ -125,6 +136,8 @@ def test_prithvi_batch_prefetch_passes_raw_input(monkeypatch):
 
     assert len(out) == 3
     assert all(v >= 2499.0 for v in seen)  # 0.25 * 10000
+    np.testing.assert_allclose(seen, [2500.0, 3500.0, 4500.0])
+    assert [float(item.data[0]) for item in out] == [0.0, 1.0, 2.0]
 
 
 def test_terrafm_batch_prefetch_passes_raw_input(monkeypatch):

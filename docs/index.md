@@ -1,6 +1,9 @@
 # Earth Embedding
 
-![Earth Embedding](assets/earth-embedding-hero.svg)
+<picture>
+  <source media="(max-width: 760px)" srcset="assets/earth-embedding-hero-mobile.svg">
+  <img src="assets/earth-embedding-hero.svg" width="100%" alt="Earth Embedding: images, locations and precomputed products through a shared Python interface.">
+</picture>
 
 Earth Embedding provides a shared Python interface for image encoders, location encoders, and precomputed geospatial embedding products. Its catalog contains 22 adapters across these three release classes. Choose the input you have, check the model's contract, and retain both embedding values and provenance for downstream analysis.
 

@@ -120,7 +120,8 @@ def sample_aef(
         from rasterio.transform import rowcol
     except ImportError as exc:
         raise ModelError(
-            "Direct AEF COG access requires: pip install 'earth-embedding[aef]'"
+            "Direct AEF COG access requires Rasterio. From the earth-embedding repository, "
+            'install the optional dependencies with: pip install -e ".[aef]"'
         ) from exc
 
     result = np.full((len(points), 64), np.nan, dtype=np.float32)

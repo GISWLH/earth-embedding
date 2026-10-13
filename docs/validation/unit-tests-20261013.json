@@ -8,8 +8,9 @@
   "errors": 0,
   "skipped": 2,
   "passed": 668,
-  "seconds": 13.731,
-  "command": "env -u PROJ_LIB -u PROJ_DATA PYTHONPATH=src HF_HUB_OFFLINE=1 OMP_NUM_THREADS=4 MKL_NUM_THREADS=4 python -m pytest tests -q --disable-warnings --maxfail=4",
+  "seconds": 7.931,
+  "command": "env -u PROJ_LIB -u PROJ_DATA PYTHONPATH=src HF_HOME=work/hf-ci-empty-20261013 HF_HUB_CACHE=work/hf-ci-empty-20261013/hub HF_HUB_OFFLINE=1 OMP_NUM_THREADS=4 MKL_NUM_THREADS=4 python -m pytest tests -q --disable-warnings --maxfail=4",
+  "hugging_face_cache": "Fresh isolated empty cache; Hub offline mode enabled",
   "package_versions": {
     "numpy": "2.4.6",
     "pandas": "3.0.3",
@@ -23,6 +24,6 @@
     "geotessera": "0.8.0",
     "pytest": "8.3.4"
   },
-  "source_tree_sha256": "ced2e7945dde30513e6f3b52521559189181362fe0e64104dc8b54f9ebd4985f",
+  "source_tree_sha256": "da1bfaf55f7f6e232b1e2aedeea7e1311cf83f23e0bd57dc565027f1539f421b",
   "source_hash_definition": "SHA256 of compact sorted JSON mapping src/**/*.py POSIX relative path to file SHA256"
 }
