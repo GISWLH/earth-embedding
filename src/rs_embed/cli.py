@@ -91,8 +91,16 @@ def _parse_temporal(args) -> TemporalSpec | None:
 
 
 def build_parser() -> argparse.ArgumentParser:
-    p = argparse.ArgumentParser(prog="rs-embed", description="rs-embed utilities")
+    p = argparse.ArgumentParser(prog="earth-embedding", description="Earth Embedding utilities")
     sub = p.add_subparsers(dest="cmd", required=True)
+    models = sub.add_parser(
+        "models", help="List registered model IDs; no weights or credentials needed."
+    )
+    models.add_argument("--json", action="store_true", help="Print a JSON array")
+    describe = sub.add_parser(
+        "describe", help="Inspect a model's input/output contract without loading weights."
+    )
+    describe.add_argument("model")
 
     # ------------------------------------------------------------------
     # inspect-gee
@@ -226,6 +234,20 @@ def build_parser() -> argparse.ArgumentParser:
 
 def main(argv: list[str] | None = None) -> None:
     args = build_parser().parse_args(argv)
+
+    if args.cmd in {"models", "describe"}:
+        from .api import describe_model, list_models
+
+        if args.cmd == "models":
+            payload = list_models()
+            if not args.json:
+                sys.stdout.write("\n".join(payload) + "\n")
+                return
+        else:
+            payload = describe_model(args.model)
+        json.dump(payload, sys.stdout, ensure_ascii=False, indent=2)
+        sys.stdout.write("\n")
+        return
 
     if args.cmd == "inspect-gee":
         sensor = SensorSpec(

@@ -81,12 +81,12 @@ jobs:
 
   publish-to-testpypi:
     name: Publish package to TestPyPI
-    if: github.event_name == 'workflow_dispatch'
+    if: vars.EARTH_EMBEDDING_PYPI_ENABLED == 'true' && github.event_name == 'workflow_dispatch'
     needs: build
     runs-on: ubuntu-latest
     environment:
       name: testpypi
-      url: https://test.pypi.org/p/rs-embed
+      url: https://test.pypi.org/p/earth-embedding
     permissions:
       id-token: write
     steps:
@@ -103,7 +103,7 @@ jobs:
 
   smoke-test-testpypi:
     name: Install package from TestPyPI
-    if: github.event_name == 'workflow_dispatch'
+    if: vars.EARTH_EMBEDDING_PYPI_ENABLED == 'true' && github.event_name == 'workflow_dispatch'
     needs: publish-to-testpypi
     runs-on: ubuntu-latest
     permissions:
@@ -129,12 +129,12 @@ jobs:
           fi
 
           for attempt in 1 2 3 4 5; do
-            if python -m pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple/ "rs-embed==${version}"; then
+            if python -m pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple/ "earth-embedding==${version}"; then
               exit 0
             fi
 
             if [ "$attempt" -eq 5 ]; then
-              echo "TestPyPI install failed for rs-embed==${version}" >&2
+              echo "TestPyPI install failed for earth-embedding==${version}" >&2
               exit 1
             fi
 
@@ -144,7 +144,7 @@ jobs:
       - name: Verify installed version
         run: |
           version=$(sed -n 's/^__version__ = "\(.*\)"$/\1/p' src/rs_embed/_version.py)
-          installed=$(python -c "import importlib.metadata as md; print(md.version('rs-embed'))")
+          installed=$(python -c "import importlib.metadata as md; print(md.version('earth-embedding'))")
 
           if [ "$installed" != "$version" ]; then
             echo "Installed version ${installed} does not match expected ${version}" >&2
@@ -157,16 +157,16 @@ jobs:
 
       - name: Verify CLI entry point
         run: |
-          rs-embed --help
+          earth-embedding --help
 
   publish-to-pypi:
     name: Publish package to PyPI
-    if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')
+    if: vars.EARTH_EMBEDDING_PYPI_ENABLED == 'true' && github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')
     needs: build
     runs-on: ubuntu-latest
     environment:
       name: pypi
-      url: https://pypi.org/p/rs-embed
+      url: https://pypi.org/p/earth-embedding
     permissions:
       id-token: write
     steps:
@@ -182,7 +182,7 @@ jobs:
   github-release:
     name: Publish GitHub Release
     if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')
-    needs: publish-to-pypi
+    needs: build
     runs-on: ubuntu-latest
     permissions:
       contents: write

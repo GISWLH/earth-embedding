@@ -1,0 +1,17 @@
+Earth Embedding
+https://github.com/GISWLH/earth-embedding
+
+This project is a derivative of rs-embed by Dingqi Ye and the CyberGIS
+contributors (https://github.com/cybergis/rs-embed), licensed under Apache-2.0.
+The original license and source notices are retained. GISWLH maintains this
+independent extension; no endorsement by the upstream authors is implied.
+
+The 2026 Earth Embedding extension adds location-encoder integrations,
+direct AlphaEarth Foundations COG access, release-object taxonomy,
+research-to-software documentation, multilingual guides and new visual assets.
+See CHANGELOG.md and docs/provenance.md for the extension boundaries.
+
+Bundled model implementations retain their own licenses in
+src/rs_embed/embedders/_vendor/. Model checkpoints and third-party data are
+not relicensed under this project's Apache-2.0 license. In particular,
+Esri software/model terms and AlphaEarth Foundations CC-BY-4.0 apply separately.

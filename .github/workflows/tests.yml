@@ -9,6 +9,7 @@ name: tests
 jobs:
   test:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     strategy:
       matrix:
         python-version: ["3.12"]
@@ -24,8 +25,15 @@ jobs:
       - name: Install uv
         uses: astral-sh/setup-uv@v4
 
+      - name: Install CPU PyTorch for contract tests
+        run: uv pip install --system torch torchvision --index-url https://download.pytorch.org/whl/cpu
+
       - name: Install dependencies
-        run: uv sync --frozen --extra dev --extra full
+        run: uv pip install --system -e ".[dev,full,aef,location,benchmark]"
 
       - name: Run tests
-        run: uv run python -m pytest -v -n auto
+        env:
+          HF_HUB_OFFLINE: "1"
+          OMP_NUM_THREADS: "4"
+          MKL_NUM_THREADS: "4"
+        run: python -m pytest tests -v -n 2

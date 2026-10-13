@@ -1,0 +1,33 @@
+cff-version: 1.2.0
+message: "Cite this software with the commit or release used. Also cite the original rs-embed paper and the models and datasets used in your analysis."
+type: software
+title: "Earth Embedding"
+authors:
+  - name: "GISWLH and Earth Embedding contributors"
+repository-code: "https://github.com/GISWLH/earth-embedding"
+url: "https://github.com/GISWLH/earth-embedding"
+license: Apache-2.0
+abstract: "An independently maintained extension of CyberGIS rs-embed providing shared interfaces for image encoders, location encoders, and precomputed geospatial embedding products."
+keywords:
+  - Earth observation
+  - geospatial embeddings
+  - remote sensing
+  - location encoders
+  - foundation models
+references:
+  - type: article
+    title: "Any Model, Any Place, Any Time: Get Remote Sensing Foundation Model Embeddings On Demand"
+    authors:
+      - family-names: Ye
+        given-names: Dingqi
+      - family-names: Kiv
+        given-names: Daniel
+      - family-names: Hu
+        given-names: Wei
+      - family-names: Shi
+        given-names: Jimeng
+      - family-names: Wang
+        given-names: Shaowen
+    year: 2026
+    url: "https://arxiv.org/abs/2602.23678"
+    notes: "Original rs-embed framework publication; distinct from this extension's manuscript."

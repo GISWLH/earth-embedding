@@ -1,12 +1,20 @@
 # Changelog
 
-All notable changes to `rs-embed` will be documented in this file.
+All notable changes to `earth-embedding` are documented here. Earlier entries retain the upstream `rs-embed` history.
 
 The project keeps this changelog as the canonical release record. GitHub Releases should summarize the same versioned changes rather than introducing a second source of truth.
 
 The format is based on Keep a Changelog, and the project follows Semantic Versioning with extra care around model and embedding semantics.
 
 ## [Unreleased]
+
+### Earth Embedding extension (0.2.0 development)
+
+- Rename the GISWLH repository and distribution to `earth-embedding`; add `earth_embedding` imports and the `earth-embedding` CLI while preserving `rs_embed` and `rs-embed` compatibility.
+- Add location-only APIs for SatCLIP, GeoCLIP and the optional Esri Global Location Encoder runtime; keep paper-benchmarked systems distinct from newly integrated models.
+- Add direct AEF GCS index selection, COG sampling, signed-int8 dequantization and mask handling without Earth Engine authentication.
+- Introduce English, Simplified Chinese and Japanese project guides, original editable Excalidraw artwork, explicit upstream attribution and model-validation evidence.
+- Add weight-free `models` and `describe` CLI commands.
 
 ### Changed
 

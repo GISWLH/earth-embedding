@@ -8,6 +8,7 @@ for the class-based (stateful) interface.
 """
 
 from ._version import __version__
+from .aef import AEF_INDEX_URL, dequantize_aef, find_aef_tiles, sample_aef
 from .api import (
     describe_model,
     export_batch,
@@ -32,7 +33,9 @@ from .core.types import (
     ExportTarget,
     ModelConfig,
 )
+from .embedders.location_api import get_location_embeddings
 from .export import export_npz
+from .image import get_image_embedding
 from .inspect import inspect_gee_patch, inspect_provider_patch
 from .load import ExportResult, ModelResult, load_export
 from .model import Model
@@ -74,4 +77,10 @@ __all__ = [
     # Backward-compatible alias for inspect_provider_patch
     "inspect_gee_patch",
     "__version__",
+    "AEF_INDEX_URL",
+    "dequantize_aef",
+    "find_aef_tiles",
+    "sample_aef",
+    "get_location_embeddings",
+    "get_image_embedding",
 ]

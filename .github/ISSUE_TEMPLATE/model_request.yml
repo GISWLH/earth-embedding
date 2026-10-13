@@ -1,0 +1,42 @@
+name: Model integration request
+description: Propose an image encoder, location encoder or precomputed product.
+title: "[Model]: "
+body:
+  - type: input
+    id: source
+    attributes:
+      label: Official model or dataset URL
+      description: Link the authors' repository, model card or data release.
+    validations:
+      required: true
+  - type: dropdown
+    id: category
+    attributes:
+      label: What does the user receive?
+      options:
+        - Image encoder weights (A)
+        - Location encoder weights (B)
+        - Precomputed gridded embedding field (C1)
+        - Precomputed sampled embedding collection (C2)
+        - Unsure
+    validations:
+      required: true
+  - type: textarea
+    id: contract
+    attributes:
+      label: Input and output contract
+      description: Bands/order, dates, coordinate order, output dimensions and spatial support.
+    validations:
+      required: true
+  - type: textarea
+    id: access
+    attributes:
+      label: Access, weights and license
+      description: Link the checkpoint or dataset and its terms. Do not paste tokens or credentials.
+    validations:
+      required: true
+  - type: textarea
+    id: test
+    attributes:
+      label: Small reproduction or intended use
+      description: A small official inference example helps us build and validate an adapter.

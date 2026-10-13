@@ -279,7 +279,7 @@ This is the key to avoiding “download twice” when `save_inputs=True` and `sa
 
 ## Batch Methods
 
-`EmbedderBase.get_embeddings_batch` defaults to a Python loop calling `get_embedding`.  
+`EmbedderBase.get_embeddings_batch` defaults to a Python loop calling `get_embedding`.
 `EmbedderBase.get_embeddings_batch_from_inputs` defaults to a Python loop calling
 `get_embedding(..., input_chw=...)`.
 
@@ -373,7 +373,7 @@ except Exception as e:
 
 def _require_torch():
     if torch is None:
-        raise ModelError("Torch is required. Install with: pip install rs-embed")
+        raise ModelError("Torch is required. Install this repository with: pip install -e .")
 ```
 
 ---
@@ -412,7 +412,7 @@ def test_toy_model_get_embedding():
 
 ### Export integration
 
-If your model supports input reuse and batch export, add a small `export_batch` test using `monkeypatch` to avoid real network calls.  
+If your model supports input reuse and batch export, add a small `export_batch` test using `monkeypatch` to avoid real network calls.
 See existing patterns in:
 
 - `tests/test_export_batch.py`

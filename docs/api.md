@@ -7,6 +7,27 @@ If you want installation and first-run examples, start with [Quickstart](quickst
 
 ## Core Entry Points
 
+The preferred package name is `earth_embedding`. All existing public
+`rs_embed` imports remain available for compatibility.
+
+### Locations and public AEF data
+
+- `get_image_embedding(model, pixels, *, spatial, temporal, sensor=None, output=None, device="auto", model_config=None)`
+  runs a model on caller-supplied finite CHW/TCHW arrays without fetching imagery.
+  Use raw sensor units and the model's exact band ordering; `spatial` and
+  `temporal` retain geolocation/date semantics. Checkpoints may download on first use.
+
+- `get_location_embeddings(model, lonlat, *, device="auto", batch_size=1024, **model_kwargs)`
+  accepts a nonempty `(N, 2)` WGS84 array in longitude/latitude order and returns
+  `Embedding` with `(N, D)` data. Supports `satclip`, `geoclip`, `esri_gle`.
+- `find_aef_tiles(index, *, spatial, year)` selects candidate COG URLs from a
+  local official CSV/Parquet index or DataFrame; `spatial` is a WGS84 `BBox`.
+- `sample_aef(lonlat, *, tiles, strict=True)` reads and decodes raw AEF COG
+  vectors into `(N, 64)` data, with masks and per-point provenance.
+- `dequantize_aef(values)` decodes signed integer data and replaces nodata by NaN.
+
+See [data access](data-access.md) and [location models](models.md#location-encoders).
+
 Most users only need five public entry points: `get_embedding(...)`, `get_embeddings_batch(...)`, `export_batch(...)`, `load_export(...)`, and `inspect_provider_patch(...)`.
 
 ---
@@ -57,6 +78,6 @@ rs-embed raises several explicit exception types (all in `rs_embed.core.errors`)
 
 ## Versioning Notes
 
-The current version is still early stage (`0.1.x`):
+The current version is still early stage (`0.2.x`):
 
 `BBox` and `PointBuffer` currently require `crs="EPSG:4326"`. Precomputed models should usually use `backend="auto"`, while on-the-fly models mainly use provider backends such as `"gee"` or other explicit provider names. `ExportConfig(format=...)` is the recommended way to choose export format; today that means `"npz"` or `"netcdf"`, with room for additional formats later.

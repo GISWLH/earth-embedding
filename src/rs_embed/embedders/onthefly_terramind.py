@@ -147,8 +147,8 @@ _TERRAMIND_REGISTRATION_MODULES = (
 
 _TERRAMIND_INSTALL_HINT = (
     "TerraMind requires the optional terratorch dependency. Install it with: "
-    'pip install "rs-embed[terramind]" '
-    '(equivalent to: pip install "rs-embed[terratorch]").'
+    'pip install -e ".[terramind]" from the earth-embedding repository '
+    '(equivalent to: pip install -e ".[terratorch]").'
 )
 
 
@@ -633,7 +633,6 @@ class TerraMindEmbedder(EmbedderBase):
             )[None, ...].astype(np.float32)
 
         else:
-            provider = self._get_provider(backend)
             t = temporal_to_range(temporal)
             temporal_used = t
             ss = sensor or self._default_sensor()
@@ -644,6 +643,7 @@ class TerraMindEmbedder(EmbedderBase):
             fill_value = float(getattr(ss, "fill_value", 0.0))
 
             if input_chw is None:
+                provider = self._get_provider(backend)
                 raw_chw = _fetch_s2_sr_12_raw_chw(
                     provider,
                     spatial,

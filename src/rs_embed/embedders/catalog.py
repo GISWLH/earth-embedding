@@ -21,11 +21,16 @@ MODEL_SPECS: dict[str, tuple[str, str]] = {
     "thor": ("onthefly_thor", "THORBaseEmbedder"),
     "agrifm": ("onthefly_agrifm", "AgriFMEmbedder"),
     "satvision": ("onthefly_satvision_toa", "SatVisionTOAEmbedder"),
+    "satclip": ("location_satclip", "SatCLIPEmbedder"),
+    "geoclip": ("location_geoclip", "GeoCLIPEmbedder"),
+    "esri_gle": ("location_esri_gle", "EsriGLEEmbedder"),
 }
 
 MODEL_ALIASES: dict[str, str] = {
     # Legacy IDs kept for backward compatibility.
     "gse_annual": "gse",
+    "aef": "gse",
+    "alphaearth": "gse",
     "remoteclip_s2rgb": "remoteclip",
     "copernicus_embed": "copernicus",
     "satmae_rgb": "satmae",
@@ -38,6 +43,11 @@ MODEL_ALIASES: dict[str, str] = {
     "terrafm_b": "terrafm",
     "thor_1_0_base": "thor",
     "satvision_toa": "satvision",
+    "satclip_vit16_l40": "satclip",
+    "geo_clip": "geoclip",
+    "esri": "esri_gle",
+    "global_location_encoder": "esri_gle",
+    "esri_global_location_encoder": "esri_gle",
 }
 
 

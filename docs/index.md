@@ -1,74 +1,56 @@
-![rs-embed banner](assets/banner.png)
+# Earth Embedding
 
-> One line of code to get embeddings from **any Remote Sensing Foundation Model (RSFM)** for **any place** and **any time**
+![Earth Embedding](assets/earth-embedding-hero.svg)
 
----
+Earth Embedding provides a shared Python interface for image encoders, location encoders, and precomputed geospatial embedding products. Its catalog contains 22 adapters across these three release classes. Choose the input you have, check the model's contract, and retain both embedding values and provenance for downstream analysis.
 
-## Motivation
+This project is an independent extension of [CyberGIS rs-embed](https://github.com/cybergis/rs-embed), by Dingqi Ye and contributors. Its Apache-2.0 foundation and upstream attribution are retained. Read [provenance](provenance.md) for the relationship between the original project, this extension, and our manuscript.
 
-![rs-embed background](assets/background.png)
+## Choose a starting point
 
-The remote sensing community has seen an explosion of foundation models in recent years.
-Yet, using them in practice remains surprisingly painful. Model interfaces vary widely between imagery models and precomputed embedding products, input semantics are often ambiguous, and temporal, spectral, and spatial assumptions differ enough that cross-model comparison becomes tedious. In practice, even simple benchmarking can turn into glue-code work.
+| Your input | Entry point | Guide |
+| --- | --- | --- |
+| WGS84 longitude/latitude | `get_location_embeddings(...)` | [SatCLIP](models/satclip.md), [GeoCLIP](models/geoclip.md), [Esri GLE](models/esri_gle.md) |
+| Place and observation window | `get_embedding(...)` | [Quickstart](quickstart.md) |
+| An existing image array | `get_image_embedding(...)` | [API reference](api.md) |
+| Annual AlphaEarth COGs | `find_aef_tiles(...)`, `sample_aef(...)` | [Data access](data-access.md) |
+| A collection of regions | `get_embeddings_batch(...)`, `export_batch(...)` | [Workflows](workflows.md) |
 
-RS-Embed aims to fix this.
+## Install from source
 
-!!! success "Goal"
-Provide a **minimal**, **unified**, and **stable API** that turns diverse RS foundation models into a simple `ROI → embedding service` — so researchers can focus on **downstream tasks**, **benchmarking**, and **analysis**, not glue code.
-
----
-
-## Start Here
-
-Use the documentation the same way you would approach a mature library: start with one successful run, choose a model only after you understand the core API shape, and drop into the reference when you need exact contracts.
-
-| Start here if you want to...  | Page                                                                                                 |
-| ----------------------------- | ---------------------------------------------------------------------------------------------------- |
-| get something running quickly | [Quickstart](quickstart.md): install the package, run a first example, and learn the three core APIs |
-| choose a model                | [Models](models.md): shortlist model IDs by task, input type, and temporal behavior                  |
-| check exact signatures        | [API](api.md): exact signatures for specs, embedding, export, and inspection                         |
-| add support for a new model   | [Extending](extending.md): add a new model adapter or integrate with the registry/export flow        |
-
----
-
-## Why rs-embed
-
-rs-embed is designed to make embedding acquisition work the same way whether you are probing one location once or building a large benchmark dataset. The public surface stays small enough for quick use, but still exposes the controls you need for fetch policy, output shape, export configuration, and model-specific options.
-
-Most workflows revolve around three functions: `get_embedding(...)` for one ROI, `get_embeddings_batch(...)` for repeated inference with one model, and `export_batch(...)` for dataset or benchmark generation. The rest of the documentation expands on those paths rather than introducing a second parallel abstraction layer.
-
----
-
-## Common Tasks
-
-| Goal                             | Page                          | Main API                      |
-| -------------------------------- | ----------------------------- | ----------------------------- |
-| Get one embedding for one ROI    | [Quickstart](quickstart.md)   | `get_embedding(...)`          |
-| Compute embeddings for many ROIs | [Quickstart](quickstart.md)   | `get_embeddings_batch(...)`   |
-| Build an export dataset          | [Quickstart](quickstart.md)   | `export_batch(...)`           |
-| Compare model assumptions        | [Models](models.md)           | model tables + detail pages   |
-| Inspect a raw provider patch     | [Inspect API](api_inspect.md) | `inspect_provider_patch(...)` |
-
----
-
-## Advanced Reading
-
-Once the basic flow is familiar, read [Concepts](concepts.md) for the semantics behind `TemporalSpec`, `OutputSpec`, and backends, then use [Workflows](workflows.md) for task-oriented recipes. [Advanced Model Reference](models_reference.md) goes deeper on preprocessing and temporal assumptions, while [Limitations](limitations.md) collects current constraints and edge cases.
-
-## Citation
-
-```
-@article{ye2026modelplacetimeremote,
-      title={Any Model, Any Place, Any Time: Get Remote Sensing Foundation Model Embeddings On Demand},
-      author={Dingqi Ye and Daniel Kiv and Wei Hu and Jimeng Shi and Shaowen Wang},
-      year={2026},
-      eprint={2602.23678},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV},
-      url={https://arxiv.org/abs/2602.23678},
-}
+```bash
+git clone https://github.com/GISWLH/earth-embedding.git
+cd earth-embedding
+python -m pip install -e ".[location,aef]"
+earth-embedding models --json
 ```
 
-## License
+Use Python 3.12 or later. Additional model runtimes, data-provider credentials, and checkpoints depend on the model. Esri GLE requires a separately configured supported ArcGIS environment. Current installation instructions do not assume publication on PyPI.
 
-This project is released under the [Apache-2.0](https://github.com/cybergis/rs-embed/blob/main/LICENSE)
+## A first location query
+
+```python
+from earth_embedding import get_location_embeddings
+
+result = get_location_embeddings("satclip", [[114.41, 30.52]], device="cpu")
+print(result.data.shape)  # (1, 256)
+print(result.meta)
+```
+
+Coordinates are **[longitude, latitude]** in WGS84 degrees. Model weights may download on first use. This query does not acquire imagery or initialize Earth Engine. The original `rs_embed` import remains available for compatibility.
+
+## Explore the documentation
+
+- [Model catalog](models.md): each adapter's input requirements, output support, and optional dependencies.
+- [API reference](api.md): geographic extraction, local images, locations, batch export, and metadata.
+- [AlphaEarth access](data-access.md): official GCS indexes, point sampling, decoding, Earth Engine, and attribution.
+- [Validation report](validation.md): real execution evidence, environments, and unresolved limitations.
+- [Research scope](research.md): release taxonomy, global design, Wuhan diagnostics, and evidence boundaries.
+- [Limitations](limitations.md): practical and scientific constraints to consider before use.
+- [Extending the package](extending.md) and [contributing](contributing.md): model integrations and development workflow.
+
+Full project introductions are available in [English](https://github.com/GISWLH/earth-embedding/blob/main/README.md), [简体中文](https://github.com/GISWLH/earth-embedding/blob/main/README.zh-CN.md), and [日本語](https://github.com/GISWLH/earth-embedding/blob/main/README.ja.md).
+
+## Software and research are different scopes
+
+The software catalog has 22 entries. The frozen manuscript benchmark has 20 systems: 16 image encoders, SatCLIP, and 3 precomputed products. GeoCLIP and Esri GLE are additional software integrations. A passing interface test or a successful smoke query does not establish a new scientific result or a complete benchmark ranking.

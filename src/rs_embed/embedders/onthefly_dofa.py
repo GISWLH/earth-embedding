@@ -762,7 +762,6 @@ class DOFAEmbedder(EmbedderBase):
             provider_meta = {"backend_tensor": True, **norm_meta}
 
         else:
-            provider = self._get_provider(backend)
             if temporal is None:
                 raise ModelError("dofa provider backend requires TemporalSpec.range(start,end).")
             temporal.validate()
@@ -792,6 +791,7 @@ class DOFAEmbedder(EmbedderBase):
             wavelengths_um = [float(v) for v in wavelengths_um]
 
             if input_chw is None:
+                provider = self._get_provider(backend)
                 raw_chw, provider_meta = _fetch_gee_multiband_sr_chw(
                     provider,
                     spatial,

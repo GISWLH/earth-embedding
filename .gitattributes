@@ -1,0 +1,9 @@
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.pdf binary
+*.npz binary
+*.npy binary
+# Preserve upstream formatting in vendored model sources.
+src/rs_embed/embedders/_vendor/** -whitespace

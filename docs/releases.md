@@ -1,12 +1,18 @@
 # Releases and Versioning
 
-This page defines the release policy for `rs-embed`: where users should look for changes, how version numbers move, and which kinds of changes are treated as compatibility-sensitive.
+Earth Embedding is an independent derivative of the upstream package. Source
+installation is the currently supported distribution route. PyPI publication
+requires configuring a new trusted publisher for `GISWLH/earth-embedding`;
+the workflow's publish jobs are disabled unless the repository variable
+`EARTH_EMBEDDING_PYPI_ENABLED` is explicitly set to `true`.
+
+This page defines the release policy for `earth-embedding`: where users should look for changes, how version numbers move, and which kinds of changes are treated as compatibility-sensitive.
 
 ---
 
 ## Source of Truth
 
-`rs-embed` keeps a repository-level [CHANGELOG](https://github.com/cybergis/rs-embed/blob/main/CHANGELOG.md) as the canonical release record.
+`earth-embedding` keeps a repository-level [CHANGELOG](https://github.com/GISWLH/earth-embedding/blob/main/CHANGELOG.md) as the canonical release record.
 
 GitHub Releases should mirror the matching changelog entry for each tagged version. This avoids a split workflow where the repository says one thing and the release page says another.
 
@@ -75,7 +81,7 @@ This means `0.y.z` releases should already feel predictable to downstream users.
 
 ## What Counts as a Breaking Change Here
 
-For a normal Python library, breakage is often just an import or signature issue. For `rs-embed`, model behavior matters just as much as function signatures.
+For a normal Python library, breakage is often just an import or signature issue. For `earth-embedding`, model behavior matters just as much as function signatures.
 
 The following should be treated as compatibility-sensitive and called out explicitly:
 
@@ -94,10 +100,10 @@ If a user could rerun the same script and get embeddings with meaningfully diffe
 For each package release:
 
 1. Move notable changes from `Unreleased` into a dated version section in `CHANGELOG.md`
-2. Bump [`src/rs_embed/_version.py`](https://github.com/cybergis/rs-embed/blob/main/src/rs_embed/_version.py)
+2. Bump [`src/rs_embed/_version.py`](https://github.com/GISWLH/earth-embedding/blob/main/src/rs_embed/_version.py)
 3. Merge any required changelog updates before cutting the release tag
 4. Run `release.yml` manually to publish the candidate build to TestPyPI
-5. Confirm the TestPyPI smoke test can install, import, and invoke the `rs-embed` CLI for `rs-embed==X.Y.Z`
+5. Confirm the TestPyPI smoke test can install, import, and invoke the `earth-embedding` CLI for `rs-embed==X.Y.Z`
 6. Tag the release as `vX.Y.Z`
 7. Let GitHub Actions publish the package to PyPI and then create the GitHub Release
 8. If the change affects public behavior, update the relevant docs page and examples
@@ -106,14 +112,14 @@ For each package release:
 
 ## Package Publishing
 
-`rs-embed` publishes wheel and source distributions through PyPI Trusted Publishing, not long-lived API tokens.
+`earth-embedding` publishes wheel and source distributions through PyPI Trusted Publishing, not long-lived API tokens.
 
 Before the first package release:
 
 1. Create separate owner accounts on [PyPI](https://pypi.org/) and [TestPyPI](https://test.pypi.org/).
 2. In GitHub, create repository environments named `testpypi` and `pypi`.
 3. Require manual approval on the `pypi` environment. The `testpypi` environment can stay unprotected.
-4. In PyPI Trusted Publishers, register package name `rs-embed` for repository `cybergis/rs-embed`, workflow file `release.yml`, and environment `pypi`.
+4. In PyPI Trusted Publishers, register package name `earth-embedding` for repository `GISWLH/earth-embedding`, workflow file `release.yml`, and environment `pypi`.
 5. In TestPyPI Trusted Publishers, register the same package and repository, but use environment `testpypi`.
 6. Remove any old `PYPI_API_TOKEN` or `TEST_PYPI_API_TOKEN` repository secrets if earlier experiments used token-based uploads.
 
@@ -151,7 +157,7 @@ This keeps the default behavior strict for public changes without forcing change
 
 ## Where Users Should Look
 
-- Repository changelog: [CHANGELOG.md](https://github.com/cybergis/rs-embed/blob/main/CHANGELOG.md)
+- Repository changelog: [CHANGELOG.md](https://github.com/GISWLH/earth-embedding/blob/main/CHANGELOG.md)
 - Package index: [PyPI](https://pypi.org/project/rs-embed/) and [TestPyPI](https://test.pypi.org/project/rs-embed/)
-- Tagged releases: [GitHub Releases](https://github.com/cybergis/rs-embed/releases)
-- Current package version: [`src/rs_embed/_version.py`](https://github.com/cybergis/rs-embed/blob/main/src/rs_embed/_version.py)
+- Tagged releases: [GitHub Releases](https://github.com/GISWLH/earth-embedding/releases)
+- Current package version: [`src/rs_embed/_version.py`](https://github.com/GISWLH/earth-embedding/blob/main/src/rs_embed/_version.py)

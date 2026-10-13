@@ -1,6 +1,10 @@
 # Supported Models (Overview)
 
 This page is the model selection entry point.
+The library has **22 canonical adapters**: 16 image encoders, 3 location encoders,
+and 3 precomputed products. The manuscript's frozen benchmark has 20 systems;
+GeoCLIP and Esri GLE are software extensions, not new benchmark results.
+See [validation](validation.md) for actual test status and environment requirements.
 Use it to answer one question quickly: which model IDs should I shortlist for this task?
 
 Once you have a shortlist, use [Advanced Model Reference](models_reference.md) for side-by-side preprocessing and temporal details, then open the linked detail page for the exact contract, caveats, and examples.
@@ -25,6 +29,7 @@ Some detail-page filenames still use older names for compatibility, but the cano
 | Time-series temporal modeling             | `agrifm`, `anysat`, `galileo`                               | Native multi-frame temporal packaging              |
 | Multispectral / strict spectral semantics | `satmaepp_s2_10b`, `dofa`, `terramind`, `thor`, `satvision` | Strong channel/schema assumptions                  |
 | Mixed-modality experiments (S1/S2)        | `terrafm`                                                   | Supports S2 or S1 path (per call)                  |
+| Location prior without imagery            | `satclip`                                                   | Coordinates only; class B location encoder         |
 
 ## Model Catalog Snapshot
 
@@ -35,6 +40,14 @@ Some detail-page filenames still use older names for compatibility, but the cano
 | `tessera`    | Precomputed | GeoTessera embedding tiles          | 10m                | `pooled`, `grid` | yearly coverage product  | Fast baseline, source-fixed precomputed workflow; product-native fixed CRS | [detail](models/tessera.md)    |
 | `gse`        | Precomputed | Google Satellite Embedding (annual) | 10m                | `pooled`, `grid` | `TemporalSpec.year(...)` | Annual product via provider path                                           | [detail](models/gse.md)        |
 | `copernicus` | Precomputed | Copernicus embeddings               | 0.25°              | `pooled`, `grid` | limited (2021)           | Coarse resolution product on fixed EPSG:4326 grid                          | [detail](models/copernicus.md) |
+
+### Location Encoders
+
+| Model ID  | Type     | Primary Input                     | Default Resolution            | Outputs          | Temporal mode | Notes                                              | Detail                      |
+| --------- | -------- | --------------------------------- | ----------------------------- | ---------------- | ------------- | -------------------------------------------------- | --------------------------- |
+| `satclip` | Location | Longitude/latitude only (no imagery) | set by harmonic degree (L=40) | `pooled`, `grid` | ignored       | Class B; coordinate prior, constant over time       | [detail](models/satclip.md) |
+| `geoclip` | Location | Longitude/latitude only | learned location prior | `pooled`, `grid` | ignored | 512 dimensions; optional GeoCLIP runtime | [detail](models/geoclip.md) |
+| `esri_gle` | Location | Longitude/latitude only | learned location prior | `pooled`, `grid` | ignored | 256 dimensions; official ArcGIS deep-learning environment | [detail](models/esri_gle.md) |
 
 ### On-the-fly Foundation Models
 

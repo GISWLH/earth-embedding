@@ -12,19 +12,23 @@ Legacy aliases such as `remoteclip_s2rgb` still work, but new code should use th
 
 ## Install
 
+Use Python 3.12. Install this fork from source; `pip install rs-embed` installs
+the separate upstream distribution. `earth-embedding` has not yet been
+published to PyPI by this project.
+
 ```bash
 # base install
-pip install rs-embed
+pip install "earth-embedding @ git+https://github.com/GISWLH/earth-embedding.git"
 
 # add [terratorch] only if you use terramind
-pip install "rs-embed[terratorch]"
+pip install "earth-embedding[terratorch] @ git+https://github.com/GISWLH/earth-embedding.git"
 ```
 
 For local development:
 
 ```bash
-git clone https://github.com/cybergis/rs-embed.git
-cd rs-embed
+git clone https://github.com/GISWLH/earth-embedding.git
+cd earth-embedding
 pip install -e .  # use -e ".[terratorch]" if you need terramind
 ```
 
@@ -34,6 +38,16 @@ If this is your first time using Google Earth Engine, authenticate once:
 
 ```bash
 earthengine authenticate
+```
+
+Earth Engine is needed only for provider-backed imagery and GSE access.
+Location encoders and [direct AEF COG sampling](data-access.md) work without it.
+
+```python
+from earth_embedding import get_location_embeddings
+
+result = get_location_embeddings("satclip", [[114.41, 30.52]], device="cpu")
+print(result.data.shape)  # (1, 256), downloads weights on first use
 ```
 
 ---

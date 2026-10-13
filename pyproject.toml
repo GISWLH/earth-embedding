@@ -3,15 +3,16 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "rs-embed"
+name = "earth-embedding"
 dynamic = ["version"]
-description = "Unified ROI->embedding interface for remote sensing foundation models."
+description = "Earth embeddings from images, locations and precomputed geospatial products."
 readme = "README.md"
 license = "Apache-2.0"
 requires-python = ">=3.12"
 authors = [
   { name = "Dingqi Ye" },
 ]
+maintainers = [{ name = "GISWLH" }]
 keywords = [
   "remote sensing",
   "earth observation",
@@ -52,9 +53,12 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
+location = ["geoclip==1.2.3"]
+aef = ["rasterio>=1.4", "pyarrow>=16"]
+benchmark = ["scikit-learn>=1.4", "scipy>=1.11"]
 # terratorch is required by TerraMind (and temporarily Prithvi until it is isolated).
-# Install with: pip install rs-embed[terratorch]
-#           or: uv add rs-embed[terratorch]
+# Install from the repository with: pip install -e ".[terratorch]"
+# Esri GLE requires a separate official ArcGIS deep-learning environment.
 terratorch = [
   "terratorch==1.2.1",
 ]
@@ -85,25 +89,34 @@ dev = [
 
 [project.scripts]
 rs-embed = "rs_embed.cli:main"
+earth-embedding = "rs_embed.cli:main"
 
 [project.urls]
-Homepage = "https://github.com/cybergis/rs-embed"
-Documentation = "https://cybergis.github.io/rs-embed/"
-Repository = "https://github.com/cybergis/rs-embed"
-Issues = "https://github.com/cybergis/rs-embed/issues"
-Changelog = "https://github.com/cybergis/rs-embed/blob/main/CHANGELOG.md"
-Releases = "https://github.com/cybergis/rs-embed/releases"
+Homepage = "https://github.com/GISWLH/earth-embedding"
+Documentation = "https://github.com/GISWLH/earth-embedding/tree/main/docs"
+Repository = "https://github.com/GISWLH/earth-embedding"
+Issues = "https://github.com/GISWLH/earth-embedding/issues"
+Changelog = "https://github.com/GISWLH/earth-embedding/blob/main/CHANGELOG.md"
+Releases = "https://github.com/GISWLH/earth-embedding/releases"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/rs_embed"]
+packages = ["src/rs_embed", "src/earth_embedding"]
 
 [tool.hatch.build.targets.sdist]
 only-include = [
   "src/rs_embed",
+  "src/earth_embedding",
   "LICENSE",
+  "NOTICE",
   "README.md",
+  "README.zh-CN.md",
+  "README.ja.md",
   "CHANGELOG.md",
   "pyproject.toml",
+  "CITATION.cff",
+  "examples",
+  "scripts",
+  "docs",
 ]
 
 [tool.hatch.version]
@@ -135,4 +148,5 @@ ignore = [
 [tool.ruff.lint.per-file-ignores]
 "src/rs_embed/__init__.py" = ["F401"]     # public re-exports
 "src/rs_embed/api.py" = ["F401"]          # public re-exports
+"src/earth_embedding/__init__.py" = ["F401", "F403"]
 "src/rs_embed/core/specs.py" = ["F811"]  # dataclass field vs staticmethod name collision

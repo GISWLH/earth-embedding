@@ -274,7 +274,7 @@ def _load_rshf_remoteclip(
     with _suppress_rshf_pretrained_init_warning() as suppressed_warning:
         try:
             model = RemoteCLIP.from_pretrained(local_dir if os.path.exists(local_dir) else ckpt)
-        except Exception as e:
+        except Exception:
             # rshf 0.2.x can deserialize this repo config as a generic PreTrainedConfig
             # and then fail before loading weights. Fall back to manual local loading.
             model = _load_rshf_remoteclip_manual(local_dir, weight_file or "")
@@ -693,8 +693,6 @@ class RemoteCLIPS2RGBEmbedder(EmbedderBase):
             raise ModelError("remoteclip_s2rgb requires TemporalSpec.range in v0.1.")
         t = temporal_to_range(temporal)
 
-        provider = self._get_provider(backend)
-
         # overrides via SensorSpec
         scale_m = sensor.scale_m if sensor else 10
         cloudy_pct = sensor.cloudy_pct if sensor else 30
@@ -709,6 +707,7 @@ class RemoteCLIPS2RGBEmbedder(EmbedderBase):
 
         # fetch image (optionally reuse pre-fetched raw patch)
         if input_chw is None:
+            provider = self._get_provider(backend)
             s2_rgb_chw = _fetch_s2_rgb_chw(
                 provider,
                 spatial,

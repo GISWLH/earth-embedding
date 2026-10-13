@@ -603,8 +603,8 @@ class TerraFMBEmbedder(EmbedderBase):
             )[None, ...].astype(np.float32)
 
         else:
-            provider = self._get_provider(backend)
             if input_chw is None:
+                provider = self._get_provider(backend)
                 result = self.fetch_input(
                     provider,
                     spatial=spatial,

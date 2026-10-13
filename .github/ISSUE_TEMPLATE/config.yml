@@ -1,5 +1,5 @@
 blank_issues_enabled: false
 contact_links:
   - name: Documentation
-    url: https://cybergis.github.io/rs-embed/
+    url: https://github.com/GISWLH/earth-embedding/tree/main/docs
     about: Check the docs before opening an issue, especially Quickstart, API, Models, and Extending.

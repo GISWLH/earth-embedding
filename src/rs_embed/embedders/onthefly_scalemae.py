@@ -1,8 +1,10 @@
 from __future__ import annotations
 
+import json
 import os
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from functools import lru_cache
+from pathlib import Path
 from typing import Any
 
 import numpy as np
@@ -120,6 +122,40 @@ def _scalemae_preprocess_tensor_batch(
     return torch.cat(xs, dim=0)
 
 
+def _load_scalemae_binary_checkpoint(model_class, model_id: str):
+    """Load the official binary checkpoint with strict parameter matching.
+
+    The original ScaleMAE Hub release has ``pytorch_model.bin`` and no config.
+    Recent Hub mixins no longer fall back to that file after a missing optional
+    config or safetensors file. The rshf default constructor is the architecture
+    for this release; custom local configs are honored when present.
+    """
+    import torch
+    from huggingface_hub import hf_hub_download
+
+    local = Path(model_id).expanduser()
+    if local.is_dir():
+        checkpoint = local / "pytorch_model.bin"
+        config_path = local / "config.json"
+    else:
+        checkpoint = Path(hf_hub_download(repo_id=model_id, filename="pytorch_model.bin"))
+        config_path = checkpoint.parent / "config.json"
+    if not checkpoint.is_file():
+        raise ModelError(f"ScaleMAE binary checkpoint not found: {checkpoint}")
+    config = json.loads(config_path.read_text(encoding="utf-8")) if config_path.is_file() else None
+    model = model_class(config=config) if config is not None else model_class()
+    state = torch.load(checkpoint, map_location="cpu", weights_only=True)
+    if isinstance(state, dict):
+        for key in ("state_dict", "model"):
+            if isinstance(state.get(key), dict):
+                state = state[key]
+                break
+    if not isinstance(state, dict) or not state:
+        raise ModelError("ScaleMAE checkpoint does not contain a nonempty state dictionary.")
+    model.load_state_dict(state, strict=True)
+    return model, str(checkpoint)
+
+
 @lru_cache(maxsize=8)
 def _load_scalemae_cached(model_id: str, dev: str):
     ensure_torch()
@@ -131,13 +167,24 @@ def _load_scalemae_cached(model_id: str, dev: str):
             "ScaleMAE requires rshf with rshf.scalemae.ScaleMAE. Try: pip install -U rshf"
         ) from e
 
-    model = ScaleMAE.from_pretrained(model_id)
+    load_mode = "from_pretrained"
+    checkpoint = None
     try:
-        model = model.to(dev).eval()
-    except Exception as _e:
-        pass
+        model = ScaleMAE.from_pretrained(model_id)
+    except (FileNotFoundError, OSError) as error:
+        try:
+            model, checkpoint = _load_scalemae_binary_checkpoint(ScaleMAE, model_id)
+            load_mode = "strict_binary_checkpoint"
+        except Exception as fallback_error:
+            raise ModelError(f"ScaleMAE pretrained loading failed: {fallback_error}") from error
+    model = model.to(dev).eval()
 
-    meta = {"model_id": model_id, "device": dev}
+    meta = {
+        "model_id": model_id,
+        "device": dev,
+        "load_mode": load_mode,
+        "checkpoint_path": checkpoint,
+    }
     return model, meta
 
 

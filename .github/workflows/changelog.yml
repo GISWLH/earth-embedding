@@ -55,6 +55,11 @@ jobs:
 
             const exemptFiles = new Set([
               "README.md",
+              "README.zh-CN.md",
+              "README.ja.md",
+              "CONTRIBUTING.md",
+              "CITATION.cff",
+              "NOTICE",
               "CHANGELOG.md",
               "LICENSE",
               "mkdocs.yml",

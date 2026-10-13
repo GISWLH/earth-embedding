@@ -1,10 +1,13 @@
-site_name: rs-embed
-site_description: A unified Python toolkit for Remote Sensing Foundation Model embeddings
-repo_url: https://github.com/cybergis/rs-embed
-repo_name: cybergis/rs-embed
+site_name: Earth Embedding
+site_url: https://giswlh.github.io/earth-embedding/
+site_description: Earth embeddings from images, locations and precomputed geospatial products
+repo_url: https://github.com/GISWLH/earth-embedding
+repo_name: GISWLH/earth-embedding
 
 theme:
   name: material
+  logo: assets/earth-embedding-logo.svg
+  favicon: assets/earth-embedding-logo.svg
   font:
     text: IBM Plex Sans
     code: IBM Plex Mono
@@ -67,6 +70,7 @@ nav:
   - Home:
       - Overview: index.md
       - Quickstart: quickstart.md
+      - Research connections: research.md
   - Models:
       - Overview: models.md
       - Advanced Reference: models_reference.md
@@ -74,6 +78,10 @@ nav:
           - Tessera: models/tessera.md
           - GSE: models/gse.md
           - Copernicus: models/copernicus.md
+      - Location encoders:
+          - SatCLIP: models/satclip.md
+          - GeoCLIP: models/geoclip.md
+          - Esri GLE: models/esri_gle.md
       - On-the-fly:
           - RemoteCLIP: models/remoteclip.md
           - SatMAE: models/satmae.md
@@ -101,4 +109,7 @@ nav:
       - Overview: extending.md
       - Contributing Guide: contributing.md
   - Project:
+      - Model validation: validation.md
+      - Data access: data-access.md
+      - Provenance and attribution: provenance.md
       - Releases and Versioning: releases.md

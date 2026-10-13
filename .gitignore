@@ -8,7 +8,13 @@ __pycache__/
 dist/
 build/
 *.egg-info/
-data/
-research_outputs/model_cache/
+/data/
+/work/
+/source-snapshot.tgz
+/release-stage.tgz
+/source_inventory.json
+/publish_files.json
+/sync_receipt.json
+/paper/research_outputs/model_cache/
 global_0.1_degree_representation/
 global_0.1_degree_tiff_all/
