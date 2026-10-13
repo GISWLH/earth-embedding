@@ -24,6 +24,87 @@
   <img src="docs/assets/earth-embedding-hero.svg" width="100%" alt="影像编码器、位置编码器和预计算产品通过 Earth Embedding 接入地理空间分析流程。">
 </picture>
 
+<!-- REAL_DEMOS_START -->
+## 五行代码，得到第一张真实地图
+
+Python 3.12+，CPU 可运行。从本 Git 仓库安装，不假设已发布到 PyPI。小型真实样例随包提供，读取时验证 SHA-256；无需 Earth Engine 登录或私人路径。
+
+```bash
+git clone https://github.com/GISWLH/earth-embedding.git
+cd earth-embedding
+python -m pip install -e ".[demo,aef]"
+```
+
+
+<picture>
+  <source media="(max-width: 760px)" srcset="docs/assets/earth-embedding-demos-mobile.svg">
+  <img src="docs/assets/earth-embedding-demos.svg" width="100%" alt="Location to embedding to map; features and labels to spatial holdout, classifier and measured results.">
+</picture>
+
+
+### 1. AEF 2021 → PCA 空间图
+
+```python
+from earth_embedding.demo import load_demo, pca_colors, plot_map
+data = load_demo("aef")
+colors = pca_colors(data.features)
+fig = plot_map(data.samples, colors, title="San Francisco Bay Area | AEF 2021 | PCA RGB")
+fig.savefig("aef-pca.png", dpi=160)
+```
+
+![AEF 2021 PCA](docs/assets/demos/aef-pca.png)
+
+
+旧金山湾区及周边，西经 122.6–121.6°、北纬 37.3–38.3°，约 **88 × 111 公里**。5,933 个真实 Google / Google DeepMind AEF 2021 金字塔网格，空间支持范围为 **1,280 米**；校验后的小型数据包约 2.1 MB。RGB 表示描述性主成分，**不代表地物类别**。抽样和许可见[完整教程](docs/tutorials/real-demos.md)。如需重新读取官方 GCS，可调用 `earth_embedding.demo` 中的 `fetch_aef_demo()`；上面的第一张地图可离线生成。
+
+### 2. Esri GLE → 经纬度嵌入地图
+
+```python
+from earth_embedding import get_location_embeddings
+from earth_embedding.demo import load_demo, pca_colors, plot_map
+data = load_demo("bayarea")
+points = data.samples[["center_lon", "center_lat"]].to_numpy()
+gle = get_location_embeddings("esri_gle", points, device="cpu", batch_size=128)
+fig = plot_map(data.samples, pca_colors(gle.data), title="San Francisco Bay Area | Esri GLE | PCA RGB")
+fig.savefig("esri-gle-pca.png", dpi=160)
+```
+
+![Esri GLE PCA](docs/assets/demos/esri-gle-pca.png)
+
+
+批量编码旧金山湾区 5,933 个位置；首次下载约 3.7 MB 官方权重，直接使用 PyTorch，无需 ArcGIS/ArcPy。GLE **没有观测年份**，颜色展示位置先验，不能视为某一年的土地覆盖图。
+
+### 3. 嵌入 + 标签 → 分类结果
+
+```python
+from earth_embedding.demo import classify_demo, plot_classification
+result = classify_demo()
+print({k: result["metrics"][k] for k in ("oa", "macro_f1", "balanced_accuracy")})
+fig = plot_classification(result)
+fig.savefig("bayarea-classification.png", dpi=160)
+```
+
+![San Francisco Bay Area reference, held-out predictions, errors and confusion matrix](docs/assets/demos/bayarea-classification.png)
+
+| OA | Macro-F1 | Balanced Accuracy | Train / test / buffer / excluded |
+| ---: | ---: | ---: | --- |
+| 91.39% | 87.49% | 85.65% | 3383 / 2173 / 375 / 2 |
+
+
+本次实际运行的区域**软件演示**，不是当前论文全球实验结果。建成区、植被、耕地、水体四分类；南部训练、北部测试，中间保留至少约 5.5 公里的隔离带，排除 2 个裸地网格。训练区仅有 9 个耕地网格，固定空间留出存在明显类别不平衡。标准化和逻辑回归仅用训练集拟合（种子 42）。灰色区域不评分。[类别数量、来源许可、划分和限制](docs/tutorials/real-demos.md)。
+
+### 四个已执行的导览 Notebook
+
+[01 · AEF](examples/notebooks/01_first_embedding_map.ipynb) ·
+[02 · Esri GLE](examples/notebooks/02_esri_locations.ipynb) ·
+[03 · Classification](examples/notebooks/03_regional_classification.ipynb) ·
+[04 · Export / reuse](examples/notebooks/04_export_and_reuse.ipynb)
+
+
+均保存真实运行输出和图像。[执行记录](docs/validation/demo-notebooks.json) · [完整教程](docs/tutorials/real-demos.md) · [可编辑 Excalidraw](docs/assets/earth-embedding-demos.excalidraw)。第 04 个演示分批导出和按 ID 安全复用，不对空间支持范围不一致的产品进行排名。
+<!-- REAL_DEMOS_END -->
+
+
 ## 为什么使用 Earth Embedding？
 
 不同遥感模型对输入波段、预处理、空间尺度、时间序列和数据访问方式有不同要求。Earth Embedding 用可复用接口获取特征，同时明确保留这些差异。你可以从已有影像、经纬度列表或预计算产品出发，得到用于下游分析的嵌入值及来源元数据。
@@ -80,7 +161,7 @@ earth-embedding describe satclip
 ```python
 from earth_embedding import get_location_embeddings
 
-locations = [[114.41, 30.52], [139.76, 35.68], [-0.12, 51.51]]
+locations = [[-122.42, 37.77], [139.76, 35.68], [-0.12, 51.51]]
 result = get_location_embeddings("satclip", locations, device="cpu")
 print(result.data.shape)  # (3, 256)
 print(result.meta)
@@ -106,7 +187,7 @@ from earth_embedding import PointBuffer, TemporalSpec, OutputSpec, get_embedding
 
 result = get_embedding(
     "remoteclip",
-    spatial=PointBuffer(lon=114.41, lat=30.52, buffer_m=320),
+    spatial=PointBuffer(lon=-122.42, lat=37.77, buffer_m=320),
     temporal=TemporalSpec.range("2021-05-01", "2021-10-31"),
     output=OutputSpec.pooled(),
     device="cpu",
@@ -130,10 +211,10 @@ from earth_embedding import BBox, find_aef_tiles, sample_aef
 
 tiles = find_aef_tiles(
     "aef_index.parquet",
-    spatial=BBox(114.40, 30.51, 114.42, 30.53),
+    spatial=BBox(-122.43, 37.76, -122.41, 37.78),
     year=2021,
 )
-result = sample_aef([[114.41, 30.52]], tiles=tiles)
+result = sample_aef([[-122.42, 37.77]], tiles=tiles)
 print(result.data.shape)  # (1, 64)
 print(result.meta["source_for_point"])
 ```
@@ -210,7 +291,7 @@ python examples/evaluate_embeddings.py --metadata metadata.csv --features satcli
 
 ## 验证状态与限制
 
-[验证报告](docs/validation.md)区分回归测试、真实模型推理和在线数据访问，并记录日期、环境、输出形状与未解决问题。直接 AEF 路径已有[武汉 2021 年真实采样记录](docs/validation/aef-gcs-20261013.json)；单点成功不等于全球覆盖或下游精度已经验证。
+[验证报告](docs/validation.md)区分单元测试、真实模型推理和在线数据访问。[湾区集成验证记录](docs/validation/demo-live.json)验证区域 AEF 样例和 README 三组代码；[Notebook 执行](docs/validation/demo-notebooks.json)与[空间留出分类指标](docs/assets/demos/classification-metrics.json)分别记录。
 
 数据提供方可能要求身份验证、配额或条款确认；部分模型需要专门环境和大型权重。Esri GLE 权重仍遵循 Esri 模型使用条款。位置编码器没有时间观测，粗分辨率产品也不会因重采样变成等价的 10 m 嵌入。设计比较前请阅读[限制说明](docs/limitations.md)。
 

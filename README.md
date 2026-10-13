@@ -24,6 +24,87 @@
   <img src="docs/assets/earth-embedding-hero.svg" width="100%" alt="Images, longitude and latitude, and precomputed products connect through Earth Embedding to geospatial analysis workflows.">
 </picture>
 
+<!-- REAL_DEMOS_START -->
+## Five lines to a real map
+
+Python 3.12+, CPU. Install from this Git repository; no PyPI release is assumed. The small real samples are bundled and SHA-256 verified. No Earth Engine login or private paths are needed.
+
+```bash
+git clone https://github.com/GISWLH/earth-embedding.git
+cd earth-embedding
+python -m pip install -e ".[demo,aef]"
+```
+
+
+<picture>
+  <source media="(max-width: 760px)" srcset="docs/assets/earth-embedding-demos-mobile.svg">
+  <img src="docs/assets/earth-embedding-demos.svg" width="100%" alt="Location to embedding to map; features and labels to spatial holdout, classifier and measured results.">
+</picture>
+
+
+### 1. AEF 2021 → PCA map
+
+```python
+from earth_embedding.demo import load_demo, pca_colors, plot_map
+data = load_demo("aef")
+colors = pca_colors(data.features)
+fig = plot_map(data.samples, colors, title="San Francisco Bay Area | AEF 2021 | PCA RGB")
+fig.savefig("aef-pca.png", dpi=160)
+```
+
+![AEF 2021 PCA](docs/assets/demos/aef-pca.png)
+
+
+San Francisco Bay Area and surroundings, 122.6–121.6° W / 37.3–38.3° N, about **88 × 111 km**. 5,933 real Google / Google DeepMind AEF 2021 overview cells at **1,280 m** support; the checked bundle is 2.1 MB. RGB shows descriptive principal components, **not land-cover classes**. Sampling and licenses: [full tutorial](docs/tutorials/real-demos.md). To repeat official GCS reads use `fetch_aef_demo()` from `earth_embedding.demo`; the first map above works offline.
+
+### 2. Esri GLE → location map
+
+```python
+from earth_embedding import get_location_embeddings
+from earth_embedding.demo import load_demo, pca_colors, plot_map
+data = load_demo("bayarea")
+points = data.samples[["center_lon", "center_lat"]].to_numpy()
+gle = get_location_embeddings("esri_gle", points, device="cpu", batch_size=128)
+fig = plot_map(data.samples, pca_colors(gle.data), title="San Francisco Bay Area | Esri GLE | PCA RGB")
+fig.savefig("esri-gle-pca.png", dpi=160)
+```
+
+![Esri GLE PCA](docs/assets/demos/esri-gle-pca.png)
+
+
+5,933 San Francisco Bay Area locations; official ~3.7 MB weights download once and run directly in PyTorch. No ArcGIS/ArcPy. GLE has **no observation year**; colors show a geographic prior, not a dated land-cover map.
+
+### 3. Embeddings + labels → classification
+
+```python
+from earth_embedding.demo import classify_demo, plot_classification
+result = classify_demo()
+print({k: result["metrics"][k] for k in ("oa", "macro_f1", "balanced_accuracy")})
+fig = plot_classification(result)
+fig.savefig("bayarea-classification.png", dpi=160)
+```
+
+![San Francisco Bay Area reference, held-out predictions, errors and confusion matrix](docs/assets/demos/bayarea-classification.png)
+
+| OA | Macro-F1 | Balanced Accuracy | Train / test / buffer / excluded |
+| ---: | ---: | ---: | --- |
+| 91.39% | 87.49% | 85.65% | 3383 / 2173 / 375 / 2 |
+
+
+Newly computed regional **software demo**, not current global paper results. Four classes: built, vegetation, cropland, water. South trains, north tests, with a ≥5.5 km geographic gap; two bare cells are excluded. There are only 9 cropland training cells, so class imbalance limits this fixed holdout. Scaler and Logistic Regression fit training rows only (seed 42). Gray cells are unscored. [Class counts, source/license, split, metrics and limits](docs/tutorials/real-demos.md).
+
+### Four executed notebooks
+
+[01 · AEF](examples/notebooks/01_first_embedding_map.ipynb) ·
+[02 · Esri GLE](examples/notebooks/02_esri_locations.ipynb) ·
+[03 · Classification](examples/notebooks/03_regional_classification.ipynb) ·
+[04 · Export / reuse](examples/notebooks/04_export_and_reuse.ipynb)
+
+
+Each notebook contains real execution outputs and maps. [Execution receipt](docs/validation/demo-notebooks.json) · [Complete tutorial](docs/tutorials/real-demos.md) · [Editable Excalidraw](docs/assets/earth-embedding-demos.excalidraw). Notebook 04 exports and safely reloads batches; it does not rank products with unequal spatial support.
+<!-- REAL_DEMOS_END -->
+
+
 ## Why Earth Embedding?
 
 Remote sensing models expose different inputs, preprocessing rules, spatial supports, and access methods. Earth Embedding makes those differences explicit while providing reusable interfaces for obtaining features. Start with satellite imagery, a list of locations, or an existing embedding product; receive embedding values and provenance metadata for your own analysis.
@@ -80,7 +161,7 @@ No image acquisition or date selection is needed. Inputs are WGS84 degrees in **
 ```python
 from earth_embedding import get_location_embeddings
 
-locations = [[114.41, 30.52], [139.76, 35.68], [-0.12, 51.51]]
+locations = [[-122.42, 37.77], [139.76, 35.68], [-0.12, 51.51]]
 result = get_location_embeddings("satclip", locations, device="cpu")
 print(result.data.shape)  # (3, 256)
 print(result.meta)
@@ -106,7 +187,7 @@ from earth_embedding import PointBuffer, TemporalSpec, OutputSpec, get_embedding
 
 result = get_embedding(
     "remoteclip",
-    spatial=PointBuffer(lon=114.41, lat=30.52, buffer_m=320),
+    spatial=PointBuffer(lon=-122.42, lat=37.77, buffer_m=320),
     temporal=TemporalSpec.range("2021-05-01", "2021-10-31"),
     output=OutputSpec.pooled(),
     device="cpu",
@@ -130,10 +211,10 @@ from earth_embedding import BBox, find_aef_tiles, sample_aef
 
 tiles = find_aef_tiles(
     "aef_index.parquet",
-    spatial=BBox(114.40, 30.51, 114.42, 30.53),
+    spatial=BBox(-122.43, 37.76, -122.41, 37.78),
     year=2021,
 )
-result = sample_aef([[114.41, 30.52]], tiles=tiles)
+result = sample_aef([[-122.42, 37.77]], tiles=tiles)
 print(result.data.shape)  # (1, 64)
 print(result.meta["source_for_point"])
 ```
@@ -219,7 +300,7 @@ See [research scope and evidence boundaries](docs/research.md). The manuscript i
 
 ## Validation and current limits
 
-The [validation report](docs/validation.md) records dated execution evidence, environments, output shapes, and unresolved dependencies. It separates unit/regression checks, real model inference, and live provider access. The new direct AEF route has a [live Wuhan 2021 sampling receipt](docs/validation/aef-gcs-20261013.json); successful sampling at one point does not establish global coverage or downstream accuracy.
+The [validation report](docs/validation.md) separates unit tests, real model inference, and live data access. The [Bay Area integration receipt](docs/validation/demo-live.json) verifies the regional AEF sample and all three README examples. [Notebook execution](docs/validation/demo-notebooks.json) and [held-out classification metrics](docs/assets/demos/classification-metrics.json) are recorded separately.
 
 Data providers can require authentication, quotas, or terms acceptance. Some models need specialized packages or large checkpoints. Esri GLE's weights retain Esri's model terms. A location encoder has no temporal observations. Coarse products cannot be made equivalent to a 10 m field by resampling. Read [limitations](docs/limitations.md) before designing a comparison.
 

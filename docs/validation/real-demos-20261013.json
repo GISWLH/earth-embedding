@@ -1,0 +1,69 @@
+{
+  "date": "2026-10-13",
+  "scope": "San Francisco Bay Area software demos; paper inputs and Word untouched; frozen benchmark unchanged",
+  "python": "3.12.2",
+  "platform": "Linux",
+  "packages": {
+    "numpy": "2.4.6",
+    "pandas": "3.0.3",
+    "torch": "2.12.0",
+    "scikit-learn": "1.8.0",
+    "nbclient": "0.10.2",
+    "matplotlib": "3.10.9",
+    "rasterio": "1.5.0"
+  },
+  "unit_tests": {
+    "tests": 695.0,
+    "failures": 0.0,
+    "errors": 0.0,
+    "skipped": 2.0,
+    "time": 19.787
+  },
+  "skipped": [
+    {
+      "type": "pytest.skip",
+      "message": "No GPU/MPS available on this machine"
+    },
+    {
+      "type": "pytest.skip",
+      "message": "MPS not available on this machine"
+    }
+  ],
+  "checks": {
+    "ruff_check_src": "passed",
+    "ruff_format_src": "passed",
+    "mkdocs_strict": "passed",
+    "wheel": {
+      "status": "passed",
+      "sha256": "700c0fc2bea72066f9aeb45fc0ab46824472f99df645c1437ad3287b356b9c02",
+      "bytes": 1347798,
+      "data_shape": [
+        5933,
+        64
+      ],
+      "checks": [
+        "installed wheel import",
+        "all payload hashes",
+        "ID alignment",
+        "regional classifier",
+        "superseded demos absent"
+      ]
+    },
+    "notebooks": "demo-notebooks.json",
+    "real_integrations": "demo-live.json",
+    "downstream": "../assets/demos/classification-metrics.json"
+  },
+  "sources": "Bundled rs_embed/data/demos/bayarea/manifest.json records all official URLs, pixel hashes, payload hashes and attribution.",
+  "environment_notes": [
+    "The first Linux test invocation inherited incompatible Conda PROJ paths and had three CRS failures. Rerun with PROJ_LIB/PROJ_DATA unset passed. No coordinate validation was bypassed.",
+    "Build and hatchling modules were absent in the runtime environment; pip wheel with an isolated build environment succeeded.",
+    "Final notebook run sets OMP_NUM_THREADS=1 and OPENBLAS_NUM_THREADS=1; each notebook has a fresh kernel."
+  ],
+  "limitations": [
+    "CPU validated; GPU inference not tested.",
+    "One fixed regional holdout, no confidence interval or global accuracy claim.",
+    "Four classes, with only nine cropland training cells; two bare cells excluded.",
+    "AEF overview support is 1280m, not native 10m. Reference labels aggregate native WorldCover pixel centers within matching polygons.",
+    "COG HTTP transfer was not metered; first online latency depends on network."
+  ]
+}

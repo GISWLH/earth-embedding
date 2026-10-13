@@ -175,6 +175,43 @@ const scenes = [
     hand(67,1050,'Map · retrieve · learn downstream',32);
   }),
   scene('earth-embedding-logo',240,240,()=>globe(7,23,1),true),
+  scene('earth-embedding-demos',1200,560,()=>{
+    hand(44,30,'From a place to a result',34);
+    text(44,80,'REAL DATA  /  CPU  /  REUSABLE OUTPUTS',16,{strokeColor:C.grey});
+    const card=(x,y,w,title,api,fill)=>{
+      box(x,y,w,108,{backgroundColor:fill});
+      hand(x+15,y+18,title,24);
+      text(x+15,y+58,api,15,{fontFamily:3,strokeColor:C.teal});
+    };
+    card(44,150,270,'Region or lon / lat','load_demo /\nget_location_embeddings',C.mint);
+    card(400,150,255,'Embedding','pca_colors',C.lavender);
+    card(752,150,394,'Spatial map','plot_map → PNG',C.peach);
+    arrow(320,204,[[0,0],[72,0]]); arrow(662,204,[[0,0],[80,0]]);
+    card(44,350,230,'Features + labels','load_demo("bayarea")',C.mint);
+    card(316,350,242,'Spatial holdout','train | buffer | test',C.soft);
+    card(600,350,243,'Linear classifier','classify_demo',C.lavender);
+    card(885,350,261,'Map + metrics','plot_classification',C.peach);
+    for(const x of [278,562,847]) arrow(x,404,[[0,0],[30,0]]);
+    text(44,510,'PCA colors ≠ classes. Bay Area demo ≠ global benchmark.',19,{strokeColor:C.grey});
+  }),
+  scene('earth-embedding-demos-mobile',660,1090,()=>{
+    hand(38,30,'A place. An embedding. A result.',29);
+    const card=(y,title,api,fill)=>{
+      box(45,y,570,95,{backgroundColor:fill});
+      hand(64,y+13,title,27);
+      text(64,y+58,api,19,{fontFamily:3,strokeColor:C.teal});
+    };
+    card(105,'Region / longitude + latitude','load_demo / get_location_embeddings',C.mint);
+    card(240,'Embedding → PCA colors','pca_colors',C.lavender);
+    card(375,'Your first spatial map','plot_map → PNG',C.peach);
+    arrow(330,207,[[0,0],[0,26]]); arrow(330,342,[[0,0],[0,26]]);
+    hand(45,514,'Add labels. Learn a downstream task.',27);
+    card(576,'Features + labels → spatial holdout','load_demo("bayarea")',C.mint);
+    card(711,'Train-only scaling + linear classifier','classify_demo',C.lavender);
+    card(846,'Held-out map + OA / F1 / recall','plot_classification',C.peach);
+    arrow(330,678,[[0,0],[0,26]]); arrow(330,813,[[0,0],[0,26]]);
+    text(45,986,'PCA colors are not land-cover classes.\nBay Area regional software demonstration.',21,{strokeColor:C.grey});
+  }),
 ];
 
 await fs.mkdir(workspace,{recursive:true});
@@ -223,7 +260,7 @@ try {
   await page.goto(`http://127.0.0.1:${address.port}`);
   await page.waitForFunction(()=>window.brandReady===true);
   const manifest = [];
-  for(const input of scenes) {
+  for(const input of scenes.filter(s => !process.argv.includes('--demos-only') || s.name.includes('demos'))) {
     const result=await page.evaluate(scene=>window.renderBrand(scene),input);
     await fs.writeFile(path.join(output,`${input.name}.excalidraw`),JSON.stringify(result.source,null,2)+'\n');
     await fs.writeFile(path.join(output,`${input.name}.svg`),result.svg+'\n');

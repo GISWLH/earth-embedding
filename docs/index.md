@@ -11,6 +11,12 @@ This project is an independent extension of [CyberGIS rs-embed](https://github.c
 
 ## Choose a starting point
 
+**Start with real results:** [five-line AEF map, Esri GLE, spatial classification,
+and four executed notebooks](tutorials/real-demos.md). Small real samples are
+bundled; the first map and downstream probe run on CPU without credentials.
+
+![Bay Area spatial classification demo](assets/demos/bayarea-classification.png)
+
 | Your input | Entry point | Guide |
 | --- | --- | --- |
 | WGS84 longitude/latitude | `get_location_embeddings(...)` | [SatCLIP](models/satclip.md), [GeoCLIP](models/geoclip.md), [Esri GLE](models/esri_gle.md) |
