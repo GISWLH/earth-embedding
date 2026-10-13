@@ -2238,7 +2238,7 @@
 </tr>
 <tr>
 <td>Location access</td>
-<td>SatCLIP integration and a shared batch coordinate API; additional GeoCLIP and optional Esri GLE adapters</td>
+<td>SatCLIP integration and a shared batch coordinate API; additional GeoCLIP and lightweight Esri GLE adapters</td>
 </tr>
 <tr>
 <td>Local imagery</td>
@@ -2303,7 +2303,7 @@
 </tr>
 </tbody>
 </table>
-<p>The Esri adapter calls the official runtime; it does not redistribute Esri checkpoints or claim that their license is Apache-2.0. A public model page or reachable checkpoint does not remove its access or usage terms.</p>
+<p>The Esri adapter downloads Esri's official model package on demand and runs its location encoder with the bundled MIT-licensed SatCLIP architecture. The repository does not redistribute Esri checkpoints or claim that their license is Apache-2.0. The package and checkpoint hashes are pinned in the adapter and documented on the <a href="../models/esri_gle/">Esri model page</a>. Public download access does not replace the model's usage terms.</p>
 <p>For AlphaEarth data, retain Google's required acknowledgement:</p>
 <blockquote>
 <p>The AlphaEarth Foundations Satellite Embedding dataset is produced by Google and Google DeepMind.</p>

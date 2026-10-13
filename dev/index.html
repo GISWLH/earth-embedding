@@ -2160,7 +2160,7 @@
 python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s2">".[location,aef]"</span>
 earth-embedding<span class="w"> </span>models<span class="w"> </span>--json
 </code></pre></div>
-<p>Use Python 3.12 or later. Additional model runtimes, data-provider credentials, and checkpoints depend on the model. Esri GLE requires a separately configured supported ArcGIS environment. Current installation instructions do not assume publication on PyPI.</p>
+<p>Use Python 3.12 or later. Additional model runtimes, data-provider credentials, and checkpoints depend on the model. Esri GLE runs directly in PyTorch with its official lightweight weights; it needs no ArcGIS installation. Current installation instructions do not assume publication on PyPI.</p>
 <h2 id="a-first-location-query">A first location query<a class="headerlink" href="#a-first-location-query" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">earth_embedding</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_location_embeddings</span>
 
