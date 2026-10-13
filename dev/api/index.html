@@ -391,6 +391,8 @@
       
         
       
+        
+      
     
     
     
@@ -462,6 +464,34 @@
     
   
     Quickstart
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/model-comparison/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Multi-model comparison
   
 
     
@@ -557,6 +587,8 @@
       
         
       
+        
+      
     
     
     
@@ -639,6 +671,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../model-resources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hugging Face & official resources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../models_reference/" class="md-nav__link">
         
   
@@ -690,10 +750,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_3" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_4" >
         
           
-          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
             
   
   
@@ -711,8 +771,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_3">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -844,10 +904,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_4" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_5" >
         
           
-          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
             
   
   
@@ -865,8 +925,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_4">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1022,10 +1082,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_5" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_6" >
         
           
-          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
             
   
   
@@ -1043,8 +1103,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_5">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1649,6 +1709,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#multi-model-comparison-and-discovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Multi-model comparison and discovery
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2237,6 +2308,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#multi-model-comparison-and-discovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Multi-model comparison and discovery
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2364,6 +2446,23 @@ If you want installation and first-run examples, start with <a href="../quicksta
 </ul>
 <p>See <a href="../data-access/">data access</a> and <a href="../models/#location-encoders">location models</a>.</p>
 <p>Most users only need five public entry points: <code>get_embedding(...)</code>, <code>get_embeddings_batch(...)</code>, <code>export_batch(...)</code>, <code>load_export(...)</code>, and <code>inspect_provider_patch(...)</code>.</p>
+<h3 id="multi-model-comparison-and-discovery">Multi-model comparison and discovery<a class="headerlink" href="#multi-model-comparison-and-discovery" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>compare_embeddings(models=None, *, spatial, temporal=None, output=OutputSpec.grid(), model_options=None, on_error="raise", release_models=True, **shared_kwargs)</code>
+  calls the geographic API for each selected model. <code>models=None</code> selects the
+  complete catalog; <code>model_options</code> maps model IDs to per-model keyword overrides.
+  The returned <code>EmbeddingComparison</code> keeps canonical model order, successful
+  <code>embeddings</code>, and explicit <code>errors</code>. <code>on_error="record"</code> retains partial runs.
+  Cached model runtimes are cleared between requests by default.</li>
+<li><code>plot_embedding_comparison(comparison_or_mapping, *, columns=5, reference=None, reference_title="Reference image", title=None, lonlat=None, save_path=None, dpi=160)</code>
+  returns a Matplotlib figure. Spatial grids use independent PCA RGB; pooled
+  vectors are shown as feature profiles; point matrices need <code>lonlat</code> for a map.
+  Error panels retain failed model IDs. Requires the <code>plot</code> extra.</li>
+<li><code>get_model_resources(model)</code> and <code>list_model_resources()</code> expose lightweight
+  upstream code, checkpoint, dataset, and documentation links without inference.</li>
+</ul>
+<p>See the <a href="../tutorials/model-comparison/">comparison tutorial</a> and
+<a href="../model-resources/">resource directory</a>.</p>
 <hr />
 <h2 id="choose-by-task">Choose by Task<a class="headerlink" href="#choose-by-task" title="Permanent link">&para;</a></h2>
 <table>
