@@ -389,6 +389,8 @@
       
         
       
+        
+      
     
     
     
@@ -460,6 +462,34 @@
     
   
     Quickstart
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/real-demos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Real data tutorials
   
 
     
@@ -2326,8 +2356,10 @@ If you want installation and first-run examples, start with <a href="../quicksta
 </li>
 <li><code>find_aef_tiles(index, *, spatial, year)</code> selects candidate COG URLs from a
   local official CSV/Parquet index or DataFrame; <code>spatial</code> is a WGS84 <code>BBox</code>.</li>
-<li><code>sample_aef(lonlat, *, tiles, strict=True)</code> reads and decodes raw AEF COG
-  vectors into <code>(N, 64)</code> data, with masks and per-point provenance.</li>
+<li><code>sample_aef(lonlat, *, tiles, strict=True, overview_level=None)</code> reads and decodes
+  raw AEF COG vectors into <code>(N, 64)</code> data, with masks and per-point provenance.
+  The default samples native 10 m data. Select an official zero-based overview
+  explicitly (0 = 20 m, 6 = 1280 m) for normalized area-sum vectors.</li>
 <li><code>dequantize_aef(values)</code> decodes signed integer data and replaces nodata by NaN.</li>
 </ul>
 <p>See <a href="../data-access/">data access</a> and <a href="../models/#location-encoders">location models</a>.</p>

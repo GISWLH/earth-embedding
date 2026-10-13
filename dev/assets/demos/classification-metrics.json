@@ -1,0 +1,87 @@
+{
+  "scope": "San Francisco Bay Area regional software demonstration; not a paper benchmark reproduction",
+  "seed": 42,
+  "estimator": {
+    "name": "StandardScaler + LogisticRegression",
+    "C": 1.0,
+    "tol": 1e-08,
+    "max_iter": 2000,
+    "dtype": "float64",
+    "solver": "lbfgs"
+  },
+  "model": "AEF 2021 official 1280m overview features",
+  "total": 5933,
+  "split_counts": {
+    "train": 3383,
+    "test": 2173,
+    "buffer": 375,
+    "excluded_other_class": 2
+  },
+  "class_counts": {
+    "buffer": {
+      "bare": 0,
+      "built": 44,
+      "cropland": 28,
+      "vegetation": 254,
+      "water": 49
+    },
+    "excluded_other_class": {
+      "bare": 2,
+      "built": 0,
+      "cropland": 0,
+      "vegetation": 0,
+      "water": 0
+    },
+    "test": {
+      "bare": 0,
+      "built": 249,
+      "cropland": 239,
+      "vegetation": 1292,
+      "water": 393
+    },
+    "train": {
+      "bare": 0,
+      "built": 695,
+      "cropland": 9,
+      "vegetation": 1864,
+      "water": 815
+    }
+  },
+  "split": "South maxlat<=37.88 train; north minlat>=37.93 test; intervening cells buffer; exclude 2 bare cells",
+  "minimum_latitude_gap": 0.050136497899998744,
+  "classes": [
+    "built",
+    "vegetation",
+    "cropland",
+    "water"
+  ],
+  "oa": 0.9139438564196962,
+  "macro_f1": 0.8748814661172164,
+  "balanced_accuracy": 0.8564632366572049,
+  "confusion_matrix": [
+    [
+      233,
+      15,
+      0,
+      1
+    ],
+    [
+      17,
+      1237,
+      29,
+      9
+    ],
+    [
+      2,
+      103,
+      134,
+      0
+    ],
+    [
+      0,
+      10,
+      1,
+      382
+    ]
+  ]
+}
