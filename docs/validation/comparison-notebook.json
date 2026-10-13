@@ -1,0 +1,16 @@
+{
+  "notebook": "examples/notebooks/05_compare_models.ipynb",
+  "sha256": "510cca28d0e42483a66b3f4b016d84e62fc9f89a2d46165483f339e154e6ccfa",
+  "executed_code_cells": 5,
+  "real_location_models": [
+    "satclip",
+    "geoclip",
+    "esri_gle"
+  ],
+  "location_device": "cpu",
+  "location_grid_step_m": 5000,
+  "full_22_model_inference_executed": false,
+  "gallery_display": "Published real gallery reused, see comparison/provenance.json",
+  "python": "3.12.2",
+  "errors": []
+}

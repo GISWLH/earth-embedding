@@ -1,5 +1,23 @@
 # Earth Embedding
 
+```python
+emb = get_embedding("prithvi", spatial=spatial, temporal=temporal, output=output)
+```
+
+**One geographic API, 22 model configurations, and a shared comparison figure.**
+Use `get_embedding` for one model, `compare_embeddings` for several models,
+and `plot_embedding_comparison` to display their results together.
+
+![Sentinel-2 reference and 22 real model outputs](assets/comparison/all-models.png)
+
+[Run the comparison tutorial](tutorials/model-comparison.md) ·
+[Hugging Face weights and official resources](model-resources.md) ·
+[Quickstart](quickstart.md)
+
+The gallery contains real image/product features and location inference over
+the same Wuhan extent. Each panel uses its own PCA colors and spatial support;
+this qualitative view is not a model ranking.
+
 <picture>
   <source media="(max-width: 760px)" srcset="assets/earth-embedding-hero-mobile.svg">
   <img src="assets/earth-embedding-hero.svg" width="100%" alt="Earth Embedding: images, locations and precomputed products through a shared Python interface.">
@@ -19,6 +37,7 @@ bundled; the first map and downstream probe run on CPU without credentials.
 
 | Your input | Entry point | Guide |
 | --- | --- | --- |
+| One region, several models | `compare_embeddings(...)`, `plot_embedding_comparison(...)` | [Multi-model tutorial](tutorials/model-comparison.md) |
 | WGS84 longitude/latitude | `get_location_embeddings(...)` | [SatCLIP](models/satclip.md), [GeoCLIP](models/geoclip.md), [Esri GLE](models/esri_gle.md) |
 | Place and observation window | `get_embedding(...)` | [Quickstart](quickstart.md) |
 | An existing image array | `get_image_embedding(...)` | [API reference](api.md) |
@@ -51,6 +70,7 @@ Coordinates are **[longitude, latitude]** in WGS84 degrees. Model weights may do
 ## Explore the documentation
 
 - [Model catalog](models.md): each adapter's input requirements, output support, and optional dependencies.
+- [Hugging Face & official resources](model-resources.md): linked checkpoints, datasets, upstream code, and model terms for all 22 entries.
 - [API reference](api.md): geographic extraction, local images, locations, batch export, and metadata.
 - [AlphaEarth access](data-access.md): official GCS indexes, point sampling, decoding, Earth Engine, and attribution.
 - [Validation report](validation.md): real execution evidence, environments, and unresolved limitations.

@@ -1,0 +1,192 @@
+{
+  "request": {
+    "models": [
+      "satclip",
+      "geoclip",
+      "esri_gle"
+    ],
+    "bbox": [
+      114.35,
+      30.46,
+      114.43,
+      30.54
+    ],
+    "year": 2021,
+    "image_window": [
+      "2021-05-01",
+      "2021-10-31"
+    ],
+    "location_grid_step_m": 320,
+    "device": "cpu"
+  },
+  "successful": {
+    "satclip": {
+      "shape": [
+        256,
+        28,
+        24
+      ],
+      "features": "satclip.npz",
+      "meta": {
+        "model": "satclip",
+        "type": "location",
+        "backend": "vendored_satclip",
+        "source": "hf://microsoft/SatCLIP-ViT16-L40",
+        "sensor": null,
+        "temporal": {
+          "mode": null
+        },
+        "image_size": null,
+        "variant": "vit16-l40",
+        "bbox_4326": [
+          114.35,
+          30.46,
+          114.43,
+          30.54
+        ],
+        "input_crs": "EPSG:4326",
+        "coordinate_order": "longitude_latitude",
+        "query_input": "longitude_latitude_only",
+        "requested_temporal_ignored": false,
+        "checkpoint": {
+          "source": "huggingface",
+          "repo_id": "microsoft/SatCLIP-ViT16-L40",
+          "filename": "satclip-vit16-l40.ckpt",
+          "revision": "0ef2acc0b91d3c8cfdf4a0cc03207095989287ab",
+          "path": "satclip-vit16-l40.ckpt"
+        },
+        "hyper_parameters": {
+          "le_type": "sphericalharmonics",
+          "pe_type": "siren",
+          "legendre_polys": 40,
+          "harmonics_calculation": "analytic",
+          "embed_dim": 256,
+          "capacity": 512,
+          "num_hidden_layers": 2,
+          "vision_layers": "moco_vit16"
+        },
+        "device": "cpu",
+        "grid_step_m": 320.0,
+        "chw_shape": [
+          256,
+          28,
+          24
+        ],
+        "grid_semantics": "coordinate_queries_not_image_pixels",
+        "y_axis_direction": "north_to_south",
+        "grid_orientation_policy": "north_up",
+        "grid_native_y_axis_direction": "north_to_south",
+        "grid_native_orientation_reason": "y_axis_direction=north_to_south",
+        "grid_orientation_applied": false
+      }
+    },
+    "geoclip": {
+      "shape": [
+        512,
+        28,
+        24
+      ],
+      "features": "geoclip.npz",
+      "meta": {
+        "model": "geoclip",
+        "type": "location",
+        "backend": "geoclip",
+        "source": "https://github.com/VicenteVivan/geo-clip",
+        "sensor": null,
+        "temporal": {
+          "mode": null
+        },
+        "image_size": null,
+        "input_crs": "EPSG:4326",
+        "coordinate_order": "longitude_latitude",
+        "query_input": "longitude_latitude_only",
+        "device": "cpu",
+        "runtime_version": "1.2.3",
+        "native_coordinate_order": "latitude_longitude",
+        "normalization": "none",
+        "checkpoint": {
+          "source": "geoclip_package",
+          "path": "geoclip/model/weights/location_encoder_weights.pth"
+        },
+        "requested_temporal_ignored": false,
+        "grid_step_m": 320.0,
+        "grid_semantics": "coordinate_queries_not_image_pixels",
+        "y_axis_direction": "north_to_south",
+        "bbox_4326": [
+          114.35,
+          30.46,
+          114.43,
+          30.54
+        ],
+        "chw_shape": [
+          512,
+          28,
+          24
+        ],
+        "grid_orientation_policy": "north_up",
+        "grid_native_y_axis_direction": "north_to_south",
+        "grid_native_orientation_reason": "y_axis_direction=north_to_south",
+        "grid_orientation_applied": false
+      }
+    },
+    "esri_gle": {
+      "shape": [
+        256,
+        28,
+        24
+      ],
+      "features": "esri_gle.npz",
+      "meta": {
+        "model": "esri_gle",
+        "type": "location",
+        "backend": "vendored_satclip",
+        "source": "https://doc.arcgis.com/en/pretrained-models/latest/vector/introduction-to-global-location-encoder-sentinel-2-.htm",
+        "sensor": null,
+        "temporal": {
+          "mode": null
+        },
+        "image_size": null,
+        "input_crs": "EPSG:4326",
+        "coordinate_order": "longitude_latitude",
+        "query_input": "longitude_latitude_only",
+        "device": "cpu",
+        "runtime_version": "2.12.0+cu130",
+        "backbone": "satclip/sentinel-2_trained",
+        "native_coordinate_order": "longitude_latitude",
+        "inference_dtype": "float64",
+        "normalization": "none",
+        "checkpoint": {
+          "source": "esri_official_cache",
+          "item_id": "b0664ef297c04d4aaa44191cf21e07f3",
+          "url": "https://www.arcgis.com/sharing/rest/content/items/b0664ef297c04d4aaa44191cf21e07f3/data",
+          "path": "satclip.pth",
+          "sha256": "2d5b8ac88b4a7f210a00f7fbe145f5216987f373062ec71f3065f9ba13b15452",
+          "bytes": 2168415
+        },
+        "requested_temporal_ignored": false,
+        "grid_step_m": 320.0,
+        "grid_semantics": "coordinate_queries_not_image_pixels",
+        "y_axis_direction": "north_to_south",
+        "bbox_4326": [
+          114.35,
+          30.46,
+          114.43,
+          30.54
+        ],
+        "chw_shape": [
+          256,
+          28,
+          24
+        ],
+        "grid_orientation_policy": "north_up",
+        "grid_native_y_axis_direction": "north_to_south",
+        "grid_native_orientation_reason": "y_axis_direction=north_to_south",
+        "grid_orientation_applied": false
+      }
+    }
+  },
+  "errors": {},
+  "interpretation": "Independent PCA colors; native support differs; not a ranking.",
+  "execution": "real pretrained CPU inference via examples/compare_models.py",
+  "feature_files": "Run outputs were verified locally; binary features are not shipped with this receipt."
+}

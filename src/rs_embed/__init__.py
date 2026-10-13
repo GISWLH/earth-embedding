@@ -17,6 +17,7 @@ from .api import (
     list_models,
     reset_runtime,
 )
+from .comparison import EmbeddingComparison, compare_embeddings, plot_embedding_comparison
 from .core.specs import (
     BBox,
     FetchSpec,
@@ -40,6 +41,7 @@ from .inspect import inspect_gee_patch, inspect_provider_patch
 from .load import ExportResult, ModelResult, load_export
 from .model import Model
 from .pipelines.exporter import BatchExporter
+from .resources import get_model_resources, list_model_resources
 
 __all__ = [
     # Specs
@@ -65,6 +67,11 @@ __all__ = [
     "list_models",
     "describe_model",
     "reset_runtime",
+    "EmbeddingComparison",
+    "compare_embeddings",
+    "plot_embedding_comparison",
+    "get_model_resources",
+    "list_model_resources",
     # Export API
     "export_batch",
     "export_npz",

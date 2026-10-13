@@ -89,6 +89,44 @@ def centre_lonlat(spatial: SpatialSpec) -> tuple[float, float]:
     raise ModelError("Location encoders accept BBox or PointBuffer spatial requests.")
 
 
+def location_grid(
+    bbox: BBox, *, step_m: Any, max_grid_points: Any = 100000
+) -> tuple[np.ndarray, np.ndarray, float]:
+    """Make a bounded north-up coordinate grid, validating before allocation.
+
+    All location encoders use the same cell centres and ceiling convention.
+    Spacing describes requested coordinate sampling, not model resolution.
+    """
+    bbox.validate()
+    try:
+        step = float(step_m)
+    except (TypeError, ValueError, OverflowError) as exc:
+        raise ModelError("grid_step_m must be a finite positive number.") from exc
+    if isinstance(step_m, (bool, np.bool_)) or not math.isfinite(step) or step <= 0:
+        raise ModelError("grid_step_m must be a finite positive number.")
+    limit = positive_int(max_grid_points, "max_grid_points")
+    midlat = (bbox.minlat + bbox.maxlat) / 2
+    height_m = (bbox.maxlat - bbox.minlat) * 111320.0
+    width_m = (bbox.maxlon - bbox.minlon) * 111320.0 * math.cos(math.radians(midlat))
+    # Check before division/ceil too: a finite subnormal step can overflow
+    # dimension arithmetic, long before numpy gets a chance to reject allocation.
+    if step < max(height_m, width_m) / limit:
+        raise ModelError(
+            f"Requested grid exceeds max_grid_points={limit}. "
+            "Increase grid_step_m or explicitly raise max_grid_points."
+        )
+    ny = max(1, math.ceil(height_m / step))
+    nx = max(1, math.ceil(width_m / step))
+    if nx * ny > limit:
+        raise ModelError(
+            f"Requested grid has {nx * ny} points, exceeding max_grid_points={limit}. "
+            "Increase grid_step_m or explicitly raise max_grid_points."
+        )
+    lons = bbox.minlon + (np.arange(nx) + 0.5) * (bbox.maxlon - bbox.minlon) / nx
+    lats = bbox.maxlat - (np.arange(ny) + 0.5) * (bbox.maxlat - bbox.minlat) / ny
+    return lons, lats, step
+
+
 class LocationEmbedderBase(EmbedderBase):
     """Coordinate model contract with batched centre queries and bounded query grids."""
 
@@ -190,28 +228,12 @@ class LocationEmbedderBase(EmbedderBase):
         from .location_satclip import _bbox_of
 
         bbox = _bbox_of(spatial)
-        bbox.validate()
-        try:
-            step = float(config.get("grid_step_m", 1000.0))
-        except (TypeError, ValueError) as exc:
-            raise ModelError("grid_step_m must be a finite positive number.") from exc
-        if not math.isfinite(step) or step <= 0:
-            raise ModelError("grid_step_m must be a finite positive number.")
-        limit = positive_int(config.get("max_grid_points", 100000), "max_grid_points")
-        ny = max(1, math.ceil((bbox.maxlat - bbox.minlat) * 111320.0 / step))
-        nx = max(
-            1,
-            math.ceil(
-                (bbox.maxlon - bbox.minlon) * 111320.0 * math.cos(math.radians(centre[1])) / step
-            ),
+        lons, lats, step = location_grid(
+            bbox,
+            step_m=config.get("grid_step_m", 1000.0),
+            max_grid_points=config.get("max_grid_points", 100000),
         )
-        if nx * ny > limit:
-            raise ModelError(
-                f"Requested grid has {nx * ny} points, exceeding max_grid_points={limit}. "
-                "Increase grid_step_m or explicitly raise max_grid_points."
-            )
-        lons = bbox.minlon + (np.arange(nx) + 0.5) * (bbox.maxlon - bbox.minlon) / nx
-        lats = bbox.maxlat - (np.arange(ny) + 0.5) * (bbox.maxlat - bbox.minlat) / ny
+        ny, nx = len(lats), len(lons)
         lon2, lat2 = np.meshgrid(lons, lats)
         points = np.column_stack((lon2.ravel(), lat2.ravel()))
         feats, run_meta = self.encode_locations(
@@ -224,6 +246,7 @@ class LocationEmbedderBase(EmbedderBase):
             requested_temporal_ignored=temporal is not None,
             grid_step_m=step,
             grid_semantics="coordinate_queries_not_image_pixels",
+            y_axis_direction="north_to_south",
             bbox_4326=(bbox.minlon, bbox.minlat, bbox.maxlon, bbox.maxlat),
             chw_shape=tuple(chw.shape),
         )

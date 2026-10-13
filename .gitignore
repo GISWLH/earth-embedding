@@ -10,6 +10,7 @@ build/
 *.egg-info/
 /data/
 /work/
+/site/
 /source-snapshot.tgz
 /release-stage.tgz
 /source_inventory.json

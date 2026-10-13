@@ -8,6 +8,17 @@ The format is based on Keep a Changelog, and the project follows Semantic Versio
 
 ## [Unreleased]
 
+- Add multi-model extraction and comparison figures through `compare_embeddings`
+  and `plot_embedding_comparison`, including explicit failure panels and bounded
+  model-runtime retention.
+- Add a real 22-model Wuhan gallery, regional location-encoder comparisons,
+  a runnable comparison script/notebook, and linked Hugging Face/model resources.
+- Put the shared `get_embedding(model, spatial=..., temporal=..., output=...)`
+  workflow first in the README and documentation.
+- Fix SatCLIP ignoring `grid_step_m`, `max_grid_points`, and `batch_size`.
+  All three location encoders now share bounded cell-centre grids. SatCLIP's
+  default query spacing changes from 10 m to 1,000 m to match the other location
+  adapters; explicit parameters and legacy environment overrides remain available.
 - Add checksummed real regional AEF/WorldCover samples (San Francisco Bay Area, 5933 cells), ID-safe loading, PCA mapping, a buffered
   spatial CPU classification demo, and four executed guided notebooks.
 - Publish regenerated maps, measured downstream metrics, editable workflow artwork,
