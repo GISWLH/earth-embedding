@@ -187,12 +187,12 @@ const scenes = [
     card(400,150,255,'Embedding','pca_colors',C.lavender);
     card(752,150,394,'Spatial map','plot_map → PNG',C.peach);
     arrow(320,204,[[0,0],[72,0]]); arrow(662,204,[[0,0],[80,0]]);
-    card(44,350,230,'Features + labels','load_demo("wuhan")',C.mint);
+    card(44,350,230,'Features + labels','load_demo("bayarea")',C.mint);
     card(316,350,242,'Spatial holdout','train | buffer | test',C.soft);
     card(600,350,243,'Linear classifier','classify_demo',C.lavender);
     card(885,350,261,'Map + metrics','plot_classification',C.peach);
     for(const x of [278,562,847]) arrow(x,404,[[0,0],[30,0]]);
-    text(44,510,'PCA colors ≠ classes. Historical Wuhan demo ≠ global benchmark.',19,{strokeColor:C.grey});
+    text(44,510,'PCA colors ≠ classes. Bay Area demo ≠ global benchmark.',19,{strokeColor:C.grey});
   }),
   scene('earth-embedding-demos-mobile',660,1090,()=>{
     hand(38,30,'A place. An embedding. A result.',29);
@@ -206,11 +206,11 @@ const scenes = [
     card(375,'Your first spatial map','plot_map → PNG',C.peach);
     arrow(330,207,[[0,0],[0,26]]); arrow(330,342,[[0,0],[0,26]]);
     hand(45,514,'Add labels. Learn a downstream task.',27);
-    card(576,'Features + labels → spatial holdout','load_demo("wuhan")',C.mint);
+    card(576,'Features + labels → spatial holdout','load_demo("bayarea")',C.mint);
     card(711,'Train-only scaling + linear classifier','classify_demo',C.lavender);
     card(846,'Held-out map + OA / F1 / recall','plot_classification',C.peach);
     arrow(330,678,[[0,0],[0,26]]); arrow(330,813,[[0,0],[0,26]]);
-    text(45,986,'PCA colors are not land-cover classes.\nHistorical Wuhan software demonstration.',21,{strokeColor:C.grey});
+    text(45,986,'PCA colors are not land-cover classes.\nBay Area regional software demonstration.',21,{strokeColor:C.grey});
   }),
 ];
 

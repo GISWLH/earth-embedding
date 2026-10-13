@@ -22,8 +22,10 @@ The preferred package name is `earth_embedding`. All existing public
   `Embedding` with `(N, D)` data. Supports `satclip`, `geoclip`, `esri_gle`.
 - `find_aef_tiles(index, *, spatial, year)` selects candidate COG URLs from a
   local official CSV/Parquet index or DataFrame; `spatial` is a WGS84 `BBox`.
-- `sample_aef(lonlat, *, tiles, strict=True)` reads and decodes raw AEF COG
-  vectors into `(N, 64)` data, with masks and per-point provenance.
+- `sample_aef(lonlat, *, tiles, strict=True, overview_level=None)` reads and decodes
+  raw AEF COG vectors into `(N, 64)` data, with masks and per-point provenance.
+  The default samples native 10 m data. Select an official zero-based overview
+  explicitly (0 = 20 m, 6 = 1280 m) for normalized area-sum vectors.
 - `dequantize_aef(values)` decodes signed integer data and replaces nodata by NaN.
 
 See [data access](data-access.md) and [location models](models.md#location-encoders).

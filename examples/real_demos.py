@@ -18,24 +18,26 @@ def main():
     out.mkdir(parents=True, exist_ok=True)
     aef = load_demo("aef")
     fig = plot_map(
-        aef.samples, pca_colors(aef.features), title="Wuhan | AEF 2021 | PCA RGB (not classes)"
+        aef.samples,
+        pca_colors(aef.features),
+        title="San Francisco Bay Area | AEF 2021 | PCA RGB (not classes)",
     )
     fig.savefig(out / "aef-pca.png", dpi=160)
-    wuhan = load_demo("wuhan")
+    bayarea = load_demo("bayarea")
     gle = get_location_embeddings(
         "esri_gle",
-        wuhan.samples[["center_lon", "center_lat"]].to_numpy(),
+        bayarea.samples[["center_lon", "center_lat"]].to_numpy(),
         device="cpu",
         batch_size=128,
     )
     fig = plot_map(
-        wuhan.samples,
+        bayarea.samples,
         pca_colors(gle.data),
-        title="Wuhan | Esri GLE | PCA RGB (no observation year)",
+        title="San Francisco Bay Area | Esri GLE | PCA RGB (no observation year)",
     )
     fig.savefig(out / "esri-gle-pca.png", dpi=160)
-    result = classify_demo(wuhan)
-    plot_classification(result).savefig(out / "wuhan-classification.png", dpi=160)
+    result = classify_demo(bayarea)
+    plot_classification(result).savefig(out / "bayarea-classification.png", dpi=160)
     (out / "classification-metrics.json").write_text(json.dumps(result["metrics"], indent=2) + "\n")
     result["samples"].to_csv(out / "classification-predictions.csv", index=False)
     print(json.dumps(result["metrics"], indent=2))

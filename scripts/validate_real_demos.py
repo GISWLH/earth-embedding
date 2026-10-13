@@ -1,27 +1,40 @@
 """Network integration + exact README snippets; separate from offline unit tests."""
 
+import argparse
 import hashlib
 import json
 import os
 import platform
 import re
+import tempfile
 import time
 from pathlib import Path
 
+import matplotlib
 import numpy as np
+
+matplotlib.use("Agg")
 
 from earth_embedding.demo import fetch_aef_demo, load_demo
 
 root = Path(__file__).resolve().parents[1]
 workspace = root / "work/demo-live-check"
 workspace.mkdir(parents=True, exist_ok=True)
+parser = argparse.ArgumentParser(description=__doc__)
+parser.add_argument("--fresh", action="store_true", help="Read official COGs into a new cache.")
+args = parser.parse_args()
+cache = (
+    Path(tempfile.mkdtemp(prefix="fresh-", dir=workspace))
+    if args.fresh
+    else workspace / "fresh-cache"
+)
 receipt = {"scope": "Actual official COG reads and README snippet execution; not unit substitutes"}
 receipt["python"] = platform.python_version()
 receipt["platform"] = platform.system()
 start = time.perf_counter()
-cache_existed = (workspace / "fresh-cache/aef-wuhan-2021.npy").exists()
-fresh = fetch_aef_demo(workspace / "fresh-cache")
-cached = fetch_aef_demo(workspace / "fresh-cache", offline=True)
+cache_existed = (cache / "aef-bayarea-2021.npy").exists()
+fresh = fetch_aef_demo(cache)
+cached = fetch_aef_demo(cache, offline=True)
 np.testing.assert_array_equal(fresh.features, cached.features)
 np.testing.assert_array_equal(fresh.features, load_demo("aef").features)
 receipt["aef"] = {

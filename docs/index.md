@@ -15,7 +15,7 @@ This project is an independent extension of [CyberGIS rs-embed](https://github.c
 and four executed notebooks](tutorials/real-demos.md). Small real samples are
 bundled; the first map and downstream probe run on CPU without credentials.
 
-![Wuhan spatial classification demo](assets/demos/wuhan-classification.png)
+![Bay Area spatial classification demo](assets/demos/bayarea-classification.png)
 
 | Your input | Entry point | Guide |
 | --- | --- | --- |

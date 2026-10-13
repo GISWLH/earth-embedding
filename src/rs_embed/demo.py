@@ -44,15 +44,15 @@ def align_samples(samples, ids, features):
     return x[positions.loc[keys].to_numpy()].copy()
 
 
-def load_demo(name="wuhan"):
-    """Load bundled real AEF or Wuhan data, verifying every payload SHA-256.
+def load_demo(name="bayarea"):
+    """Load the real Bay Area sample, verifying every payload SHA-256.
 
     No credentials, network, model download or private paths are required.
-    ``aef`` is a 64 x 64 point sample; ``wuhan`` is 567 historical pooled tiles.
+    ``aef`` is an alias for ``bayarea``: 5933 official 1280 m AEF overview cells.
     """
-    if name not in {"wuhan", "aef"}:
-        raise ValueError("Unknown demo. Choose 'wuhan' or 'aef'.")
-    root = files("rs_embed").joinpath("data", "demos", name)
+    if name not in {"bayarea", "aef"}:
+        raise ValueError("Unknown demo. Choose 'bayarea' (or alias 'aef').")
+    root = files("rs_embed").joinpath("data", "demos", "bayarea")
     meta = json.loads(root.joinpath("manifest.json").read_text(encoding="utf-8"))
     import io
 
@@ -71,7 +71,7 @@ def load_demo(name="wuhan"):
 def fetch_aef_demo(cache_dir=".earth-embedding-cache", *, offline=False):
     """Re-sample the bundled AEF coordinates from the official COG, once.
 
-    The resulting NPZ is pinned to the bundled sample SHA-256. HTTP range reads
+    The resulting array is pinned to the bundled sample SHA-256. HTTP range reads
     avoid downloading a global index or whole COG. Requires ``.[aef]`` and
     network on the first call; failures never fall back to synthetic data.
     """
@@ -79,7 +79,7 @@ def fetch_aef_demo(cache_dir=".earth-embedding-cache", *, offline=False):
 
     data = load_demo("aef")
     folder = Path(cache_dir)
-    target = folder / "aef-wuhan-2021.npy"
+    target = folder / "aef-bayarea-2021.npy"
     expected = data.metadata["array_sha256"]
     if target.exists():
         x = np.load(target, allow_pickle=False)
@@ -94,6 +94,7 @@ def fetch_aef_demo(cache_dir=".earth-embedding-cache", *, offline=False):
             x = sample_aef(
                 data.samples[["center_lon", "center_lat"]].to_numpy(),
                 tiles=data.metadata["tiles"],
+                overview_level=data.metadata["overview_level"],
             ).data
         except Exception as exc:
             raise RuntimeError(
@@ -150,11 +151,18 @@ def plot_map(samples, colors, *, title="Embedding PCA (not land-cover classes)",
     if ax is None:
         _, ax = plt.subplots(figsize=(6.2, 5.6), layout="constrained")
     polygons = [[(w, s), (e, s), (e, n), (w, n)] for w, s, e, n in bounds]
+    vertices = [item for i in range(4) for item in (f"lon{i}", f"lat{i}")]
+    if set(vertices).intersection(samples):
+        if not set(vertices).issubset(samples):
+            raise ValueError("Cell polygons require all four lon0/lat0 through lon3/lat3 vertices.")
+        polygons = samples[vertices].to_numpy(float).reshape(-1, 4, 2)
+        if not np.isfinite(polygons).all():
+            raise ValueError("Cell polygon vertices must be finite.")
     ax.add_collection(PolyCollection(polygons, facecolors=colors, edgecolors="none"))
     ax.set_xlim(bounds[:, 0].min(), bounds[:, 2].max())
     ax.set_ylim(bounds[:, 1].min(), bounds[:, 3].max())
     ax.set_aspect(1 / np.cos(np.deg2rad(bounds[:, [1, 3]].mean())))
-    ax.set(xlabel="Longitude (E)", ylabel="Latitude (N)", title=title)
+    ax.set(xlabel="Longitude (degrees)", ylabel="Latitude (degrees)", title=title)
     ax.ticklabel_format(useOffset=False)
     ax.xaxis.set_major_locator(MaxNLocator(5))
     ax.yaxis.set_major_locator(MaxNLocator(5))
@@ -166,13 +174,14 @@ CLASS_COLORS = {
     "vegetation": "#1b9e77",
     "cropland": "#e6ab02",
     "water": "#1f78b4",
+    "bare": "#969696",
 }
 
 
 def classify_demo(data=None):
-    """Fixed east-train / west-test Wuhan probe with a two-column buffer.
+    """Fixed south-train / north-test Bay Area probe, with a >=0.05 degree gap.
 
-    Excludes five rare cropland tiles (three-class teaching scope). No tuning,
+    Four classes; two bare cells are excluded. No tuning,
     random splits, test fitting or train predictions masquerading as evaluation.
     """
     from sklearn.linear_model import LogisticRegression
@@ -180,36 +189,43 @@ def classify_demo(data=None):
     from sklearn.pipeline import make_pipeline
     from sklearn.preprocessing import StandardScaler
 
-    data = load_demo("wuhan") if data is None else data
+    data = load_demo("bayarea") if data is None else data
     table = data.samples.copy()
-    needed = {"tile_id", "col", "row", "class_name", "minlon", "maxlon"}
+    needed = {"tile_id", "demo_split", "class_name", "minlat", "maxlat", "center_lon", "center_lat"}
     if not needed.issubset(table) or len(table) != len(data.features):
-        raise ValueError("Wuhan classification requires aligned tile_id, row, col and class_name.")
+        raise ValueError(
+            "Bay Area classification requires aligned IDs, coordinates, labels and demo_split."
+        )
     if table[list(needed)].isna().any().any() or table.tile_id.duplicated().any():
         raise ValueError("Classification metadata has missing values or duplicate IDs.")
-    if table[["row", "col"]].duplicated().any():
+    if table[["center_lon", "center_lat"]].duplicated().any():
         raise ValueError("Duplicate spatial cells are not allowed.")
-    classes = ["built", "vegetation", "water"]
+    classes = ["built", "vegetation", "cropland", "water"]
     eligible = table.class_name.isin(classes)
-    table["demo_split"] = np.where(
-        table.col <= 22, "test", np.where(table.col >= 25, "train", "buffer")
+    expected = np.where(
+        table.maxlat <= 37.88, "train", np.where(table.minlat >= 37.93, "test", "buffer")
     )
-    table.loc[~eligible, "demo_split"] = "excluded_rare_class"
+    if not np.array_equal(table.demo_split.to_numpy(), expected):
+        raise ValueError(
+            "Spatial leakage or changed split: saved split must match the fixed geographic holdout."
+        )
+    table.loc[~eligible, "demo_split"] = "excluded_other_class"
     train = table.demo_split.eq("train").to_numpy()
     test = table.demo_split.eq("test").to_numpy()
     if not train.any() or not test.any() or set(table.loc[train, "class_name"]) != set(classes):
         raise ValueError(
-            "Fixed Wuhan split needs nonempty train/test and all three training classes."
+            "Fixed Bay Area split needs nonempty train/test and all four training classes."
         )
-    if table.loc[train, "minlon"].min() <= table.loc[test, "maxlon"].max():
+    if table.loc[test, "minlat"].min() - table.loc[train, "maxlat"].max() < 0.05:
         raise ValueError(
-            "Spatial leakage: east training bounds must be separated from west test bounds."
+            "Spatial leakage: north test bounds must be separated from south training bounds."
         )
-    x = np.asarray(data.features)
+    # Explicit float64 avoids version-dependent float32 solver paths.
+    x = np.asarray(data.features, dtype=np.float64)
     if x.ndim != 2 or not np.isfinite(x).all():
         raise ValueError("Classification features must be a finite (N,D) array.")
     model = make_pipeline(
-        StandardScaler(), LogisticRegression(C=1.0, max_iter=2000, random_state=42)
+        StandardScaler(), LogisticRegression(C=1.0, tol=1e-8, max_iter=2000, random_state=42)
     )
     model.fit(x[train], table.loc[train, "class_name"])
     predicted = model.predict(x[test])
@@ -217,13 +233,24 @@ def classify_demo(data=None):
     table["prediction"] = pd.Series(pd.NA, index=table.index, dtype="string")
     table.loc[test, "prediction"] = predicted
     metrics = {
-        "scope": "Historical Wuhan software demonstration, three classes; not global benchmark reproduction",
+        "scope": "San Francisco Bay Area regional software demonstration; not a paper benchmark reproduction",
         "seed": 42,
-        "model": "AEF 2021 historical mean-pooled features",
+        "estimator": {
+            "name": "StandardScaler + LogisticRegression",
+            "C": 1.0,
+            "tol": 1e-8,
+            "max_iter": 2000,
+            "dtype": "float64",
+            "solver": "lbfgs",
+        },
+        "model": "AEF 2021 official 1280m overview features",
         "total": len(table),
         "split_counts": table.demo_split.value_counts().to_dict(),
         "class_counts": pd.crosstab(table.demo_split, table.class_name).to_dict(orient="index"),
-        "split": "East col >=25 train; west col <=22 test; cols 23,24 buffer; exclude 5 cropland tiles",
+        "split": "South maxlat<=37.88 train; north minlat>=37.93 test; intervening cells buffer; exclude 2 bare cells",
+        "minimum_latitude_gap": float(
+            table.loc[test, "minlat"].min() - table.loc[train, "maxlat"].max()
+        ),
         "classes": classes,
         "oa": float(accuracy_score(truth, predicted)),
         "macro_f1": float(
@@ -247,13 +274,13 @@ def plot_classification(result):
     plot_map(
         table,
         table.class_name.map(CLASS_COLORS),
-        title="WorldCover 2021 reference (567 tiles)",
+        title=f"Bay Area | WorldCover 2021 reference ({len(table)} cells)",
         ax=axes[0, 0],
     )
     plot_map(
         table,
         table.prediction.map(CLASS_COLORS).fillna("#e8e8e8"),
-        title="AEF + logistic regression: west test only",
+        title="AEF + logistic regression: north test only",
         ax=axes[0, 1],
     )
     error_colors = np.full(len(table), "#e8e8e8", dtype=object)
@@ -264,15 +291,17 @@ def plot_classification(result):
     )
     plot_map(table, error_colors, title="Held-out errors (red); correct (teal)", ax=axes[1, 0])
     for ax in axes.flat[:3]:
-        for col in [23, 25]:
-            ax.axvline(table.loc[table.col == col, "minlon"].min(), color="#173f40", ls="--", lw=1)
+        for latitude in [37.88, 37.93]:
+            ax.axhline(latitude, color="#173f40", ls="--", lw=1)
     axes[0, 0].legend(
         handles=[Patch(color=v, label=k) for k, v in CLASS_COLORS.items()],
         fontsize=8,
         loc="upper left",
     )
     axes[0, 1].legend(
-        handles=[Patch(color="#e8e8e8", label="Train / buffer / excluded (unscored)")], fontsize=8
+        handles=[Patch(color="#e8e8e8", label="Train / buffer / excluded (unscored)")],
+        fontsize=8,
+        loc="lower left",
     )
     metrics = result["metrics"]
     ConfusionMatrixDisplay(

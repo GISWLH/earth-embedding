@@ -1,0 +1,83 @@
+{
+  "name": "San Francisco Bay Area and surroundings",
+  "year": 2021,
+  "bounds": [
+    -122.6,
+    37.3,
+    -121.6,
+    38.3
+  ],
+  "nominal_size_km": [
+    88,
+    111
+  ],
+  "scope": "Regional software demonstration, not a paper benchmark reproduction",
+  "license": "CC-BY-4.0",
+  "tiles": [
+    "https://storage.googleapis.com/alphaearth_foundations/satellite_embedding/v1/annual/2021/10N/xgi48lqsqj8bcovwk-0000000000-0000000000.tiff",
+    "https://storage.googleapis.com/alphaearth_foundations/satellite_embedding/v1/annual/2021/10N/xgi48lqsqj8bcovwk-0000000000-0000008192.tiff",
+    "https://storage.googleapis.com/alphaearth_foundations/satellite_embedding/v1/annual/2021/10N/xgi48lqsqj8bcovwk-0000008192-0000000000.tiff",
+    "https://storage.googleapis.com/alphaearth_foundations/satellite_embedding/v1/annual/2021/10N/xgi48lqsqj8bcovwk-0000008192-0000008192.tiff"
+  ],
+  "overview_level": 6,
+  "features": "Official 1280m AEF overview cells: normalized sums of native vectors, decoded from int8; not 10m point vectors",
+  "labels": "WorldCover 2021 v200 grouped majority of native 10m pixel centers inside each AEF cell polygon; minimum 95% valid reference support",
+  "attribution": "The AlphaEarth Foundations Satellite Embedding dataset is produced by Google and Google DeepMind. \u00a9 ESA WorldCover project 2021 / Contains modified Copernicus Sentinel data (2021) processed by ESA WorldCover consortium.",
+  "source": "https://developers.google.com/earth-engine/guides/aef_on_gcs_readme",
+  "worldcover_source": "https://esa-worldcover.s3.eu-central-1.amazonaws.com/v200/2021/map/ESA_WorldCover_10m_2021_v200_N36W123_Map.tif",
+  "selection": "All 1280m AEF cells with center inside bounds, complete AEF vector and >=95% reference coverage; no score-based selection",
+  "split": "South maxlat<=37.88 train; north minlat>=37.93 test; intervening cells buffer. Four-class built/vegetation/cropland/water task; other labels excluded.",
+  "candidates": 5963,
+  "retained": 5933,
+  "excluded": 30,
+  "aef_sources": [
+    {
+      "url": "https://storage.googleapis.com/alphaearth_foundations/satellite_embedding/v1/annual/2021/10N/xgi48lqsqj8bcovwk-0000000000-0000000000.tiff",
+      "overview_level": 6,
+      "raw_sha256": "f6fc4bf629ee4d4754b870617574d746155d8f27a4ce2a0769f4ca1dc52bfbda",
+      "raw_bytes": 262144
+    },
+    {
+      "url": "https://storage.googleapis.com/alphaearth_foundations/satellite_embedding/v1/annual/2021/10N/xgi48lqsqj8bcovwk-0000000000-0000008192.tiff",
+      "overview_level": 6,
+      "raw_sha256": "a9d226d1c83cee4af0d6320c719520169226025beb227e9bc07cf77930bc07df",
+      "raw_bytes": 262144
+    },
+    {
+      "url": "https://storage.googleapis.com/alphaearth_foundations/satellite_embedding/v1/annual/2021/10N/xgi48lqsqj8bcovwk-0000008192-0000000000.tiff",
+      "overview_level": 6,
+      "raw_sha256": "0a729c691b92133097b085b1b2b9a244364bb6a3b928ae09b285cb1af0e56bdd",
+      "raw_bytes": 262144
+    },
+    {
+      "url": "https://storage.googleapis.com/alphaearth_foundations/satellite_embedding/v1/annual/2021/10N/xgi48lqsqj8bcovwk-0000008192-0000008192.tiff",
+      "overview_level": 6,
+      "raw_sha256": "000d699a5363c9e2f98052916d13e9500bf3014c8d60315dc4db7e3be20900d0",
+      "raw_bytes": 262144
+    }
+  ],
+  "worldcover_window": {
+    "shape": [
+      12142,
+      12176
+    ],
+    "sha256": "4d196a13d05be3005278122345d8fdffb7aa309fe6ae529b5a40650aea6bdcb7",
+    "bytes": 147840992
+  },
+  "array_sha256": "e7884a00905a3049c376035883471714c72ad3ba0cde2b9f8220b3650d3b4783",
+  "seconds": 11.94,
+  "files": {
+    "excluded.csv": {
+      "sha256": "6f429daf87ee5e9e1544d66f595a483f9fd9bb43c182d7659233dae76931cc9f",
+      "bytes": 7993
+    },
+    "features.npz": {
+      "sha256": "257039f2447c1b19e1c6590b7c6d03804a924217d31271cba5eac1097a330302",
+      "bytes": 519560
+    },
+    "samples.csv": {
+      "sha256": "3fcedca0e4e28c98a6954d3135cb6a7b778ab0d25977dd2c1de4f35cbf5f1398",
+      "bytes": 1611605
+    }
+  }
+}

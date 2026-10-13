@@ -99,6 +99,7 @@ def sample_aef(
     *,
     tiles: Sequence[str | Path],
     strict: bool = True,
+    overview_level: int | None = None,
 ) -> Embedding:
     """Sample ``(N, 2)`` [longitude, latitude] points from official AEF COGs.
 
@@ -106,8 +107,17 @@ def sample_aef(
     int8 COG files. Supply one year only. Output shape is ``(N, 64)``;
     uncovered/masked points raise by default, or return NaN with strict=False.
     Overlaps use the first fully valid vector. Never mixes bands across tiles.
+    ``overview_level`` explicitly selects a zero-based official COG overview:
+    0 is 20 m, 6 is 1280 m. None keeps native 10 m behavior. Official overviews
+    encode normalized sums of native vectors, not raw-int8 averages.
     """
     points = np.asarray(lonlat, dtype=np.float64)
+    if overview_level is not None and (
+        isinstance(overview_level, bool)
+        or not isinstance(overview_level, (int, np.integer))
+        or not 0 <= overview_level <= 12
+    ):
+        raise ValueError("overview_level must be None or an integer in [0, 12].")
     if points.ndim != 2 or points.shape[1] != 2 or not np.isfinite(points).all():
         raise ValueError("lonlat must be a finite (N, 2) array in [longitude, latitude] order.")
     if (np.abs(points[:, 0]) > 180).any() or (np.abs(points[:, 1]) > 90).any():
@@ -135,7 +145,8 @@ def sample_aef(
         uri = aef_url(name) if name.startswith(("gs://", "https://")) else name
         # HTTP errors remain errors: a missing tile is not an empty observation.
         with rasterio.Env(GDAL_DISABLE_READDIR_ON_OPEN="EMPTY_DIR"):
-            with rasterio.open(uri) as src:
+            options = {} if overview_level is None else {"overview_level": overview_level}
+            with rasterio.open(uri, **options) as src:
                 if src.count != 64 or any(dtype != "int8" for dtype in src.dtypes):
                     raise ModelError(
                         "Expected a 64-band signed int8 AEF COG; do not decode EE float exports."
@@ -185,6 +196,7 @@ def sample_aef(
             "sources": sources,
             "source_for_point": source_for_point,
             "valid_points": int(valid.sum()),
+            "overview_level": overview_level,
             "dequantization": "sign(x) * (x / 127.5) ** 2; -128 -> NaN",
             "license": "CC-BY-4.0",
             "attribution": AEF_ATTRIBUTION,

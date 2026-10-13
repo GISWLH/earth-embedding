@@ -3,6 +3,7 @@
 import hashlib
 import importlib.metadata
 import json
+import os
 import platform
 import sys
 import time
@@ -16,6 +17,7 @@ root = Path(__file__).resolve().parents[1]
 receipt = {
     "python": platform.python_version(),
     "platform": platform.system(),
+    "thread_settings": {k: os.environ.get(k) for k in ["OMP_NUM_THREADS", "OPENBLAS_NUM_THREADS"]},
     "packages": {
         p: importlib.metadata.version(p)
         for p in ["numpy", "scikit-learn", "torch", "matplotlib", "nbclient"]

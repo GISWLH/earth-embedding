@@ -1,6 +1,6 @@
 {
   "date": "2026-10-13",
-  "scope": "Software demos only; no manuscript Word edit or frozen benchmark extension",
+  "scope": "San Francisco Bay Area software demos; paper inputs and Word untouched; frozen benchmark unchanged",
   "python": "3.12.2",
   "platform": "Linux",
   "packages": {
@@ -13,61 +13,57 @@
     "rasterio": "1.5.0"
   },
   "unit_tests": {
-    "tests": 689.0,
+    "tests": 695.0,
     "failures": 0.0,
     "errors": 0.0,
     "skipped": 2.0,
-    "time": 10.499
+    "time": 19.787
   },
+  "skipped": [
+    {
+      "type": "pytest.skip",
+      "message": "No GPU/MPS available on this machine"
+    },
+    {
+      "type": "pytest.skip",
+      "message": "MPS not available on this machine"
+    }
+  ],
   "checks": {
     "ruff_check_src": "passed",
     "ruff_format_src": "passed",
     "mkdocs_strict": "passed",
-    "wheel_build": "passed",
-    "installed_wheel_bundled_data": "passed: (567,64) and (4096,64)",
+    "wheel": {
+      "status": "passed",
+      "sha256": "700c0fc2bea72066f9aeb45fc0ab46824472f99df645c1437ad3287b356b9c02",
+      "bytes": 1347798,
+      "data_shape": [
+        5933,
+        64
+      ],
+      "checks": [
+        "installed wheel import",
+        "all payload hashes",
+        "ID alignment",
+        "regional classifier",
+        "superseded demos absent"
+      ]
+    },
     "notebooks": "demo-notebooks.json",
     "real_integrations": "demo-live.json",
     "downstream": "../assets/demos/classification-metrics.json"
   },
-  "source_audit": {
-    "paper/experiments/results/downstream_core_2x/downstream_labels_500m_2x.csv": {
-      "sha256": "6d3b514d7ac6f3f7770239482bae9f6efb917893d0a0bb428ae3b70056d7c37b",
-      "bytes": 117910
-    },
-    "paper/experiments/results/downstream_core_2x/downstream_splits_500m_2x.csv": {
-      "sha256": "d7c9866205b741cd969422f62e613c2b263fffc39e490ef5b206eb583bfd1eb7",
-      "bytes": 17838
-    },
-    "paper/experiments/results/downstream_core_2x/embeddings_2x_tile/gse.npz": {
-      "sha256": "d96079a55e5312a248dea272012193df76b902f5158e36384b9cb7e4ef972dfe",
-      "bytes": 136957
-    },
-    "paper/experiments/run_wuhan_t1_2x_classification.py": {
-      "sha256": "d73ca471dce6f6068885161e6aabcf3d047b901fd59503d3069fcaa49f430e8d",
-      "bytes": 26234
-    },
-    "paper/experiments/prepare_part2_data.py": {
-      "sha256": "0b3e34808009700c825f574c236fa487ed34fca102e3abe0a8ee6f5f7f7fbbdc",
-      "bytes": 23556
-    },
-    "paper/experiments/results/part2_model_map_figure/blocks_2x/gse/block_r01_c01.json": {
-      "sha256": "65d25cc22851e35e2afafe84400b5d50dd9c43689748e50557acdacf59f59129",
-      "bytes": 1468
-    },
-    "paper/revision/global_benchmark/manifests/global_smoke_64_worldcover_terrestrial_frozen.csv": {
-      "sha256": "8fd8d995c39e71ed4e49a78b8619f716a35847e45ec39475421b278c0906a007",
-      "bytes": 109810
-    },
-    "paper/revision/global_benchmark/runs/global_thousands_20261007/RESULT_SUMMARY.md": {
-      "sha256": "f1cdea468282b7e3d9ff9d7cb839e8f180700b0d16e60f0b022bf9f96814bb09",
-      "bytes": 25443
-    }
-  },
+  "sources": "Bundled rs_embed/data/demos/bayarea/manifest.json records all official URLs, pixel hashes, payload hashes and attribution.",
+  "environment_notes": [
+    "The first Linux test invocation inherited incompatible Conda PROJ paths and had three CRS failures. Rerun with PROJ_LIB/PROJ_DATA unset passed. No coordinate validation was bypassed.",
+    "Build and hatchling modules were absent in the runtime environment; pip wheel with an isolated build environment succeeded.",
+    "Final notebook run sets OMP_NUM_THREADS=1 and OPENBLAS_NUM_THREADS=1; each notebook has a fresh kernel."
+  ],
   "limitations": [
-    "CPU validated; GPU inference not tested in this task. Two GPU/environment-dependent tests skipped.",
-    "Historical three-class single-area holdout, no uncertainty or global generalization claim.",
-    "Cropland excluded (5 tiles); no cross-model ranking with unequal spatial support.",
-    "Original cached tile pooling reused; raw pixel extraction not rerun.",
-    "COG HTTP transfer bytes not metered; first live query latency is network-dependent."
+    "CPU validated; GPU inference not tested.",
+    "One fixed regional holdout, no confidence interval or global accuracy claim.",
+    "Four classes, with only nine cropland training cells; two bare cells excluded.",
+    "AEF overview support is 1280m, not native 10m. Reference labels aggregate native WorldCover pixel centers within matching polygons.",
+    "COG HTTP transfer was not metered; first online latency depends on network."
   ]
 }

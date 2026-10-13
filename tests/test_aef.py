@@ -113,3 +113,36 @@ def test_global_batch_preserves_points_outside_each_utm_projection(tmp_path):
     result = sample_aef(points, tiles=paths)
     np.testing.assert_allclose(result.data[:, 0], (np.array([32, 33]) / 127.5) ** 2, rtol=1e-6)
     assert result.meta["source_for_point"] == [str(p) for p in paths]
+
+
+@pytest.mark.parametrize("level", [-1, 13, True, 1.5, "6"])
+def test_invalid_overview_rejected_before_io(level):
+    with pytest.raises(ValueError, match="overview_level"):
+        sample_aef([[-122, 38]], tiles=[], overview_level=level)
+
+
+def test_south_up_overview_preserves_geographic_orientation(tmp_path):
+    rasterio = pytest.importorskip("rasterio")
+    from affine import Affine
+    from rasterio.enums import Resampling
+
+    path = tmp_path / "south-up.tiff"
+    raw = np.full((64, 4, 4), 32, dtype=np.int8)
+    raw[:, 2:, :] = 64
+    with rasterio.open(
+        path,
+        "w",
+        driver="GTiff",
+        height=4,
+        width=4,
+        count=64,
+        dtype="int8",
+        crs="EPSG:4326",
+        transform=Affine(0.01, 0, -122, 0, 0.01, 37),
+        nodata=-128,
+    ) as dst:
+        dst.write(raw)
+        dst.build_overviews([2], Resampling.nearest)
+    result = sample_aef([[-121.99, 37.01], [-121.99, 37.03]], tiles=[path], overview_level=0)
+    np.testing.assert_allclose(result.data[:, 0], (np.array([32, 64]) / 127.5) ** 2, rtol=1e-6)
+    assert result.meta["overview_level"] == 0

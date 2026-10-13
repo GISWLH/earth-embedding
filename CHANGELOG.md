@@ -8,7 +8,7 @@ The format is based on Keep a Changelog, and the project follows Semantic Versio
 
 ## [Unreleased]
 
-- Add checksummed real AEF/Wuhan samples, ID-safe loading, PCA mapping, a buffered
+- Add checksummed real regional AEF/WorldCover samples (San Francisco Bay Area, 5933 cells), ID-safe loading, PCA mapping, a buffered
   spatial CPU classification demo, and four executed guided notebooks.
 - Publish regenerated maps, measured downstream metrics, editable workflow artwork,
   and matching English, Chinese and Japanese quickstarts.

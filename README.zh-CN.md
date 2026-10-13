@@ -48,31 +48,31 @@ python -m pip install -e ".[demo,aef]"
 from earth_embedding.demo import load_demo, pca_colors, plot_map
 data = load_demo("aef")
 colors = pca_colors(data.features)
-fig = plot_map(data.samples, colors, title="Wuhan | AEF 2021 | PCA RGB")
+fig = plot_map(data.samples, colors, title="San Francisco Bay Area | AEF 2021 | PCA RGB")
 fig.savefig("aef-pca.png", dpi=160)
 ```
 
 ![AEF 2021 PCA](docs/assets/demos/aef-pca.png)
 
 
-武汉，东经 114.40–114.42°、北纬 30.51–30.53°。64 × 64 个真实 Google / Google DeepMind AEF 2021 向量；RGB 表示描述性主成分，**不代表地物类别**。抽样和许可见[完整教程](docs/tutorials/real-demos.md)。如需重新读取官方 GCS，可调用 `earth_embedding.demo` 中的 `fetch_aef_demo()`；上面的第一张地图可离线生成。
+旧金山湾区及周边，西经 122.6–121.6°、北纬 37.3–38.3°，约 **88 × 111 公里**。5,933 个真实 Google / Google DeepMind AEF 2021 金字塔网格，空间支持范围为 **1,280 米**；校验后的小型数据包约 2.1 MB。RGB 表示描述性主成分，**不代表地物类别**。抽样和许可见[完整教程](docs/tutorials/real-demos.md)。如需重新读取官方 GCS，可调用 `earth_embedding.demo` 中的 `fetch_aef_demo()`；上面的第一张地图可离线生成。
 
 ### 2. Esri GLE → 经纬度嵌入地图
 
 ```python
 from earth_embedding import get_location_embeddings
 from earth_embedding.demo import load_demo, pca_colors, plot_map
-data = load_demo("wuhan")
+data = load_demo("bayarea")
 points = data.samples[["center_lon", "center_lat"]].to_numpy()
 gle = get_location_embeddings("esri_gle", points, device="cpu", batch_size=128)
-fig = plot_map(data.samples, pca_colors(gle.data), title="Wuhan | Esri GLE | PCA RGB")
+fig = plot_map(data.samples, pca_colors(gle.data), title="San Francisco Bay Area | Esri GLE | PCA RGB")
 fig.savefig("esri-gle-pca.png", dpi=160)
 ```
 
 ![Esri GLE PCA](docs/assets/demos/esri-gle-pca.png)
 
 
-批量编码武汉 567 个位置；首次下载约 3.7 MB 官方权重，直接使用 PyTorch，无需 ArcGIS/ArcPy。GLE **没有观测年份**，颜色展示位置先验，不能视为某一年的土地覆盖图。
+批量编码旧金山湾区 5,933 个位置；首次下载约 3.7 MB 官方权重，直接使用 PyTorch，无需 ArcGIS/ArcPy。GLE **没有观测年份**，颜色展示位置先验，不能视为某一年的土地覆盖图。
 
 ### 3. 嵌入 + 标签 → 分类结果
 
@@ -81,23 +81,23 @@ from earth_embedding.demo import classify_demo, plot_classification
 result = classify_demo()
 print({k: result["metrics"][k] for k in ("oa", "macro_f1", "balanced_accuracy")})
 fig = plot_classification(result)
-fig.savefig("wuhan-classification.png", dpi=160)
+fig.savefig("bayarea-classification.png", dpi=160)
 ```
 
-![Wuhan reference, held-out predictions, errors and confusion matrix](docs/assets/demos/wuhan-classification.png)
+![San Francisco Bay Area reference, held-out predictions, errors and confusion matrix](docs/assets/demos/bayarea-classification.png)
 
 | OA | Macro-F1 | Balanced Accuracy | Train / test / buffer / excluded |
 | ---: | ---: | ---: | --- |
-| 93.81% | 91.92% | 90.52% | 310 / 210 / 42 / 5 |
+| 91.39% | 87.49% | 85.65% | 3383 / 2173 / 375 / 2 |
 
 
-本次重新计算的历史武汉**软件演示**，不是当前论文全球实验结果。建成区、植被、水体三分类；东部训练、西部测试，中间两列为缓冲，5 个稀有耕地格网排除。标准化和逻辑回归仅用训练集拟合（种子 42）。灰色区域不评分。[类别数量、来源许可、划分和限制](docs/tutorials/real-demos.md)。
+本次实际运行的区域**软件演示**，不是当前论文全球实验结果。建成区、植被、耕地、水体四分类；南部训练、北部测试，中间保留至少约 5.5 公里的隔离带，排除 2 个裸地网格。训练区仅有 9 个耕地网格，固定空间留出存在明显类别不平衡。标准化和逻辑回归仅用训练集拟合（种子 42）。灰色区域不评分。[类别数量、来源许可、划分和限制](docs/tutorials/real-demos.md)。
 
 ### 四个已执行的导览 Notebook
 
 [01 · AEF](examples/notebooks/01_first_embedding_map.ipynb) ·
 [02 · Esri GLE](examples/notebooks/02_esri_locations.ipynb) ·
-[03 · Classification](examples/notebooks/03_wuhan_classification.ipynb) ·
+[03 · Classification](examples/notebooks/03_regional_classification.ipynb) ·
 [04 · Export / reuse](examples/notebooks/04_export_and_reuse.ipynb)
 
 
@@ -161,7 +161,7 @@ earth-embedding describe satclip
 ```python
 from earth_embedding import get_location_embeddings
 
-locations = [[114.41, 30.52], [139.76, 35.68], [-0.12, 51.51]]
+locations = [[-122.42, 37.77], [139.76, 35.68], [-0.12, 51.51]]
 result = get_location_embeddings("satclip", locations, device="cpu")
 print(result.data.shape)  # (3, 256)
 print(result.meta)
@@ -187,7 +187,7 @@ from earth_embedding import PointBuffer, TemporalSpec, OutputSpec, get_embedding
 
 result = get_embedding(
     "remoteclip",
-    spatial=PointBuffer(lon=114.41, lat=30.52, buffer_m=320),
+    spatial=PointBuffer(lon=-122.42, lat=37.77, buffer_m=320),
     temporal=TemporalSpec.range("2021-05-01", "2021-10-31"),
     output=OutputSpec.pooled(),
     device="cpu",
@@ -211,10 +211,10 @@ from earth_embedding import BBox, find_aef_tiles, sample_aef
 
 tiles = find_aef_tiles(
     "aef_index.parquet",
-    spatial=BBox(114.40, 30.51, 114.42, 30.53),
+    spatial=BBox(-122.43, 37.76, -122.41, 37.78),
     year=2021,
 )
-result = sample_aef([[114.41, 30.52]], tiles=tiles)
+result = sample_aef([[-122.42, 37.77]], tiles=tiles)
 print(result.data.shape)  # (1, 64)
 print(result.meta["source_for_point"])
 ```
@@ -291,7 +291,7 @@ python examples/evaluate_embeddings.py --metadata metadata.csv --features satcli
 
 ## 验证状态与限制
 
-[验证报告](docs/validation.md)区分回归测试、真实模型推理和在线数据访问，并记录日期、环境、输出形状与未解决问题。直接 AEF 路径已有[武汉 2021 年真实采样记录](docs/validation/aef-gcs-20261013.json)；单点成功不等于全球覆盖或下游精度已经验证。
+[验证报告](docs/validation.md)区分单元测试、真实模型推理和在线数据访问。[湾区集成验证记录](docs/validation/demo-live.json)验证区域 AEF 样例和 README 三组代码；[Notebook 执行](docs/validation/demo-notebooks.json)与[空间留出分类指标](docs/assets/demos/classification-metrics.json)分别记录。
 
 数据提供方可能要求身份验证、配额或条款确认；部分模型需要专门环境和大型权重。Esri GLE 权重仍遵循 Esri 模型使用条款。位置编码器没有时间观测，粗分辨率产品也不会因重采样变成等价的 10 m 嵌入。设计比较前请阅读[限制说明](docs/limitations.md)。
 

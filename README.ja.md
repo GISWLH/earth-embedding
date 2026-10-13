@@ -48,31 +48,31 @@ python -m pip install -e ".[demo,aef]"
 from earth_embedding.demo import load_demo, pca_colors, plot_map
 data = load_demo("aef")
 colors = pca_colors(data.features)
-fig = plot_map(data.samples, colors, title="Wuhan | AEF 2021 | PCA RGB")
+fig = plot_map(data.samples, colors, title="San Francisco Bay Area | AEF 2021 | PCA RGB")
 fig.savefig("aef-pca.png", dpi=160)
 ```
 
 ![AEF 2021 PCA](docs/assets/demos/aef-pca.png)
 
 
-武漢、東経 114.40–114.42° / 北緯 30.51–30.53°。Google / Google DeepMind AEF 2021 の実際のベクトルを 64 × 64 点でサンプリングしました。RGB は記述的な主成分であり、**土地被覆クラスではありません**。[取得方法とライセンス](docs/tutorials/real-demos.md)。公式 GCS を再取得する場合は `earth_embedding.demo` の `fetch_aef_demo()` を使用します。上の例はオフラインで動作します。
+サンフランシスコ湾岸と周辺、西経 122.6–121.6° / 北緯 37.3–38.3°、約 **88 × 111 km**。Google / Google DeepMind AEF 2021 の **1,280 m** オーバービューから 5,933 セルを同梱しています。検証付きデータは約 2.1 MB です。RGB は記述的な主成分であり、**土地被覆クラスではありません**。[取得方法とライセンス](docs/tutorials/real-demos.md)。公式 GCS を再取得する場合は `earth_embedding.demo` の `fetch_aef_demo()` を使用します。上の例はオフラインで動作します。
 
 ### 2. Esri GLE → 位置の埋め込みマップ
 
 ```python
 from earth_embedding import get_location_embeddings
 from earth_embedding.demo import load_demo, pca_colors, plot_map
-data = load_demo("wuhan")
+data = load_demo("bayarea")
 points = data.samples[["center_lon", "center_lat"]].to_numpy()
 gle = get_location_embeddings("esri_gle", points, device="cpu", batch_size=128)
-fig = plot_map(data.samples, pca_colors(gle.data), title="Wuhan | Esri GLE | PCA RGB")
+fig = plot_map(data.samples, pca_colors(gle.data), title="San Francisco Bay Area | Esri GLE | PCA RGB")
 fig.savefig("esri-gle-pca.png", dpi=160)
 ```
 
 ![Esri GLE PCA](docs/assets/demos/esri-gle-pca.png)
 
 
-武漢の 567 地点をバッチ処理します。初回のみ約 3.7 MB の公式重みを取得し、PyTorch で直接推論します。ArcGIS/ArcPy は不要です。GLE に**観測年はなく**、色は位置の事前表現であり、特定年の土地被覆図ではありません。
+湾岸の 5,933 地点をバッチ処理します。初回のみ約 3.7 MB の公式重みを取得し、PyTorch で直接推論します。ArcGIS/ArcPy は不要です。GLE に**観測年はなく**、色は位置の事前表現であり、特定年の土地被覆図ではありません。
 
 ### 3. 埋め込み + ラベル → 分類
 
@@ -81,23 +81,23 @@ from earth_embedding.demo import classify_demo, plot_classification
 result = classify_demo()
 print({k: result["metrics"][k] for k in ("oa", "macro_f1", "balanced_accuracy")})
 fig = plot_classification(result)
-fig.savefig("wuhan-classification.png", dpi=160)
+fig.savefig("bayarea-classification.png", dpi=160)
 ```
 
-![Wuhan reference, held-out predictions, errors and confusion matrix](docs/assets/demos/wuhan-classification.png)
+![San Francisco Bay Area reference, held-out predictions, errors and confusion matrix](docs/assets/demos/bayarea-classification.png)
 
 | OA | Macro-F1 | Balanced Accuracy | Train / test / buffer / excluded |
 | ---: | ---: | ---: | --- |
-| 93.81% | 91.92% | 90.52% | 310 / 210 / 42 / 5 |
+| 91.39% | 87.49% | 85.65% | 3383 / 2173 / 375 / 2 |
 
 
-今回再計算した過去の武漢データによる**ソフトウェア実演**であり、現在の論文の全球結果ではありません。建物域・植生・水域の 3 クラス。東部を学習、西部をテスト、2 列をバッファとし、希少な農地 5 セルを除外します。標準化とロジスティック回帰は学習データだけで推定します（seed 42）。灰色部分は評価対象外です。[クラス数・出典・分割・制約](docs/tutorials/real-demos.md)。
+今回実行した地域データの**ソフトウェア実演**であり、論文の全球結果ではありません。建物域・植生・農地・水域の 4 クラス。南部を学習、北部をテストとし、約 5.5 km 以上の間隔を設け、裸地 2 セルを除外します。学習用の農地は 9 セルしかなく、固定した空間分割にはクラス不均衡があります。標準化とロジスティック回帰は学習データだけで推定します（seed 42）。灰色部分は評価対象外です。[クラス数・出典・分割・制約](docs/tutorials/real-demos.md)。
 
 ### 実行済みの 4 つの Notebook
 
 [01 · AEF](examples/notebooks/01_first_embedding_map.ipynb) ·
 [02 · Esri GLE](examples/notebooks/02_esri_locations.ipynb) ·
-[03 · Classification](examples/notebooks/03_wuhan_classification.ipynb) ·
+[03 · Classification](examples/notebooks/03_regional_classification.ipynb) ·
 [04 · Export / reuse](examples/notebooks/04_export_and_reuse.ipynb)
 
 
@@ -161,7 +161,7 @@ Earth Engine を使う画像・プロダクト取得には `earthengine authenti
 ```python
 from earth_embedding import get_location_embeddings
 
-locations = [[114.41, 30.52], [139.76, 35.68], [-0.12, 51.51]]
+locations = [[-122.42, 37.77], [139.76, 35.68], [-0.12, 51.51]]
 result = get_location_embeddings("satclip", locations, device="cpu")
 print(result.data.shape)  # (3, 256)
 print(result.meta)
@@ -187,7 +187,7 @@ from earth_embedding import PointBuffer, TemporalSpec, OutputSpec, get_embedding
 
 result = get_embedding(
     "remoteclip",
-    spatial=PointBuffer(lon=114.41, lat=30.52, buffer_m=320),
+    spatial=PointBuffer(lon=-122.42, lat=37.77, buffer_m=320),
     temporal=TemporalSpec.range("2021-05-01", "2021-10-31"),
     output=OutputSpec.pooled(),
     device="cpu",
@@ -211,10 +211,10 @@ from earth_embedding import BBox, find_aef_tiles, sample_aef
 
 tiles = find_aef_tiles(
     "aef_index.parquet",
-    spatial=BBox(114.40, 30.51, 114.42, 30.53),
+    spatial=BBox(-122.43, 37.76, -122.41, 37.78),
     year=2021,
 )
-result = sample_aef([[114.41, 30.52]], tiles=tiles)
+result = sample_aef([[-122.42, 37.77]], tiles=tiles)
 print(result.data.shape)  # (1, 64)
 print(result.meta["source_for_point"])
 ```
@@ -291,7 +291,7 @@ python examples/evaluate_embeddings.py --metadata metadata.csv --features satcli
 
 ## 検証状況と制約
 
-[検証記録](docs/validation.md)では、回帰テスト、実モデル推論、オンラインデータ取得を分け、日時、環境、出力形状、未解決の依存を記録しています。直接 AEF 取得には[武漢・2021 年の実サンプリング記録](docs/validation/aef-gcs-20261013.json)があります。1 地点の成功は、全球被覆や下流精度の検証を意味しません。
+[検証記録](docs/validation.md)は単体テスト、実モデル推論、オンライン取得を区別しています。[湾岸の統合検証](docs/validation/demo-live.json)で地域 AEF サンプルと README の 3 例を検証し、[Notebook 実行](docs/validation/demo-notebooks.json)と[空間ホールドアウト指標](docs/assets/demos/classification-metrics.json)を別々に記録します。
 
 データ提供者によって認証、クォータ、利用条件への同意が必要な場合があります。一部モデルには専用環境や大きな重みが必要です。Esri GLE の重みには Esri のモデル利用条件が適用されます。位置エンコーダーは時系列観測を持ちません。粗い製品を再サンプリングしても 10 m の製品と同等にはなりません。比較設計の前に[制約](docs/limitations.md)を確認してください。
 

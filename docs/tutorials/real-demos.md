@@ -1,222 +1,186 @@
-# Real embeddings, maps, and a spatial classification probe
+# Real regional embeddings, maps and a CPU classifier
 
-The four guided notebooks run on CPU with public APIs and relative output paths.
-The bundled **1.04 MB** of data contains real observations and reference labels,
-not generated features. No weights, private server, or Earth Engine credentials
-are needed for the first map or classification. Installation includes substantial
-scientific/PyTorch dependencies; 1.04 MB describes the sample data, not the environment.
+The San Francisco Bay Area and surroundings span approximately **88 × 111 km**
+inside `[-122.6, 37.3, -121.6, 38.3]` (west, south, east, north). The checked
+2.1 MB bundle contains **5,933 real AEF 2021 cells**, matching WorldCover 2021
+reference labels and cell polygons. This is a regional software demonstration,
+not a reproduction or extension of the paper's frozen 20-system global benchmark.
+
+## Install and draw your first map
+
+Python 3.12+, CPU. Install from the repository; no PyPI release is assumed.
 
 ```bash
 git clone https://github.com/GISWLH/earth-embedding.git
 cd earth-embedding
-python -m venv .venv
-# Linux/macOS: source .venv/bin/activate
-# Windows PowerShell: .venv\Scripts\Activate.ps1
 python -m pip install -e ".[demo,aef]"
-python examples/real_demos.py
-python scripts/run_demo_notebooks.py
 ```
-
-This project is installed from source; these commands do not assume a PyPI release.
-The runner uses a fresh Python kernel for each notebook, fails on any cell error
-or missing embedded image, and saves executed notebooks and a validation receipt.
-Notebook output files go under `work/notebook-runs/*/outputs`; README figures go
-under `docs/assets/demos`. In an interactive notebook, output is relative to its
-working directory. Esri's initial weight download is ~3.7 MB; cached reruns are offline.
-
-## Start with five lines
 
 ```python
 from earth_embedding.demo import load_demo, pca_colors, plot_map
 data = load_demo("aef")
 colors = pca_colors(data.features)
-fig = plot_map(data.samples, colors, title="Wuhan | AEF 2021 | PCA RGB")
+fig = plot_map(data.samples, colors, title="San Francisco Bay Area | AEF 2021 | PCA RGB")
 fig.savefig("aef-pca.png", dpi=160)
 ```
 
-![AEF PCA map](../assets/demos/aef-pca.png)
+![AEF overview PCA](../assets/demos/aef-pca.png)
 
-`load_demo` validates each CSV/NPZ against a bundled SHA-256 manifest, rejects
-duplicate or mismatched IDs, and joins features to `samples.tile_id`. Map cells
-use explicit WGS84 bounds; north is up regardless of input row order. Longitude
-is always the first coordinate. No PCA step is used by the classifier.
+`load_demo("aef")` and `load_demo("bayarea")` load the same data without network
+access. Each payload is verified against SHA-256 in its bundled manifest; vectors
+are joined to metadata by `tile_id`, never an assumed file row order.
 
-The 64 × 64 AEF sample covers `[114.40, 30.51, 114.42, 30.53]` in Wuhan.
-Each approximately 30 m display cell represents its center's nearest native
-10 m AEF pixel, not a cell average. Three PCA scores are stretched separately at
-their 2nd and 98th percentiles. Colors are descriptive features, **not land-cover
-classes**; separately fitted PCA colors are not comparable across models/areas.
+These are **1,280 m official AEF overview cells**, not native 10 m point samples.
+Google's overviews encode normalized sums of native vectors. We decode signed
+int8 values using `sign(x) * (x / 127.5)**2`, with -128 treated as missing.
+RGB shows PCA components stretched at their 2nd/98th percentiles.
+**PCA colors are not land-cover classes** and cannot be compared between separately
+fitted maps. PCA is descriptive and is not used by the classifier.
 
-To repeat the anonymous official GCS sampling rather than use the bundled copy:
+To reproduce official GCS reads (first call needs network access):
 
 ```python
 from earth_embedding.demo import fetch_aef_demo
-fresh = fetch_aef_demo(cache_dir=".earth-embedding-cache")
-cached = fetch_aef_demo(cache_dir=".earth-embedding-cache", offline=True)
+fresh = fetch_aef_demo(cache_dir="cache/aef")
+cached = fetch_aef_demo(cache_dir="cache/aef", offline=True)
 ```
 
-This reuses `sample_aef` and the pinned official tile URL stored in the manifest.
-It needs Rasterio (`.[aef]`). The first call reads COG byte ranges, potentially
-tens of MB depending on server/GDAL block reads; transfer bytes were not metered.
-The decoded array is checked against the bundled SHA-256 before atomic caching.
-A changed response, network failure or corrupt cache is an error, never a silent
-fallback. Cache hits recheck the array and use no network. For another area/year,
-use [find_aef_tiles and sample_aef](../data-access.md) with the official index.
+Four bounded overview reads avoid downloading entire native COGs or a global
+index. The decoded array is pinned to SHA-256, then cached atomically. Raw
+overview payload totals 1 MiB; actual HTTP transfer includes headers and range
+overhead and was not metered. Network failures and corrupted caches raise clear
+errors without substitute data. Advanced callers can use
+`sample_aef(points, tiles=urls, overview_level=6)` directly. Omitting
+`overview_level` retains existing native 10 m behavior.
 
-## Location batches and offline inference
+## Encode 5,933 locations with Esri GLE
 
 ```python
 from earth_embedding import get_location_embeddings
 from earth_embedding.demo import load_demo, pca_colors, plot_map
-data = load_demo("wuhan")
+data = load_demo("bayarea")
 points = data.samples[["center_lon", "center_lat"]].to_numpy()
 gle = get_location_embeddings("esri_gle", points, device="cpu", batch_size=128)
-fig = plot_map(data.samples, pca_colors(gle.data), title="Wuhan | Esri GLE | PCA RGB")
+fig = plot_map(data.samples, pca_colors(gle.data), title="San Francisco Bay Area | Esri GLE | PCA RGB")
 fig.savefig("esri-gle-pca.png", dpi=160)
 ```
 
-![GLE PCA map](../assets/demos/esri-gle-pca.png)
+![Location encoder PCA](../assets/demos/esri-gle-pca.png)
 
-Esri GLE runs official, pinned weights directly in PyTorch. ArcGIS and ArcPy are
-not required. Its 256-dimensional vectors represent location priors: there is no
-requested observation year. Notebook 02 checks batch sizes 128 and 37, explicitly
-uses `local_files_only=True`, and exports features with IDs. The official weight
-cache and model terms are described in the [GLE guide](../models/esri_gle.md).
+The official lightweight Esri package (~3.7 MB) downloads once. Inference runs
+directly in PyTorch without ArcGIS/ArcPy. Coordinates are `[longitude, latitude]`.
+GLE has no observation year: it encodes a geographic prior. Drawing point
+features on this grid is a visualization choice, not matched area support.
+Notebook 02 verifies batch consistency and `local_files_only=True`. Weights are
+not committed and remain subject to the
+[Esri model terms](https://www.arcgis.com/home/item.html?id=b0664ef297c04d4aaa44191cf21e07f3).
 
-## A three-class spatial probe
+## Real spatial classification
 
 ```python
 from earth_embedding.demo import classify_demo, plot_classification
 result = classify_demo()
 print({k: result["metrics"][k] for k in ("oa", "macro_f1", "balanced_accuracy")})
 fig = plot_classification(result)
-fig.savefig("wuhan-classification.png", dpi=160)
+fig.savefig("bayarea-classification.png", dpi=160)
 ```
 
-![Reference, predictions, errors and confusion matrix](../assets/demos/wuhan-classification.png)
+![Reference, held-out prediction, errors and confusion matrix](../assets/demos/bayarea-classification.png)
 
-This run reuses the historical Wuhan 567-tile AEF cache and WorldCover 2021 v200
-labels. It is a **software demonstration**, not a reproduction of the revised
-global paper benchmark. Software-added models do not enter the frozen 20-system
-paper roster. The small area provides no global performance or model-ranking claim.
+The geographic split was fixed before scoring. South cells with `maxlat <=37.88`
+train; north cells with `minlat >=37.93` test. Intervening cells are unused.
+The minimum gap between footprints is 0.0501365° latitude (about 5.6 km).
+Two bare cells remain in the reference map but are outside the four-class task.
 
-The historical split was stratified random, despite being stored alongside
-spatial metadata. To avoid immediate train/test adjacency, this example defines
-a new, fixed geographic split: east `col >= 25` trains; west `col <= 22` tests;
-columns 23 and 24 are unused buffers. Five rare cropland samples are excluded
-from this explicitly three-class task; they remain in the distributed data and
-reference map. The split was fixed before fitting and not selected for its score.
+| Split | Built | Vegetation | Cropland | Water | Bare | Total |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| Train | 695 | 1864 | 9 | 815 | 0 | 3383 |
+| Test | 249 | 1292 | 239 | 393 | 0 | 2173 |
+| Buffer | 44 | 254 | 28 | 49 | 0 | 375 |
+| Excluded class | 0 | 0 | 0 | 0 | 2 | 2 |
 
-| Partition | Built | Vegetation | Water | Cropland | Total |
-| --- | ---: | ---: | ---: | ---: | ---: |
-| Train | 120 | 152 | 38 | 0 | 310 |
-| Test | 95 | 40 | 75 | 0 | 210 |
-| Buffer | 26 | 8 | 8 | 0 | 42 |
-| Rare-class exclusion | 0 | 0 | 0 | 5 | 5 |
+`StandardScaler` and `LogisticRegression(C=1, tol=1e-8, max_iter=2000, random_state=42)` fit
+training features only. There is no tuning, balancing or random split.
+Predictions and scores are restricted to held-out rows. Explicit float64 training
+and a strict convergence tolerance avoid version-dependent float32 solver paths;
+the final confusion matrix matches on Windows/scikit-learn 1.9 and Linux/1.8.
 
-StandardScaler and LogisticRegression (`C=1`, `max_iter=2000`, seed 42) fit only
-the 310 training rows. No hyperparameter tuning, validation-label fitting or
-PCA is performed. Predictions are emitted only for test cells. Gray map regions
-are unscored; dashed lines enclose the buffer. The colors reuse the historical
-paper plotting palette: built orange, vegetation green, cropland yellow, water blue.
+| OA | Macro-F1 | Balanced Accuracy |
+| ---: | ---: | ---: |
+| 91.39% | 87.49% | 85.65% |
 
-| Recomputed test metric | Value |
-| --- | ---: |
-| OA | 0.938095 |
-| Macro-F1 (three classes) | 0.919209 |
-| Balanced Accuracy (mean recall) | 0.905205 |
+These are this run's measurements, saved in
+[metrics JSON](../assets/demos/classification-metrics.json) and
+[ID-bearing predictions CSV](../assets/demos/classification-predictions.csv).
+Confusion-matrix rows are reference labels; columns are predictions, in the order
+built, vegetation, cropland, water. Gray map areas are unscored. Only nine training
+cells are cropland; cropland recall is 134/239. This single regional holdout has
+no uncertainty estimate or global generalization claim. WorldCover is a
+satellite-derived reference, not field-survey truth. Same-year products may share
+satellite signals, and the gap cannot remove all spatial autocorrelation.
+Coarse majority classes hide within-cell mixtures.
 
-Confusion matrix, rows reference / columns prediction, order built, vegetation, water:
+## Sources, selection and independent rebuilding
 
-```text
-93   1   1
- 9  30   1
- 0   1  74
+The source inspection found the paper's existing global cache to be discrete
+samples, unsuitable for a continuous regional map. This replacement reads a
+bounded subset of official public products; it does not change paper data/results.
+
+- [Google / Google DeepMind AEF GCS documentation](https://developers.google.com/earth-engine/guides/aef_on_gcs_readme): annual 2021, four UTM 10N COGs, official overview index 6. CC-BY-4.0.
+- [ESA WorldCover data access](https://esa-worldcover.org/en/data-access): 2021 v200, `N36W123`, native 10 m labels from the official public AWS COG. CC-BY-4.0.
+- Attribution: The AlphaEarth Foundations Satellite Embedding dataset is produced by Google and Google DeepMind. © ESA WorldCover project 2021 / Contains modified Copernicus Sentinel data (2021) processed by ESA WorldCover consortium.
+
+Every 1,280 m cell with its center inside the bbox is considered: 5,963 candidates,
+5,933 retained and 30 excluded for missing AEF values. Each retained cell has at
+least 95% valid reference support. WorldCover native pixel **centers inside the
+same AEF polygon** are counted, grouped, then the most frequent group is assigned
+(alphabetic tie break). Codes 10/20/30/90/95/100 map to vegetation, 40 to cropland,
+50 to built, 80 to water, 60 to bare and 70 to snow. Zero is nodata. Selection
+does not use scores. Cells can extend slightly outside the center-selection bbox.
+Maps use transformed polygons, including south-up source rasters; neither file
+order nor raster row number determines north.
+
+The installed `rs_embed/data/demos/bayarea/manifest.json` records exact source
+URLs, pixel hashes, decoded feature hash, payload sizes, selection and license.
+`excluded.csv` records omitted candidates. Large source rasters are not committed.
+Rebuild from pinned public URLs with no private paths or index file:
+
+```bash
+python scripts/prepare_bayarea_demo.py
+python examples/real_demos.py
+python scripts/run_demo_notebooks.py
+python scripts/validate_real_demos.py
 ```
 
-The stored [metrics](../assets/demos/classification-metrics.json) and
-[ID-bearing predictions](../assets/demos/classification-predictions.csv) come from
-this implementation, not copied historical paper scores. WorldCover is a
-satellite-derived reference, not independent field truth. Spatial buffering
-reduces adjacency but cannot remove all spatial autocorrelation or shared
-satellite inputs. This one holdout has no confidence interval or rare-crop claim.
+Preparation reads four overviews and a bounded 12,142 × 12,176 WorldCover window
+(148 MB uncompressed; on-wire transfer varies). Initial acquisition took about
+92 seconds. Allow several minutes, network access and about 1 GB free memory.
+Source cache pixels are checked against pinned SHA-256 values. Normal examples
+and notebooks use only the 2.1 MB bundled subset.
 
-## Data selection and provenance audit
-
-We inspected the current `paper/revision/global_benchmark/` manifest, feature
-folders, target/evaluation design and result summaries. Its annual and monthly
-parent cohorts (4,409 and 3,014 locations) involve target-specific eligibility,
-geographic block CV and continent holdouts. Those multi-target caches and outputs
-are unnecessary for a first-minute software demo and are not redistributed here.
-
-The selected `downstream_core_2x` snapshot has 567 unique tile IDs and 19 cached
-feature files. All three inspected GSE/AEF, Tessera and Copernicus caches have
-finite rows and complete IDs. We select the 64-dimensional AEF file because its
-provenance and redistributable data license are explicit. Merely sharing tile IDs
-does not guarantee matched effective resolution across products; notebook 04
-therefore demonstrates batch export/reuse instead of presenting a model ranking.
-No historical imagery or complete model collection was re-downloaded or re-run.
-
-The manifests installed under `rs_embed/data/demos/{aef,wuhan}/manifest.json`
-record source URLs, year, license, attribution, field interpretation, selection,
-payload sizes and SHA-256 values. The Wuhan manifest also binds the original
-label CSV and original embedding NPZ hashes. The original `split` column is
-preserved; generated `demo_split` controls this run.
-
-| File / field | Meaning |
+| Field | Meaning |
 | --- | --- |
-| `samples.csv: tile_id` | Stable unique key; always join on this field |
-| `row`, `col` | Original grid index; row order never controls plotting |
-| `center_lon`, `center_lat` | WGS84 degrees, longitude first |
-| `minlon`, `minlat`, `maxlon`, `maxlat` | WGS84 cell bounds |
-| `class_name`, `class_index` (Wuhan) | Grouped WorldCover reference; original index retained |
-| `local_*_frac` (Wuhan) | Historical WorldCover grouped class fractions |
-| `features.npz: tile_id, features` | No-pickle Unicode IDs and float32 `(N,64)` feature matrix |
-| `split`, `use_for_t1` (Wuhan) | Original historical metadata, unused by new split |
+| `tile_id` | Stable UTM center identifier, shared with NPZ feature IDs |
+| `center_lon`, `center_lat` | Cell center in WGS84 degrees |
+| `minlon/minlat/maxlon/maxlat` | Geographic envelope for split checks |
+| `lon0/lat0` … `lon3/lat3` | Four transformed corners of the UTM cell |
+| `utm_easting`, `utm_northing` | EPSG:32610 center in meters |
+| `class_name`, `dominant_fraction` | Grouped majority and its fraction |
+| `reference_valid_fraction`, `aef_valid` | Reference coverage and feature validity |
+| `demo_split` | Fixed train/test/buffer assignment before class exclusion |
+| `features` | 64-dimensional float32 official overview vectors |
 
-Wuhan AEF features are historical arithmetic means of valid Earth Engine float
-pixels per nominal-500 m tile; do not decode them as int8. Tiles derive from a
-projected grid, and actual ground widths vary from nominal 500 m at Wuhan's
-latitude. Crops crossing block edges retain the original historical pooling
-policy. We did not regenerate their raw-pixel extraction or certify that legacy
-pooling as a new benchmark protocol. The new small GCS point sample is separate,
-decoded with Google's prescribed signed-int8 mapping.
+## Four executed notebooks
 
-Data attribution and licenses:
-
-- AEF: The AlphaEarth Foundations Satellite Embedding dataset is produced by
-  Google and Google DeepMind. [Official data guide, CC-BY-4.0](https://developers.google.com/earth-engine/guides/aef_on_gcs_readme).
-- WorldCover: ESA WorldCover 10 m 2021 v200, [Zanaga et al., DOI and CC-BY-4.0](https://doi.org/10.5281/zenodo.7254221).
-  Contains modified Copernicus Sentinel data (2021) processed by ESA WorldCover consortium.
-- Esri weights: Esri model terms apply separately; no model weights are redistributed.
-
-## Notebook guide and validation
-
-| Notebook | Task | Typical CPU time after installation | First-run data / weight download |
+| Notebook | Task | Expected CPU time | First download |
 | --- | --- | --- | --- |
-| [01](https://github.com/GISWLH/earth-embedding/blob/main/examples/notebooks/01_first_embedding_map.ipynb) | Real AEF and first map | <1 minute | None; bundled sample |
-| [02](https://github.com/GISWLH/earth-embedding/blob/main/examples/notebooks/02_esri_locations.ipynb) | GLE batching, caching, offline | 1–2 minutes | ~3.7 MB if cache is empty |
-| [03](https://github.com/GISWLH/earth-embedding/blob/main/examples/notebooks/03_wuhan_classification.ipynb) | Spatial classification and maps | <1 minute | None |
-| [04](https://github.com/GISWLH/earth-embedding/blob/main/examples/notebooks/04_export_and_reuse.ipynb) | Batch export and shuffled-ID reload | <1 minute | None |
+| [01](https://github.com/GISWLH/earth-embedding/blob/main/examples/notebooks/01_first_embedding_map.ipynb) | Regional AEF PCA map | <1 minute | None |
+| [02](https://github.com/GISWLH/earth-embedding/blob/main/examples/notebooks/02_esri_locations.ipynb) | GLE batching, cache and offline inference | 1–2 minutes | ~3.7 MB weights |
+| [03](https://github.com/GISWLH/earth-embedding/blob/main/examples/notebooks/03_regional_classification.ipynb) | Spatial holdout, metrics and maps | <1 minute | None |
+| [04](https://github.com/GISWLH/earth-embedding/blob/main/examples/notebooks/04_export_and_reuse.ipynb) | ID-safe batch export and reuse | <1 minute | None |
 
-The [execution receipt](../validation/demo-notebooks.json) records actual kernel
-versions, elapsed times, embedded image counts and output file hashes.
-Unit tests, real AEF reads, real GLE inference, notebook execution and downstream
-scores are separate checks; one does not establish the others.
-
-Maintainer packaging: `scripts/prepare_demo_data.py` takes the original label
-CSV/feature NPZ and a downloaded official AEF index as explicit arguments.
-End users never need those private workspace files. The shipped bundles suffice
-to reproduce every numerical result above. `scripts/build_demo_notebooks.py`
-regenerates notebook source; always execute afterwards before publishing.
-
-## Editable workflow illustrations
-
-![Demo workflow](../assets/earth-embedding-demos.svg)
-
-Both [desktop source](../assets/earth-embedding-demos.excalidraw) and
-[narrow-screen source](../assets/earth-embedding-demos-mobile.excalidraw) contain
-native editable Excalidraw elements. PNG and SVG exports use the same actual
-Excalidraw engine as the existing brand artwork. Rebuild with
-`node scripts/render_brand.mjs --demos-only` after the tooling installation in the
-[brand guide](../assets/earth-embedding-brand.md).
+Each is executed from a fresh kernel with real outputs and at least one embedded
+map. Notebook 04 teaches reuse rather than ranking unequal spatial supports.
+See separate receipts for [notebooks](../validation/demo-notebooks.json),
+[actual AEF/GLE and README execution](../validation/demo-live.json), and
+[repository checks](../validation/real-demos-20261013.json).

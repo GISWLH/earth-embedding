@@ -19,7 +19,7 @@ from earth_embedding.demo import (
 
 def test_bundled_payload_integrity_and_id_alignment():
     data = load_demo()
-    assert data.features.shape == (567, 64)
+    assert data.features.shape == (5933, 64)
     x = align_samples(data.samples, data.samples.tile_id.to_numpy()[::-1], data.features[::-1])
     np.testing.assert_array_equal(x, data.features)
 
@@ -44,7 +44,8 @@ def test_aef_download_cache_offline_and_corruption(tmp_path, monkeypatch):
     data = load_demo("aef")
     calls = []
 
-    def sample(points, *, tiles):
+    def sample(points, *, tiles, overview_level):
+        assert overview_level == 6
         calls.append(len(points))
         return SimpleNamespace(data=data.features)
 
@@ -53,8 +54,8 @@ def test_aef_download_cache_offline_and_corruption(tmp_path, monkeypatch):
         fetch_aef_demo(tmp_path, offline=True)
     fetch_aef_demo(tmp_path)
     fetch_aef_demo(tmp_path, offline=True)
-    assert calls == [4096]
-    np.save(tmp_path / "aef-wuhan-2021.npy", data.features + 1)
+    assert calls == [5933]
+    np.save(tmp_path / "aef-bayarea-2021.npy", data.features + 1)
     with pytest.raises(ValueError, match="SHA-256"):
         fetch_aef_demo(tmp_path)
 
@@ -89,7 +90,7 @@ def test_map_geometry_is_north_up_independent_of_row_order():
     import matplotlib.pyplot as plt
 
     data = load_demo("aef")
-    samples = data.samples.iloc[[4095, 0]]
+    samples = data.samples.loc[[data.samples.center_lat.idxmax(), data.samples.center_lat.idxmin()]]
     fig = plot_map(samples, ["red", "blue"])
     ax = fig.axes[0]
     paths = ax.collections[0].get_paths()
@@ -104,7 +105,7 @@ def test_spatial_holdout_and_no_test_fitting():
     table = original["samples"]
     train = table.demo_split.eq("train")
     test = table.demo_split.eq("test")
-    assert table.loc[train, "col"].min() - table.loc[test, "col"].max() == 3
+    assert table.loc[test, "minlat"].min() - table.loc[train, "maxlat"].max() >= 0.05
     assert table.loc[~test, "prediction"].isna().all()
     changed = data.features.copy()
     changed[test] += 100
@@ -114,7 +115,7 @@ def test_spatial_holdout_and_no_test_fitting():
             getattr(original["estimator"].named_steps[step], attr),
             getattr(other["estimator"].named_steps[step], attr),
         )
-    assert sum(map(sum, original["metrics"]["confusion_matrix"])) == 210
+    assert sum(map(sum, original["metrics"]["confusion_matrix"])) == 2173
 
 
 def test_public_errors_and_pca():
@@ -123,7 +124,7 @@ def test_public_errors_and_pca():
     with pytest.raises(ValueError, match="finite"):
         pca_colors(np.full((3, 3), np.nan))
     colors = pca_colors(load_demo().features)
-    assert colors.shape == (567, 3)
+    assert colors.shape == (5933, 3)
     assert ((colors >= 0) & (colors <= 1)).all()
     data = load_demo("aef")
     assert hashlib.sha256(data.features.tobytes()).hexdigest() == data.metadata["array_sha256"]
@@ -131,6 +132,6 @@ def test_public_errors_and_pca():
 
 def test_spatial_columns_cannot_hide_overlapping_geography():
     data = load_demo()
-    data.samples.loc[data.samples.col >= 25, "minlon"] = 114.35
+    data.samples.loc[data.samples.demo_split.eq("train"), "maxlat"] = 38.0
     with pytest.raises(ValueError, match="Spatial leakage"):
         classify_demo(data)
