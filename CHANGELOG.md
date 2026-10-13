@@ -11,7 +11,8 @@ The format is based on Keep a Changelog, and the project follows Semantic Versio
 ### Earth Embedding extension (0.2.0 development)
 
 - Rename the GISWLH repository and distribution to `earth-embedding`; add `earth_embedding` imports and the `earth-embedding` CLI while preserving `rs_embed` and `rs-embed` compatibility.
-- Add location-only APIs for SatCLIP, GeoCLIP and the optional Esri Global Location Encoder runtime; keep paper-benchmarked systems distinct from newly integrated models.
+- Add location-only APIs for SatCLIP, GeoCLIP and Esri Global Location Encoder; keep paper-benchmarked systems distinct from newly integrated models.
+- Run Esri GLE directly in PyTorch with its official lightweight weights, SHA-256-verified downloads, local checkpoint support and offline caching; remove the ArcGIS/ArcPy runtime requirement.
 - Add direct AEF GCS index selection, COG sampling, signed-int8 dequantization and mask handling without Earth Engine authentication.
 - Introduce English, Simplified Chinese and Japanese project guides, original editable Excalidraw artwork, explicit upstream attribution and model-validation evidence.
 - Add weight-free `models` and `describe` CLI commands.

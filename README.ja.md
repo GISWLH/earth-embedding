@@ -30,7 +30,7 @@
 
 - **3 種類の入り口：**利用者に提供されるオブジェクトに基づき、画像エンコーダー、位置エンコーダー、事前計算済み埋め込みプロダクトを区別します。
 - **22 の登録アダプター：**画像の 16 構成、位置エンコーダー 3 種、事前計算済みプロダクト 3 種。任意依存の統合も含むため、実行状況は検証記録で確認してください。
-- **位置だけから推論：**SatCLIP、GeoCLIP、任意の Esri Global Location Encoder 統合を、共通の `[経度, 緯度]` 入力で扱います。
+- **位置だけから推論：**SatCLIP、GeoCLIP、Esri Global Location Encoder を、共通の `[経度, 緯度]` 入力で扱います。Esri の軽量な重みは PyTorch で直接実行します。
 - **AlphaEarth への直接アクセス：**Google 公式 Cloud Storage のタイルを検索し、Earth Engine 認証なしで 64 次元ベクトルを取得します。
 - **再利用しやすい出力：**プーリング済みベクトル、対応モデルの空間グリッド、バッチ抽出、エクスポート、モデルとデータのメタデータ。
 - **研究との接続：**公開形態に基づく分類、全球評価設計、武漢の診断を、ソフトウェアの動作検証と区別して説明します。
@@ -56,12 +56,11 @@ python -m pip install -e ".[location,aef]"
 | 追加依存 / 環境 | 用途 |
 | --- | --- |
 | 基本インストール | コア API と `pyproject.toml` に定義された依存関係 |
-| `.[location]` | GeoCLIP の公式 Python パッケージ。SatCLIP は同梱のアダプターと実装を使用 |
+| `.[location]` | GeoCLIP の公式 Python パッケージ。SatCLIP と Esri GLE は同梱の実装を使用 |
 | `.[aef]` | Rasterio / PyArrow による AEF COG と Parquet インデックスの読み込み |
 | `.[benchmark]` | 空間ホールドアウト評価の例で使う Scikit-learn など |
 | `.[terratorch]` | TerraMind と現在の Prithvi 統合で使用する TerraTorch |
 | `.[dev,full,location,aef,benchmark]` | 開発用チェックとこれらの任意統合 |
-| Esri がサポートする ArcGIS 環境 | Esri GLE。互換性のある公式深層学習依存を別途設定 |
 
 PyTorch はハードウェアに合うものを用意してください。初回実行時には重みのダウンロードが発生する場合があり、大きなモデルには十分なメモリが必要です。次の一覧・説明コマンドは推論を実行しません。
 
@@ -86,11 +85,15 @@ result = get_location_embeddings("satclip", locations, device="cpu")
 print(result.data.shape)  # (3, 256)
 print(result.meta)
 
+# 初回に約 3.7 MB の Esri 公式モデルをダウンロードしてキャッシュ。
+esri = get_location_embeddings("esri_gle", locations, device="cpu")
+print(esri.data.shape)  # (3, 256)
+
 # .[location] を先にインストール。GeoCLIP は各地点を 512 次元で表現。
 geoclip = get_location_embeddings("geoclip", locations, device="cpu")
 ```
 
-対応する ArcGIS 環境では、同じ API に `"esri_gle"` を指定できます。Esri のソフトウェア・モデル利用条件は別途適用されます。アダプターの登録は、すべての環境での実推論成功を意味しません。[Esri GLE 設定](docs/models/esri_gle.md)と[検証記録](docs/validation.md)を確認してください。
+Esri GLE は公式の学習済み重みを PyTorch で直接読み込みます。ArcGIS や ArcPy のインストールは不要です。ダウンロードには固定 SHA-256 による検証を行い、ローカルの `.dlpk` または `satclip.pth` を指定すればオフラインでも利用できます。Esri のモデル利用条件は別途適用されます。[Esri GLE 設定](docs/models/esri_gle.md)と[検証記録](docs/validation.md)を確認してください。
 
 位置埋め込みは学習済みの地理的な事前情報を表します。同じ地点で年を変えても、新しい地表観測が得られるわけではありません。
 
@@ -163,7 +166,7 @@ Google の[公式 GCS ガイド](https://developers.google.com/earth-engine/guid
 | A4 · 多時期 | `agrifm` | [AgriFM](docs/models/agrifm.md) | 日付付き Sentinel-2 系列 |
 | B · 位置 | `satclip` | [SatCLIP](docs/models/satclip.md) | 経緯度、256 次元 |
 | B · 位置 | `geoclip` | [GeoCLIP](docs/models/geoclip.md) | 経緯度、512 次元。任意パッケージが必要 |
-| B · 位置 | `esri_gle` | [Esri Global Location Encoder](docs/models/esri_gle.md) | 経緯度、256 次元。別途ライセンス条件のある実行環境 |
+| B · 位置 | `esri_gle` | [Esri Global Location Encoder](docs/models/esri_gle.md) | 経緯度、256 次元。PyTorch で直接推論、約 3.7 MB のダウンロード |
 | C1 · グリッド製品 | `gse` | [Google Satellite Embedding / AEF](docs/models/gse.md) | 10 m 年次製品、64 次元。GEE または別の GCS 補助 API |
 | C1 · グリッド製品 | `tessera` | [TESSERA](docs/models/tessera.md) | 10 m 年次製品。GeoTessera 経由またはキャッシュ |
 | C1 · グリッド製品 | `copernicus` | [Copernicus-Embed-025deg](docs/models/copernicus.md) | 事前計算済み 0.25° グリッド |
@@ -209,7 +212,7 @@ python examples/evaluate_embeddings.py --metadata metadata.csv --features satcli
 
 [検証記録](docs/validation.md)では、回帰テスト、実モデル推論、オンラインデータ取得を分け、日時、環境、出力形状、未解決の依存を記録しています。直接 AEF 取得には[武漢・2021 年の実サンプリング記録](docs/validation/aef-gcs-20261013.json)があります。1 地点の成功は、全球被覆や下流精度の検証を意味しません。
 
-データ提供者によって認証、クォータ、利用条件への同意が必要な場合があります。一部モデルには専用環境や大きな重みが必要です。Esri GLE は別途公式環境を使い、位置エンコーダーは時系列観測を持ちません。粗い製品を再サンプリングしても 10 m の製品と同等にはなりません。比較設計の前に[制約](docs/limitations.md)を確認してください。
+データ提供者によって認証、クォータ、利用条件への同意が必要な場合があります。一部モデルには専用環境や大きな重みが必要です。Esri GLE の重みには Esri のモデル利用条件が適用されます。位置エンコーダーは時系列観測を持ちません。粗い製品を再サンプリングしても 10 m の製品と同等にはなりません。比較設計の前に[制約](docs/limitations.md)を確認してください。
 
 ## ドキュメント案内
 

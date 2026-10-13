@@ -30,7 +30,7 @@ Remote sensing models expose different inputs, preprocessing rules, spatial supp
 
 - **Three entry points:** image encoders, location encoders, and precomputed embedding products, organized by the object a user actually receives.
 - **22 catalog entries:** 16 image configurations, 3 location encoders, and 3 precomputed products. The catalog includes optional integrations; consult the validation report for actual execution status.
-- **Location-only inference:** SatCLIP, GeoCLIP, and an optional Esri Global Location Encoder adapter with a common `[longitude, latitude]` interface.
+- **Location-only inference:** SatCLIP, GeoCLIP, and Esri Global Location Encoder share a `[longitude, latitude]` interface. Esri's lightweight weights run directly in PyTorch.
 - **Direct AlphaEarth data access:** discover official Google Cloud Storage tiles and sample 64-dimensional vectors without Earth Engine authentication.
 - **Reusable outputs:** pooled vectors, supported spatial grids, batch extraction, export helpers, and model/source metadata.
 - **Research connections:** a release-object taxonomy, globally distributed evaluation design, and Wuhan diagnostics documented separately from integration tests.
@@ -56,12 +56,11 @@ python -m pip install -e ".[location,aef]"
 | Extra / environment | When you need it |
 | --- | --- |
 | Base installation | Core APIs and the dependencies declared in `pyproject.toml` |
-| `.[location]` | GeoCLIP's official Python package; SatCLIP uses the bundled adapter/runtime |
+| `.[location]` | GeoCLIP's official Python package; SatCLIP and Esri GLE use bundled runtimes |
 | `.[aef]` | Rasterio and PyArrow for direct AlphaEarth COG sampling and Parquet indexes |
 | `.[benchmark]` | Scikit-learn for the spatial-holdout evaluation example |
 | `.[terratorch]` | TerraTorch-backed models, including TerraMind and the current Prithvi integration |
 | `.[dev,full,location,aef,benchmark]` | Development checks and these optional integrations |
-| Esri-supported ArcGIS environment | Esri GLE; install the compatible official deep-learning dependencies separately |
 
 PyTorch must match your hardware. Model weights may download on first use; image encoders can require substantial memory. Neither the catalog command nor the describe command performs model inference:
 
@@ -86,11 +85,15 @@ result = get_location_embeddings("satclip", locations, device="cpu")
 print(result.data.shape)  # (3, 256)
 print(result.meta)
 
+# Esri's official ~3.7 MB model package downloads and caches on first use.
+esri = get_location_embeddings("esri_gle", locations, device="cpu")
+print(esri.data.shape)  # (3, 256)
+
 # Install .[location] first; GeoCLIP returns 512 features per location.
 geoclip = get_location_embeddings("geoclip", locations, device="cpu")
 ```
 
-The same API accepts `"esri_gle"` in the supported ArcGIS environment. Esri software and model terms apply; registering this adapter does not establish successful inference in every environment. See [Esri GLE setup](docs/models/esri_gle.md) and the [validation report](docs/validation.md).
+Esri GLE uses its official pretrained weights with direct PyTorch inference; ArcGIS and ArcPy are not required. Downloads are pinned by SHA-256, and a local `.dlpk` or `satclip.pth` can be supplied for offline use. Esri's model terms apply separately. See [Esri GLE setup](docs/models/esri_gle.md) and the [validation report](docs/validation.md).
 
 Location embeddings describe a learned geographic prior. Querying the same location with a different year does not produce an observation of land-cover change.
 
@@ -163,7 +166,7 @@ Classification follows the delivered object and evaluated input contract. Archit
 | A4 · Multitemporal | `agrifm` | [AgriFM](docs/models/agrifm.md) | Dated Sentinel-2 sequence |
 | B · Location | `satclip` | [SatCLIP](docs/models/satclip.md) | Longitude/latitude; 256 dimensions |
 | B · Location | `geoclip` | [GeoCLIP](docs/models/geoclip.md) | Longitude/latitude; 512 dimensions; optional package |
-| B · Location | `esri_gle` | [Esri Global Location Encoder](docs/models/esri_gle.md) | Longitude/latitude; 256 dimensions; optional licensed runtime |
+| B · Location | `esri_gle` | [Esri Global Location Encoder](docs/models/esri_gle.md) | Longitude/latitude; 256 dimensions; direct PyTorch, ~3.7 MB download |
 | C1 · Gridded product | `gse` | [Google Satellite Embedding / AEF](docs/models/gse.md) | 10 m annual product; 64 dimensions; GEE or separate GCS helpers |
 | C1 · Gridded product | `tessera` | [TESSERA](docs/models/tessera.md) | 10 m annual product; GeoTessera access/cache |
 | C1 · Gridded product | `copernicus` | [Copernicus-Embed-025deg](docs/models/copernicus.md) | Precomputed 0.25° grid |
@@ -218,7 +221,7 @@ See [research scope and evidence boundaries](docs/research.md). The manuscript i
 
 The [validation report](docs/validation.md) records dated execution evidence, environments, output shapes, and unresolved dependencies. It separates unit/regression checks, real model inference, and live provider access. The new direct AEF route has a [live Wuhan 2021 sampling receipt](docs/validation/aef-gcs-20261013.json); successful sampling at one point does not establish global coverage or downstream accuracy.
 
-Data providers can require authentication, quotas, or terms acceptance. Some models need specialized packages or large checkpoints. Esri GLE uses a separately installed official runtime. A location encoder has no temporal observations. Coarse products cannot be made equivalent to a 10 m field by resampling. Read [limitations](docs/limitations.md) before designing a comparison.
+Data providers can require authentication, quotas, or terms acceptance. Some models need specialized packages or large checkpoints. Esri GLE's weights retain Esri's model terms. A location encoder has no temporal observations. Coarse products cannot be made equivalent to a 10 m field by resampling. Read [limitations](docs/limitations.md) before designing a comparison.
 
 ## Documentation and examples
 

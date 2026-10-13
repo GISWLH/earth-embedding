@@ -1,50 +1,20 @@
 # Esri Global Location Encoder (Sentinel-2)
 
-`esri_gle` provides a coordinate-only adapter for Esri's Global Location Encoder.
-It uses `arcgis.learn.Embeddings(dataset_type="location",
-backbone="satclip/sentinel-2_trained")`. This is Esri's pretrained model, with
-separate weights from Microsoft's SatCLIP. It produces 256-dimensional vectors.
+`esri_gle` turns WGS84 longitude/latitude coordinates into 256-dimensional
+embeddings using Esri's official pretrained weights. The adapter runs the location
+encoder directly in PyTorch with the bundled MIT-licensed SatCLIP architecture.
+ArcGIS, ArcPy, fastai, imagery downloads and Earth Engine initialization are not
+required.
 
-**Status:** the adapter contract has been checked against the official ArcGIS API
-for Python 2.4.3 source and tested with a deterministic runtime substitute.
-Pretrained Esri inference still requires a compatible Esri environment and model
-access. A mocked contract test is not evidence that the pretrained model has run.
-
-On 2026-10-13 we attempted a real three-coordinate CPU call with the official
-ArcGIS 2.4.3 and fastai 1.0.61 distributions in an isolated package directory on
-Linux/Python 3.12. Two checks identified separate blockers in that environment:
-
-1. `fastai.text` could not import because `spacy` was missing. ArcGIS's
-   image-captioning import chain masked that dependency error and then raised
-   `NameError: name 'torch' is not defined`. PyTorch itself imported successfully.
-2. The official weights loader uses `GIS("home")`. A direct check of this call
-   failed because `arcpy` was unavailable and an authorized ArcGIS host connection
-   was not available through that path. The checked local Windows Python also
-   had no `arcpy` installation.
-
-Model loading and inference were not reached. This integration is therefore
-**blocked in the tested environment**, not validated as a working pretrained
-inference run. These results do not imply that the adapter fails in a properly
-configured, authorized ArcGIS environment.
-
-## Environment
-
-Use an [Esri-supported deep-learning environment](https://developers.arcgis.com/python/latest/guide/install-and-set-up/)
-with ArcGIS API for Python **2.4.3** and the corresponding `arcgis.learn`
-dependencies. Installing the `arcgis` wheel alone does not install every required
-deep-learning component. ArcGIS is deliberately optional and is not installed by
-the ordinary library installation.
-
-The official runtime manages checkpoint download and its local cache. The Esri
-model and its downloads remain subject to Esri's access and license terms; the
-library neither redistributes these weights nor replaces them with Microsoft
-SatCLIP weights. For ArcGIS Pro's `.dlpk` workflow, follow the official model page
-linked below. A `.dlpk` is not accepted as a PyTorch checkpoint by this adapter.
-The checked ArcGIS loader calls `GIS("home")` for model access: run it in an
-Esri environment where that connection is configured and authorized. An ordinary
-standalone Python installation may not supply that connection.
+The model is lightweight: the official download is **3,741,098 bytes (about
+3.7 MB)**, containing a **2,168,415-byte** `satclip.pth` checkpoint. Esri's weights
+are distinct from Microsoft's SatCLIP checkpoints; this adapter uses the Esri
+checkpoint.
 
 ## Query
+
+The base installation provides the required runtime. On first use, the adapter
+downloads the official model package and caches its extracted checkpoint locally.
 
 ```python
 from earth_embedding import get_location_embeddings
@@ -56,14 +26,84 @@ embedding = get_location_embeddings(
     batch_size=1024,
 )
 print(embedding.data.shape)  # (2, 256)
-print(embedding.meta["runtime_version"])
+print(embedding.meta)
 ```
 
-The adapter writes each bounded coordinate batch to a temporary CSV with `lon`
-and `lat` columns. It calls the official `get(..., return_embeddings=True,
-location_column=["lon", "lat"], spatial_reference=4326)` API and removes temporary
-files even when inference fails. The returned array preserves input order. No
-Earth Engine initialization or imagery fetch occurs.
+Input rows are preserved. The result is a finite float32 array with shape
+`(N, 256)`. `batch_size` bounds the number of coordinates in each forward pass.
+
+## Downloads, caching and offline use
+
+The default download is the model package published through Esri's
+[Global Location Encoder catalog item](https://www.arcgis.com/home/item.html?id=b0664ef297c04d4aaa44191cf21e07f3).
+The adapter verifies the extracted checkpoint against its pinned SHA-256 digest.
+It reads the checkpoint with PyTorch's `weights_only=True` loader and
+checks the parameter structure before inference. No Esri weights are bundled in
+this repository, and the package's bundled Python files are never executed.
+The outer package digest below records the checked download for reference.
+
+| Artifact | Bytes | SHA-256 |
+| --- | ---: | --- |
+| Official catalog `.dlpk` | 3,741,098 | `8bb10ad29bf9e538c7724f118dfa12ceb052b61a603ef3ca8a8819c7f1ef42fe` |
+| `satclip.pth` | 2,168,415 | `2d5b8ac88b4a7f210a00f7fbe145f5216987f373062ec71f3065f9ba13b15452` |
+
+The default checkpoint cache is `~/.cache/earth_embedding/esri_gle/satclip.pth`.
+Set `cache_dir` to choose its directory. Once populated, the same cache supports
+an explicitly offline call:
+
+```python
+locations = [[114.4, 30.5], [139.76, 35.68]]
+
+# Download the official package and cache its verified weights if needed.
+get_location_embeddings(
+    "esri_gle", locations, device="cpu", cache_dir="./model-cache/esri"
+)
+
+# Reuse only local files; fail clearly if the required weights are absent.
+offline = get_location_embeddings(
+    "esri_gle",
+    locations,
+    device="cpu",
+    cache_dir="./model-cache/esri",
+    local_files_only=True,
+)
+```
+
+An existing official `.dlpk` or its extracted `satclip.pth` can be supplied
+directly. The checkpoint must match the pinned Esri weights:
+
+```python
+offline = get_location_embeddings(
+    "esri_gle",
+    locations,
+    checkpoint="/path/to/satclip.pth",  # or the official .dlpk
+    device="cpu",
+    local_files_only=True,
+)
+```
+
+`RS_EMBED_ESRI_GLE_CKPT` also accepts a local checkpoint path; the explicit
+`checkpoint` argument takes precedence. Both official catalog and ArcGIS-runtime
+packages contain the same verified `satclip.pth` and are accepted.
+
+Downloads and use remain subject to Esri's model terms. A checksum establishes
+artifact identity, not a different license.
+
+## Runtime and spatial queries
+
+The location branch uses `L=40` spherical-harmonic features and a SIREN
+network. Inference uses float64 internally to follow the reference model's
+numerical path, then returns float32 features. Metadata records the backend,
+device, checkpoint provenance and coordinate order.
+The network has **541,440 parameters**. CPU inference is supported; an explicit
+MPS request is rejected because MPS does not support float64. `device="auto"`
+selects CUDA when available and CPU otherwise.
+
+On 2026-10-13, seven real coordinate queries produced finite `(7, 256)` vectors
+on CPU with ArcGIS and ArcPy imports disabled. Outputs matched the official
+package's mathematical implementation exactly after float32 conversion.
+The [execution receipt](../validation/esri-gle-20261013.json) also records first
+download, offline cache/package use, batch consistency, pooled and grid checks.
 
 `get_embedding("esri_gle", spatial=..., device="cpu")` supports the same centre
 query interface as the other location encoders. `OutputSpec.grid()` samples
@@ -71,13 +111,8 @@ coordinates on a north-up grid, with `grid_step_m=1000` and
 `max_grid_points=100000` defaults. These are sampling controls, not an assertion of
 model resolution. Requested dates are ignored.
 
-ArcGIS 2.4.3 internally fixes location inference batches at 1024; this adapter
-splits the input files to honor smaller user batch sizes. It overrides the checked
-runtime's `_get_device` hook so a CPU request does not first load onto a GPU,
-without changing global ArcGIS environment settings. The adapter rejects other
-ArcGIS versions until this private compatibility hook has been checked against
-them. Metadata records the actual
-runtime version, backbone and ArcGIS weights item ID.
+See the [validation report](../validation.md) for dated execution evidence and
+the tested environments.
 
 ## Scope and limitations
 
@@ -90,6 +125,7 @@ paper's frozen 20-system benchmark.
 ## Official references
 
 - [Model details and download workflow](https://doc.arcgis.com/en/pretrained-models/latest/vector/introduction-to-global-location-encoder-sentinel-2-.htm)
+- [Official model catalog and download](https://www.arcgis.com/home/item.html?id=b0664ef297c04d4aaa44191cf21e07f3)
 - [Use the model in ArcGIS Pro](https://doc.arcgis.com/en/pretrained-models/latest/vector/using-global-location-encoder-sentinel-2-.htm)
 - [ArcGIS Embeddings Python API](https://developers.arcgis.com/python/latest/api-reference/arcgis.learn.toc.html#embeddings)
 - [Esri explanation and model limitations](https://www.esri.com/arcgis-blog/products/arcgis-pro/geoai/beyond-latitude-and-longitude-giving-geographic-context-to-coordinates)

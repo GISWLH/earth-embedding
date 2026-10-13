@@ -1,9 +1,10 @@
 # Validation and current limits
 
 On **2026-10-13**, all **16 image encoders** and **SatCLIP** completed a real
-pretrained forward pass on CPU. **GeoCLIP** passed a separate real-checkpoint test,
+pretrained forward pass on CPU. **GeoCLIP and Esri GLE** passed real-checkpoint tests,
 and **AlphaEarth / GSE** passed a live Google Cloud Storage point query.
-Esri GLE, Tessera, and Copernicus remain **blocked in the checked environments**;
+This gives **20 PASS / 2 BLOCKED** across the 22-entry software catalog.
+Tessera and Copernicus remain **blocked in the checked environments**;
 they are not advertised as having passed pretrained inference or product access.
 
 These are software smoke checks, **not scientific benchmark results**. Synthetic
@@ -38,7 +39,7 @@ not qualify as a real inference PASS.
 | `agrifm` | A4 | **PASS** | `(1024,)` | Cached AgriFM checkpoint; independent synthetic temporal frames |
 | `satclip` | B | **PASS** | `(256,)` | Default ViT16-L40 location branch; coordinate query |
 | `geoclip` | B, added integration | **PASS** | `(3, 512)` | Official GeoCLIP 1.2.3 bundled weights; numerical comparison to upstream |
-| `esri_gle` | B, added integration | **BLOCKED** | — | ArcGIS 2.4.3 environment lacks `spacy`; official `GIS("home")` also requires an available authorized host / `arcpy` |
+| `esri_gle` | B, added integration | **PASS** | `(7, 256)` | Official 2.17 MB Esri weights; direct CPU inference; exact numerical match to official mathematical implementation |
 | `gse` / AEF | C1 | **PASS — GCS** | `(1, 64)` | Live official 2021 Wuhan pixel; legacy Earth Engine path not validated here |
 | `tessera` | C1 | **BLOCKED** | — | Cached registry present; official service reported no route to host; 60 s bound reached before an array returned |
 | `copernicus` | C1 | **BLOCKED** | — | Local product GeoTIFF absent; see the product access receipt for the bounded download attempt |
@@ -48,7 +49,8 @@ dimensions for every variant or pooling choice. For example, RemoteCLIP's patch
 features differ from its projected image embedding.
 
 Machine-readable evidence: [22-model matrix](validation/model-validation-20261013.json)
-and [live AEF GCS receipt](validation/aef-gcs-20261013.json). The public matrix records
+and [live AEF GCS receipt](validation/aef-gcs-20261013.json), plus the
+[Esri real-weight receipt](validation/esri-gle-20261013.json). The public matrix records
 the latest completed result, bounded failures, input/output hashes, runtime versions,
 and reproducible settings without publishing local host paths or raw runtime logs.
 Earlier failures were retained privately and superseded only after successful real
@@ -75,8 +77,8 @@ the 2021 calendar year. Full input hashes, shapes, metadata, versions, durations
 and output hashes are retained in the receipts. Each model runs in a fresh process
 with a 180 s default bound, releasing its model memory when it exits.
 
-Hugging Face runs are cache-only by default. Add `--allow-network` to allow Hub
-downloads. Real product queries require `--include-products`; their SDKs may contact
+Hugging Face and Esri GLE runs are cache-only by default. Add `--allow-network` to
+allow their checkpoint downloads. Real product queries require `--include-products`; their SDKs may contact
 their official endpoints. Product checks are not synthetic inference:
 
 ```bash
@@ -104,13 +106,26 @@ difference from the upstream `LocationEncoder` was `2.60770320892334e-08`, withi
 `rtol=atol=1e-5`. The official bundled checkpoint SHA-256 was
 `94b80ae3af89fca78539e129dd2929d321247f5ceeeb0a31bc2c31041a253394`.
 
-The Esri attempt used official ArcGIS 2.4.3 and fastai 1.0.61 in an isolated Linux
-environment, with CPU requested. The attempt stopped during upstream imports in
-11.6016 s; no weights were loaded and no embeddings returned. ArcGIS masked a
-missing `spacy` import as `NameError: torch is not defined`. A separate
-`GIS("home")` probe also lacked `arcpy` and an authorized host connection. These
-are environment-specific blockers, not evidence that the official model fails in
-a supported Esri installation. See the [Esri setup guide](models/esri_gle.md).
+Esri GLE now loads the official `satclip.pth` directly with PyTorch and the
+MIT-licensed SatCLIP architecture. The checkpoint has 541,440 parameters and
+occupies 2,168,415 bytes. Its SHA-256 is
+`2d5b8ac88b4a7f210a00f7fbe145f5216987f373062ec71f3065f9ba13b15452`.
+Seven coordinates, including Wuhan, Tokyo, New York, Sydney, the equator and
+both poles, produced finite vectors on Linux CPU. The output matched the official
+package's mathematical classes with maximum absolute difference **0.0** after
+float32 conversion. This reference check covers the location model, not ArcGIS
+feature-class conversion or ArcGIS Pro integration.
+
+The run explicitly blocked ArcGIS and ArcPy imports. It verified a fresh official
+download, cached `.pth` and explicit `.dlpk` use with network calls blocked,
+batch sizes 1/3/1024, a pooled point and a north-up `(256, 3, 2)` query grid.
+The earlier ArcGIS SDK import failure was an unnecessary integration dependency;
+the lightweight path supersedes that attempt. See the
+[Esri setup guide](models/esri_gle.md) for offline and cache options.
+
+```bash
+python scripts/validate_models.py --model esri_gle --allow-network --timeout 60
+```
 
 ## Regression and compatibility checks
 
@@ -127,7 +142,7 @@ pretrained helper calls additionally verified for RemoteCLIP, ScaleMAE, and
 SatMAE++ Sentinel. The helper requires the spatial/time context and preserves
 raw sensor preprocessing inside each model adapter.
 
-Remaining scope: authenticated Earth Engine data access, a supported Esri runtime,
+Remaining scope: authenticated Earth Engine data access, Esri GPU inference,
 Tessera/Copernicus product access in a connected data environment, additional
 checkpoint variants, all grid/batch combinations, and downstream scientific
 performance have not all been validated by this smoke pass.

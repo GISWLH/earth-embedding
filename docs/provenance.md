@@ -17,7 +17,7 @@ The upstream publication is:
 | Area | Extension |
 | --- | --- |
 | Release taxonomy | Image encoders, location encoders, and precomputed products, with input-contract subclasses |
-| Location access | SatCLIP integration and a shared batch coordinate API; additional GeoCLIP and optional Esri GLE adapters |
+| Location access | SatCLIP integration and a shared batch coordinate API; additional GeoCLIP and lightweight Esri GLE adapters |
 | Local imagery | A public image-array route with explicit spatial/temporal context and model-specific preprocessing |
 | AlphaEarth access | Official GCS footprint discovery and COG point sampling, including decoding and nodata handling |
 | Research documentation | Distinct global/local evaluation scopes, frozen benchmark set, and evidence boundaries |
@@ -40,7 +40,7 @@ The repository's [Apache-2.0 license](https://github.com/GISWLH/earth-embedding/
 | Google Satellite Embedding | [Official GCS guide](https://developers.google.com/earth-engine/guides/aef_on_gcs_readme); CC-BY-4.0 with required attribution |
 | Original artwork | Repository Apache-2.0; embedded fonts retain separate licenses listed in the [artwork guide](assets/earth-embedding-brand.md) |
 
-The Esri adapter calls the official runtime; it does not redistribute Esri checkpoints or claim that their license is Apache-2.0. A public model page or reachable checkpoint does not remove its access or usage terms.
+The Esri adapter downloads Esri's official model package on demand and runs its location encoder with the bundled MIT-licensed SatCLIP architecture. The repository does not redistribute Esri checkpoints or claim that their license is Apache-2.0. The package and checkpoint hashes are pinned in the adapter and documented on the [Esri model page](models/esri_gle.md). Public download access does not replace the model's usage terms.
 
 For AlphaEarth data, retain Google's required acknowledgement:
 

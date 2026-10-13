@@ -4,8 +4,8 @@
   "scope": "Software smoke validation only; not scientific benchmark evidence.",
   "counts": {
     "canonical_models": 22,
-    "pass": 19,
-    "blocked": 3,
+    "pass": 20,
+    "blocked": 2,
     "fail": 0
   },
   "image_smoke_defaults": {
@@ -1014,21 +1014,19 @@
       "model": "esri_gle",
       "family": "B",
       "in_frozen_paper_benchmark": false,
-      "status": "blocked",
-      "scope": "pretrained_inference_attempt",
-      "device": "cpu",
-      "threads": 2,
+      "date": "2026-10-13",
+      "status": "pass",
+      "scope": "pretrained_forward_and_upstream_comparison",
       "python": "3.12.2",
-      "runtime": {
-        "arcgis": "2.4.3",
-        "fastai": "1.0.61",
-        "fastprogress": "1.0.3"
-      },
+      "os": "Linux",
+      "torch": "2.12.0+cu130",
+      "numpy": "2.4.6",
+      "device": "cpu",
+      "threads": 4,
+      "arcgis_arcpy_imports_blocked": true,
       "entrypoint": "get_location_embeddings",
-      "batch_size": 2,
       "input": {
-        "kind": "coordinates",
-        "coordinate_order": "lon,lat",
+        "coordinate_order": "longitude_latitude",
         "points": [
           [
             114.3055,
@@ -1041,19 +1039,78 @@
           [
             -74.006,
             40.7128
+          ],
+          [
+            151.2093,
+            -33.8688
+          ],
+          [
+            0.0,
+            0.0
+          ],
+          [
+            -180.0,
+            90.0
+          ],
+          [
+            180.0,
+            -90.0
           ]
         ]
       },
-      "expected_dimension": 256,
-      "actual_output": null,
-      "checkpoint_loaded": false,
-      "arcgis_weights_item_id": "716bec23b9d346e485311523107629c0",
-      "elapsed_seconds": 11.6016,
-      "blockers": [
-        "Official ArcGIS import masked missing spacy in fastai.text as NameError: torch is not defined.",
-        "Separate official GIS(\"home\") probe lacked arcpy and an authorized host connection."
-      ],
-      "note": "Environment-specific blockers; no claim that the official model fails in supported Esri installations."
+      "output": {
+        "shape": [
+          7,
+          256
+        ],
+        "dtype": "float32",
+        "finite": true,
+        "sha256": "494636464e002720bf44d358ff1820ab6268dd1468df22320fb0320f42bd224e"
+      },
+      "checkpoint": {
+        "source": "esri_official_cache",
+        "item_id": "b0664ef297c04d4aaa44191cf21e07f3",
+        "url": "https://www.arcgis.com/sharing/rest/content/items/b0664ef297c04d4aaa44191cf21e07f3/data",
+        "sha256": "2d5b8ac88b4a7f210a00f7fbe145f5216987f373062ec71f3065f9ba13b15452",
+        "bytes": 2168415
+      },
+      "parameters": 541440,
+      "package_sha256": "8bb10ad29bf9e538c7724f118dfa12ceb052b61a603ef3ca8a8819c7f1ef42fe",
+      "adapter_sha256": "b857b83c17b21277f25a3a691e4dc5fb46e495840e89ca8a07954eed9ba88e51",
+      "reference_source_sha256": {
+        "_spherical_harmonics_ylm.py": "cbd621f346574c1c9bf6fac59f77eacd660553dca2064e974d99abc92b70c851",
+        "satclip.py": "dc381f76b92127758ed4cb33e3e8a0b11c382c78cd507e2c58a53bd6730716f2"
+      },
+      "reference_comparison": {
+        "max_abs_diff": 0.0,
+        "rtol": 1e-06,
+        "atol": 1e-06,
+        "passed": true
+      },
+      "checks": {
+        "cold_download": true,
+        "offline_cached_pth": true,
+        "offline_dlpk": true,
+        "batch_sizes": [
+          1,
+          3,
+          1024
+        ],
+        "batch_max_abs_diff": 0.0,
+        "pooled_point": true,
+        "north_up_grid_shape": [
+          256,
+          3,
+          2
+        ],
+        "grid_equals_coordinate_queries": true
+      },
+      "cold_download_load_forward_seconds": 1.9610187709331512,
+      "warm_seven_single_queries_seconds": 0.9750635325908661,
+      "total_seconds": 14.142469115555286,
+      "adapter_file": "src/rs_embed/embedders/location_esri_gle.py",
+      "receipt": "esri-gle-20261013.json",
+      "note": "Official Esri checkpoint with direct PyTorch runtime; supersedes the earlier ArcGIS SDK import blocker. GPU not validated."
     },
     {
       "model": "gse",

@@ -30,7 +30,7 @@
 
 - **三类入口：**按照用户获得的发布对象，区分影像编码器、位置编码器和预计算嵌入产品。
 - **22 个适配器条目：**16 种影像配置、3 种位置编码器、3 种预计算产品。条目包含可选集成；真实运行状态以验证报告为准。
-- **统一位置接口：**SatCLIP、GeoCLIP 和可选 Esri Global Location Encoder 均使用 `[经度, 纬度]` 输入。
+- **统一位置接口：**SatCLIP、GeoCLIP 和 Esri Global Location Encoder 均使用 `[经度, 纬度]` 输入；Esri 的轻量权重直接通过 PyTorch 推理。
 - **直接读取 AlphaEarth：**通过 Google 官方存储桶索引查找瓦片、采样 64 维向量，无需 Earth Engine 身份验证。
 - **可复用输出：**池化向量、模型支持的空间网格、批量提取、导出和来源元数据。
 - **衔接论文研究：**将发布对象分类、全球评估设计和武汉诊断整理为可阅读的研究说明，并与接口测试分开记录。
@@ -56,12 +56,11 @@ python -m pip install -e ".[location,aef]"
 | 依赖选项 / 环境 | 适用场景 |
 | --- | --- |
 | 基础安装 | 核心 API 及 `pyproject.toml` 声明的依赖 |
-| `.[location]` | 安装 GeoCLIP 官方 Python 包；SatCLIP 使用项目包含的适配器和运行时代码 |
+| `.[location]` | 安装 GeoCLIP 官方 Python 包；SatCLIP 和 Esri GLE 使用项目包含的运行时代码 |
 | `.[aef]` | 通过 Rasterio / PyArrow 读取 AEF COG 和 Parquet 索引 |
 | `.[benchmark]` | 运行空间留出评估示例所需的 Scikit-learn 等依赖 |
 | `.[terratorch]` | TerraMind 及当前 Prithvi 集成所需的 TerraTorch |
 | `.[dev,full,location,aef,benchmark]` | 开发检查及上述可选集成 |
-| Esri 官方支持的 ArcGIS 环境 | Esri GLE，需另行配置兼容的深度学习依赖并遵守相关条款 |
 
 请为硬件安装合适的 PyTorch。首次使用模型可能下载权重，部分影像模型需要较多内存或显存。查看目录与接口说明无需运行推理：
 
@@ -86,11 +85,15 @@ result = get_location_embeddings("satclip", locations, device="cpu")
 print(result.data.shape)  # (3, 256)
 print(result.meta)
 
+# 首次使用时下载并缓存 Esri 官方模型包，约 3.7 MB。
+esri = get_location_embeddings("esri_gle", locations, device="cpu")
+print(esri.data.shape)  # (3, 256)
+
 # 先安装 .[location]；GeoCLIP 为每个位置返回 512 维特征。
 geoclip = get_location_embeddings("geoclip", locations, device="cpu")
 ```
 
-配置好受支持的 ArcGIS 环境后，同一接口可使用 `"esri_gle"`。Esri 软件及模型适用独立条款；适配器已注册并不代表每个环境都通过了真实推理。请阅读 [Esri GLE 配置](docs/models/esri_gle.md)和[验证报告](docs/validation.md)。
+Esri GLE 直接用 PyTorch 加载其官方预训练权重，无需安装 ArcGIS 或 ArcPy。下载文件通过固定 SHA-256 校验，也可传入本地 `.dlpk` 或 `satclip.pth` 离线使用。Esri 模型适用独立使用条款。请阅读 [Esri GLE 配置](docs/models/esri_gle.md)和[验证报告](docs/validation.md)。
 
 位置嵌入表示模型学到的地理先验。对同一位置改变查询年份，不会产生新的地表观测。
 
@@ -163,7 +166,7 @@ Google [官方 GCS 文档](https://developers.google.com/earth-engine/guides/aef
 | A4 · 多时相 | `agrifm` | [AgriFM](docs/models/agrifm.md) | 带日期的 Sentinel-2 序列 |
 | B · 位置编码器 | `satclip` | [SatCLIP](docs/models/satclip.md) | 经纬度，256 维 |
 | B · 位置编码器 | `geoclip` | [GeoCLIP](docs/models/geoclip.md) | 经纬度，512 维，需要可选包 |
-| B · 位置编码器 | `esri_gle` | [Esri Global Location Encoder](docs/models/esri_gle.md) | 经纬度，256 维，需要可选授权运行时 |
+| B · 位置编码器 | `esri_gle` | [Esri Global Location Encoder](docs/models/esri_gle.md) | 经纬度，256 维，直接 PyTorch 推理，下载约 3.7 MB |
 | C1 · 网格产品 | `gse` | [Google Satellite Embedding / AEF](docs/models/gse.md) | 10 m 年度产品，64 维；GEE 或独立 GCS 辅助接口 |
 | C1 · 网格产品 | `tessera` | [TESSERA](docs/models/tessera.md) | 10 m 年度产品，GeoTessera 访问或缓存 |
 | C1 · 网格产品 | `copernicus` | [Copernicus-Embed-025deg](docs/models/copernicus.md) | 0.25° 预计算网格 |
@@ -209,7 +212,7 @@ python examples/evaluate_embeddings.py --metadata metadata.csv --features satcli
 
 [验证报告](docs/validation.md)区分回归测试、真实模型推理和在线数据访问，并记录日期、环境、输出形状与未解决问题。直接 AEF 路径已有[武汉 2021 年真实采样记录](docs/validation/aef-gcs-20261013.json)；单点成功不等于全球覆盖或下游精度已经验证。
 
-数据提供方可能要求身份验证、配额或条款确认；部分模型需要专门环境和大型权重。Esri GLE 依赖独立官方运行时，位置编码器没有时间观测，粗分辨率产品也不会因重采样变成等价的 10 m 嵌入。设计比较前请阅读[限制说明](docs/limitations.md)。
+数据提供方可能要求身份验证、配额或条款确认；部分模型需要专门环境和大型权重。Esri GLE 权重仍遵循 Esri 模型使用条款。位置编码器没有时间观测，粗分辨率产品也不会因重采样变成等价的 10 m 嵌入。设计比较前请阅读[限制说明](docs/limitations.md)。
 
 ## 文档导航
 

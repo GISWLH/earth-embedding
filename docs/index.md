@@ -28,7 +28,7 @@ python -m pip install -e ".[location,aef]"
 earth-embedding models --json
 ```
 
-Use Python 3.12 or later. Additional model runtimes, data-provider credentials, and checkpoints depend on the model. Esri GLE requires a separately configured supported ArcGIS environment. Current installation instructions do not assume publication on PyPI.
+Use Python 3.12 or later. Additional model runtimes, data-provider credentials, and checkpoints depend on the model. Esri GLE runs directly in PyTorch with its official lightweight weights; it needs no ArcGIS installation. Current installation instructions do not assume publication on PyPI.
 
 ## A first location query
 

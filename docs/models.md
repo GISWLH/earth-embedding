@@ -47,7 +47,7 @@ Some detail-page filenames still use older names for compatibility, but the cano
 | --------- | -------- | --------------------------------- | ----------------------------- | ---------------- | ------------- | -------------------------------------------------- | --------------------------- |
 | `satclip` | Location | Longitude/latitude only (no imagery) | set by harmonic degree (L=40) | `pooled`, `grid` | ignored       | Class B; coordinate prior, constant over time       | [detail](models/satclip.md) |
 | `geoclip` | Location | Longitude/latitude only | learned location prior | `pooled`, `grid` | ignored | 512 dimensions; optional GeoCLIP runtime | [detail](models/geoclip.md) |
-| `esri_gle` | Location | Longitude/latitude only | learned location prior | `pooled`, `grid` | ignored | 256 dimensions; official ArcGIS deep-learning environment | [detail](models/esri_gle.md) |
+| `esri_gle` | Location | Longitude/latitude only | learned location prior | `pooled`, `grid` | ignored | 256 dimensions; direct PyTorch; ~3.7 MB official download | [detail](models/esri_gle.md) |
 
 ### On-the-fly Foundation Models
 

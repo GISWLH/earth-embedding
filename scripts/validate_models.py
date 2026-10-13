@@ -8,6 +8,7 @@ Image models receive deterministic synthetic raw sensor values in their declared
 band order. Multitemporal models receive independently generated TCHW frames.
 One subprocess per model isolates runtime imports and releases model memory.
 Cached Hugging Face assets are used by default; --allow-network permits downloads.
+Esri GLE also uses its local checkpoint cache unless --allow-network is set.
 Precomputed products require --include-products and use a real geographic query.
 """
 
@@ -203,6 +204,8 @@ def child(args) -> int:
                     ]
             else:
                 receipt["input"] = {"kind": "coordinates", "lon": args.lon, "lat": args.lat}
+                if args.child == "esri_gle":
+                    kwargs["model_config"] = {"local_files_only": not args.allow_network}
             inference_start = time.perf_counter()
             if args.child not in PRODUCTS | LOCATIONS:
                 from rs_embed.image import get_image_embedding

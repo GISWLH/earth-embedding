@@ -58,7 +58,7 @@ aef = ["rasterio>=1.4", "pyarrow>=16"]
 benchmark = ["scikit-learn>=1.4", "scipy>=1.11"]
 # terratorch is required by TerraMind (and temporarily Prithvi until it is isolated).
 # Install from the repository with: pip install -e ".[terratorch]"
-# Esri GLE requires a separate official ArcGIS deep-learning environment.
+# Esri GLE uses base PyTorch plus the bundled SatCLIP location runtime.
 terratorch = [
   "terratorch==1.2.1",
 ]
