@@ -6,9 +6,11 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="A unified Python toolkit for Remote Sensing Foundation Model embeddings">
+        <meta name="description" content="Earth embeddings from images, locations and precomputed geospatial products">
       
       
+      
+        <link rel="canonical" href="https://giswlh.github.io/earth-embedding/dev/extending/">
       
       
         <link rel="prev" href="../api_inspect/">
@@ -20,16 +22,16 @@
         
       
       
-      <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <link rel="icon" href="../assets/earth-embedding-logo.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
-        <title>Overview - rs-embed</title>
+        <title>Overview - Earth Embedding</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -102,10 +104,9 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="rs-embed" class="md-header__button md-logo" aria-label="rs-embed" data-md-component="logo">
+    <a href=".." title="Earth Embedding" class="md-header__button md-logo" aria-label="Earth Embedding" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+  <img src="../assets/earth-embedding-logo.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -116,7 +117,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            rs-embed
+            Earth Embedding
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -190,13 +191,13 @@
     
     
       <div class="md-header__source">
-        <a href="https://github.com/cybergis/rs-embed" title="Go to repository" class="md-source" data-md-component="source">
+        <a href="https://github.com/GISWLH/earth-embedding" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
   </div>
   <div class="md-source__repository">
-    cybergis/rs-embed
+    GISWLH/earth-embedding
   </div>
 </a>
       </div>
@@ -313,7 +314,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../releases/" class="md-tabs__link">
+        <a href="../validation/" class="md-tabs__link">
           
   
   
@@ -349,23 +350,22 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="rs-embed" class="md-nav__button md-logo" aria-label="rs-embed" data-md-component="logo">
+    <a href=".." title="Earth Embedding" class="md-nav__button md-logo" aria-label="Earth Embedding" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+  <img src="../assets/earth-embedding-logo.svg" alt="logo">
 
     </a>
-    rs-embed
+    Earth Embedding
   </label>
   
     <div class="md-nav__source">
-      <a href="https://github.com/cybergis/rs-embed" title="Go to repository" class="md-source" data-md-component="source">
+      <a href="https://github.com/GISWLH/earth-embedding" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
   </div>
   <div class="md-source__repository">
-    cybergis/rs-embed
+    GISWLH/earth-embedding
   </div>
 </a>
     </div>
@@ -383,6 +383,8 @@
       
         
           
+        
+      
         
       
         
@@ -471,6 +473,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../research/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Research connections
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -486,6 +516,8 @@
   
     
     
+      
+        
       
         
       
@@ -767,6 +799,160 @@
       
         
       
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Location encoders
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Location encoders
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../models/satclip/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SatCLIP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../models/geoclip/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GeoCLIP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../models/esri_gle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Esri GLE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
         
       
         
@@ -806,10 +992,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_4" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_5" >
         
           
-          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
             
   
   
@@ -827,8 +1013,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_4">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1888,6 +2074,12 @@
       
         
       
+        
+      
+        
+      
+        
+      
     
     
     
@@ -1934,6 +2126,90 @@
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../validation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Model validation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data-access/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data access
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../provenance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Provenance and attribution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -2263,7 +2539,7 @@ If it's not in <code>MODEL_SPECS</code>, string-based lookup (<code>get_embeddin
         <span class="n">sensor</span><span class="p">,</span>
         <span class="n">output</span><span class="p">,</span>
         <span class="n">backend</span><span class="p">,</span>
-        <span class="n">device</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span>
+        <span class="n">device</span><span class="o">=</span><span class="s2">"auto"</span><span class="p">,</span>
         <span class="n">input_chw</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">model_config</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span> <span class="o">...</span>
@@ -2280,30 +2556,30 @@ If it's not in <code>MODEL_SPECS</code>, string-based lookup (<code>get_embeddin
 <h3 id="describe"><code>describe()</code><a class="headerlink" href="#describe" title="Permanent link">&para;</a></h3>
 <p><code>describe()</code> should return a small JSON-serializable capability dictionary. A typical shape is:</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-  <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;on_the_fly&quot;</span> <span class="o">|</span> <span class="s2">&quot;precomputed&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;backend&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;provider&quot;</span> <span class="o">|</span> <span class="s2">&quot;gee&quot;</span> <span class="o">|</span> <span class="s2">&quot;auto&quot;</span> <span class="o">|</span> <span class="s2">&quot;tensor&quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span>
-  <span class="s2">&quot;inputs&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s2">&quot;collection&quot;</span><span class="p">:</span> <span class="s2">&quot;COPERNICUS/S2_SR_HARMONIZED&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;bands&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;B4&quot;</span><span class="p">,</span> <span class="s2">&quot;B3&quot;</span><span class="p">,</span> <span class="s2">&quot;B2&quot;</span><span class="p">],</span>
+  <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"on_the_fly"</span> <span class="o">|</span> <span class="s2">"precomputed"</span><span class="p">,</span>
+  <span class="s2">"backend"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"provider"</span> <span class="o">|</span> <span class="s2">"gee"</span> <span class="o">|</span> <span class="s2">"auto"</span> <span class="o">|</span> <span class="s2">"tensor"</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span>
+  <span class="s2">"inputs"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"collection"</span><span class="p">:</span> <span class="s2">"COPERNICUS/S2_SR_HARMONIZED"</span><span class="p">,</span>
+    <span class="s2">"bands"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"B4"</span><span class="p">,</span> <span class="s2">"B3"</span><span class="p">,</span> <span class="s2">"B2"</span><span class="p">],</span>
     <span class="c1"># or, for models with a more specific provider-facing default:</span>
-    <span class="s2">&quot;provider_default&quot;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="s2">&quot;collection&quot;</span><span class="p">:</span> <span class="s2">&quot;...&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;bands&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">]</span>
+    <span class="s2">"provider_default"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">"collection"</span><span class="p">:</span> <span class="s2">"..."</span><span class="p">,</span>
+      <span class="s2">"bands"</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">]</span>
     <span class="p">}</span>
   <span class="p">},</span>
-  <span class="s2">&quot;temporal&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;mode&quot;</span><span class="p">:</span> <span class="s2">&quot;year&quot;</span> <span class="o">|</span> <span class="s2">&quot;range&quot;</span><span class="p">}</span> <span class="o">|</span> <span class="n">null</span><span class="p">,</span>
-  <span class="s2">&quot;output&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;pooled&quot;</span><span class="p">,</span> <span class="s2">&quot;grid&quot;</span><span class="p">],</span>
-  <span class="s2">&quot;defaults&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s2">&quot;scale_m&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
-    <span class="s2">&quot;cloudy_pct&quot;</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
-    <span class="s2">&quot;composite&quot;</span><span class="p">:</span> <span class="s2">&quot;median&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;image_size&quot;</span><span class="p">:</span> <span class="mi">224</span>
+  <span class="s2">"temporal"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"mode"</span><span class="p">:</span> <span class="s2">"year"</span> <span class="o">|</span> <span class="s2">"range"</span><span class="p">}</span> <span class="o">|</span> <span class="n">null</span><span class="p">,</span>
+  <span class="s2">"output"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"pooled"</span><span class="p">,</span> <span class="s2">"grid"</span><span class="p">],</span>
+  <span class="s2">"defaults"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"scale_m"</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="s2">"cloudy_pct"</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
+    <span class="s2">"composite"</span><span class="p">:</span> <span class="s2">"median"</span><span class="p">,</span>
+    <span class="s2">"image_size"</span><span class="p">:</span> <span class="mi">224</span>
   <span class="p">},</span>
-  <span class="s2">&quot;model_config&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s2">&quot;variant&quot;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;default&quot;</span><span class="p">:</span> <span class="s2">&quot;base&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;choices&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;base&quot;</span><span class="p">,</span> <span class="s2">&quot;large&quot;</span><span class="p">]</span>
+  <span class="s2">"model_config"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"variant"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"string"</span><span class="p">,</span>
+      <span class="s2">"default"</span><span class="p">:</span> <span class="s2">"base"</span><span class="p">,</span>
+      <span class="s2">"choices"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"base"</span><span class="p">,</span> <span class="s2">"large"</span><span class="p">]</span>
     <span class="p">}</span>
   <span class="p">}</span>
 <span class="p">}</span>
@@ -2336,13 +2612,13 @@ If it's not in <code>MODEL_SPECS</code>, string-based lookup (<code>get_embeddin
 <span class="kn">from</span><span class="w"> </span><span class="nn">rs_embed.embedders.base</span><span class="w"> </span><span class="kn">import</span> <span class="n">EmbedderBase</span>
 
 
-<span class="nd">@register</span><span class="p">(</span><span class="s2">&quot;toy_model_v1&quot;</span><span class="p">)</span>
+<span class="nd">@register</span><span class="p">(</span><span class="s2">"toy_model_v1"</span><span class="p">)</span>
 <span class="k">class</span><span class="w"> </span><span class="nc">ToyModelV1</span><span class="p">(</span><span class="n">EmbedderBase</span><span class="p">):</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">describe</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
         <span class="k">return</span> <span class="p">{</span>
-            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;precomputed&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;backend&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;auto&quot;</span><span class="p">],</span>  <span class="c1"># use &quot;provider&quot;/&quot;gee&quot; for on-the-fly fetchers</span>
-            <span class="s2">&quot;output&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;pooled&quot;</span><span class="p">],</span>
+            <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"precomputed"</span><span class="p">,</span>
+            <span class="s2">"backend"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"auto"</span><span class="p">],</span>  <span class="c1"># use "provider"/"gee" for on-the-fly fetchers</span>
+            <span class="s2">"output"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"pooled"</span><span class="p">],</span>
         <span class="p">}</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">get_embedding</span><span class="p">(</span>
@@ -2352,35 +2628,35 @@ If it's not in <code>MODEL_SPECS</code>, string-based lookup (<code>get_embeddin
         <span class="n">temporal</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">TemporalSpec</span><span class="p">],</span>
         <span class="n">sensor</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">SensorSpec</span><span class="p">],</span>
         <span class="n">output</span><span class="p">:</span> <span class="n">OutputSpec</span><span class="p">,</span>
-        <span class="n">backend</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;auto&quot;</span><span class="p">,</span>
-        <span class="n">device</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;auto&quot;</span><span class="p">,</span>
+        <span class="n">backend</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"auto"</span><span class="p">,</span>
+        <span class="n">device</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"auto"</span><span class="p">,</span>
         <span class="n">input_chw</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">model_config</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Embedding</span><span class="p">:</span>
         <span class="c1"># Use a stable hash so results are reproducible across processes.</span>
         <span class="n">seed_bytes</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">blake2s</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">spatial</span><span class="si">!r}</span><span class="s2">|</span><span class="si">{</span><span class="n">temporal</span><span class="si">!r}</span><span class="s2">|</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">model_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">),</span>
+            <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">spatial</span><span class="si">!r}</span><span class="s2">|</span><span class="si">{</span><span class="n">temporal</span><span class="si">!r}</span><span class="s2">|</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">model_name</span><span class="si">}</span><span class="s2">"</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">"utf-8"</span><span class="p">),</span>
             <span class="n">digest_size</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
         <span class="p">)</span><span class="o">.</span><span class="n">digest</span><span class="p">()</span>
-        <span class="n">seed</span> <span class="o">=</span> <span class="nb">int</span><span class="o">.</span><span class="n">from_bytes</span><span class="p">(</span><span class="n">seed_bytes</span><span class="p">,</span> <span class="s2">&quot;little&quot;</span><span class="p">)</span>
+        <span class="n">seed</span> <span class="o">=</span> <span class="nb">int</span><span class="o">.</span><span class="n">from_bytes</span><span class="p">(</span><span class="n">seed_bytes</span><span class="p">,</span> <span class="s2">"little"</span><span class="p">)</span>
         <span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
 
-        <span class="k">if</span> <span class="n">output</span><span class="o">.</span><span class="n">mode</span> <span class="o">!=</span> <span class="s2">&quot;pooled&quot;</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">ModelError</span><span class="p">(</span><span class="s2">&quot;toy_model_v1 only supports pooled output&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">output</span><span class="o">.</span><span class="n">mode</span> <span class="o">!=</span> <span class="s2">"pooled"</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">ModelError</span><span class="p">(</span><span class="s2">"toy_model_v1 only supports pooled output"</span><span class="p">)</span>
 
-        <span class="n">vec</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">standard_normal</span><span class="p">(</span><span class="mi">512</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;float32&quot;</span><span class="p">)</span>
+        <span class="n">vec</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">standard_normal</span><span class="p">(</span><span class="mi">512</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">"float32"</span><span class="p">)</span>
         <span class="n">meta</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s2">&quot;model&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_name</span><span class="p">,</span>
-            <span class="s2">&quot;backend&quot;</span><span class="p">:</span> <span class="n">backend</span><span class="p">,</span>
-            <span class="s2">&quot;device&quot;</span><span class="p">:</span> <span class="n">device</span><span class="p">,</span>
-            <span class="s2">&quot;model_config&quot;</span><span class="p">:</span> <span class="n">model_config</span><span class="p">,</span>
-            <span class="s2">&quot;spatial&quot;</span><span class="p">:</span> <span class="n">asdict</span><span class="p">(</span><span class="n">spatial</span><span class="p">),</span>
-            <span class="s2">&quot;temporal&quot;</span><span class="p">:</span> <span class="n">asdict</span><span class="p">(</span><span class="n">temporal</span><span class="p">)</span> <span class="k">if</span> <span class="n">temporal</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="s2">"model"</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_name</span><span class="p">,</span>
+            <span class="s2">"backend"</span><span class="p">:</span> <span class="n">backend</span><span class="p">,</span>
+            <span class="s2">"device"</span><span class="p">:</span> <span class="n">device</span><span class="p">,</span>
+            <span class="s2">"model_config"</span><span class="p">:</span> <span class="n">model_config</span><span class="p">,</span>
+            <span class="s2">"spatial"</span><span class="p">:</span> <span class="n">asdict</span><span class="p">(</span><span class="n">spatial</span><span class="p">),</span>
+            <span class="s2">"temporal"</span><span class="p">:</span> <span class="n">asdict</span><span class="p">(</span><span class="n">temporal</span><span class="p">)</span> <span class="k">if</span> <span class="n">temporal</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
         <span class="p">}</span>
         <span class="k">return</span> <span class="n">Embedding</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">vec</span><span class="p">,</span> <span class="n">meta</span><span class="o">=</span><span class="n">meta</span><span class="p">)</span>
 </code></pre></div>
 <p>Then register it in <code>src/rs_embed/embedders/catalog.py</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="n">MODEL_SPECS</span><span class="p">[</span><span class="s2">&quot;toy_model_v1&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;toy_model&quot;</span><span class="p">,</span> <span class="s2">&quot;ToyModelV1&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">MODEL_SPECS</span><span class="p">[</span><span class="s2">"toy_model_v1"</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="s2">"toy_model"</span><span class="p">,</span> <span class="s2">"ToyModelV1"</span><span class="p">)</span>
 </code></pre></div>
 <hr />
 <h2 id="on-the-fly-models">On-the-fly Models<a class="headerlink" href="#on-the-fly-models" title="Permanent link">&para;</a></h2>
@@ -2453,7 +2729,7 @@ If it's not in <code>MODEL_SPECS</code>, string-based lookup (<code>get_embeddin
 <p>This is the key to avoiding “download twice” when <code>save_inputs=True</code> and <code>save_embeddings=True</code>.</p>
 <hr />
 <h2 id="batch-methods">Batch Methods<a class="headerlink" href="#batch-methods" title="Permanent link">&para;</a></h2>
-<p><code>EmbedderBase.get_embeddings_batch</code> defaults to a Python loop calling <code>get_embedding</code>.<br />
+<p><code>EmbedderBase.get_embeddings_batch</code> defaults to a Python loop calling <code>get_embedding</code>.
 <code>EmbedderBase.get_embeddings_batch_from_inputs</code> defaults to a Python loop calling
 <code>get_embedding(..., input_chw=...)</code>.</p>
 <p>Override one or both when the model supports true vectorized inference:</p>
@@ -2465,8 +2741,8 @@ If it's not in <code>MODEL_SPECS</code>, string-based lookup (<code>get_embeddin
     <span class="n">sensor</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="n">model_config</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="n">output</span><span class="o">=</span><span class="n">OutputSpec</span><span class="o">.</span><span class="n">pooled</span><span class="p">(),</span>
-    <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;gee&quot;</span><span class="p">,</span>
-    <span class="n">device</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span>
+    <span class="n">backend</span><span class="o">=</span><span class="s2">"gee"</span><span class="p">,</span>
+    <span class="n">device</span><span class="o">=</span><span class="s2">"auto"</span><span class="p">,</span>
 <span class="p">):</span>
     <span class="c1"># 1) fetch/preprocess inputs for all spatials</span>
     <span class="c1"># 2) stack into a batch tensor</span>
@@ -2483,8 +2759,8 @@ If it's not in <code>MODEL_SPECS</code>, string-based lookup (<code>get_embeddin
     <span class="n">sensor</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="n">model_config</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="n">output</span><span class="o">=</span><span class="n">OutputSpec</span><span class="o">.</span><span class="n">pooled</span><span class="p">(),</span>
-    <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span>
-    <span class="n">device</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span>
+    <span class="n">backend</span><span class="o">=</span><span class="s2">"auto"</span><span class="p">,</span>
+    <span class="n">device</span><span class="o">=</span><span class="s2">"auto"</span><span class="p">,</span>
 <span class="p">):</span>
     <span class="c1"># 1) preprocess/stack prefetched CHW inputs</span>
     <span class="c1"># 2) run a single batched forward pass</span>
@@ -2507,8 +2783,8 @@ on-the-fly models.</p>
 <li><code>OutputSpec.grid(...)</code> → <code>(D, H, W)</code></li>
 </ul>
 <p>If your model does not support a mode, raise a clear error:</p>
-<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="n">output</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;grid&quot;</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">supported</span><span class="p">:</span>
-    <span class="k">raise</span> <span class="n">ModelError</span><span class="p">(</span><span class="s2">&quot;model_x does not support grid output&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="n">output</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="s2">"grid"</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">supported</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="n">ModelError</span><span class="p">(</span><span class="s2">"model_x does not support grid output"</span><span class="p">)</span>
 </code></pre></div>
 <hr />
 <h2 id="optional-dependencies">Optional Dependencies<a class="headerlink" href="#optional-dependencies" title="Permanent link">&para;</a></h2>
@@ -2529,7 +2805,7 @@ on-the-fly models.</p>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">_require_torch</span><span class="p">():</span>
     <span class="k">if</span> <span class="n">torch</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="n">ModelError</span><span class="p">(</span><span class="s2">&quot;Torch is required. Install with: pip install rs-embed&quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="n">ModelError</span><span class="p">(</span><span class="s2">"Torch is required. Install this repository with: pip install -e ."</span><span class="p">)</span>
 </code></pre></div>
 <hr />
 <h2 id="testing">Testing<a class="headerlink" href="#testing" title="Permanent link">&para;</a></h2>
@@ -2539,7 +2815,7 @@ on-the-fly models.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">rs_embed.core.registry</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_embedder_cls</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">test_toy_model_registered</span><span class="p">():</span>
-    <span class="bp">cls</span> <span class="o">=</span> <span class="n">get_embedder_cls</span><span class="p">(</span><span class="s2">&quot;toy_model_v1&quot;</span><span class="p">)</span>
+    <span class="bp">cls</span> <span class="o">=</span> <span class="n">get_embedder_cls</span><span class="p">(</span><span class="s2">"toy_model_v1"</span><span class="p">)</span>
     <span class="k">assert</span> <span class="bp">cls</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
 </code></pre></div>
 <h3 id="api-level">API-level<a class="headerlink" href="#api-level" title="Permanent link">&para;</a></h3>
@@ -2547,16 +2823,16 @@ on-the-fly models.</p>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">test_toy_model_get_embedding</span><span class="p">():</span>
     <span class="n">emb</span> <span class="o">=</span> <span class="n">get_embedding</span><span class="p">(</span>
-        <span class="s2">&quot;toy_model_v1&quot;</span><span class="p">,</span>
+        <span class="s2">"toy_model_v1"</span><span class="p">,</span>
         <span class="n">spatial</span><span class="o">=</span><span class="n">PointBuffer</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1000</span><span class="p">),</span>
         <span class="n">temporal</span><span class="o">=</span><span class="n">TemporalSpec</span><span class="o">.</span><span class="n">year</span><span class="p">(</span><span class="mi">2022</span><span class="p">),</span>
         <span class="n">output</span><span class="o">=</span><span class="n">OutputSpec</span><span class="o">.</span><span class="n">pooled</span><span class="p">(),</span>
-        <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span>
+        <span class="n">backend</span><span class="o">=</span><span class="s2">"auto"</span><span class="p">,</span>
     <span class="p">)</span>
     <span class="k">assert</span> <span class="n">emb</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="mi">512</span><span class="p">,)</span>
 </code></pre></div>
 <h3 id="export-integration">Export integration<a class="headerlink" href="#export-integration" title="Permanent link">&para;</a></h3>
-<p>If your model supports input reuse and batch export, add a small <code>export_batch</code> test using <code>monkeypatch</code> to avoid real network calls.<br />
+<p>If your model supports input reuse and batch export, add a small <code>export_batch</code> test using <code>monkeypatch</code> to avoid real network calls.
 See existing patterns in:</p>
 <ul>
 <li><code>tests/test_export_batch.py</code></li>
@@ -2647,7 +2923,7 @@ See existing patterns in:</p>
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.indexes", "navigation.sections", "navigation.expand", "navigation.top", "toc.follow", "content.code.copy", "content.code.annotate", "content.tabs.link", "search.suggest", "search.highlight"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       

@@ -1,0 +1,1147 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-13",
+  "scope": "Software smoke validation only; not scientific benchmark evidence.",
+  "counts": {
+    "canonical_models": 22,
+    "pass": 19,
+    "blocked": 3,
+    "fail": 0
+  },
+  "image_smoke_defaults": {
+    "seed": 20261013,
+    "input_units": "raw sensor values, per model declared band order",
+    "spatial": {
+      "lon": 114.35,
+      "lat": 30.5,
+      "buffer_m": 320
+    },
+    "temporal": {
+      "start": "2021-01-01",
+      "end": "2022-01-01"
+    },
+    "device": "cpu",
+    "threads": 4,
+    "timeout_seconds": 180,
+    "huggingface_cache_only": true
+  },
+  "environment": {
+    "python": "3.12.2",
+    "torch": "2.12.0+cu130",
+    "numpy": "2.4.6",
+    "transformers": "5.9.0",
+    "timm": "1.0.15",
+    "huggingface-hub": "1.16.1",
+    "terratorch": "1.2.1",
+    "torchvision": "0.27.0"
+  },
+  "reproduce": "python scripts/validate_models.py --model MODEL_ID --timeout 180",
+  "results": [
+    {
+      "model": "remoteclip",
+      "family": "A1",
+      "in_frozen_paper_benchmark": true,
+      "status": "pass",
+      "scope": "pretrained_forward",
+      "device": "cpu",
+      "threads": 4,
+      "input": {
+        "kind": "synthetic_raw_sensor_values",
+        "seed": 20261013,
+        "shape": [
+          3,
+          64,
+          64
+        ],
+        "bands": [
+          "B4",
+          "B3",
+          "B2"
+        ],
+        "range": [
+          500,
+          4500
+        ],
+        "sha256": "e468b455ddb7c3b12b5e969718367af1cbd72f145dc6a618be2d199d5902de77",
+        "independent_temporal_frames": false
+      },
+      "output": {
+        "shape": [
+          768
+        ],
+        "dtype": "float32",
+        "finite": true,
+        "l2_norm": 12.644918441772461,
+        "std": 0.4557855427265167,
+        "sha256": "fdcdabe0d0125ca8280df33eeaf4ab6703b3092effd5f7a53c95534d93b3750f"
+      },
+      "elapsed_seconds": 36.822,
+      "entrypoint": "get_image_embedding",
+      "python": "3.12.2",
+      "checkpoint_source": {},
+      "source_descriptor": {},
+      "adapter_file": "src/rs_embed/embedders/onthefly_remoteclip.py",
+      "adapter_sha256": "3b7711fe2bf2835121701ed62725885ec4bd614f5d3c75e396b1133abe5f45f5",
+      "note": "Observed patch-mean embedding width is768; projected CLIP image embeddings use a different representation."
+    },
+    {
+      "model": "satmae",
+      "family": "A1",
+      "in_frozen_paper_benchmark": true,
+      "status": "pass",
+      "scope": "pretrained_forward",
+      "device": "cpu",
+      "threads": 4,
+      "input": {
+        "kind": "synthetic_raw_sensor_values",
+        "seed": 20261013,
+        "shape": [
+          3,
+          64,
+          64
+        ],
+        "bands": [
+          "B4",
+          "B3",
+          "B2"
+        ],
+        "range": [
+          500,
+          4500
+        ],
+        "sha256": "e468b455ddb7c3b12b5e969718367af1cbd72f145dc6a618be2d199d5902de77",
+        "independent_temporal_frames": false
+      },
+      "output": {
+        "shape": [
+          1024
+        ],
+        "dtype": "float32",
+        "finite": true,
+        "l2_norm": 17.53904914855957,
+        "std": 0.5480796694755554,
+        "sha256": "c783d6f31f3b50fa452fffe8288c2a9b001eae2f6bdee23908e99aa25f5dba5f"
+      },
+      "elapsed_seconds": 43.172,
+      "entrypoint": "Embedder.get_embedding",
+      "python": "3.12.2",
+      "checkpoint_source": {
+        "hf_id": "MVRL/satmae-vitlarge-fmow-pretrain-800"
+      },
+      "source_descriptor": {
+        "model_id_default": "MVRL/satmae-vitlarge-fmow-pretrain-800"
+      },
+      "adapter_file": "src/rs_embed/embedders/onthefly_satmae.py",
+      "adapter_sha256": "b36dd4717f21b35376a06a6aa70153f557d728edca812cca6326b2eae61f9a8a"
+    },
+    {
+      "model": "satmaepp",
+      "family": "A1",
+      "in_frozen_paper_benchmark": true,
+      "status": "pass",
+      "scope": "pretrained_forward",
+      "device": "cpu",
+      "threads": 4,
+      "input": {
+        "kind": "synthetic_raw_sensor_values",
+        "seed": 20261013,
+        "shape": [
+          3,
+          64,
+          64
+        ],
+        "bands": [
+          "B4",
+          "B3",
+          "B2"
+        ],
+        "range": [
+          500,
+          4500
+        ],
+        "sha256": "e468b455ddb7c3b12b5e969718367af1cbd72f145dc6a618be2d199d5902de77",
+        "independent_temporal_frames": false
+      },
+      "output": {
+        "shape": [
+          1024
+        ],
+        "dtype": "float32",
+        "finite": true,
+        "l2_norm": 25.02300262451172,
+        "std": 0.781967282295227,
+        "sha256": "8ccbf7528daf9747c46739c3544278ef8f8f7ff332efe764381f7e01a35b82d2"
+      },
+      "elapsed_seconds": 14.726,
+      "entrypoint": "Embedder.get_embedding",
+      "python": "3.12.2",
+      "checkpoint_source": {
+        "hf_id": "MVRL/satmaepp_ViT-L_pretrain_fmow_rgb"
+      },
+      "source_descriptor": {
+        "model_id_default": "MVRL/satmaepp_ViT-L_pretrain_fmow_rgb"
+      },
+      "adapter_file": "src/rs_embed/embedders/onthefly_satmaepp.py",
+      "adapter_sha256": "f8ee58836af8292d18ffcb6845cbd554872112a89f51b23e808955366d55d846"
+    },
+    {
+      "model": "scalemae",
+      "family": "A1",
+      "in_frozen_paper_benchmark": true,
+      "status": "pass",
+      "scope": "pretrained_forward",
+      "device": "cpu",
+      "threads": 4,
+      "input": {
+        "kind": "synthetic_raw_sensor_values",
+        "seed": 20261013,
+        "shape": [
+          3,
+          64,
+          64
+        ],
+        "bands": [
+          "B4",
+          "B3",
+          "B2"
+        ],
+        "range": [
+          500,
+          4500
+        ],
+        "sha256": "e468b455ddb7c3b12b5e969718367af1cbd72f145dc6a618be2d199d5902de77",
+        "independent_temporal_frames": false
+      },
+      "output": {
+        "shape": [
+          1024
+        ],
+        "dtype": "float32",
+        "finite": true,
+        "l2_norm": 304.96405029296875,
+        "std": 9.52063274383545,
+        "sha256": "1c84b98f2ddb12b58a1a2eca40d06d0054227d32cf65c1720ce3a32ddca523b5"
+      },
+      "elapsed_seconds": 31.589,
+      "entrypoint": "get_image_embedding",
+      "python": "3.12.2",
+      "checkpoint_source": {
+        "hf_id": "MVRL/scalemae-vitlarge-800"
+      },
+      "source_descriptor": {
+        "model_id_default": "MVRL/scalemae-vitlarge-800"
+      },
+      "adapter_file": "src/rs_embed/embedders/onthefly_scalemae.py",
+      "adapter_sha256": "c3cb4a3f3da98efe9b2b973f8d276744e40b8ac55df7b904171bed3655886ff4",
+      "note": "Canonical Hub ID; official cached pytorch_model.bin loaded with strict parameter matching."
+    },
+    {
+      "model": "wildsat",
+      "family": "A1",
+      "in_frozen_paper_benchmark": true,
+      "status": "pass",
+      "scope": "pretrained_forward",
+      "device": "cpu",
+      "threads": 4,
+      "input": {
+        "kind": "synthetic_raw_sensor_values",
+        "seed": 20261013,
+        "shape": [
+          3,
+          64,
+          64
+        ],
+        "bands": [
+          "B4",
+          "B3",
+          "B2"
+        ],
+        "range": [
+          500,
+          4500
+        ],
+        "sha256": "e468b455ddb7c3b12b5e969718367af1cbd72f145dc6a618be2d199d5902de77",
+        "independent_temporal_frames": false
+      },
+      "output": {
+        "shape": [
+          256
+        ],
+        "dtype": "float32",
+        "finite": true,
+        "l2_norm": 4.643752574920654,
+        "std": 0.29023194313049316,
+        "sha256": "fc78269a1571405e22c82afe4f25907074b5c37b7826d39f88c4bc473cec7526"
+      },
+      "elapsed_seconds": 5.818,
+      "entrypoint": "Embedder.get_embedding",
+      "python": "3.12.2",
+      "checkpoint_source": {
+        "ckpt_path": "<local official asset>/vitb16-imagenet-bnfc.pth"
+      },
+      "source_descriptor": {},
+      "adapter_file": "src/rs_embed/embedders/onthefly_wildsat.py",
+      "adapter_sha256": "b086c9a941e4394cbd532e26acc4de35f65628bddcb839119d2a745aa3b53e85"
+    },
+    {
+      "model": "satmaepp_s2_10b",
+      "family": "A2",
+      "in_frozen_paper_benchmark": true,
+      "status": "pass",
+      "scope": "pretrained_forward",
+      "device": "cpu",
+      "threads": 4,
+      "input": {
+        "kind": "synthetic_raw_sensor_values",
+        "seed": 20261013,
+        "shape": [
+          10,
+          64,
+          64
+        ],
+        "bands": [
+          "B2",
+          "B3",
+          "B4",
+          "B5",
+          "B6",
+          "B7",
+          "B8",
+          "B8A",
+          "B11",
+          "B12"
+        ],
+        "range": [
+          500,
+          4500
+        ],
+        "sha256": "8cc3aba89a9082b37da37d4434c7520cf8334b1b511cf7b4cf91dde47e1fabbb",
+        "independent_temporal_frames": false
+      },
+      "output": {
+        "shape": [
+          1024
+        ],
+        "dtype": "float32",
+        "finite": true,
+        "l2_norm": 20.29014778137207,
+        "std": 0.6339912414550781,
+        "sha256": "c46b9fecb91f26afca17d27c940ba78b047b8a82c42247bc4d668525c8c19281"
+      },
+      "elapsed_seconds": 29.207,
+      "entrypoint": "get_image_embedding",
+      "python": "3.12.2",
+      "checkpoint_source": {
+        "hf_id": "mubashir04/checkpoint_ViT-L_pretrain_fmow_sentinel/<local official asset>/checkpoint_ViT-L_pretrain_fmow_sentinel.pth",
+        "variant": "large"
+      },
+      "source_descriptor": {
+        "model_id_default": "mubashir04/checkpoint_ViT-L_pretrain_fmow_sentinel"
+      },
+      "adapter_file": "src/rs_embed/embedders/onthefly_satmaepp_s2.py",
+      "adapter_sha256": "5c72361032d2f7d46b8ff0b7df6c2e2475135db56163235ff2df8dacffbb2891",
+      "settings": {
+        "RS_EMBED_SATMAEPP_S2_CKPT_FILE": "<official local checkpoint_ViT-L_pretrain_fmow_sentinel.pth>"
+      }
+    },
+    {
+      "model": "prithvi",
+      "family": "A2",
+      "in_frozen_paper_benchmark": true,
+      "status": "pass",
+      "scope": "pretrained_forward",
+      "device": "cpu",
+      "threads": 4,
+      "input": {
+        "kind": "synthetic_raw_sensor_values",
+        "seed": 20261013,
+        "shape": [
+          6,
+          64,
+          64
+        ],
+        "bands": [
+          "BLUE",
+          "GREEN",
+          "RED",
+          "NIR_NARROW",
+          "SWIR_1",
+          "SWIR_2"
+        ],
+        "range": [
+          500,
+          4500
+        ],
+        "sha256": "499cf59c648f109afc64cbd9ed64b799062d54fff53b5cca869b36ad0c264d95",
+        "independent_temporal_frames": false
+      },
+      "output": {
+        "shape": [
+          768
+        ],
+        "dtype": "float32",
+        "finite": true,
+        "l2_norm": 22.076059341430664,
+        "std": 0.7965633869171143,
+        "sha256": "ca3407da388bfc5d187e98fcfde2fd6671e74a49c3c0c7ec0a527711af39194c"
+      },
+      "elapsed_seconds": 6.076,
+      "entrypoint": "Embedder.get_embedding",
+      "python": "3.12.2",
+      "checkpoint_source": {
+        "hf_id": "ibm-nasa-geospatial/Prithvi-EO-2.0-100M-TL",
+        "model_key": "prithvi_eo_v2_100_tl",
+        "variant": "prithvi_eo_v2_100_tl",
+        "pretrained": true
+      },
+      "source_descriptor": {
+        "model_key_default": "prithvi_eo_v2_100_tl"
+      },
+      "adapter_file": "src/rs_embed/embedders/onthefly_prithvi.py",
+      "adapter_sha256": "f30c9e2b401be23a3255fe286c84fe4ca91a1816ca1f10148a76528bdeb5e608"
+    },
+    {
+      "model": "terramind",
+      "family": "A2",
+      "in_frozen_paper_benchmark": true,
+      "status": "pass",
+      "scope": "pretrained_forward",
+      "device": "cpu",
+      "threads": 4,
+      "input": {
+        "kind": "synthetic_raw_sensor_values",
+        "seed": 20261013,
+        "shape": [
+          12,
+          64,
+          64
+        ],
+        "bands": [
+          "B1",
+          "B2",
+          "B3",
+          "B4",
+          "B5",
+          "B6",
+          "B7",
+          "B8",
+          "B8A",
+          "B9",
+          "B11",
+          "B12"
+        ],
+        "range": [
+          500,
+          4500
+        ],
+        "sha256": "54eb88562bb441deeb0975c40e3b9b3d326ad491f41b12842f2bc28b9264f4ba",
+        "independent_temporal_frames": false
+      },
+      "output": {
+        "shape": [
+          384
+        ],
+        "dtype": "float32",
+        "finite": true,
+        "l2_norm": 13.449872016906738,
+        "std": 0.6863605976104736,
+        "sha256": "be55224319b1811b4e747685735eeeddebaea90d7986d46c7e8418ccabdfacd0"
+      },
+      "elapsed_seconds": 28.406,
+      "entrypoint": "Embedder.get_embedding",
+      "python": "3.12.2",
+      "checkpoint_source": {
+        "model_key": "terramind_v1_small",
+        "pretrained": true
+      },
+      "source_descriptor": {},
+      "adapter_file": "src/rs_embed/embedders/onthefly_terramind.py",
+      "adapter_sha256": "871d7f7f687f28b917e5c4317f85ea837ba1a9849ec4b5d564c57e7ce9ba7631"
+    },
+    {
+      "model": "terrafm",
+      "family": "A2",
+      "in_frozen_paper_benchmark": true,
+      "status": "pass",
+      "scope": "pretrained_forward",
+      "device": "cpu",
+      "threads": 4,
+      "input": {
+        "kind": "synthetic_raw_sensor_values",
+        "seed": 20261013,
+        "shape": [
+          12,
+          64,
+          64
+        ],
+        "bands": [
+          "B1",
+          "B2",
+          "B3",
+          "B4",
+          "B5",
+          "B6",
+          "B7",
+          "B8",
+          "B8A",
+          "B9",
+          "B11",
+          "B12"
+        ],
+        "range": [
+          500,
+          4500
+        ],
+        "sha256": "54eb88562bb441deeb0975c40e3b9b3d326ad491f41b12842f2bc28b9264f4ba",
+        "independent_temporal_frames": false
+      },
+      "output": {
+        "shape": [
+          768
+        ],
+        "dtype": "float32",
+        "finite": true,
+        "l2_norm": 35.33700942993164,
+        "std": 1.275113821029663,
+        "sha256": "d5ee0aa77f50ddf6dd1e6f2f1a25773284e211a0c7ec6a52566eeb1fe29dee76"
+      },
+      "elapsed_seconds": 5.654,
+      "entrypoint": "Embedder.get_embedding",
+      "python": "3.12.2",
+      "checkpoint_source": {
+        "hf_repo": "MBZUAI/TerraFM"
+      },
+      "source_descriptor": {},
+      "adapter_file": "src/rs_embed/embedders/onthefly_terrafm.py",
+      "adapter_sha256": "9d6818757ed9bda0b8d27a7f34bac821a509e352555aeed67781c34a4e57080c"
+    },
+    {
+      "model": "satvision",
+      "family": "A2",
+      "in_frozen_paper_benchmark": true,
+      "status": "pass",
+      "scope": "pretrained_forward",
+      "device": "cpu",
+      "threads": 4,
+      "input": {
+        "kind": "synthetic_raw_sensor_values",
+        "seed": 20261013,
+        "shape": [
+          14,
+          64,
+          64
+        ],
+        "bands": [
+          "1",
+          "2",
+          "3",
+          "26",
+          "6",
+          "20",
+          "7",
+          "27",
+          "28",
+          "29",
+          "31",
+          "32",
+          "33",
+          "34"
+        ],
+        "range": [
+          500,
+          4500
+        ],
+        "sha256": "35f16691716b74fc828259169a646c425b5381897164cc43ae36461618d48c4c",
+        "independent_temporal_frames": false
+      },
+      "output": {
+        "shape": [
+          4096
+        ],
+        "dtype": "float32",
+        "finite": true,
+        "l2_norm": 4.161409378051758,
+        "std": 0.0650186538696289,
+        "sha256": "70df6d265fb3ea4fdd6e619db4a2a8b22e8ac6caa47940cee5508eb1af4ce4b6"
+      },
+      "elapsed_seconds": 60.991,
+      "entrypoint": "Embedder.get_embedding",
+      "python": "3.12.2",
+      "checkpoint_source": {
+        "hf_id": "nasa-cisto-data-science-group/satvision-toa-giant-patch8-window8-128",
+        "checkpoint": "<local official asset>/mp_rank_00_model_states.pt",
+        "missing_keys": 0,
+        "unexpected_keys": 2,
+        "model_id": "nasa-cisto-data-science-group/satvision-toa-giant-patch8-window8-128"
+      },
+      "source_descriptor": {},
+      "adapter_file": "src/rs_embed/embedders/onthefly_satvision_toa.py",
+      "adapter_sha256": "cf2d244df73e95bf68e2491033e2629b04348af0cc3116adf07ee610df1a3110"
+    },
+    {
+      "model": "dofa",
+      "family": "A3",
+      "in_frozen_paper_benchmark": true,
+      "status": "pass",
+      "scope": "pretrained_forward",
+      "device": "cpu",
+      "threads": 4,
+      "input": {
+        "kind": "synthetic_raw_sensor_values",
+        "seed": 20261013,
+        "shape": [
+          9,
+          64,
+          64
+        ],
+        "bands": [
+          "B4",
+          "B3",
+          "B2",
+          "B5",
+          "B6",
+          "B7",
+          "B8",
+          "B11",
+          "B12"
+        ],
+        "range": [
+          500,
+          4500
+        ],
+        "sha256": "51c5ade7c0388784072b973b87e745d09ff6295d6ae617a7f89ff0800e89690b",
+        "independent_temporal_frames": false
+      },
+      "output": {
+        "shape": [
+          768
+        ],
+        "dtype": "float32",
+        "finite": true,
+        "l2_norm": 36.71418762207031,
+        "std": 1.3234689235687256,
+        "sha256": "1092ae04907cf7709287a623b461cf73f41900a631ac429663cb4101d630d2f7"
+      },
+      "elapsed_seconds": 6.449,
+      "entrypoint": "Embedder.get_embedding",
+      "python": "3.12.2",
+      "checkpoint_source": {
+        "variant": "base"
+      },
+      "source_descriptor": {},
+      "adapter_file": "src/rs_embed/embedders/onthefly_dofa.py",
+      "adapter_sha256": "e46e43c3311d5c4b5753f8369057ea3746ba6f24fc7d05c60e725ec7300c6a27"
+    },
+    {
+      "model": "fomo",
+      "family": "A3",
+      "in_frozen_paper_benchmark": true,
+      "status": "pass",
+      "scope": "pretrained_forward",
+      "device": "cpu",
+      "threads": 4,
+      "input": {
+        "kind": "synthetic_raw_sensor_values",
+        "seed": 20261013,
+        "shape": [
+          12,
+          64,
+          64
+        ],
+        "bands": [
+          "B1",
+          "B2",
+          "B3",
+          "B4",
+          "B5",
+          "B6",
+          "B7",
+          "B8",
+          "B8A",
+          "B9",
+          "B11",
+          "B12"
+        ],
+        "range": [
+          500,
+          4500
+        ],
+        "sha256": "54eb88562bb441deeb0975c40e3b9b3d326ad491f41b12842f2bc28b9264f4ba",
+        "independent_temporal_frames": false
+      },
+      "output": {
+        "shape": [
+          768
+        ],
+        "dtype": "float32",
+        "finite": true,
+        "l2_norm": 14.090786933898926,
+        "std": 0.508457362651825,
+        "sha256": "16ec7540589eb9a77f8081a4100cdfd9843545e03be6366d39134369d3b18e51"
+      },
+      "elapsed_seconds": 3.62,
+      "entrypoint": "Embedder.get_embedding",
+      "python": "3.12.2",
+      "checkpoint_source": {
+        "ckpt_path": "<local official asset>/fomo_single_embedding_layer_weights.pt",
+        "missing_keys": 0,
+        "unexpected_keys": 0
+      },
+      "source_descriptor": {},
+      "adapter_file": "src/rs_embed/embedders/onthefly_fomo.py",
+      "adapter_sha256": "ce674221a438c2daa2b5719fd5605481ebd103bb05536e63326a67a91a079878"
+    },
+    {
+      "model": "thor",
+      "family": "A3",
+      "in_frozen_paper_benchmark": true,
+      "status": "pass",
+      "scope": "pretrained_forward",
+      "device": "cpu",
+      "threads": 4,
+      "input": {
+        "kind": "synthetic_raw_sensor_values",
+        "seed": 20261013,
+        "shape": [
+          10,
+          64,
+          64
+        ],
+        "bands": [
+          "B2",
+          "B3",
+          "B4",
+          "B5",
+          "B6",
+          "B7",
+          "B8",
+          "B8A",
+          "B11",
+          "B12"
+        ],
+        "range": [
+          500,
+          4500
+        ],
+        "sha256": "8cc3aba89a9082b37da37d4434c7520cf8334b1b511cf7b4cf91dde47e1fabbb",
+        "independent_temporal_frames": false
+      },
+      "output": {
+        "shape": [
+          768
+        ],
+        "dtype": "float32",
+        "finite": true,
+        "l2_norm": 56.73751449584961,
+        "std": 1.9561822414398193,
+        "sha256": "db8b39cdde91e6b9688111e456be3bd9904d6c924080d6e55cc05d07b1a67a58"
+      },
+      "elapsed_seconds": 6.356,
+      "entrypoint": "Embedder.get_embedding",
+      "python": "3.12.2",
+      "checkpoint_source": {
+        "hf_id": "FM4CS/THOR-1.0-base",
+        "variant": "base",
+        "model_key": "thor_v1_base",
+        "pretrained": true,
+        "ckpt_path": null
+      },
+      "source_descriptor": {},
+      "adapter_file": "src/rs_embed/embedders/onthefly_thor.py",
+      "adapter_sha256": "e6f6b673bb263506715df6b18cb139bf026bb73b6cb3be1a301af5557419d2a6"
+    },
+    {
+      "model": "galileo",
+      "family": "A4",
+      "in_frozen_paper_benchmark": true,
+      "status": "pass",
+      "scope": "pretrained_forward",
+      "device": "cpu",
+      "threads": 4,
+      "input": {
+        "kind": "synthetic_raw_sensor_values",
+        "seed": 20261013,
+        "shape": [
+          8,
+          10,
+          64,
+          64
+        ],
+        "bands": [
+          "B2",
+          "B3",
+          "B4",
+          "B5",
+          "B6",
+          "B7",
+          "B8",
+          "B8A",
+          "B11",
+          "B12"
+        ],
+        "range": [
+          500,
+          4500
+        ],
+        "sha256": "1a1dc56c348b71da2f304e77c1b8b07ddd3ecf1441a085132f74b4759bbd3b20",
+        "independent_temporal_frames": true
+      },
+      "output": {
+        "shape": [
+          128
+        ],
+        "dtype": "float32",
+        "finite": true,
+        "l2_norm": 1.342428207397461,
+        "std": 0.11865253001451492,
+        "sha256": "5f10374c1aeb0b02594cabb2cfc1bd36f07f4fc5c61891b7074f68310dbeb296"
+      },
+      "elapsed_seconds": 2.702,
+      "entrypoint": "Embedder.get_embedding",
+      "python": "3.12.2",
+      "checkpoint_source": {
+        "model_size": "nano"
+      },
+      "source_descriptor": {},
+      "adapter_file": "src/rs_embed/embedders/onthefly_galileo.py",
+      "adapter_sha256": "ae6f68044d7657f3c4d109e7ea6dcfa59a50e3bc8537686484c98847a75d5b6a"
+    },
+    {
+      "model": "anysat",
+      "family": "A4",
+      "in_frozen_paper_benchmark": true,
+      "status": "pass",
+      "scope": "pretrained_forward",
+      "device": "cpu",
+      "threads": 4,
+      "input": {
+        "kind": "synthetic_raw_sensor_values",
+        "seed": 20261013,
+        "shape": [
+          8,
+          10,
+          64,
+          64
+        ],
+        "bands": [
+          "B2",
+          "B3",
+          "B4",
+          "B5",
+          "B6",
+          "B7",
+          "B8",
+          "B8A",
+          "B11",
+          "B12"
+        ],
+        "range": [
+          500,
+          4500
+        ],
+        "sha256": "1a1dc56c348b71da2f304e77c1b8b07ddd3ecf1441a085132f74b4759bbd3b20",
+        "independent_temporal_frames": true
+      },
+      "output": {
+        "shape": [
+          768
+        ],
+        "dtype": "float32",
+        "finite": true,
+        "l2_norm": 5.469156265258789,
+        "std": 0.19722825288772583,
+        "sha256": "39b6b17cb51d87247c529db593e254a6569c5d395a3a7e8312ccbbf4779717c6"
+      },
+      "elapsed_seconds": 6.438,
+      "entrypoint": "Embedder.get_embedding",
+      "python": "3.12.2",
+      "checkpoint_source": {
+        "model_size": "base",
+        "hf_repo": "g-astruc/AnySat",
+        "hf_filename": "models/AnySat.pth",
+        "pretrained": true
+      },
+      "source_descriptor": {},
+      "adapter_file": "src/rs_embed/embedders/onthefly_anysat.py",
+      "adapter_sha256": "da773eb92b6118efb5eb7396b5fabbfc4f9712f32dc615284d7025765ed32d87"
+    },
+    {
+      "model": "agrifm",
+      "family": "A4",
+      "in_frozen_paper_benchmark": true,
+      "status": "pass",
+      "scope": "pretrained_forward",
+      "device": "cpu",
+      "threads": 4,
+      "input": {
+        "kind": "synthetic_raw_sensor_values",
+        "seed": 20261013,
+        "shape": [
+          8,
+          10,
+          64,
+          64
+        ],
+        "bands": [
+          "B2",
+          "B3",
+          "B4",
+          "B5",
+          "B6",
+          "B7",
+          "B8",
+          "B8A",
+          "B11",
+          "B12"
+        ],
+        "range": [
+          500,
+          4500
+        ],
+        "sha256": "1a1dc56c348b71da2f304e77c1b8b07ddd3ecf1441a085132f74b4759bbd3b20",
+        "independent_temporal_frames": true
+      },
+      "output": {
+        "shape": [
+          1024
+        ],
+        "dtype": "float32",
+        "finite": true,
+        "l2_norm": 31.93095588684082,
+        "std": 0.9978423714637756,
+        "sha256": "d55c1e64de7757f189ee9e71859058123bff1d3fda6c281bc5a5681b05532281"
+      },
+      "elapsed_seconds": 6.532,
+      "entrypoint": "Embedder.get_embedding",
+      "python": "3.12.2",
+      "checkpoint_source": {
+        "checkpoint": "<local official asset>/AgriFM.pth"
+      },
+      "source_descriptor": {},
+      "adapter_file": "src/rs_embed/embedders/onthefly_agrifm.py",
+      "adapter_sha256": "5dd11acddaae868d5c39509bf4e0255c513a83d331d1daa66f6f096f96c75a25"
+    },
+    {
+      "model": "satclip",
+      "family": "B",
+      "in_frozen_paper_benchmark": true,
+      "status": "pass",
+      "scope": "pretrained_forward",
+      "device": "cpu",
+      "threads": 4,
+      "input": {
+        "kind": "coordinates",
+        "lon": 114.35,
+        "lat": 30.5
+      },
+      "output": {
+        "shape": [
+          256
+        ],
+        "dtype": "float32",
+        "finite": true,
+        "l2_norm": 39.646236419677734,
+        "std": 2.4775125980377197,
+        "sha256": "454d5491d89089218c2909fa5f341f885765d90002962aba183bf237ae37df29"
+      },
+      "elapsed_seconds": 2.489,
+      "entrypoint": "Embedder.get_embedding",
+      "python": "3.12.2",
+      "checkpoint_source": {
+        "variant": "vit16-l40",
+        "checkpoint": {
+          "source": "huggingface",
+          "repo_id": "microsoft/SatCLIP-ViT16-L40",
+          "filename": "satclip-vit16-l40.ckpt",
+          "revision": "0ef2acc0b91d3c8cfdf4a0cc03207095989287ab",
+          "path": "<local official asset>/satclip-vit16-l40.ckpt"
+        }
+      },
+      "source_descriptor": {},
+      "adapter_file": "src/rs_embed/embedders/location_satclip.py",
+      "adapter_sha256": "c48fc557b023cf2e04a540dddfbfa8da41a0c2f4b3fa27ae848f7db0f0a19bd3"
+    },
+    {
+      "model": "geoclip",
+      "family": "B",
+      "in_frozen_paper_benchmark": false,
+      "status": "pass",
+      "scope": "pretrained_forward_and_upstream_comparison",
+      "device": "cpu",
+      "python": "3.13.12",
+      "runtime": {
+        "geoclip": "1.2.3"
+      },
+      "entrypoint": "get_location_embeddings",
+      "batch_size": 2,
+      "input": {
+        "kind": "coordinates",
+        "coordinate_order": "lon,lat",
+        "points": [
+          [
+            114.3055,
+            30.5928
+          ],
+          [
+            139.6917,
+            35.6895
+          ],
+          [
+            -74.006,
+            40.7128
+          ]
+        ]
+      },
+      "output": {
+        "shape": [
+          3,
+          512
+        ],
+        "dtype": "float32",
+        "finite": true,
+        "distinct_locations": true
+      },
+      "checkpoint_source": "Official PyPI geoclip 1.2.3 bundled location_encoder_weights.pth",
+      "checkpoint_sha256": "94b80ae3af89fca78539e129dd2929d321247f5ceeeb0a31bc2c31041a253394",
+      "upstream_comparison": {
+        "max_abs_diff": 2.60770320892334e-08,
+        "rtol": 1e-05,
+        "atol": 1e-05,
+        "passed": true
+      }
+    },
+    {
+      "model": "esri_gle",
+      "family": "B",
+      "in_frozen_paper_benchmark": false,
+      "status": "blocked",
+      "scope": "pretrained_inference_attempt",
+      "device": "cpu",
+      "threads": 2,
+      "python": "3.12.2",
+      "runtime": {
+        "arcgis": "2.4.3",
+        "fastai": "1.0.61",
+        "fastprogress": "1.0.3"
+      },
+      "entrypoint": "get_location_embeddings",
+      "batch_size": 2,
+      "input": {
+        "kind": "coordinates",
+        "coordinate_order": "lon,lat",
+        "points": [
+          [
+            114.3055,
+            30.5928
+          ],
+          [
+            139.6917,
+            35.6895
+          ],
+          [
+            -74.006,
+            40.7128
+          ]
+        ]
+      },
+      "expected_dimension": 256,
+      "actual_output": null,
+      "checkpoint_loaded": false,
+      "arcgis_weights_item_id": "716bec23b9d346e485311523107629c0",
+      "elapsed_seconds": 11.6016,
+      "blockers": [
+        "Official ArcGIS import masked missing spacy in fastai.text as NameError: torch is not defined.",
+        "Separate official GIS(\"home\") probe lacked arcpy and an authorized host connection."
+      ],
+      "note": "Environment-specific blockers; no claim that the official model fails in supported Esri installations."
+    },
+    {
+      "model": "gse",
+      "family": "C1",
+      "in_frozen_paper_benchmark": true,
+      "status": "pass",
+      "scope": "live_official_product_read",
+      "backend": "gcs",
+      "input": {
+        "kind": "coordinates",
+        "coordinate_order": "lon,lat",
+        "points": [
+          [
+            114.41,
+            30.52
+          ]
+        ],
+        "year": 2021
+      },
+      "output": {
+        "shape": [
+          1,
+          64
+        ],
+        "finite": true,
+        "sha256": "dc1707bd7d5ff7c25e376667da1264908a269b3fde21e5bdaecc59d6839f6cdc"
+      },
+      "elapsed_seconds": 55.25899439999989,
+      "source": [
+        "https://storage.googleapis.com/alphaearth_foundations/satellite_embedding/v1/annual/2021/50N/xwrlcmce8pjj58pho-0000008192-0000000000.tiff"
+      ],
+      "receipt": "aef-gcs-20261013.json",
+      "other_paths": {
+        "earth_engine": "Blocked: no output returned within60second bound; GCS pass does not validate EE."
+      }
+    },
+    {
+      "model": "tessera",
+      "family": "C1",
+      "in_frozen_paper_benchmark": true,
+      "status": "blocked",
+      "scope": "real_product_access_attempt",
+      "backend": "geotessera",
+      "runtime": {
+        "geotessera": "0.8.0"
+      },
+      "timeout_seconds": 60,
+      "input": {
+        "kind": "geographic_query",
+        "lon": 114.35,
+        "lat": 30.5,
+        "buffer_m": 320,
+        "year": 2021
+      },
+      "cached_registry_present": true,
+      "actual_output": null,
+      "blockers": [
+        "Official registry/landmask update endpoints reported No route to host.",
+        "Bounded60second query ended before any embedding array was returned."
+      ],
+      "next_step": "Supply a complete GeoTessera cache via RS_EMBED_TESSERA_CACHE or run in an environment with access to official endpoints."
+    },
+    {
+      "model": "copernicus",
+      "family": "C1",
+      "in_frozen_paper_benchmark": true,
+      "status": "blocked",
+      "scope": "real_product_access_attempt",
+      "backend": "vendored_geotiff",
+      "input": {
+        "kind": "bbox_query",
+        "bbox_lonlat": [
+          114.1,
+          30.25,
+          114.6,
+          30.75
+        ],
+        "year": 2021
+      },
+      "source": "hf://datasets/torchgeo/copernicus_embed/embed_map_310k.tif",
+      "source_revision": "435b4a7bdce6f6fdbf4272f9d6e54f2604f35fdb",
+      "timeout_seconds": 60,
+      "actual_output": null,
+      "blockers": [
+        "No local product GeoTIFF resolved; cache-only attempt could not find the pinned file.",
+        "Explicit live download/query attempt also exceeded60second bound before returning an array."
+      ],
+      "next_step": "Supply the official product GeoTIFF with RS_EMBED_COP_DIR or complete the pinned download in a connected environment."
+    }
+  ]
+}

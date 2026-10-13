@@ -6,9 +6,11 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="A unified Python toolkit for Remote Sensing Foundation Model embeddings">
+        <meta name="description" content="Earth embeddings from images, locations and precomputed geospatial products">
       
       
+      
+        <link rel="canonical" href="https://giswlh.github.io/earth-embedding/dev/api_inspect/">
       
       
         <link rel="prev" href="../api_load/">
@@ -20,16 +22,16 @@
         
       
       
-      <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <link rel="icon" href="../assets/earth-embedding-logo.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
-        <title>Inspect API - rs-embed</title>
+        <title>Inspect API - Earth Embedding</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -102,10 +104,9 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="rs-embed" class="md-header__button md-logo" aria-label="rs-embed" data-md-component="logo">
+    <a href=".." title="Earth Embedding" class="md-header__button md-logo" aria-label="Earth Embedding" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+  <img src="../assets/earth-embedding-logo.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -116,7 +117,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            rs-embed
+            Earth Embedding
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -190,13 +191,13 @@
     
     
       <div class="md-header__source">
-        <a href="https://github.com/cybergis/rs-embed" title="Go to repository" class="md-source" data-md-component="source">
+        <a href="https://github.com/GISWLH/earth-embedding" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
   </div>
   <div class="md-source__repository">
-    cybergis/rs-embed
+    GISWLH/earth-embedding
   </div>
 </a>
       </div>
@@ -313,7 +314,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../releases/" class="md-tabs__link">
+        <a href="../validation/" class="md-tabs__link">
           
   
   
@@ -349,23 +350,22 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="rs-embed" class="md-nav__button md-logo" aria-label="rs-embed" data-md-component="logo">
+    <a href=".." title="Earth Embedding" class="md-nav__button md-logo" aria-label="Earth Embedding" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+  <img src="../assets/earth-embedding-logo.svg" alt="logo">
 
     </a>
-    rs-embed
+    Earth Embedding
   </label>
   
     <div class="md-nav__source">
-      <a href="https://github.com/cybergis/rs-embed" title="Go to repository" class="md-source" data-md-component="source">
+      <a href="https://github.com/GISWLH/earth-embedding" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
   </div>
   <div class="md-source__repository">
-    cybergis/rs-embed
+    GISWLH/earth-embedding
   </div>
 </a>
     </div>
@@ -383,6 +383,8 @@
       
         
           
+        
+      
         
       
         
@@ -471,6 +473,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../research/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Research connections
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -486,6 +516,8 @@
   
     
     
+      
+        
       
         
       
@@ -767,6 +799,160 @@
       
         
       
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Location encoders
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Location encoders
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../models/satclip/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SatCLIP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../models/geoclip/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GeoCLIP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../models/esri_gle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Esri GLE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
         
       
         
@@ -806,10 +992,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_4" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_5" >
         
           
-          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
             
   
   
@@ -827,8 +1013,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_4">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1722,6 +1908,12 @@
       
         
       
+        
+      
+        
+      
+        
+      
     
     
     
@@ -1768,6 +1960,90 @@
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../validation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Model validation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data-access/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data access
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../provenance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Provenance and attribution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -1882,8 +2158,8 @@
     <span class="n">spatial</span><span class="p">:</span> <span class="n">SpatialSpec</span><span class="p">,</span>
     <span class="n">temporal</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">TemporalSpec</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">sensor</span><span class="p">:</span> <span class="n">SensorSpec</span><span class="p">,</span>
-    <span class="n">backend</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;gee&quot;</span><span class="p">,</span>
-    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;gee_patch&quot;</span><span class="p">,</span>
+    <span class="n">backend</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"gee"</span><span class="p">,</span>
+    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"gee_patch"</span><span class="p">,</span>
     <span class="n">value_range</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">return_array</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span>
@@ -1897,8 +2173,8 @@ Use this when you want the same inspection flow but with a non-GEE provider back
     <span class="n">spatial</span><span class="p">:</span> <span class="n">SpatialSpec</span><span class="p">,</span>
     <span class="n">temporal</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">TemporalSpec</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">sensor</span><span class="p">:</span> <span class="n">SensorSpec</span><span class="p">,</span>
-    <span class="n">backend</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;gee&quot;</span><span class="p">,</span>
-    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;gee_patch&quot;</span><span class="p">,</span>
+    <span class="n">backend</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"gee"</span><span class="p">,</span>
+    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"gee_patch"</span><span class="p">,</span>
     <span class="n">value_range</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">return_array</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span>
@@ -1913,15 +2189,15 @@ It performs the same input quality checks (<strong>without running the model</st
 
 <span class="n">rep</span> <span class="o">=</span> <span class="n">inspect_gee_patch</span><span class="p">(</span>
     <span class="n">spatial</span><span class="o">=</span><span class="n">PointBuffer</span><span class="p">(</span><span class="mf">121.5</span><span class="p">,</span> <span class="mf">31.2</span><span class="p">,</span> <span class="mi">2048</span><span class="p">),</span>
-    <span class="n">temporal</span><span class="o">=</span><span class="n">TemporalSpec</span><span class="o">.</span><span class="n">range</span><span class="p">(</span><span class="s2">&quot;2022-06-01&quot;</span><span class="p">,</span> <span class="s2">&quot;2022-09-01&quot;</span><span class="p">),</span>
+    <span class="n">temporal</span><span class="o">=</span><span class="n">TemporalSpec</span><span class="o">.</span><span class="n">range</span><span class="p">(</span><span class="s2">"2022-06-01"</span><span class="p">,</span> <span class="s2">"2022-09-01"</span><span class="p">),</span>
     <span class="n">sensor</span><span class="o">=</span><span class="n">SensorSpec</span><span class="p">(</span>
-        <span class="n">collection</span><span class="o">=</span><span class="s2">&quot;COPERNICUS/S2_SR_HARMONIZED&quot;</span><span class="p">,</span>
-        <span class="n">bands</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;B4&quot;</span><span class="p">,</span> <span class="s2">&quot;B3&quot;</span><span class="p">,</span> <span class="s2">&quot;B2&quot;</span><span class="p">),</span>
+        <span class="n">collection</span><span class="o">=</span><span class="s2">"COPERNICUS/S2_SR_HARMONIZED"</span><span class="p">,</span>
+        <span class="n">bands</span><span class="o">=</span><span class="p">(</span><span class="s2">"B4"</span><span class="p">,</span> <span class="s2">"B3"</span><span class="p">,</span> <span class="s2">"B2"</span><span class="p">),</span>
         <span class="n">scale_m</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
         <span class="n">cloudy_pct</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
-        <span class="n">composite</span><span class="o">=</span><span class="s2">&quot;median&quot;</span><span class="p">,</span>
+        <span class="n">composite</span><span class="o">=</span><span class="s2">"median"</span><span class="p">,</span>
         <span class="n">check_input</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-        <span class="n">check_save_dir</span><span class="o">=</span><span class="s2">&quot;artifacts&quot;</span><span class="p">,</span>
+        <span class="n">check_save_dir</span><span class="o">=</span><span class="s2">"artifacts"</span><span class="p">,</span>
     <span class="p">),</span>
     <span class="n">return_array</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
 <span class="p">)</span>
@@ -1987,7 +2263,7 @@ It performs the same input quality checks (<strong>without running the model</st
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.indexes", "navigation.sections", "navigation.expand", "navigation.top", "toc.follow", "content.code.copy", "content.code.annotate", "content.tabs.link", "search.suggest", "search.highlight"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
