@@ -19,8 +19,8 @@
   "geometry": "Original projected nominal-500m grid converted to WGS84 bounds; physical widths differ from 500m at this latitude",
   "files": {
     "samples.csv": {
-      "sha256": "538f5517506e8840f832e9c0dfed65ae896a6c2fd005abee76197af00654a3d4",
-      "bytes": 108970
+      "sha256": "4ac4098a3512b65e63edc2269945de2c34f8ade38e0055be51b58731a3571552",
+      "bytes": 108402
     },
     "features.npz": {
       "sha256": "556a521e4366af8ee3220d7610d18f0441cefe6fc003a2de4ec31a5466183e61",

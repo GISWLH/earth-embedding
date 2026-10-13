@@ -13,8 +13,8 @@
   "access": "Anonymous HTTPS range reads; no EE credentials; entire COG and global index not bundled",
   "files": {
     "samples.csv": {
-      "sha256": "6dcb5df25c62390daebc30ed8eb69c9c0a1c59ee1bef1314c6ead20850507f61",
-      "bytes": 421251
+      "sha256": "9538ba3a21b7de6bcc19a88647095a7e2dce00bf84263320c80c98788238dc51",
+      "bytes": 417154
     },
     "features.npz": {
       "sha256": "e9d09330c16439a5dc551f35c71d2762a4634c81ca82667ce12faf1668a29160",

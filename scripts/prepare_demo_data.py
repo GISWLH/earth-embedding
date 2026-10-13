@@ -23,7 +23,8 @@ def digest(path):
 
 def save(root, samples, features, meta):
     root.mkdir(parents=True, exist_ok=True)
-    samples.to_csv(root / "samples.csv", index=False)
+    # Canonical LF keeps payload hashes stable through Git checkout on all OSes.
+    samples.to_csv(root / "samples.csv", index=False, lineterminator="\n")
     np.savez_compressed(
         root / "features.npz", tile_id=samples.tile_id.to_numpy(dtype="U"), features=features
     )
