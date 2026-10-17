@@ -1,3 +1,7 @@
+<!-- readme-visual-refresh:banner -->
+![earth-embedding — hand-drawn project banner](assets/readme/banner.svg)
+<!-- /readme-visual-refresh:banner -->
+
 <div align="center">
   <img src="docs/assets/earth-embedding-logo.svg" width="96" alt="Earth Embedding logo">
 
@@ -437,3 +441,7 @@ We thank the rs-embed contributors, model authors, Google Earth Engine, Google a
 ## License
 
 Library code is distributed under [Apache-2.0](LICENSE), with inherited attribution retained in [NOTICE](NOTICE). Vendored components, model weights, data, and fonts retain their respective licenses. AlphaEarth data is CC-BY-4.0; Esri's software/model terms apply separately. See [provenance and licensing](docs/provenance.md).
+
+<!-- readme-visual-refresh:artwork-source -->
+[Editable banner artwork · Excalidraw](assets/readme/banner.excalidraw)
+<!-- /readme-visual-refresh:artwork-source -->
