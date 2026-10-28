@@ -2,14 +2,24 @@
   "name": "San Francisco Bay Area and surroundings",
   "year": 2021,
   "bounds": [
-    -122.6,
-    37.3,
-    -121.6,
-    38.3
+    -122.5378,
+    37.3006,
+    -121.4773,
+    38.3245
   ],
+  "grid": {
+    "crs": "EPSG:32610",
+    "west": 540960,
+    "east": 633120,
+    "south": 4129280,
+    "north": 4241920,
+    "cell_m": 1280,
+    "rows": 88,
+    "cols": 72
+  },
   "nominal_size_km": [
-    88,
-    111
+    92.16,
+    112.64
   ],
   "scope": "Regional software demonstration, not a paper benchmark reproduction",
   "license": "CC-BY-4.0",
@@ -22,14 +32,12 @@
   "overview_level": 6,
   "features": "Official 1280m AEF overview cells: normalized sums of native vectors, decoded from int8; not 10m point vectors",
   "labels": "WorldCover 2021 v200 grouped majority of native 10m pixel centers inside each AEF cell polygon; minimum 95% valid reference support",
-  "attribution": "The AlphaEarth Foundations Satellite Embedding dataset is produced by Google and Google DeepMind. \u00a9 ESA WorldCover project 2021 / Contains modified Copernicus Sentinel data (2021) processed by ESA WorldCover consortium.",
+  "attribution": "The AlphaEarth Foundations Satellite Embedding dataset is produced by Google and Google DeepMind. © ESA WorldCover project 2021 / Contains modified Copernicus Sentinel data (2021) processed by ESA WorldCover consortium.",
   "source": "https://developers.google.com/earth-engine/guides/aef_on_gcs_readme",
   "worldcover_source": "https://esa-worldcover.s3.eu-central-1.amazonaws.com/v200/2021/map/ESA_WorldCover_10m_2021_v200_N36W123_Map.tif",
-  "selection": "All 1280m AEF cells with center inside bounds, complete AEF vector and >=95% reference coverage; no score-based selection",
-  "split": "South maxlat<=37.88 train; north minlat>=37.93 test; intervening cells buffer. Four-class built/vegetation/cropland/water task; other labels excluded.",
-  "candidates": 5963,
-  "retained": 5933,
-  "excluded": 30,
+  "selection": "Every cell of a whole-cell 72 x 88 rectangle on the official 1280m AEF overview grid (UTM 10N); all cells have complete AEF vectors and >=95% reference support; no score-based selection",
+  "split": "Two spatial folds by grid column: west columns 0-32, buffer columns 33-38 (7.68 km), east columns 39-71. Each fold is predicted by a model fitted only on the other. Four-class built/vegetation/cropland/water task; other labels are not scored.",
+  "cells": 6336,
   "aef_sources": [
     {
       "url": "https://storage.googleapis.com/alphaearth_foundations/satellite_embedding/v1/annual/2021/10N/xgi48lqsqj8bcovwk-0000000000-0000000000.tiff",
@@ -58,26 +66,22 @@
   ],
   "worldcover_window": {
     "shape": [
-      12142,
-      12176
+      12289,
+      12728
     ],
-    "sha256": "4d196a13d05be3005278122345d8fdffb7aa309fe6ae529b5a40650aea6bdcb7",
-    "bytes": 147840992
+    "sha256": "10608fae63a79dc902081c330593449b49d7777c7d848b3faa85d7baf02e2781",
+    "bytes": 156414392
   },
-  "array_sha256": "e7884a00905a3049c376035883471714c72ad3ba0cde2b9f8220b3650d3b4783",
-  "seconds": 11.94,
+  "array_sha256": "d8282b820172e1f701a6d54216d75efda44f0d4ba62870bb0aa63385c1f24364",
+  "seconds": 12.55,
   "files": {
-    "excluded.csv": {
-      "sha256": "6f429daf87ee5e9e1544d66f595a483f9fd9bb43c182d7659233dae76931cc9f",
-      "bytes": 7993
-    },
     "features.npz": {
-      "sha256": "257039f2447c1b19e1c6590b7c6d03804a924217d31271cba5eac1097a330302",
-      "bytes": 519560
+      "sha256": "49f94ec3d396ba1f97f10368e80405e3ecf82e0ae8585b8620ba80f2ebfd6f22",
+      "bytes": 566175
     },
     "samples.csv": {
-      "sha256": "3fcedca0e4e28c98a6954d3135cb6a7b778ab0d25977dd2c1de4f35cbf5f1398",
-      "bytes": 1611605
+      "sha256": "7d614b009894ee412a99832396d7204c6a3edfb234e927e2c5dad938ca4a0bbc",
+      "bytes": 1725540
     }
   }
 }

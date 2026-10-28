@@ -20,7 +20,7 @@ def main():
     fig = plot_map(
         aef.samples,
         pca_colors(aef.features),
-        title="San Francisco Bay Area | AEF 2021 | PCA RGB (not classes)",
+        title="San Francisco Bay Area · AEF 2021 · PCA RGB",
     )
     fig.savefig(out / "aef-pca.png", dpi=160)
     bayarea = load_demo("bayarea")
@@ -33,13 +33,24 @@ def main():
     fig = plot_map(
         bayarea.samples,
         pca_colors(gle.data),
-        title="San Francisco Bay Area | Esri GLE | PCA RGB (no observation year)",
+        title="San Francisco Bay Area · Esri GLE · PCA RGB",
     )
     fig.savefig(out / "esri-gle-pca.png", dpi=160)
     result = classify_demo(bayarea)
     plot_classification(result).savefig(out / "bayarea-classification.png", dpi=160)
     (out / "classification-metrics.json").write_text(json.dumps(result["metrics"], indent=2) + "\n")
-    result["samples"].to_csv(out / "classification-predictions.csv", index=False)
+    columns = [
+        "tile_id",
+        "grid_row",
+        "grid_col",
+        "demo_split",
+        "class_name",
+        "prediction",
+        "predicted_by",
+    ]
+    result["samples"][columns].to_csv(
+        out / "classification-predictions.csv", index=False, lineterminator="\n"
+    )
     print(json.dumps(result["metrics"], indent=2))
 
 

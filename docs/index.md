@@ -1,3 +1,8 @@
+<picture>
+  <source media="(max-width: 760px)" srcset="assets/brand/banner-mobile.svg">
+  <img src="assets/brand/banner.svg" width="100%" alt="earth-embedding: imagery, places and products become Earth embeddings in one Python call">
+</picture>
+
 # Earth Embedding
 
 ```python
@@ -8,7 +13,7 @@ emb = get_embedding("prithvi", spatial=spatial, temporal=temporal, output=output
 Use `get_embedding` for one model, `compare_embeddings` for several models,
 and `plot_embedding_comparison` to display their results together.
 
-![Sentinel-2 reference and 22 real model outputs](assets/comparison/all-models.png)
+![Sentinel-2 reference and 22 real model outputs](assets/comparison/all-models.webp)
 
 [Run the comparison tutorial](tutorials/model-comparison.md) ·
 [Hugging Face weights and official resources](model-resources.md) ·
@@ -19,8 +24,8 @@ the same Wuhan extent. Each panel uses its own PCA colors and spatial support;
 this qualitative view is not a model ranking.
 
 <picture>
-  <source media="(max-width: 760px)" srcset="assets/earth-embedding-hero-mobile.svg">
-  <img src="assets/earth-embedding-hero.svg" width="100%" alt="Earth Embedding: images, locations and precomputed products through a shared Python interface.">
+  <source media="(max-width: 760px)" srcset="assets/brand/how-it-works-mobile.svg">
+  <img src="assets/brand/how-it-works.svg" width="100%" alt="Earth Embedding: images, locations and precomputed products through a shared Python interface.">
 </picture>
 
 Earth Embedding provides a shared Python interface for image encoders, location encoders, and precomputed geospatial embedding products. Its catalog contains 22 adapters across these three release classes. Choose the input you have, check the model's contract, and retain both embedding values and provenance for downstream analysis.
@@ -29,11 +34,12 @@ This project is an independent extension of [CyberGIS rs-embed](https://github.c
 
 ## Choose a starting point
 
-**Start with real results:** [five-line AEF map, Esri GLE, spatial classification,
-and four executed notebooks](tutorials/real-demos.md). Small real samples are
-bundled; the first map and downstream probe run on CPU without credentials.
+**Start with real results:** [five-line AEF map, Esri GLE, two-fold spatial
+classification, and executed notebooks](tutorials/real-demos.md). A complete
+6,336-cell Bay Area grid is bundled; the first map and downstream probe run on CPU
+without credentials.
 
-![Bay Area spatial classification demo](assets/demos/bayarea-classification.png)
+![Bay Area two-fold spatial classification demo](assets/demos/bayarea-classification.png)
 
 | Your input | Entry point | Guide |
 | --- | --- | --- |

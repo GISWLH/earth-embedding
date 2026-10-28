@@ -45,10 +45,11 @@ write(
             + """
 Expected time: under one minute after installation. Download during this notebook: 0 bytes.
 Source: Google / Google DeepMind AlphaEarth Foundations annual **2021**, CC-BY-4.0.
-The bundled 5933-cell sample spans the San Francisco Bay Area and surroundings,
-[-122.6,37.3,-121.6,38.3], approximately 88 × 111 km. It contains official
+The bundled sample is a complete 72 × 88 grid of 6,336 cells covering the
+San Francisco Bay Area and surroundings (about 122.54–121.48° W, 37.30–38.32° N;
+92 × 113 km). Every cell inside the frame is present. It contains official
 1280 m overview vectors (normalized sums of native AEF vectors), not 10 m
-point samples or optical RGB. The complete checked bundle is about 2.1 MB.""",
+point samples or optical RGB. The complete checked bundle is about 2.3 MB.""",
         ),
         ("code", setup),
         (
@@ -92,7 +93,7 @@ Expected time: 1–2 minutes on CPU. First download: official ~3.7 MB package;
 subsequent runs: 0 bytes. Weights are not included in the repository.
 Source: [Esri Global Location Encoder](https://www.arcgis.com/home/item.html?id=b0664ef297c04d4aaa44191cf21e07f3),
 subject to Esri's model terms. The adapter validates the pinned checkpoint.
-The 5933 query locations cover the San Francisco Bay Area, about 88 × 111 km. A location encoder has
+The 6,336 query locations cover the San Francisco Bay Area, about 92 × 113 km. A location encoder has
 no requested observation year; these are geographic priors, not 2021 imagery.
 If the first download fails, restore connectivity and rerun; no synthetic fallback.""",
         ),
@@ -129,18 +130,21 @@ write(
             + intro
             + """
 Expected time: under one minute. Download: 0 bytes. Source: San Francisco Bay
-Area, 5933 official 1280 m AEF **2021** overview cells and ESA WorldCover
+Area, 6,336 official 1280 m AEF **2021** overview cells and ESA WorldCover
 **2021 v200** grouped dominant labels (both CC-BY-4.0; see bundled provenance).
 Reference labels aggregate native 10 m pixel centers inside each AEF polygon.
 This is a software teaching example, **not reproduction of the current global
 paper benchmark**. It does not add any model to the frozen 20-system study.
 
-The split was fixed before evaluation: south (maxlat <=37.88) trains, north
-(minlat >=37.93) tests, with at least about 5.5 km between footprints.
-3383 train / 2173 test / 375 buffer cells; two bare cells are excluded.
-The four classes are built, vegetation, cropland and water. Only nine training
-cells are cropland: this geographic class imbalance is retained, not resampled.
-No parameter selection or test-label tuning: StandardScaler + LogisticRegression(C=1, tol=1e-8, seed=42).
+The split was fixed before evaluation: two spatial folds by grid column.
+A model fitted only on the west half (columns 0–32) predicts the east half
+(columns 39–71), and a model fitted only on the east half predicts the west.
+Six buffer columns (7.68 km) are never fitted or scored, so every scored cell
+has an out-of-fold prediction: 5,806 scored cells, 528 buffer cells, two bare
+cells not scored. The four classes are built, vegetation, cropland and water.
+Cropland is concentrated in the east (512 vs 51 cells); the imbalance is retained,
+not resampled. No parameter selection or test-label tuning:
+StandardScaler + LogisticRegression(C=1, class_weight="balanced", tol=1e-8, seed=42).
 Training uses float64 and a strict convergence tolerance for numerical reproducibility.""",
         ),
         (
@@ -157,10 +161,14 @@ print(json.dumps(result["metrics"], indent=2))""",
         ),
         (
             "code",
-            """train = result["samples"].demo_split.eq("train").to_numpy()
-np.testing.assert_allclose(result["estimator"].named_steps["standardscaler"].mean_, bayarea.features[train].mean(axis=0, dtype=np.float64))
-assert result["samples"].loc[~result["samples"].demo_split.eq("test"), "prediction"].isna().all()
-print("Scaler fitted on train only; predictions and metrics restricted to held-out north.")""",
+            """samples = result["samples"]
+for fit_on, predict in [("west", "east"), ("east", "west")]:
+    train = samples.demo_split.eq(fit_on).to_numpy() & samples.class_name.ne("bare").to_numpy()
+    scaler = result["estimators"][f"{fit_on}_to_{predict}"].named_steps["standardscaler"]
+    np.testing.assert_allclose(scaler.mean_, bayarea.features[train].mean(axis=0, dtype=np.float64))
+    assert samples.loc[samples.demo_split.eq(predict) & samples.prediction.notna(), "predicted_by"].eq(f"fit_{fit_on}").all()
+assert samples.loc[samples.demo_split.eq("buffer"), "prediction"].isna().all()
+print("Each scaler was fitted on its own half only; every scored cell is out of fold.")""",
         ),
         (
             "code",
@@ -172,10 +180,10 @@ plt.show()""",
         ),
         (
             "md",
-            """Gray areas have no held-out prediction. Red errors and confusion-matrix
+            """The hatched buffer is neither fitted nor scored. Red errors and confusion-matrix
 rows compare predictions to WorldCover reference labels, not field-survey truth.
 OA is overall accuracy; Macro-F1 gives each of the four classes equal weight;
-Balanced Accuracy is mean per-class recall. One regional holdout has no uncertainty
+Balanced Accuracy is mean per-class recall. Two regional folds give no uncertainty
 estimate or global generalization claim. Same-year input and reference products
 may share satellite signals; the buffer reduces immediate adjacency leakage,
 but does not remove all spatial autocorrelation.""",
@@ -191,7 +199,7 @@ write(
             + intro
             + """
 Expected time: under one minute. Download: 0 bytes. Uses the same real AEF 2021
-Bay Area 5933-cell data and WorldCover labels (CC-BY-4.0) as notebook 03.
+Bay Area 6,336-cell data and WorldCover labels (CC-BY-4.0) as notebook 03.
 AEF overview vectors and GLE geographic priors have different spatial support
 and input semantics. This notebook teaches
 portable exports and ID alignment instead of claiming a fair model comparison.""",

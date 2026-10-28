@@ -6,8 +6,8 @@ repo_name: GISWLH/earth-embedding
 
 theme:
   name: material
-  logo: assets/earth-embedding-logo.svg
-  favicon: assets/earth-embedding-logo.svg
+  logo: assets/brand/logo.svg
+  favicon: assets/brand/logo.svg
   font:
     text: IBM Plex Sans
     code: IBM Plex Mono
@@ -61,6 +61,7 @@ extra_css:
   - stylesheets/extra.css
 
 not_in_nav: |
+  /assets/brand/README.md
   /concepts.md
   /workflows.md
   /limitations.md

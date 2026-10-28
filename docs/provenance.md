@@ -38,7 +38,7 @@ The repository's [Apache-2.0 license](https://github.com/GISWLH/earth-embedding/
 | SatCLIP | [Microsoft SatCLIP](https://github.com/microsoft/satclip); source/checkpoint terms apply |
 | Esri Global Location Encoder | [Official model documentation](https://doc.arcgis.com/en/pretrained-models/latest/vector/introduction-to-global-location-encoder-sentinel-2-.htm); Esri software and model terms apply separately |
 | Google Satellite Embedding | [Official GCS guide](https://developers.google.com/earth-engine/guides/aef_on_gcs_readme); CC-BY-4.0 with required attribution |
-| Original artwork | Repository Apache-2.0; embedded fonts retain separate licenses listed in the [artwork guide](assets/earth-embedding-brand.md) |
+| Original artwork | Repository Apache-2.0; embedded fonts retain separate licenses listed in the [artwork guide](assets/brand/README.md) |
 
 The Esri adapter downloads Esri's official model package on demand and runs its location encoder with the bundled MIT-licensed SatCLIP architecture. The repository does not redistribute Esri checkpoints or claim that their license is Apache-2.0. The package and checkpoint hashes are pinned in the adapter and documented on the [Esri model page](models/esri_gle.md). Public download access does not replace the model's usage terms.
 

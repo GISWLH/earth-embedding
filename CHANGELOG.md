@@ -8,6 +8,32 @@ The format is based on Keep a Changelog, and the project follows Semantic Versio
 
 ## [Unreleased]
 
+### Visual identity, complete demo grid and repository layout
+
+- Replace the README header with a hand-drawn Excalidraw banner and introduce a
+  matching logo (globe in vector brackets breaking into embedding cells); redraw the
+  "how it works" and real-data workflow diagrams in the same style. All artwork lives
+  in `docs/assets/brand/` with editable sources, mobile variants and font licenses.
+- Rebuild the Bay Area demo as a complete 72 × 88 whole-cell grid (6,336 cells) on the
+  official AEF overview grid. The previous lon/lat-box selection clipped the rotated
+  UTM grid and left ocean no-data holes, so maps had ragged, missing edges.
+- `classify_demo` now uses two spatial folds (west ⇄ east, 7.68 km buffer) with a
+  class-balanced logistic regression, so every scored cell has a held-out prediction:
+  OA 93.64%, macro-F1 91.64% on 5,806 cells. Results expose `estimators` per fold and
+  a `predicted_by` column.
+- `plot_map` draws complete grids as one seamless curvilinear mesh cropped to the
+  inner frame and labels ticks exactly in degrees; `plot_classification` uses a
+  single-row layout with a shared legend and a recall-normalized confusion matrix.
+- `plot_embedding_comparison` uses constrained layout and sizes each row to its
+  panels, removing the empty bands under wide global maps.
+- Reorganize the repository: research planning notes move to
+  `survey_satellite_embedding/notes/`, unused legacy images are removed, and the
+  README is restructured (English, Chinese, Japanese) around install, quickstart,
+  gallery, tutorials and the model catalog.
+- Add `scripts/optimize_images.py` and compress committed figures and notebook outputs.
+
+### Earlier unreleased changes
+
 - Add multi-model extraction and comparison figures through `compare_embeddings`
   and `plot_embedding_comparison`, including explicit failure panels and bounded
   model-runtime retention.

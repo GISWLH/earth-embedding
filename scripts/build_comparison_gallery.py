@@ -78,6 +78,14 @@ def public_metadata(value):
     return value
 
 
+def geoclip_version() -> str:
+    # Cached location runs carry their own receipts; GeoCLIP is only needed to recompute.
+    try:
+        return importlib.metadata.version("geoclip")
+    except importlib.metadata.PackageNotFoundError:
+        return "not installed; cached GeoCLIP run reused"
+
+
 def sample_coordinates(bbox, height: int, width: int) -> np.ndarray:
     west, south, east, north = bbox
     lons = west + (np.arange(width) + 0.5) * (east - west) / width
@@ -273,7 +281,7 @@ def build(args):
         title="Three location encoders, two spatial scales\n"
         "Global: 180 x 80 queries, 80 S to 80 N | Wuhan: 64 x 48 queries",
         save_path=location_png,
-        dpi=160,
+        dpi=130,
     )
     plt.close(figure)
     provenance = {
@@ -286,7 +294,7 @@ def build(args):
             "torch": torch.__version__,
             "numpy": np.__version__,
             "matplotlib": matplotlib.__version__,
-            "geoclip": importlib.metadata.version("geoclip"),
+            "geoclip": geoclip_version(),
             "device": args.device,
         },
         "visualization": {
@@ -325,7 +333,7 @@ def build(args):
             reference=reference_rgb,
             reference_title="Sentinel-2 reference\nWuhan | May-Oct 2021",
             title="22 models in the Wuhan region\n16 image encoders + 3 products + 3 location encoders",
-            dpi=170,
+            dpi=120,
         )
         for index, model in enumerate(archived):
             ax = figure.axes[index + 1]
@@ -340,15 +348,19 @@ def build(args):
                 ax.texts[0].set_text("precomputed product / 2021")
             elif model in IMAGE_MODELS:
                 ax.texts[0].set_text("image encoder / 2021 imagery")
-        figure.text(
-            0.5,
-            0.951,
-            "Historical image/product outputs + newly sampled coordinates; support and dates differ.",
-            ha="center",
-            fontsize=10,
+        figure.supxlabel(
+            figure.get_supxlabel() + "\nHistorical image/product outputs + newly sampled "
+            "coordinates; spatial support and dates differ between panels.",
+            fontsize=8,
             color="#526071",
         )
-        figure.savefig(args.output_dir / "all-models.png", dpi=170, bbox_inches="tight")
+        # Noisy multi-panel PCA maps compress poorly as PNG; WebP q90 is visually lossless here.
+        figure.savefig(
+            args.output_dir / "all-models.webp",
+            dpi=120,
+            bbox_inches="tight",
+            pil_kwargs={"quality": 90, "method": 6},
+        )
         plt.close(figure)
         provenance.update(
             {
@@ -360,7 +372,7 @@ def build(args):
                 "historical_models": records,
             }
         )
-        provenance["images"]["all-models.png"] = sha256(args.output_dir / "all-models.png")
+        provenance["images"]["all-models.webp"] = sha256(args.output_dir / "all-models.webp")
     (args.output_dir / "provenance.json").write_text(json.dumps(provenance, indent=2) + "\n")
 
 

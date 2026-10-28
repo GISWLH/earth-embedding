@@ -4,84 +4,93 @@
   "estimator": {
     "name": "StandardScaler + LogisticRegression",
     "C": 1.0,
+    "class_weight": "balanced",
     "tol": 1e-08,
-    "max_iter": 2000,
+    "max_iter": 4000,
     "dtype": "float64",
     "solver": "lbfgs"
   },
   "model": "AEF 2021 official 1280m overview features",
-  "total": 5933,
+  "total": 6336,
+  "scored": 5806,
   "split_counts": {
-    "train": 3383,
-    "test": 2173,
-    "buffer": 375,
-    "excluded_other_class": 2
+    "west": 2904,
+    "east": 2904,
+    "buffer": 528
   },
   "class_counts": {
     "buffer": {
       "bare": 0,
-      "built": 44,
-      "cropland": 28,
-      "vegetation": 254,
-      "water": 49
+      "built": 158,
+      "cropland": 1,
+      "vegetation": 299,
+      "water": 70
     },
-    "excluded_other_class": {
+    "east": {
+      "bare": 0,
+      "built": 325,
+      "cropland": 512,
+      "vegetation": 1936,
+      "water": 131
+    },
+    "west": {
       "bare": 2,
-      "built": 0,
-      "cropland": 0,
-      "vegetation": 0,
-      "water": 0
-    },
-    "test": {
-      "bare": 0,
-      "built": 249,
-      "cropland": 239,
-      "vegetation": 1292,
-      "water": 393
-    },
-    "train": {
-      "bare": 0,
-      "built": 695,
-      "cropland": 9,
-      "vegetation": 1864,
-      "water": 815
+      "built": 504,
+      "cropland": 51,
+      "vegetation": 1433,
+      "water": 914
     }
   },
-  "split": "South maxlat<=37.88 train; north minlat>=37.93 test; intervening cells buffer; exclude 2 bare cells",
-  "minimum_latitude_gap": 0.050136497899998744,
+  "split": "Two spatial folds: west columns 0-32 and east columns 39-71 each predicted by a model fitted only on the other; buffer columns 33-38 (7.68 km) never fitted or scored; 2 bare cells not scored",
+  "folds": {
+    "west_to_east": {
+      "train": 2902,
+      "test": 2904,
+      "longitude_gap_degrees": 0.07370625000000075,
+      "oa": 0.9245867768595041,
+      "macro_f1": 0.9099366540787154
+    },
+    "east_to_west": {
+      "train": 2904,
+      "test": 2902,
+      "longitude_gap_degrees": 0.07370625000000075,
+      "oa": 0.9483115093039284,
+      "macro_f1": 0.8785140191112852
+    }
+  },
   "classes": [
     "built",
     "vegetation",
     "cropland",
     "water"
   ],
-  "oa": 0.9139438564196962,
-  "macro_f1": 0.8748814661172164,
-  "balanced_accuracy": 0.8564632366572049,
+  "oa": 0.936445056837754,
+  "macro_f1": 0.9163557541608149,
+  "balanced_accuracy": 0.9262857730967446,
   "confusion_matrix": [
     [
-      233,
-      15,
-      0,
-      1
+      799,
+      23,
+      4,
+      3
     ],
     [
-      17,
-      1237,
-      29,
-      9
-    ],
-    [
-      2,
-      103,
-      134,
-      0
+      65,
+      3154,
+      127,
+      23
     ],
     [
       0,
-      10,
-      1,
-      382
+      90,
+      470,
+      3
+    ],
+    [
+      3,
+      24,
+      4,
+      1014
     ]
   ]
 }

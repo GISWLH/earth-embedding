@@ -7,7 +7,7 @@ reports failed requests explicitly.
 
 ## A real 22-model example
 
-![Sentinel-2 reference and 22 genuine model outputs in the Wuhan region](../assets/comparison/all-models.png)
+![Sentinel-2 reference and 22 genuine model outputs in the Wuhan region](../assets/comparison/all-models.webp)
 
 This gallery combines **16 image encoders, three precomputed products, and three
 location encoders** for Wuhan, China. Most panels cover
@@ -48,7 +48,7 @@ Different visual texture, feature dimensions, or apparent detail do not establis
 downstream accuracy. Query spacing for location encoders is sampling density,
 not a claim of learned physical resolution.
 
-[Download the full-resolution figure](../assets/comparison/all-models.png) ·
+[Download the full-resolution figure](../assets/comparison/all-models.webp) ·
 [Read the source hashes and run provenance](../assets/comparison/provenance.json)
 
 ## Start with a small selection

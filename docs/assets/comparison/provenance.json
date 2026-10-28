@@ -1,8 +1,8 @@
 {
   "schema": "earth-embedding-comparison-gallery-v1",
-  "created_utc": "2026-10-13T15:43:32.952854+00:00",
+  "created_utc": "2026-10-27T19:37:30.050924+00:00",
   "purpose": "qualitative_library_demonstration_not_new_benchmark",
-  "script_sha256": "260d7636a0edbcf783bb2d9fdddc4e3084b951104f61887d0aa454295f5a8490",
+  "script_sha256": "e63c2b5377bfd0a69c3cceeb1deabf4dedf95660eec870131e6d7598dc811cbc",
   "environment": {
     "python": "3.12.2",
     "torch": "2.12.0+cu130",
@@ -378,11 +378,11 @@
     }
   ],
   "images": {
-    "location-encoders.png": "c0f6e47ade1d09472bebf72a76d9df12c4911794a02c9f573453ac1035b262d4",
-    "all-models.png": "daad5279ddb6954d20b938ca04812664f96ab113d0d59cfd41e71e390fa74458"
+    "location-encoders.png": "84932add16a965f826cbe39c7517b8d54caed8accd72a719edb8a7f9af1a0f27",
+    "all-models.webp": "1dfa495f8703c778baf58a82084bc8e0b775e382ced083ae9175de82f6374b65"
   },
   "historical_archive_name": "part2_model_map_figure",
-  "historical_manifest_sha256": "0edbcb3cc992c3e248dabbe8c82af5da090348eb577ec55eaf463e1fef898ede",
+  "historical_manifest_sha256": "af68bb942b98cd60b40c68c9108fa9fd2f3abf192b75ab7f9d4def61a937b83c",
   "historical_reference_sha256": "805091082e0fe7682e09604140631ee8c04cb3506e69f2a4e98b5e89205ba4ef",
   "historical_reference_crop_ltrb_pixels": [
     18,
@@ -412,7 +412,7 @@
           "file": "blocks_2x/remoteclip/block_r01_c01.npz",
           "sha256": "163c7713b0e9ccd9af768c2d0ccc9ee386918fcb64dbd2f830ff01712033761c",
           "metadata_file": "blocks_2x/remoteclip/block_r01_c01.json",
-          "metadata_sha256": "f6bb487c970f6bf9d3bef6fcd792bd31cac6bf64cde4ba831fb83b65f50eb222",
+          "metadata_sha256": "f408900fdbf6ab1e95fe5767adf6b1e74b773fd0606e6fe3f74b8ce68262d92e",
           "shape": [
             768,
             7,
@@ -471,7 +471,7 @@
           "file": "blocks_2x/remoteclip/block_r01_c02.npz",
           "sha256": "bf18621143e9e9969b63d822b83e61f50d943ef7c4e60daa5d4a19dc593b2518",
           "metadata_file": "blocks_2x/remoteclip/block_r01_c02.json",
-          "metadata_sha256": "091b61c1b77feffca0b3e488a5f6e7bbc41b31393a9c7f7d030f4142cbdd7efb",
+          "metadata_sha256": "01bcc93b1e8d882bd7ae117317a362f7114b3733f7e140073b86202a086bc30f",
           "shape": [
             768,
             7,
@@ -530,7 +530,7 @@
           "file": "blocks_2x/remoteclip/block_r02_c01.npz",
           "sha256": "ec1bda3f4a6ecde7796a19b10bfb15bb055ef1440502986bfbb82825ec649e7a",
           "metadata_file": "blocks_2x/remoteclip/block_r02_c01.json",
-          "metadata_sha256": "4a0eed7a156212bdbb76bc1192bd0c8738035c3fb57a1e95677fbf92d116bce4",
+          "metadata_sha256": "a7c63369736b97b7a196f0b8144a88b3a9f2f5b4989761ce098c543f7a38a75c",
           "shape": [
             768,
             7,
@@ -589,7 +589,7 @@
           "file": "blocks_2x/remoteclip/block_r02_c02.npz",
           "sha256": "27379e085c1cc3a9bfd742751ea3bf10f6dfa2b95b2a153cb7783f77012d5715",
           "metadata_file": "blocks_2x/remoteclip/block_r02_c02.json",
-          "metadata_sha256": "4d30a6ad736f3400659ef21632b6405eee2a623c0de515581cce468507937f00",
+          "metadata_sha256": "d793d723863267d8210843bad54c5088ea3f78118293f8ddb6f3a952303a1907",
           "shape": [
             768,
             7,
@@ -661,7 +661,7 @@
           "file": "blocks_2x/satmae/block_r01_c01.npz",
           "sha256": "adbd26a48740f5dbe505fc19df81a253d104659988017fad19ccf4e747949c99",
           "metadata_file": "blocks_2x/satmae/block_r01_c01.json",
-          "metadata_sha256": "ee16b122d03fefe9fc9deba2683f19461d8bbba6ce969775195329d4ca25d92e",
+          "metadata_sha256": "e40fd983f582247361e5caf454091902b6a71624feff1284cf2975f8ec1e3e3f",
           "shape": [
             1024,
             14,
@@ -699,7 +699,7 @@
           "file": "blocks_2x/satmae/block_r01_c02.npz",
           "sha256": "eebdad456a3bb46d0c3fe1e5e3ce550c126cb483783402060a28fe8b97adc27f",
           "metadata_file": "blocks_2x/satmae/block_r01_c02.json",
-          "metadata_sha256": "7c2981d85eaf10fc4b4bcaa5126a3d62e475fc6dd70cc76ff1f0947e08e004d8",
+          "metadata_sha256": "85cd3264ce639f3cd6657efa954aeda01bfe0ec9a81f720b60aa0b29fe9597b2",
           "shape": [
             1024,
             14,
@@ -737,7 +737,7 @@
           "file": "blocks_2x/satmae/block_r02_c01.npz",
           "sha256": "14d06bceafb61434132cb82b881662ddf4cf4adb453e54733f1dfe45163accab",
           "metadata_file": "blocks_2x/satmae/block_r02_c01.json",
-          "metadata_sha256": "4fa7fcc00e1414b746552ae274ddd89e9530a02ac7208e601e11560b20528cc3",
+          "metadata_sha256": "e0c8f942436c153b17edfc70dc23bc3f6ee92ddf75bddcd0e315eca31539777d",
           "shape": [
             1024,
             14,
@@ -775,7 +775,7 @@
           "file": "blocks_2x/satmae/block_r02_c02.npz",
           "sha256": "ad8cca80607416f8269781d1e88f9ad2caba95ff3009fc6b84b11c194f3e09c5",
           "metadata_file": "blocks_2x/satmae/block_r02_c02.json",
-          "metadata_sha256": "0d352ca2231892844ff8f4fb1cccd7a70219f5b0ddb58a9174f5a946466ead90",
+          "metadata_sha256": "cedb5f1489ff27bb0ce72728a8d3bc694a1b27a4c626eff734ac9559e763f30e",
           "shape": [
             1024,
             14,
@@ -826,7 +826,7 @@
           "file": "blocks_2x/satmaepp/block_r01_c01.npz",
           "sha256": "f3c56617248fb7d441e3946e6f971c53e9e55a822f566ec30c9f5c10229e6a14",
           "metadata_file": "blocks_2x/satmaepp/block_r01_c01.json",
-          "metadata_sha256": "a6e34bdedb15c1aaca45e2a0955ac10b4793d679dced058fa00ec7e6f1eb3d27",
+          "metadata_sha256": "76c68feec8b8e5f53e1a3cf1ba10e3ea24abc012773b88d47f4c13ca7a00b627",
           "shape": [
             1024,
             14,
@@ -870,7 +870,7 @@
           "file": "blocks_2x/satmaepp/block_r01_c02.npz",
           "sha256": "f2fa92106bc1568cf3bf71cac81bfbb4703f38d8094988a7ead072a8a03a0bc4",
           "metadata_file": "blocks_2x/satmaepp/block_r01_c02.json",
-          "metadata_sha256": "8d617a82f43a1c7cd6902caccafdb020d1ffeba93df83c4437e06af0d93b00aa",
+          "metadata_sha256": "135bf2803579d01430756a3eef0bf80e4e4609b8e19a969767a219bd857eebe6",
           "shape": [
             1024,
             14,
@@ -914,7 +914,7 @@
           "file": "blocks_2x/satmaepp/block_r02_c01.npz",
           "sha256": "9b9b3fcc3484f0afc1b736c2736771db597d79310e2b4172d71d186eda86efec",
           "metadata_file": "blocks_2x/satmaepp/block_r02_c01.json",
-          "metadata_sha256": "cf88bcf043993310b81b96168d32ccc2eada3c098007aefebc79e75f35f27a3e",
+          "metadata_sha256": "2bdf0dfb4a391b116a4db338e5e5fa4bce764d79c3aaffd1b7b6cbb53ead8283",
           "shape": [
             1024,
             14,
@@ -958,7 +958,7 @@
           "file": "blocks_2x/satmaepp/block_r02_c02.npz",
           "sha256": "69a30080a14efca53179298dcbfb17151e98847a4aac99401f0f49204a6b7ed5",
           "metadata_file": "blocks_2x/satmaepp/block_r02_c02.json",
-          "metadata_sha256": "c47ed9f9bbaf3afe429b76ae0755f717aa3965468292a65b94e747f574777f82",
+          "metadata_sha256": "00eac8eca6fdc7b62d249c161611f654c3a9289079671090c48ca5a78df4df36",
           "shape": [
             1024,
             14,
@@ -1015,7 +1015,7 @@
           "file": "blocks_2x/scalemae/block_r01_c01.npz",
           "sha256": "13a70247caffa1a9e6e2d1a8ff102fcb90105d87f78db9f90753b6205e661721",
           "metadata_file": "blocks_2x/scalemae/block_r01_c01.json",
-          "metadata_sha256": "c9cb0c16e0b2454c8d0644b6be14286aeb013f8460e2f1f5f97390897e79c31b",
+          "metadata_sha256": "f1c10e2166229d4e84bceb54fed908f7159c4c32d5b29c990715c5ec9a30d123",
           "shape": [
             1024,
             14,
@@ -1063,7 +1063,7 @@
           "file": "blocks_2x/scalemae/block_r01_c02.npz",
           "sha256": "f8f35182ef91cb8c107f7a04d5a7f82daaf6a1b2d6328c144e42a42dcb6679cd",
           "metadata_file": "blocks_2x/scalemae/block_r01_c02.json",
-          "metadata_sha256": "7e434b286827a7bc6e471fa20ab9593f2e52d1c340acbad0539317e697fba81e",
+          "metadata_sha256": "48e758ab9c77cd80501f7ab983a9b9482201467f30e571b2754e256465defd3c",
           "shape": [
             1024,
             14,
@@ -1111,7 +1111,7 @@
           "file": "blocks_2x/scalemae/block_r02_c01.npz",
           "sha256": "5446f82458aaee72633936018ad8c46fcf8dbbaab9a661c3fcfe6416a4b98753",
           "metadata_file": "blocks_2x/scalemae/block_r02_c01.json",
-          "metadata_sha256": "776674bc97742f1b62c59af2def351093fb384d44516e8fa216e3887bf4db2ac",
+          "metadata_sha256": "12a3dd509313e6948b596466424c34509cf1b6e1c36026cd20ab3711444654aa",
           "shape": [
             1024,
             14,
@@ -1159,7 +1159,7 @@
           "file": "blocks_2x/scalemae/block_r02_c02.npz",
           "sha256": "1763e095bc6843c23b80af8740c5e70a4d9a8ba1bf57a7a572f88e2b2754c1a7",
           "metadata_file": "blocks_2x/scalemae/block_r02_c02.json",
-          "metadata_sha256": "1c5703ae3ef6d53ea9cd7bd7f4b3b450f64f93f5bab9d67ccdfda80e3be9fee4",
+          "metadata_sha256": "ad318e5d5284b4f33af31eca897f1860c2f1a903a37413dfab7ea16ea99c1947",
           "shape": [
             1024,
             14,
@@ -1220,7 +1220,7 @@
           "file": "blocks_2x/wildsat/block_r01_c01.npz",
           "sha256": "a26793209552298475b371dfe5af678a4828f053b9c4eeba0dfa6620345d1955",
           "metadata_file": "blocks_2x/wildsat/block_r01_c01.json",
-          "metadata_sha256": "113615ebd22e4ff2423615e90cd40f59a5d7adfcd175a3e068d6352f55caf2bf",
+          "metadata_sha256": "33a4fe3435136a802d98af3d924732fa10d46089a730ee4683d37d2ec243e128",
           "shape": [
             768,
             14,
@@ -1282,7 +1282,7 @@
           "file": "blocks_2x/wildsat/block_r01_c02.npz",
           "sha256": "15cdd0fca89242cfd19b7ca44108d413ad08efb0f3d706f7c7566716d735fb70",
           "metadata_file": "blocks_2x/wildsat/block_r01_c02.json",
-          "metadata_sha256": "43961d40aa80f02fb526fcd91281bd157893114d3b0f01646063787d544d71a0",
+          "metadata_sha256": "44c12533b6476dd0762ab8b0f7d66f835c75c52778380a0f97f55592a723e478",
           "shape": [
             768,
             14,
@@ -1344,7 +1344,7 @@
           "file": "blocks_2x/wildsat/block_r02_c01.npz",
           "sha256": "d9eb9caf6947e1b4b1b7d0071675abde97bdce9736d0d4beb0ffc7a5c7ef5130",
           "metadata_file": "blocks_2x/wildsat/block_r02_c01.json",
-          "metadata_sha256": "c08df0c6343250ae1f7342ca4d7c29865aae8ead8123a3e7b340177d82f292ca",
+          "metadata_sha256": "cc5e16df4c59c7857142d3e61b3e2cca83fa6a6cd4cf1ff0b51457aca17b9d32",
           "shape": [
             768,
             14,
@@ -1406,7 +1406,7 @@
           "file": "blocks_2x/wildsat/block_r02_c02.npz",
           "sha256": "21aa5b72949b4021141b4d35fca82e95b0b93c912d60d46346cad831431f56b1",
           "metadata_file": "blocks_2x/wildsat/block_r02_c02.json",
-          "metadata_sha256": "2309ced7257419e32016d5735ce68d13f2083c0fc2561f66e6e43aa5f03772ab",
+          "metadata_sha256": "fb51d04437851700edddee0bc386e7157ad0a009d302d8c28410807bf3fb95d7",
           "shape": [
             768,
             14,
@@ -1481,7 +1481,7 @@
           "file": "blocks_2x/satmaepp_s2_10b/block_r01_c01.npz",
           "sha256": "a5835b48d1462e0dd548afbc6fbf0e853a6f6a09bfd1659099f1ce7c5cbceec9",
           "metadata_file": "blocks_2x/satmaepp_s2_10b/block_r01_c01.json",
-          "metadata_sha256": "88e13a7d2968a327829671fd3608062c68afc58d3c64c79fb73f2957180b5885",
+          "metadata_sha256": "c925a16ce919532c8366403846df29758c2e3853b40eb63e772ec5ea5339f985",
           "shape": [
             1024,
             12,
@@ -1502,7 +1502,7 @@
             "sensor": "{'collection': 'COPERNICUS/S2_SR_HARMONIZED', 'bands': ('B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'B8', 'B8A', 'B11', 'B12'), 'scale_m': 10, 'cloudy_pct': 30, 'fill_value': 0.0, 'composite': 'median', 'modality': None, 'orbit': None, 'use_float_linear': True, 's1_require_iw': True, 's1_relax_iw_on_empty': True, 'check_input': False, 'check_raise': True, 'check_save_dir': None}",
             "temporal": "{'mode': 'range', 'start': '2021-05-01', 'end': '2021-10-31'}",
             "image_size": "96",
-            "hf_id": "mubashir04/checkpoint_ViT-L_pretrain_fmow_sentinel//home/lhwang/Desktop/test/rs-embed/paper/research_outputs/model_cache/checkpoint_ViT-L_pretrain_fmow_sentinel.pth",
+            "hf_id": "mubashir04/checkpoint_ViT-L_pretrain_fmow_sentinel//home/lhwang/Desktop/test/rs-embed/research_outputs/model_cache/checkpoint_ViT-L_pretrain_fmow_sentinel.pth",
             "tokens_kind": "tokens_forward_encoder_group_channel",
             "tokens_shape": "(433, 1024)",
             "bands": "('B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'B8', 'B8A', 'B11', 'B12')",
@@ -1537,7 +1537,7 @@
           "file": "blocks_2x/satmaepp_s2_10b/block_r01_c02.npz",
           "sha256": "20851d50a5cfc8989be31fb9e32eddab452efb556818b7618ac862d5ebacafc2",
           "metadata_file": "blocks_2x/satmaepp_s2_10b/block_r01_c02.json",
-          "metadata_sha256": "77beeefee7c930985d8abca58ee30442012b076fd88a662cf696873a6716ffcc",
+          "metadata_sha256": "d05d8af79a6bfcfc425917b18fcb9e0390f4d43f74496cae3694ef0de109c654",
           "shape": [
             1024,
             12,
@@ -1558,7 +1558,7 @@
             "sensor": "{'collection': 'COPERNICUS/S2_SR_HARMONIZED', 'bands': ('B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'B8', 'B8A', 'B11', 'B12'), 'scale_m': 10, 'cloudy_pct': 30, 'fill_value': 0.0, 'composite': 'median', 'modality': None, 'orbit': None, 'use_float_linear': True, 's1_require_iw': True, 's1_relax_iw_on_empty': True, 'check_input': False, 'check_raise': True, 'check_save_dir': None}",
             "temporal": "{'mode': 'range', 'start': '2021-05-01', 'end': '2021-10-31'}",
             "image_size": "96",
-            "hf_id": "mubashir04/checkpoint_ViT-L_pretrain_fmow_sentinel//home/lhwang/Desktop/test/rs-embed/paper/research_outputs/model_cache/checkpoint_ViT-L_pretrain_fmow_sentinel.pth",
+            "hf_id": "mubashir04/checkpoint_ViT-L_pretrain_fmow_sentinel//home/lhwang/Desktop/test/rs-embed/research_outputs/model_cache/checkpoint_ViT-L_pretrain_fmow_sentinel.pth",
             "tokens_kind": "tokens_forward_encoder_group_channel",
             "tokens_shape": "(433, 1024)",
             "bands": "('B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'B8', 'B8A', 'B11', 'B12')",
@@ -1593,7 +1593,7 @@
           "file": "blocks_2x/satmaepp_s2_10b/block_r02_c01.npz",
           "sha256": "0166f6673d13b603df8f6f6cf0f857c40ece54bf2753b62d9bf7f8e10eb5523a",
           "metadata_file": "blocks_2x/satmaepp_s2_10b/block_r02_c01.json",
-          "metadata_sha256": "8353f3837a4f8490f1f99e19df2b74303a785f9511d1e025ee8c753f024bbcd2",
+          "metadata_sha256": "cad574abe54afc659c10a8d7e81df420942f34137f5317bbfabd807b5d76dae6",
           "shape": [
             1024,
             12,
@@ -1614,7 +1614,7 @@
             "sensor": "{'collection': 'COPERNICUS/S2_SR_HARMONIZED', 'bands': ('B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'B8', 'B8A', 'B11', 'B12'), 'scale_m': 10, 'cloudy_pct': 30, 'fill_value': 0.0, 'composite': 'median', 'modality': None, 'orbit': None, 'use_float_linear': True, 's1_require_iw': True, 's1_relax_iw_on_empty': True, 'check_input': False, 'check_raise': True, 'check_save_dir': None}",
             "temporal": "{'mode': 'range', 'start': '2021-05-01', 'end': '2021-10-31'}",
             "image_size": "96",
-            "hf_id": "mubashir04/checkpoint_ViT-L_pretrain_fmow_sentinel//home/lhwang/Desktop/test/rs-embed/paper/research_outputs/model_cache/checkpoint_ViT-L_pretrain_fmow_sentinel.pth",
+            "hf_id": "mubashir04/checkpoint_ViT-L_pretrain_fmow_sentinel//home/lhwang/Desktop/test/rs-embed/research_outputs/model_cache/checkpoint_ViT-L_pretrain_fmow_sentinel.pth",
             "tokens_kind": "tokens_forward_encoder_group_channel",
             "tokens_shape": "(433, 1024)",
             "bands": "('B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'B8', 'B8A', 'B11', 'B12')",
@@ -1649,7 +1649,7 @@
           "file": "blocks_2x/satmaepp_s2_10b/block_r02_c02.npz",
           "sha256": "ac5cb0d7c5875e0d12776e80ea00e19cf6db4db93aae52094eea7c38634f211d",
           "metadata_file": "blocks_2x/satmaepp_s2_10b/block_r02_c02.json",
-          "metadata_sha256": "d0111e6959011ecef66c99bc6f86b5e12184782e8ba8208ef6766d569fc88020",
+          "metadata_sha256": "3b9311c39c59aaf2a65808d2429f89622a4db4906f9c794782658b145fa155ee",
           "shape": [
             1024,
             12,
@@ -1670,7 +1670,7 @@
             "sensor": "{'collection': 'COPERNICUS/S2_SR_HARMONIZED', 'bands': ('B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'B8', 'B8A', 'B11', 'B12'), 'scale_m': 10, 'cloudy_pct': 30, 'fill_value': 0.0, 'composite': 'median', 'modality': None, 'orbit': None, 'use_float_linear': True, 's1_require_iw': True, 's1_relax_iw_on_empty': True, 'check_input': False, 'check_raise': True, 'check_save_dir': None}",
             "temporal": "{'mode': 'range', 'start': '2021-05-01', 'end': '2021-10-31'}",
             "image_size": "96",
-            "hf_id": "mubashir04/checkpoint_ViT-L_pretrain_fmow_sentinel//home/lhwang/Desktop/test/rs-embed/paper/research_outputs/model_cache/checkpoint_ViT-L_pretrain_fmow_sentinel.pth",
+            "hf_id": "mubashir04/checkpoint_ViT-L_pretrain_fmow_sentinel//home/lhwang/Desktop/test/rs-embed/research_outputs/model_cache/checkpoint_ViT-L_pretrain_fmow_sentinel.pth",
             "tokens_kind": "tokens_forward_encoder_group_channel",
             "tokens_shape": "(433, 1024)",
             "bands": "('B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'B8', 'B8A', 'B11', 'B12')",
@@ -1718,7 +1718,7 @@
           "file": "blocks_2x/prithvi/block_r01_c01.npz",
           "sha256": "2b9877af4fc2169ed899648a4b5f805344dae6fdfea432689eb0994f1bbc58e4",
           "metadata_file": "blocks_2x/prithvi/block_r01_c01.json",
-          "metadata_sha256": "e9fcca96935f2d4989b36b59c4d417f49afb1aa8457831bf5bbeacd71720cefd",
+          "metadata_sha256": "5eb4c7bcf4113213b884d0a38f24adba7f94bc6f656fe436b86a1aba3eb24568",
           "shape": [
             768,
             14,
@@ -1767,7 +1767,7 @@
           "file": "blocks_2x/prithvi/block_r01_c02.npz",
           "sha256": "65aac48676af25de6e9c43d1a50c3afc90527c85fc51857cdab4290ad1363fcd",
           "metadata_file": "blocks_2x/prithvi/block_r01_c02.json",
-          "metadata_sha256": "42e9bfc7ea07d4c9bd60cd1460e67dfa132f6a077ee6b3dbdc41eab272d61152",
+          "metadata_sha256": "d890449ca216ee7d583c39110b05d17b75c5d80fa96c61571559d5887e5e0937",
           "shape": [
             768,
             14,
@@ -1816,7 +1816,7 @@
           "file": "blocks_2x/prithvi/block_r02_c01.npz",
           "sha256": "2e4c14f36cfdab4e07f00352028994a4e8ca5313ef54d5614f8c77a3c65cdfa2",
           "metadata_file": "blocks_2x/prithvi/block_r02_c01.json",
-          "metadata_sha256": "3eb5b3a5bb4b185e5063765a05e3456990f3d59e72593bee8ba1cb4c257e4167",
+          "metadata_sha256": "05a6b71ebdee714e60e3e57a9ef0efe0c1657ea9bf628689d797cfafa0811fbf",
           "shape": [
             768,
             14,
@@ -1865,7 +1865,7 @@
           "file": "blocks_2x/prithvi/block_r02_c02.npz",
           "sha256": "cf7d0e548a997daad94a7229471308b560eecc8bfd1010a1924f4227fb52a2fa",
           "metadata_file": "blocks_2x/prithvi/block_r02_c02.json",
-          "metadata_sha256": "644a7df36609a051b19ff1dacf84eb31f0a203630f75b4fad4d4e48b13307a56",
+          "metadata_sha256": "c0dbc169ac331e7feb244e79fe5ea71a35d68443fbb15879006ffc2fafdfafb5",
           "shape": [
             768,
             14,
@@ -1927,7 +1927,7 @@
           "file": "blocks_2x/terrafm/block_r01_c01.npz",
           "sha256": "59a78cb34c233471ab8aa530ee0f1bf77d7a3fd84f4658144db457b760acad9d",
           "metadata_file": "blocks_2x/terrafm/block_r01_c01.json",
-          "metadata_sha256": "380f455224718939494778b17d813ec104abedf1fb2a053bf664f4c27cb46b03",
+          "metadata_sha256": "acb984becf6754593d01e6e9390a3bea8041ac7d849881c6753c085b85dd6e2c",
           "shape": [
             768,
             14,
@@ -1980,7 +1980,7 @@
           "file": "blocks_2x/terrafm/block_r01_c02.npz",
           "sha256": "c87f758f9733b85dcd033bcc897fb92ebd703ea7f33f7ac7482b72fd36a6d3b4",
           "metadata_file": "blocks_2x/terrafm/block_r01_c02.json",
-          "metadata_sha256": "b16f53e3dbf98124a752cde1fe0682e737b6ec5ebdc1f4524d5296f1992aa95c",
+          "metadata_sha256": "e4f1c68299fba28d083b8fa2e744afd9cd318983f0626ae5fde0c5f6a7295b5b",
           "shape": [
             768,
             14,
@@ -2033,7 +2033,7 @@
           "file": "blocks_2x/terrafm/block_r02_c01.npz",
           "sha256": "ce90699c5355d36a0332467527da9a95dfa7c02b7d02a5fac42eda367b463cf9",
           "metadata_file": "blocks_2x/terrafm/block_r02_c01.json",
-          "metadata_sha256": "03001afe06a38e0f1c5ef4052b56edadf983759ceb52b3266cd8725dd01672b2",
+          "metadata_sha256": "99cc025b0a2ddd340140436e84ab1043ac9e754578d0b3ea0a1c42e55afeeb66",
           "shape": [
             768,
             14,
@@ -2086,7 +2086,7 @@
           "file": "blocks_2x/terrafm/block_r02_c02.npz",
           "sha256": "8cd7751331e081e499ef831868cb3b19b3512de4c2f2288c78b3134aaa6ec3b5",
           "metadata_file": "blocks_2x/terrafm/block_r02_c02.json",
-          "metadata_sha256": "59f171819ee84f965f77d9530b421e2888e6419494fb0a5d8db22385494bf42f",
+          "metadata_sha256": "8a9379dd09e970a2a49913a83dbe635b3b0b0873ca3a2ba7297ef7b1ec3d3ac9",
           "shape": [
             768,
             14,
@@ -2152,7 +2152,7 @@
           "file": "blocks_2x/terramind/block_r01_c01.npz",
           "sha256": "cb236772dbfb6aae588059550390a7c3a9438bd1546dad57f69204e62bbe94cc",
           "metadata_file": "blocks_2x/terramind/block_r01_c01.json",
-          "metadata_sha256": "68b6591333f5d70081cbf4315ddc2fa9c55d18175fabf06a70b2043d2e8044fc",
+          "metadata_sha256": "9ccc725a24d197a3d684ea2abdd787393a9fe5765584f3e16d6fe975ba594471",
           "shape": [
             384,
             14,
@@ -2201,7 +2201,7 @@
           "file": "blocks_2x/terramind/block_r01_c02.npz",
           "sha256": "c1937c49e1fb5b73d79ea0d739db2e1521e333f4a4bac9183a4efe15865fe8dd",
           "metadata_file": "blocks_2x/terramind/block_r01_c02.json",
-          "metadata_sha256": "d824dc309f98c134cf35eddd6cd6866383c604000021321d2dda10b1dd2b32ac",
+          "metadata_sha256": "5f126a16f5544a208be1e616bc093b551dd4a01a82a983069b5cfbeac19f7e85",
           "shape": [
             384,
             14,
@@ -2250,7 +2250,7 @@
           "file": "blocks_2x/terramind/block_r02_c01.npz",
           "sha256": "52aa2a6356a7f99d8a0e62df11075efe016b094e0e533840116ef33184226f5c",
           "metadata_file": "blocks_2x/terramind/block_r02_c01.json",
-          "metadata_sha256": "de66514084ad7d8700bde8f58a268034efd62968828fb8d6bb56787da1d5d36d",
+          "metadata_sha256": "3aec568f902d7dfa846c8fc5bc13cf331eeeedb67dc94548ff0823d665ce33f7",
           "shape": [
             384,
             14,
@@ -2299,7 +2299,7 @@
           "file": "blocks_2x/terramind/block_r02_c02.npz",
           "sha256": "fe88b4ec342fe7daea81f838a37aae2022a35492961274c48f6e8413b52a62fc",
           "metadata_file": "blocks_2x/terramind/block_r02_c02.json",
-          "metadata_sha256": "9cef58926efe69265d85d57d991354e8dfb2d48db79ad2059bb25dd6591c6c01",
+          "metadata_sha256": "315f7eeb43dcef0f7d5a3d0d4759210018c285f728c323e86c56fde63a0a2848",
           "shape": [
             384,
             14,
@@ -2361,7 +2361,7 @@
           "file": "blocks_2x/satvision/block_r01_c01.npz",
           "sha256": "0d6a4c5d7db8774ce0e85397fc7344080ee6c7307e19a1c869476bc4a17ad0c2",
           "metadata_file": "blocks_2x/satvision/block_r01_c01.json",
-          "metadata_sha256": "218f52f30c155e0c2e29deb29b82258194035150a2bc2d8c125b3384d4579b08",
+          "metadata_sha256": "3a5fa22238dc8bd32ace4e8846d9c97e28591f62c016be109976aca40bdfd245",
           "shape": [
             4096,
             4,
@@ -2434,7 +2434,7 @@
           "file": "blocks_2x/satvision/block_r01_c02.npz",
           "sha256": "69c0a30d94cc786838cc12f2f1526fd1cd95dfcec4f7bea41a2031f6dda0a6ce",
           "metadata_file": "blocks_2x/satvision/block_r01_c02.json",
-          "metadata_sha256": "5a3a892b140f8eef98b9b6c143f64c480c9378f37d985d515929e4cd3ad91625",
+          "metadata_sha256": "beb470b91ddcfdb26e02cb26638cff3ff9822ee091fc41f4dc05e178de93c6d4",
           "shape": [
             4096,
             4,
@@ -2507,7 +2507,7 @@
           "file": "blocks_2x/satvision/block_r02_c01.npz",
           "sha256": "fa2b6e0a251f000e29112de2a1ced89b3be8a479234fb7beca84931adf7680ac",
           "metadata_file": "blocks_2x/satvision/block_r02_c01.json",
-          "metadata_sha256": "bfbeae8d601c536289b445cd929e62870e858adc72305026fb98cdd08b3e42e1",
+          "metadata_sha256": "7a703bebd256c8b7751fa28bedf7dfca29d221e887c6c57944b870b4635c0b53",
           "shape": [
             4096,
             4,
@@ -2580,7 +2580,7 @@
           "file": "blocks_2x/satvision/block_r02_c02.npz",
           "sha256": "685a04ac6ac257e4fe0c0ccf972c3bd3cc6ec1dc04b964616001662de078f8ea",
           "metadata_file": "blocks_2x/satvision/block_r02_c02.json",
-          "metadata_sha256": "ad94b2f451a6f9cc6f9f61d79c9f41d7c09a67a613b4a6fc447a38686b625a79",
+          "metadata_sha256": "87835ef82b8e4d20bf500f4712f05fc93d4cec0efe55ca73f446f28432fb1707",
           "shape": [
             4096,
             4,
@@ -2666,7 +2666,7 @@
           "file": "blocks_2x/dofa/block_r01_c01.npz",
           "sha256": "446811317c1c1fc3c9c543670e8a94201862a9d7537611908f2976fb185007ba",
           "metadata_file": "blocks_2x/dofa/block_r01_c01.json",
-          "metadata_sha256": "924b233a7b468e41a5ca5de6b8d0b6ce23cdc9bea29f02bb2f923785f44851ca",
+          "metadata_sha256": "27136c72698723db9ca207fbe511f79af3cd4001d076f0df1badb78ef1febb08",
           "shape": [
             768,
             14,
@@ -2730,7 +2730,7 @@
           "file": "blocks_2x/dofa/block_r01_c02.npz",
           "sha256": "469550e6b02e2d3a2ff8d4a1c1a95cc56094d1de23af8bba569c36cb47a4827d",
           "metadata_file": "blocks_2x/dofa/block_r01_c02.json",
-          "metadata_sha256": "33929a8f34ddef462577db9c123776e3ab4f05f8b06e0e7cd2754ad5bd42835c",
+          "metadata_sha256": "f5c1ab6b02369fd2a076f8f2a3c69298911b9984be0bc9ffb78e22858e4ff390",
           "shape": [
             768,
             14,
@@ -2794,7 +2794,7 @@
           "file": "blocks_2x/dofa/block_r02_c01.npz",
           "sha256": "c406777c9ce235ca173f3137b64ff6137e09dab9f52fb0318f74e4f34f548cac",
           "metadata_file": "blocks_2x/dofa/block_r02_c01.json",
-          "metadata_sha256": "00584435b759242a71b1debab1c37cbabfe2c553aaebeb038c0eb0255c29b681",
+          "metadata_sha256": "4c7506c7afa0e5531266302f92bc7d24d5d9e4e6c4d04be7ffd35468c3577548",
           "shape": [
             768,
             14,
@@ -2858,7 +2858,7 @@
           "file": "blocks_2x/dofa/block_r02_c02.npz",
           "sha256": "6dab0d46f5eef3f992d79fdd8f248ae6fcb93ec439a28e6edefb5dd7b8294548",
           "metadata_file": "blocks_2x/dofa/block_r02_c02.json",
-          "metadata_sha256": "6441b9650dc0edb2a87369335682de87ab0e808437c9cdd768d889194f91d74e",
+          "metadata_sha256": "5e4b8ec988bda5abb497db837ada122287ad30ad9de4f620938051439e4c7f34",
           "shape": [
             768,
             14,
@@ -2935,7 +2935,7 @@
           "file": "blocks_2x/fomo/block_r01_c01.npz",
           "sha256": "a3ead1cfd4c7c35dea4537f7027771f0423c8623e880e634fd34c57ffae8e820",
           "metadata_file": "blocks_2x/fomo/block_r01_c01.json",
-          "metadata_sha256": "be2ba05caa4d4fcc06982158d7df9d0d15f253017d3c571aaca13c79a4e42c2c",
+          "metadata_sha256": "1c8da5dea83bcb3720a5f8d86b956dbfa1ba20c0a89d88bed3d03078b1a1d39d",
           "shape": [
             768,
             4,
@@ -2995,7 +2995,7 @@
           "file": "blocks_2x/fomo/block_r01_c02.npz",
           "sha256": "301d9fd9a8c1697730bd73810e67dad36cd2e0ebacef5cd554bd15b0551bd176",
           "metadata_file": "blocks_2x/fomo/block_r01_c02.json",
-          "metadata_sha256": "cf91087d22ae048b1fad4d7839a50fbd82f10f6cc316d284ffafdf574fd90318",
+          "metadata_sha256": "b95cf058d8d088630234cf6a5a61edd49afaa29ef74f06d6a04336d7236f6a68",
           "shape": [
             768,
             4,
@@ -3055,7 +3055,7 @@
           "file": "blocks_2x/fomo/block_r02_c01.npz",
           "sha256": "d220a01be66e30b34b4cb4cb8988412b4acb2078215db8338678647e3d923b52",
           "metadata_file": "blocks_2x/fomo/block_r02_c01.json",
-          "metadata_sha256": "e1a15b0fa011fbf7a13ca7fc696ba79bf7f44917cbe31898e62e17225e2d7f89",
+          "metadata_sha256": "d3e8b35bdfe44434f818620c18868002365ea3e56f1584edb38a304b78c2cd7f",
           "shape": [
             768,
             4,
@@ -3115,7 +3115,7 @@
           "file": "blocks_2x/fomo/block_r02_c02.npz",
           "sha256": "12fd31de9f7501b54ccf84f5689fd4c42a52f8d56dcfeac74e4324225b0dc2dc",
           "metadata_file": "blocks_2x/fomo/block_r02_c02.json",
-          "metadata_sha256": "8500d99d65ddb91c01e2b2f45653ddcd8ba57b61e08d9ab0616463305b2f7784",
+          "metadata_sha256": "d70ae6884df0c2b459a8e941d848f4b0836fe331e6b2a648005ab75a4e59690e",
           "shape": [
             768,
             4,
@@ -3188,7 +3188,7 @@
           "file": "blocks_2x/thor/block_r01_c01.npz",
           "sha256": "52f13ae9ccd4a1086309bcd65a94c3c1370e170a5d1b73d12b55ad8074798197",
           "metadata_file": "blocks_2x/thor/block_r01_c01.json",
-          "metadata_sha256": "5e12224ff3d7d46c11e27af7cbc84e4c8965ff16c624ed21ef47a2b94a976162",
+          "metadata_sha256": "89e9bf1dcc9e7f921207f4f1fcb7e746c7ba1a3f6547b6817bdde2661c80b8f3",
           "shape": [
             768,
             18,
@@ -3244,7 +3244,7 @@
           "file": "blocks_2x/thor/block_r01_c02.npz",
           "sha256": "9d8e1fd5851cee17b9a8d09b0887f17cdc7bad66d712ceeb1f80604add7f7dda",
           "metadata_file": "blocks_2x/thor/block_r01_c02.json",
-          "metadata_sha256": "596eb34ecd756692f900b13c3d375393e23d45cac2910c49c81fa4ee7b047ce5",
+          "metadata_sha256": "1df78c9085c0787a79221fba6bb739ecce1497f0f2b4135770a584bd79fddd8b",
           "shape": [
             768,
             18,
@@ -3300,7 +3300,7 @@
           "file": "blocks_2x/thor/block_r02_c01.npz",
           "sha256": "f6fc0e7a7af82d2e1989a86eee62ca84a50a61f06c6da6325b0eb1e07a0e0890",
           "metadata_file": "blocks_2x/thor/block_r02_c01.json",
-          "metadata_sha256": "367a20f5620a3c96d070e6e74d47eb22fe38ecd605aa6966ff331f391ed8e48b",
+          "metadata_sha256": "1d079d466b73344464b7f57c2fa6f2cec3beb1b20930bf625e7062fe5e224958",
           "shape": [
             768,
             18,
@@ -3356,7 +3356,7 @@
           "file": "blocks_2x/thor/block_r02_c02.npz",
           "sha256": "99ede28177b1a25537a37afa76cf80862322cbb769946e1c56f522f400fdefb8",
           "metadata_file": "blocks_2x/thor/block_r02_c02.json",
-          "metadata_sha256": "a8257d36bb6395101723f80b7ef98c9f371b074fc017beb96ab8d6d32d8eb16d",
+          "metadata_sha256": "dd698aa0429231e6d66ab77aea8e16df226645bfbb1f43463789c8ca12e803de",
           "shape": [
             768,
             18,
@@ -3425,7 +3425,7 @@
           "file": "blocks_2x/galileo/block_r01_c01.npz",
           "sha256": "45eb4458eaab9b540d24fef618e6c62a70ca00826518bf166c7627ea662badc6",
           "metadata_file": "blocks_2x/galileo/block_r01_c01.json",
-          "metadata_sha256": "85f9cdb248ef7686e6d372150c9b8ab461a7abc4f723cc28ed845ddaa06dc4b4",
+          "metadata_sha256": "15942f6e907ea0923c4210c2fe0461561a49134b426c3574c6c899082ffadad4",
           "shape": [
             128,
             8,
@@ -3479,7 +3479,7 @@
           "file": "blocks_2x/galileo/block_r01_c02.npz",
           "sha256": "3df9f29d1fa80e896a5f26d04d75e1e3d0b71c2582ae8e66344b3da8d33fb9f8",
           "metadata_file": "blocks_2x/galileo/block_r01_c02.json",
-          "metadata_sha256": "81478464d74a610861f61edebb6601734161cdff1102584f478174eda2a048d6",
+          "metadata_sha256": "28ceb0d1fef0f78e536c3448ee3c703860452e225ef56e529a14a2803e3e2efe",
           "shape": [
             128,
             8,
@@ -3533,7 +3533,7 @@
           "file": "blocks_2x/galileo/block_r02_c01.npz",
           "sha256": "826ec061ea6f4f69458edda2665b3dfc510262959859be21ea4db09ff6b58d32",
           "metadata_file": "blocks_2x/galileo/block_r02_c01.json",
-          "metadata_sha256": "b3a16dac9d07703115dceff49c7204830b7b2c152d1eac5e182bfabe27958ca0",
+          "metadata_sha256": "98c0d8225bf61e439c95b1dad7c190ed33fbf2368f452dddf2beae3412ceb232",
           "shape": [
             128,
             8,
@@ -3587,7 +3587,7 @@
           "file": "blocks_2x/galileo/block_r02_c02.npz",
           "sha256": "c4f891d991d9244b6c9a1942b0568ebecec60393e7b4f44d29b97d153aa8fdf0",
           "metadata_file": "blocks_2x/galileo/block_r02_c02.json",
-          "metadata_sha256": "da8e5f60087f8d2382fca8cddf9403f864d14a803cfcb9c686550a12947ccb5d",
+          "metadata_sha256": "2d715528ef4536517818015f5c19389c0705386630261b68066b213943a2ffb6",
           "shape": [
             128,
             8,
@@ -3654,7 +3654,7 @@
           "file": "blocks_2x/anysat/block_r01_c01.npz",
           "sha256": "2725c5e37b89ee7904079a41126601b1b8e2cc7ed03ab38a256cb7f006b5658b",
           "metadata_file": "blocks_2x/anysat/block_r01_c01.json",
-          "metadata_sha256": "06fddbaac89620930af955815680cd05ee9241c3194bb23a3c7b581072f8ede0",
+          "metadata_sha256": "d3c8d201f7befe5868fac8d2501d595470f4bf7319a6a62e5711f149cde9671e",
           "shape": [
             1536,
             24,
@@ -3712,7 +3712,7 @@
           "file": "blocks_2x/anysat/block_r01_c02.npz",
           "sha256": "a352d84b1468e0aa74c864d80613c021d7950fa8d08da0735caeb8aafa096b47",
           "metadata_file": "blocks_2x/anysat/block_r01_c02.json",
-          "metadata_sha256": "66293d1fcba1bb70e291b359a847d9748ba1dea94ebeb8dc455004d790b2355d",
+          "metadata_sha256": "f4aff5edf1fce321fca0fdfd348cb2766ccc405d2c7afacc65574571b4d40883",
           "shape": [
             1536,
             24,
@@ -3770,7 +3770,7 @@
           "file": "blocks_2x/anysat/block_r02_c01.npz",
           "sha256": "6b9e5c2a85a91c02194582a79ebc32dc3ae6d49a8242ab16d6e551ed18ced20b",
           "metadata_file": "blocks_2x/anysat/block_r02_c01.json",
-          "metadata_sha256": "44c4b9d492035fc4a7a961e8ce5e8996bb23a256cf081f5c2268505fb2ec43c6",
+          "metadata_sha256": "6a249c3b98bac888f6d98a929d11039e753810ee32ca6ac80e61f6f34b671277",
           "shape": [
             1536,
             24,
@@ -3828,7 +3828,7 @@
           "file": "blocks_2x/anysat/block_r02_c02.npz",
           "sha256": "3ebf0380f161dd887872a2f617f7f4114d1382bb05dc9ac781929323a9bfdca0",
           "metadata_file": "blocks_2x/anysat/block_r02_c02.json",
-          "metadata_sha256": "ca942b14bab1ed35d8b5ce76fd8c5e5ee7b637fc4c39face56e0f4b2b7e9580f",
+          "metadata_sha256": "83c442faac8f450e8f8f543b07074ec5a59196aae70aa55d9d93c19cb452abe1",
           "shape": [
             1536,
             24,
@@ -3899,7 +3899,7 @@
           "file": "blocks_2x/agrifm/block_r01_c01.npz",
           "sha256": "35fe6425dcb92289b957b39e4fb3247878eff7c24f4279e4d35fd300e88b824c",
           "metadata_file": "blocks_2x/agrifm/block_r01_c01.json",
-          "metadata_sha256": "12a3efb7dd22a53b169ba8b1b2249242c67bb3daa22294ef925270018598d7fc",
+          "metadata_sha256": "dcc344198eb62cf4b810d39db2353dd18ea0acb56aa58e0ad39fe3150c8cfe01",
           "shape": [
             1024,
             14,
@@ -3949,7 +3949,7 @@
           "file": "blocks_2x/agrifm/block_r01_c02.npz",
           "sha256": "dc5909d2f7cb2986fa830581506bb4f5706978819b01c15ae423b5e9ac582067",
           "metadata_file": "blocks_2x/agrifm/block_r01_c02.json",
-          "metadata_sha256": "9ed661d16bbb438ae91067dd520b5fbc9c146ac4e96bf361956162e4ecd0cc3d",
+          "metadata_sha256": "9f28f8e76785a5d20c4671f4ca6d06be02931ba2bae563bf8af3dfb124280e20",
           "shape": [
             1024,
             14,
@@ -3999,7 +3999,7 @@
           "file": "blocks_2x/agrifm/block_r02_c01.npz",
           "sha256": "481bfcf6f1aa79b3a7771c0958d3eac8ffefe432bd65bc81568c6d1543721e36",
           "metadata_file": "blocks_2x/agrifm/block_r02_c01.json",
-          "metadata_sha256": "f6025e501b0d9f49671a028169897d898962e084bbb24f81b82bb6eb9d298b8a",
+          "metadata_sha256": "b8d2025d22a7d5d100d4ef62b2a09324da579c70fd0accec8c904b0bf4c31d71",
           "shape": [
             1024,
             14,
@@ -4049,7 +4049,7 @@
           "file": "blocks_2x/agrifm/block_r02_c02.npz",
           "sha256": "f2bc4d8aace8273112a15761176e4a9c7aa7840a72de63862fc7dd0b8dc222c9",
           "metadata_file": "blocks_2x/agrifm/block_r02_c02.json",
-          "metadata_sha256": "ecac0dbcf07cf3e3a398def0a74b4e7bc3ca78eacb6e2d6cd0376a3be2f82cbb",
+          "metadata_sha256": "e912f493cdd3309e5a57a8a494638f01009fddbb467844264980d5e64d2ab015",
           "shape": [
             1024,
             14,
@@ -4112,7 +4112,7 @@
           "file": "blocks_2x/gse/block_r01_c01.npz",
           "sha256": "92566ffffa6f88a57825b41f1dcd4b81c8d3bc6eb9ace713b9e0e2f016ee12fe",
           "metadata_file": "blocks_2x/gse/block_r01_c01.json",
-          "metadata_sha256": "65d25cc22851e35e2afafe84400b5d50dd9c43689748e50557acdacf59f59129",
+          "metadata_sha256": "6d4656e125f61c49c61bd4bdc9eb75efcea111d61a323a9a5a3b08dd4d744eed",
           "shape": [
             64,
             518,
@@ -4148,7 +4148,7 @@
           "file": "blocks_2x/gse/block_r01_c02.npz",
           "sha256": "d8348e07f2e400f1ddf17aea80b22b789cd4af762c1fe61f408cee347203487e",
           "metadata_file": "blocks_2x/gse/block_r01_c02.json",
-          "metadata_sha256": "9395ad31914f01f8abefeb3e4e9a1d1ea8528955887a9941b5d4f0e816d46c1d",
+          "metadata_sha256": "7a655e274cd3fac0a07495e6ba028af5304ab52fc1fc1e1a15f52451b042b9e0",
           "shape": [
             64,
             518,
@@ -4184,7 +4184,7 @@
           "file": "blocks_2x/gse/block_r02_c01.npz",
           "sha256": "80836501eb180fa2c01dc1f9b2c54572e9ba7af9e70bafc8a88715a9b974c43f",
           "metadata_file": "blocks_2x/gse/block_r02_c01.json",
-          "metadata_sha256": "07d4b0d7adcff7d74e38278dda02a8d7e060be77644d212ee73a588dab0487c1",
+          "metadata_sha256": "d2f23aa37001eaecc5744bd164d7debbfddddc63f3fa2b4b2966fbaefec6ef29",
           "shape": [
             64,
             518,
@@ -4220,7 +4220,7 @@
           "file": "blocks_2x/gse/block_r02_c02.npz",
           "sha256": "a2d6abbf66c1073f748963feab5a4aa60e3c60b2cd99d3e496a04ea53140fe07",
           "metadata_file": "blocks_2x/gse/block_r02_c02.json",
-          "metadata_sha256": "9a9d03ade9512faf4606a7dbc6f6333561d6435a19c0a2763c8a4cfe3ad0d58f",
+          "metadata_sha256": "328db89e6529383fe5eb9a5961dece90f5653b472928ee49ec6844222e749a4b",
           "shape": [
             64,
             518,
@@ -4269,7 +4269,7 @@
           "file": "blocks_2x/tessera/block_r01_c01.npz",
           "sha256": "0e2bd550d8a50f08b59dae838c449ab85493d7a278598e1fe4e70b71ddf0b445",
           "metadata_file": "blocks_2x/tessera/block_r01_c01.json",
-          "metadata_sha256": "376f96ca0d1006e4ffee2d707142a53befa615244f9fa53b9a607c2a231914e3",
+          "metadata_sha256": "ebed245556b047c77bc9a9cf788c723ceac4452de63a1e8e80c0c7e3ab9fff11",
           "shape": [
             128,
             431,
@@ -4314,7 +4314,7 @@
           "file": "blocks_2x/tessera/block_r01_c02.npz",
           "sha256": "82b8ebf2b9fe26d2078aef4ec4376e3d5974b9c3f3390fded5096ed3f132a462",
           "metadata_file": "blocks_2x/tessera/block_r01_c02.json",
-          "metadata_sha256": "b54dde9f273f318b932ba42b36fd9c60725ed7637fe71239e263ab1d7ed30b7b",
+          "metadata_sha256": "e453311be1ab2ab318182e243fdbd81b150de77254358ea9c2d1a758068a0be2",
           "shape": [
             128,
             431,
@@ -4359,7 +4359,7 @@
           "file": "blocks_2x/tessera/block_r02_c01.npz",
           "sha256": "9c7676acfb6cd870f1c221e0808f44a44742767aedeb02fc82fdaf7b292dc7a6",
           "metadata_file": "blocks_2x/tessera/block_r02_c01.json",
-          "metadata_sha256": "5647fc308ff03b84690f031042737b2f0d8961e3606d1357d1ac35ee8185c609",
+          "metadata_sha256": "f2792722ca13c5f060713c5eaab4051f9f062cedae5032a0b20b16ef7f1fad70",
           "shape": [
             128,
             431,
@@ -4404,7 +4404,7 @@
           "file": "blocks_2x/tessera/block_r02_c02.npz",
           "sha256": "457f9478cd31f26a56a48d6d4e5c11ab7b86c487d5b16e83900c4fb99cd40ccc",
           "metadata_file": "blocks_2x/tessera/block_r02_c02.json",
-          "metadata_sha256": "34f21875b4d6a6134f4afcc9606ac68345f20b37ef7547e5d0fb90fd7cd0aba7",
+          "metadata_sha256": "761b014a84e4210a7fd891595022ce4314a21acdd66a44d009d402405ee27454",
           "shape": [
             128,
             432,
@@ -4472,7 +4472,7 @@
           "file": "blocks_2x/copernicus/block_r01_c01.npz",
           "sha256": "9cb55ced62d639f3ab27a9b8725a4eadf465516e6be47600097ae39bbb70e401",
           "metadata_file": "blocks_2x/copernicus/block_r01_c01.json",
-          "metadata_sha256": "7b5f44ccb56166efd250c2c3e70596293a67a4de0a41b6e6f3bd0ac4bfd4751c",
+          "metadata_sha256": "d6ccb25a8746d8fcc2b04be7ff785fb1157c03f78318dc82be096cc53c9d0403",
           "shape": [
             768,
             3,

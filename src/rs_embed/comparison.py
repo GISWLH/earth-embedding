@@ -238,7 +238,26 @@ def _plot_embedding(ax: Any, model: str, embedding: Embedding, lonlat: Any) -> N
         ax.tick_params(labelsize=7)
     else:
         raise ValueError(f"{model}: expected a vector, (N, D) samples, or (D, H, W) grid.")
-    ax.text(0.5, -0.17, label, transform=ax.transAxes, ha="center", fontsize=7, color="#526071")
+    # Directly under bare image panels; below tick labels and axis labels elsewhere.
+    decorated = bool(ax.get_xlabel()) or len(ax.get_xticks()) > 0
+    ax.text(
+        0.5,
+        -0.2 if decorated else -0.025,
+        label,
+        transform=ax.transAxes,
+        ha="center",
+        va="top",
+        fontsize=7,
+        color="#526071",
+    )
+
+
+def _box_ratio(ax: Any) -> float:
+    """Height/width of a panel's drawn box, so each figure row can fit its panels."""
+    aspect = ax.get_aspect()
+    if aspect == "auto":
+        return 0.62
+    return float(np.clip(float(aspect) * ax.get_data_ratio(), 0.3, 1.2))
 
 
 def plot_embedding_comparison(
@@ -292,7 +311,9 @@ def plot_embedding_comparison(
     count = len(names) + (reference is not None)
     columns = min(columns, count)
     rows = math.ceil(count / columns)
-    fig, axes = plt.subplots(rows, columns, figsize=(3.6 * columns, 3.7 * rows), squeeze=False)
+    fig, axes = plt.subplots(
+        rows, columns, figsize=(3.6 * columns, 3.7 * rows), squeeze=False, layout="constrained"
+    )
     flat = axes.ravel()
     offset = 0
     try:
@@ -328,20 +349,23 @@ def plot_embedding_comparison(
             ax.set_visible(False)
         successes = sum(name in embeddings for name in names)
         heading = title or f"Embedding comparison | {successes}/{len(names)} models available"
-        fig.suptitle(heading, fontsize=16, fontweight="bold", y=0.995)
-        fig.text(
-            0.5,
-            0.012,
+        # Size each row to its widest-aspect panel: global maps no longer leave empty bands.
+        heights = [
+            3.3 * max((_box_ratio(ax) for ax in row if ax.get_visible()), default=0.62) + 0.8
+            for row in axes
+        ]
+        axes[0, 0].get_gridspec().set_height_ratios(heights)
+        fig.set_size_inches(3.6 * columns, sum(heights) + 0.4 * (heading.count("\n") + 2))
+        fig.get_layout_engine().set(w_pad=0.08, h_pad=0.08, hspace=0.04, wspace=0.03)
+        fig.suptitle(heading, fontsize=15, fontweight="bold")
+        fig.supxlabel(
             "Independent PCA colors per model; colors are not comparable across models. "
             "Native grids are not resampled.\n"
             "Coordinate sampling is not image resolution. Gray denotes invalid vectors "
             "or constant components; panels are qualitative, not accuracy scores.",
-            ha="center",
-            va="bottom",
             fontsize=8,
             color="#526071",
         )
-        fig.tight_layout(rect=(0, 0.06, 1, 0.96), h_pad=3, w_pad=1.6)
         if save_path is not None:
             path = Path(save_path)
             path.parent.mkdir(parents=True, exist_ok=True)

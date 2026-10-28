@@ -52,7 +52,7 @@ Record which checks ran and which required unavailable resources. Fixtures and m
 
 Keep `README.md`, `README.zh-CN.md`, and `README.ja.md` aligned on supported APIs, counts, status, and scientific scope. All three should be useful starting points. Prefer executable examples with explicit prerequisites over claims that every model works everywhere.
 
-The logo and hero have native editable Excalidraw sources under `docs/assets/`. Follow the [artwork guide](docs/assets/earth-embedding-brand.md) to rebuild exports, and check both desktop and narrow layouts.
+The banner, logo and diagrams have native editable Excalidraw sources under `docs/assets/brand/`. Follow the [artwork guide](docs/assets/brand/README.md) to rebuild exports, and check both desktop and narrow layouts. Keep committed PNGs small: run `python scripts/optimize_images.py docs/assets examples` after regenerating figures or notebooks.
 
 ## Submit a pull request
 

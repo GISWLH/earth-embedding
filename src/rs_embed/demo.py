@@ -48,7 +48,8 @@ def load_demo(name="bayarea"):
     """Load the real Bay Area sample, verifying every payload SHA-256.
 
     No credentials, network, model download or private paths are required.
-    ``aef`` is an alias for ``bayarea``: 5933 official 1280 m AEF overview cells.
+    ``aef`` is an alias for ``bayarea``: a complete 72 x 88 grid of 6336 official
+    1280 m AEF overview cells.
     """
     if name not in {"bayarea", "aef"}:
         raise ValueError("Unknown demo. Choose 'bayarea' (or alias 'aef').")
@@ -134,10 +135,64 @@ def pca_colors(features):
     return np.clip((scores - low) / np.maximum(high - low, 1e-12), 0, 1)
 
 
+def _degree_formatter(axis):
+    from matplotlib.ticker import FuncFormatter
+
+    hemispheres = ("E", "W") if axis == "x" else ("N", "S")
+
+    def label(value, _):
+        digits = f"{abs(value):.4f}".rstrip("0").rstrip(".")
+        return f"{digits}°{hemispheres[int(value < 0)]}"
+
+    return FuncFormatter(label)
+
+
+def _complete_grid(samples):
+    """Return (rows, cols) index arrays when samples form a complete grid, else None."""
+    if not {"grid_row", "grid_col"}.issubset(samples):
+        return None
+    rows, cols = samples.grid_row.to_numpy(int), samples.grid_col.to_numpy(int)
+    if rows.min() != 0 or cols.min() != 0:
+        return None
+    if len(set(zip(rows, cols, strict=True))) != len(rows) or len(rows) != (rows.max() + 1) * (
+        cols.max() + 1
+    ):
+        return None
+    return rows, cols
+
+
+def _grid_mesh(rows, cols, polygons):
+    """Corner lon/lat arrays (H+1, W+1) of a complete grid; vertices are SW, SE, NE, NW."""
+    height, width = rows.max() + 1, cols.max() + 1
+    cell = np.empty((height, width, 4, 2))
+    cell[rows, cols] = polygons
+    mesh = np.empty((height + 1, width + 1, 2))
+    mesh[:-1, :-1] = cell[:, :, 3]
+    mesh[:-1, -1] = cell[:, -1, 2]
+    mesh[-1, :-1] = cell[-1, :, 0]
+    mesh[-1, -1] = cell[-1, -1, 1]
+    return mesh
+
+
+def _map_extent(mesh):
+    """Inner lon/lat frame of a projected grid, which is slightly rotated against lon/lat."""
+    return (
+        mesh[:, 0, 0].max(),
+        mesh[:, -1, 0].min(),
+        mesh[-1, :, 1].max(),
+        mesh[0, :, 1].min(),
+    )
+
+
 def plot_map(samples, colors, *, title="Embedding PCA (not land-cover classes)", ax=None):
-    """Draw real WGS84 cell bounds, north up; return a Matplotlib Figure."""
+    """Draw real WGS84 cell polygons, north up; return a Matplotlib Figure.
+
+    A complete grid with ``grid_row``/``grid_col`` columns is drawn as one seamless
+    mesh and cropped to its inner frame; other samples are drawn cell by cell.
+    """
     import matplotlib.pyplot as plt
     from matplotlib.collections import PolyCollection
+    from matplotlib.colors import to_rgba_array
     from matplotlib.ticker import MaxNLocator
 
     required = ["minlon", "minlat", "maxlon", "maxlat"]
@@ -149,8 +204,8 @@ def plot_map(samples, colors, *, title="Embedding PCA (not land-cover classes)",
     if len(colors) != len(samples):
         raise ValueError("One color is required per sample, in aligned tile_id order.")
     if ax is None:
-        _, ax = plt.subplots(figsize=(6.2, 5.6), layout="constrained")
-    polygons = [[(w, s), (e, s), (e, n), (w, n)] for w, s, e, n in bounds]
+        _, ax = plt.subplots(figsize=(5.0, 5.9), layout="constrained")
+    polygons = np.array([[(w, s), (e, s), (e, n), (w, n)] for w, s, e, n in bounds])
     vertices = [item for i in range(4) for item in (f"lon{i}", f"lat{i}")]
     if set(vertices).intersection(samples):
         if not set(vertices).issubset(samples):
@@ -158,14 +213,33 @@ def plot_map(samples, colors, *, title="Embedding PCA (not land-cover classes)",
         polygons = samples[vertices].to_numpy(float).reshape(-1, 4, 2)
         if not np.isfinite(polygons).all():
             raise ValueError("Cell polygon vertices must be finite.")
-    ax.add_collection(PolyCollection(polygons, facecolors=colors, edgecolors="none"))
-    ax.set_xlim(bounds[:, 0].min(), bounds[:, 2].max())
-    ax.set_ylim(bounds[:, 1].min(), bounds[:, 3].max())
-    ax.set_aspect(1 / np.cos(np.deg2rad(bounds[:, [1, 3]].mean())))
-    ax.set(xlabel="Longitude (degrees)", ylabel="Latitude (degrees)", title=title)
-    ax.ticklabel_format(useOffset=False)
-    ax.xaxis.set_major_locator(MaxNLocator(5))
-    ax.yaxis.set_major_locator(MaxNLocator(5))
+    grid = _complete_grid(samples)
+    if grid is None:
+        ax.add_collection(
+            PolyCollection(polygons, facecolors=colors, edgecolors="face", linewidths=0.35)
+        )
+        west, east = polygons[..., 0].min(), polygons[..., 0].max()
+        south, north = polygons[..., 1].min(), polygons[..., 1].max()
+    else:
+        # A whole-cell grid is drawn as one curvilinear mesh: exact cell geometry, no seams.
+        rows, cols = grid
+        mesh = _grid_mesh(rows, cols, polygons)
+        rgba = np.zeros((rows.max() + 1, cols.max() + 1, 4))
+        rgba[rows, cols] = to_rgba_array(colors)
+        ax.pcolormesh(mesh[..., 0], mesh[..., 1], rgba, shading="flat", rasterized=True)
+        west, east, south, north = _map_extent(mesh)
+    ax.set_xlim(west, east)
+    ax.set_ylim(south, north)
+    ax.set_aspect(1 / np.cos(np.deg2rad((south + north) / 2)))
+    ax.set_title(title, loc="left", fontsize=10.5)
+    # 1/2/5 steps keep tick values exact at one or two decimals.
+    ax.xaxis.set_major_locator(MaxNLocator(4, steps=[1, 2, 5, 10]))
+    ax.yaxis.set_major_locator(MaxNLocator(6, steps=[1, 2, 5, 10]))
+    ax.xaxis.set_major_formatter(_degree_formatter("x"))
+    ax.yaxis.set_major_formatter(_degree_formatter("y"))
+    ax.tick_params(labelsize=8, length=3, color="#9aa5a2", labelcolor="#4a5a57")
+    for spine in ax.spines.values():
+        spine.set_color("#9aa5a2")
     return ax.figure
 
 
@@ -176,12 +250,19 @@ CLASS_COLORS = {
     "water": "#1f78b4",
     "bare": "#969696",
 }
+CLASSES = ["built", "vegetation", "cropland", "water"]
+# Two spatial folds by grid column; six buffer columns (7.68 km) are never fitted or scored.
+FOLDS = {"west": "east", "east": "west"}
+SPLIT_COLUMNS = {"west": (0, 33), "buffer": (33, 39), "east": (39, 72)}
+_UNSCORED = "#ebebe6"
 
 
 def classify_demo(data=None):
-    """Fixed south-train / north-test Bay Area probe, with a >=0.05 degree gap.
+    """Two-fold spatial holdout: west predicts east, east predicts west.
 
-    Four classes; two bare cells are excluded. No tuning,
+    Each half is labelled by a model fitted only on the other half; a 7.68 km
+    buffer is never fitted or scored, so every scored cell has an out-of-fold
+    prediction. Four classes (the two bare cells are not scored). No tuning,
     random splits, test fitting or train predictions masquerading as evaluation.
     """
     from sklearn.linear_model import LogisticRegression
@@ -191,123 +272,191 @@ def classify_demo(data=None):
 
     data = load_demo("bayarea") if data is None else data
     table = data.samples.copy()
-    needed = {"tile_id", "demo_split", "class_name", "minlat", "maxlat", "center_lon", "center_lat"}
+    needed = {"tile_id", "demo_split", "class_name", "grid_col", "minlon", "maxlon"}
     if not needed.issubset(table) or len(table) != len(data.features):
         raise ValueError(
-            "Bay Area classification requires aligned IDs, coordinates, labels and demo_split."
+            "Bay Area classification requires aligned IDs, grid columns, labels and demo_split."
         )
     if table[list(needed)].isna().any().any() or table.tile_id.duplicated().any():
         raise ValueError("Classification metadata has missing values or duplicate IDs.")
-    if table[["center_lon", "center_lat"]].duplicated().any():
+    if table[["grid_row", "grid_col"]].duplicated().any():
         raise ValueError("Duplicate spatial cells are not allowed.")
-    classes = ["built", "vegetation", "cropland", "water"]
-    eligible = table.class_name.isin(classes)
-    expected = np.where(
-        table.maxlat <= 37.88, "train", np.where(table.minlat >= 37.93, "test", "buffer")
-    )
-    if not np.array_equal(table.demo_split.to_numpy(), expected):
+    expected = np.full(len(table), "", dtype=object)
+    for name, (start, stop) in SPLIT_COLUMNS.items():
+        expected[table.grid_col.between(start, stop - 1).to_numpy()] = name
+    if not np.array_equal(table.demo_split.to_numpy(dtype=object), expected):
         raise ValueError(
-            "Spatial leakage or changed split: saved split must match the fixed geographic holdout."
-        )
-    table.loc[~eligible, "demo_split"] = "excluded_other_class"
-    train = table.demo_split.eq("train").to_numpy()
-    test = table.demo_split.eq("test").to_numpy()
-    if not train.any() or not test.any() or set(table.loc[train, "class_name"]) != set(classes):
-        raise ValueError(
-            "Fixed Bay Area split needs nonempty train/test and all four training classes."
-        )
-    if table.loc[test, "minlat"].min() - table.loc[train, "maxlat"].max() < 0.05:
-        raise ValueError(
-            "Spatial leakage: north test bounds must be separated from south training bounds."
+            "Spatial leakage or changed split: saved split must match the fixed column folds."
         )
     # Explicit float64 avoids version-dependent float32 solver paths.
     x = np.asarray(data.features, dtype=np.float64)
     if x.ndim != 2 or not np.isfinite(x).all():
         raise ValueError("Classification features must be a finite (N,D) array.")
-    model = make_pipeline(
-        StandardScaler(), LogisticRegression(C=1.0, tol=1e-8, max_iter=2000, random_state=42)
-    )
-    model.fit(x[train], table.loc[train, "class_name"])
-    predicted = model.predict(x[test])
-    truth = table.loc[test, "class_name"]
+    eligible = table.class_name.isin(CLASSES).to_numpy()
     table["prediction"] = pd.Series(pd.NA, index=table.index, dtype="string")
-    table.loc[test, "prediction"] = predicted
+    table["predicted_by"] = pd.Series(pd.NA, index=table.index, dtype="string")
+    estimators, folds = {}, {}
+    for fit_on, predict in FOLDS.items():
+        train = table.demo_split.eq(fit_on).to_numpy() & eligible
+        test = table.demo_split.eq(predict).to_numpy() & eligible
+        if not test.any() or set(table.loc[train, "class_name"]) != set(CLASSES):
+            raise ValueError("Each fold needs nonempty test cells and all four training classes.")
+        west, east = (train, test) if fit_on == "west" else (test, train)
+        gap = table.loc[east, "minlon"].min() - table.loc[west, "maxlon"].max()
+        if gap < 0.05:
+            raise ValueError(
+                "Spatial leakage: fitted and predicted cells must be separated by the buffer."
+            )
+        model = make_pipeline(
+            StandardScaler(),
+            LogisticRegression(
+                C=1.0, class_weight="balanced", tol=1e-8, max_iter=4000, random_state=42
+            ),
+        )
+        model.fit(x[train], table.loc[train, "class_name"])
+        predicted = model.predict(x[test])
+        table.loc[test, "prediction"] = predicted
+        table.loc[test, "predicted_by"] = f"fit_{fit_on}"
+        truth = table.loc[test, "class_name"]
+        estimators[f"{fit_on}_to_{predict}"] = model
+        folds[f"{fit_on}_to_{predict}"] = {
+            "train": int(train.sum()),
+            "test": int(test.sum()),
+            "longitude_gap_degrees": float(gap),
+            "oa": float(accuracy_score(truth, predicted)),
+            "macro_f1": float(
+                f1_score(truth, predicted, labels=CLASSES, average="macro", zero_division=0)
+            ),
+        }
+    scored = table.prediction.notna().to_numpy()
+    truth, predicted = table.loc[scored, "class_name"], table.loc[scored, "prediction"].astype(str)
     metrics = {
         "scope": "San Francisco Bay Area regional software demonstration; not a paper benchmark reproduction",
         "seed": 42,
         "estimator": {
             "name": "StandardScaler + LogisticRegression",
             "C": 1.0,
+            "class_weight": "balanced",
             "tol": 1e-8,
-            "max_iter": 2000,
+            "max_iter": 4000,
             "dtype": "float64",
             "solver": "lbfgs",
         },
         "model": "AEF 2021 official 1280m overview features",
         "total": len(table),
+        "scored": int(scored.sum()),
         "split_counts": table.demo_split.value_counts().to_dict(),
         "class_counts": pd.crosstab(table.demo_split, table.class_name).to_dict(orient="index"),
-        "split": "South maxlat<=37.88 train; north minlat>=37.93 test; intervening cells buffer; exclude 2 bare cells",
-        "minimum_latitude_gap": float(
-            table.loc[test, "minlat"].min() - table.loc[train, "maxlat"].max()
-        ),
-        "classes": classes,
+        "split": "Two spatial folds: west columns 0-32 and east columns 39-71 each predicted by a model fitted only on the other; buffer columns 33-38 (7.68 km) never fitted or scored; 2 bare cells not scored",
+        "folds": folds,
+        "classes": CLASSES,
         "oa": float(accuracy_score(truth, predicted)),
         "macro_f1": float(
-            f1_score(truth, predicted, labels=classes, average="macro", zero_division=0)
+            f1_score(truth, predicted, labels=CLASSES, average="macro", zero_division=0)
         ),
         "balanced_accuracy": float(balanced_accuracy_score(truth, predicted)),
-        "confusion_matrix": confusion_matrix(truth, predicted, labels=classes).tolist(),
+        "confusion_matrix": confusion_matrix(truth, predicted, labels=CLASSES).tolist(),
     }
-    return {"metrics": metrics, "samples": table, "estimator": model}
+    return {"metrics": metrics, "samples": table, "estimators": estimators}
+
+
+def _fold_guides(ax, table):
+    """Shade the unscored buffer and label which model predicted each half."""
+    buffer = table.demo_split.eq("buffer")
+    west = table.loc[buffer, ["lon0", "lon3"]].to_numpy().min()
+    east = table.loc[buffer, ["lon1", "lon2"]].to_numpy().max()
+    ax.axvspan(west, east, facecolor="none", edgecolor="#5b6b68", hatch="////", lw=0)
+    for edge in (west, east):
+        ax.axvline(edge, color="#173f40", ls=(0, (4, 3)), lw=0.9)
 
 
 def plot_classification(result):
-    """Reference, held-out predictions, errors and confusion matrix; no train scores."""
+    """Reference, out-of-fold predictions, errors and confusion matrix in one row."""
     import matplotlib.pyplot as plt
     from matplotlib.patches import Patch
-    from sklearn.metrics import ConfusionMatrixDisplay
 
     table = result["samples"]
-    test = table.demo_split.eq("test")
-    fig, axes = plt.subplots(2, 2, figsize=(11, 9), layout="constrained")
-    plot_map(
-        table,
-        table.class_name.map(CLASS_COLORS),
-        title=f"Bay Area | WorldCover 2021 reference ({len(table)} cells)",
-        ax=axes[0, 0],
-    )
-    plot_map(
-        table,
-        table.prediction.map(CLASS_COLORS).fillna("#e8e8e8"),
-        title="AEF + logistic regression: north test only",
-        ax=axes[0, 1],
-    )
-    error_colors = np.full(len(table), "#e8e8e8", dtype=object)
-    error_colors[test] = np.where(
-        table.loc[test, "class_name"].to_numpy() == table.loc[test, "prediction"].to_numpy(),
-        "#267b72",
-        "#bd3d45",
-    )
-    plot_map(table, error_colors, title="Held-out errors (red); correct (teal)", ax=axes[1, 0])
-    for ax in axes.flat[:3]:
-        for latitude in [37.88, 37.93]:
-            ax.axhline(latitude, color="#173f40", ls="--", lw=1)
-    axes[0, 0].legend(
-        handles=[Patch(color=v, label=k) for k, v in CLASS_COLORS.items()],
-        fontsize=8,
-        loc="upper left",
-    )
-    axes[0, 1].legend(
-        handles=[Patch(color="#e8e8e8", label="Train / buffer / excluded (unscored)")],
-        fontsize=8,
-        loc="lower left",
-    )
     metrics = result["metrics"]
-    ConfusionMatrixDisplay(
-        np.array(metrics["confusion_matrix"]), display_labels=metrics["classes"]
-    ).plot(ax=axes[1, 1], colorbar=False, cmap="Blues")
-    axes[1, 1].set_title(
-        f"Test n={int(test.sum())} | OA {metrics['oa']:.3f} | Macro-F1 {metrics['macro_f1']:.3f}"
+    scored = table.prediction.notna().to_numpy()
+    fig = plt.figure(figsize=(15.2, 5.0), layout="constrained")
+    grid = fig.add_gridspec(1, 4, width_ratios=[1, 1, 1, 1.12])
+    axes = [fig.add_subplot(grid[0, i]) for i in range(4)]
+    plot_map(
+        table,
+        table.class_name.map(CLASS_COLORS).to_numpy(dtype=object),
+        title="a  WorldCover 2021 reference",
+        ax=axes[0],
+    )
+    plot_map(
+        table,
+        table.prediction.map(CLASS_COLORS).fillna(_UNSCORED).to_numpy(dtype=object),
+        title="b  AEF + logistic regression, held out",
+        ax=axes[1],
+    )
+    correct = table.class_name.to_numpy() == table.prediction.astype(str).to_numpy()
+    agreement = np.full(len(table), _UNSCORED, dtype=object)
+    agreement[scored] = np.where(correct[scored], "#cfe3dc", "#c43c39")
+    plot_map(table, agreement, title="c  Where the prediction is wrong", ax=axes[2])
+    for ax in axes[:3]:
+        _fold_guides(ax, table)
+    top = axes[1].get_ylim()[1]
+    middle = np.mean(axes[1].get_xlim())
+    for ax in axes[1:3]:
+        for x, text, align in [
+            (middle - 0.07, "← fit east, predict west", "right"),
+            (middle + 0.07, "fit west, predict east →", "left"),
+        ]:
+            ax.annotate(
+                text,
+                (x, top),
+                xytext=(0, -5),
+                textcoords="offset points",
+                ha=align,
+                va="top",
+                fontsize=7.5,
+                color="#173f40",
+                bbox=dict(boxstyle="round,pad=0.25", fc="white", ec="none", alpha=0.85),
+            )
+
+    matrix = np.array(metrics["confusion_matrix"], dtype=float)
+    recall = matrix / np.maximum(matrix.sum(axis=1, keepdims=True), 1)
+    ax = axes[3]
+    ax.imshow(recall, cmap="GnBu", vmin=0, vmax=1)
+    for (i, j), count in np.ndenumerate(matrix.astype(int)):
+        ax.text(
+            j,
+            i,
+            f"{count:,}\n{recall[i, j]:.0%}",
+            ha="center",
+            va="center",
+            fontsize=8.5,
+            color="white" if recall[i, j] > 0.55 else "#173f40",
+        )
+    ticks = range(len(metrics["classes"]))
+    ax.set_xticks(ticks, metrics["classes"], fontsize=8.5)
+    ax.set_yticks(ticks, metrics["classes"], fontsize=8.5, rotation=90, va="center")
+    ax.set_xlabel(f"Predicted class · {metrics['scored']:,} held-out cells", fontsize=9)
+    ax.set_ylabel("WorldCover reference", fontsize=9)
+    ax.tick_params(length=0)
+    for spine in ax.spines.values():
+        spine.set_visible(False)
+    ax.set_title(
+        f"d  OA {metrics['oa']:.1%} · macro-F1 {metrics['macro_f1']:.1%}",
+        loc="left",
+        fontsize=10.5,
+    )
+    handles = [Patch(color=CLASS_COLORS[name], label=name) for name in metrics["classes"]]
+    handles += [
+        Patch(facecolor=_UNSCORED, edgecolor="#5b6b68", hatch="////", label="buffer, not scored"),
+        Patch(color="#cfe3dc", label="correct"),
+        Patch(color="#c43c39", label="wrong"),
+    ]
+    fig.legend(
+        handles=handles,
+        loc="outside lower center",
+        ncol=len(handles),
+        frameon=False,
+        fontsize=9,
+        handlelength=1.4,
     )
     return fig
