@@ -2,8 +2,8 @@
   "python": "3.12.2",
   "platform": "Linux",
   "thread_settings": {
-    "OMP_NUM_THREADS": "1",
-    "OPENBLAS_NUM_THREADS": "1"
+    "OMP_NUM_THREADS": "8",
+    "OPENBLAS_NUM_THREADS": null
   },
   "packages": {
     "numpy": "2.4.6",
@@ -16,34 +16,43 @@
     {
       "name": "01_first_embedding_map.ipynb",
       "status": "passed",
-      "seconds": 3.82,
+      "seconds": 3.49,
       "executed_cells": 3,
       "image_outputs": 1,
-      "sha256": "22c43ee02bec531e2bb03b359b4060b45a544902b7b3596b5ea05a01e1f42504"
+      "sha256": "e9194fe9a2cfae9d8d2b7dabd3d36f8638e668625efad23bbf4db1bf0e8c0a4c"
     },
     {
       "name": "02_esri_locations.ipynb",
       "status": "passed",
-      "seconds": 42.81,
+      "seconds": 76.04,
       "executed_cells": 4,
       "image_outputs": 1,
-      "sha256": "17aec887e4b29b8e3f4b5696d6e283dfbc468fdcf2e55eb09b1e9ba203f99ddb"
+      "sha256": "c5d5ea194f2c04efd684755ce53eea514f2d348898f33f519cfe2df3f67d5e2e"
     },
     {
       "name": "03_regional_classification.ipynb",
       "status": "passed",
-      "seconds": 4.77,
+      "seconds": 17.96,
       "executed_cells": 4,
       "image_outputs": 1,
-      "sha256": "46cf9a6346ef247e2328cb5ae4344167fe24a72ee0723ea1458e978696bc8258"
+      "sha256": "129daf16971266fe70b0303ed862b4f7994cd0a21599039a70b402a210f986d2"
     },
     {
       "name": "04_export_and_reuse.ipynb",
       "status": "passed",
-      "seconds": 3.73,
+      "seconds": 4.7,
       "executed_cells": 4,
       "image_outputs": 1,
-      "sha256": "7e2b59bebf70c0c59ebbf37e8ccfc196a1717b439d6ad0119ec97bf48e1cc041"
+      "sha256": "b473ec4c99ff83ac1971b4d89105eb381bd4d8e76cd7c7916b2a863019024833"
+    },
+    {
+      "name": "05_compare_models.ipynb",
+      "status": "passed",
+      "seconds": 80.05,
+      "executed_cells": 5,
+      "image_outputs": 1,
+      "sha256": "48b514b8b7a7b7f6c1253445f047ba85673e028f2563ffd33f0cfaae41d64144"
     }
-  ]
+  ],
+  "post_processing": "Embedded image/png outputs recompressed after execution with scripts/optimize_images.py; sha256 values describe the committed notebooks."
 }

@@ -1,0 +1,24 @@
+{
+  "Excalifont": {
+    "source_package": "@excalidraw/excalidraw@0.18.0",
+    "font_file": "Excalifont-Regular-a88b72a24fb54c9f94e3b5fdaa7481c9.woff2",
+    "font_sha256": "e4423b318e11432aff2e6e865e300b7ca270f92321a3f56632268fede01c1b48",
+    "copyright_extracted_from": "OpenType name table: name ID 0",
+    "full_license_source": "https://raw.githubusercontent.com/excalidraw/excalidraw/master/packages/excalidraw/fonts/Excalifont/index.ts"
+  },
+  "Cascadia": {
+    "source_package": "@excalidraw/excalidraw@0.18.0",
+    "font_file": "CascadiaCode-Regular.woff2",
+    "font_sha256": "5bce041e0fcce617e35efbc335b1372d27a84acb65fb464c65ff80ab3424a885",
+    "copyright_extracted_from": "OpenType name table: name ID 0",
+    "full_license_source": "https://raw.githubusercontent.com/microsoft/cascadia-code/main/LICENSE"
+  },
+  "Nunito": {
+    "source_package": "@excalidraw/excalidraw@0.18.0",
+    "font_file": "Nunito-Regular-XRXI3I6Li01BKofiOc5wtlZ2di8HDIkhdTA3j6zbXWjgevT5.woff2",
+    "font_sha256": "e512f2d7c9fe062b1acf8f6ea64d4bfd89a77d26728150977627e445c7b6e937",
+    "copyright": "Copyright 2014 The Nunito Project Authors (https://github.com/googlefonts/nunito)",
+    "copyright_extracted_from": "OpenType name table: name ID 0",
+    "full_license_source": "https://scripts.sil.org/OFL"
+  }
+}

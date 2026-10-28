@@ -1,0 +1,832 @@
+{
+  "type": "excalidraw",
+  "version": 2,
+  "source": "https://excalidraw.com",
+  "elements": [
+    {
+      "id": "earth-brand-1",
+      "type": "rectangle",
+      "x": 0,
+      "y": 0,
+      "width": 240,
+      "height": 240,
+      "angle": 0,
+      "strokeColor": "transparent",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 0,
+      "strokeStyle": "solid",
+      "roughness": 0,
+      "opacity": 100,
+      "groupIds": [],
+      "frameId": null,
+      "index": "a0",
+      "roundness": null,
+      "seed": 4269,
+      "version": 2,
+      "versionNonce": 370332699,
+      "isDeleted": false,
+      "boundElements": null,
+      "updated": 1793127305421,
+      "link": null,
+      "locked": false
+    },
+    {
+      "id": "earth-brand-2",
+      "type": "rectangle",
+      "x": 0,
+      "y": 0,
+      "width": 240,
+      "height": 240,
+      "angle": 0,
+      "strokeColor": "#dce5d9",
+      "backgroundColor": "#faf8f1",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "strokeStyle": "solid",
+      "roughness": 0,
+      "opacity": 100,
+      "groupIds": [],
+      "frameId": null,
+      "index": "a1",
+      "roundness": {
+        "type": 3,
+        "value": 52
+      },
+      "seed": 4442,
+      "version": 2,
+      "versionNonce": 675827477,
+      "isDeleted": false,
+      "boundElements": null,
+      "updated": 1793127305421,
+      "link": null,
+      "locked": false
+    },
+    {
+      "id": "earth-brand-3",
+      "type": "line",
+      "x": 39,
+      "y": 42.6,
+      "width": 25.2,
+      "height": 156.6,
+      "angle": 0,
+      "strokeColor": "#173f40",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 4.95,
+      "strokeStyle": "solid",
+      "roughness": 1.4,
+      "opacity": 100,
+      "groupIds": [],
+      "frameId": null,
+      "index": "a2",
+      "roundness": null,
+      "seed": 4615,
+      "version": 2,
+      "versionNonce": 444045499,
+      "isDeleted": false,
+      "boundElements": null,
+      "updated": 1793127305421,
+      "link": null,
+      "locked": false,
+      "points": [
+        [
+          23.400000000000002,
+          0
+        ],
+        [
+          0,
+          1.8
+        ],
+        [
+          -1.8,
+          154.8
+        ],
+        [
+          23.400000000000002,
+          156.6
+        ]
+      ],
+      "lastCommittedPoint": null,
+      "startBinding": null,
+      "endBinding": null,
+      "startArrowhead": null,
+      "endArrowhead": null
+    },
+    {
+      "id": "earth-brand-4",
+      "type": "line",
+      "x": 201,
+      "y": 42.6,
+      "width": 25.2,
+      "height": 156.6,
+      "angle": 0,
+      "strokeColor": "#173f40",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 4.95,
+      "strokeStyle": "solid",
+      "roughness": 1.4,
+      "opacity": 100,
+      "groupIds": [],
+      "frameId": null,
+      "index": "a3",
+      "roundness": null,
+      "seed": 4788,
+      "version": 2,
+      "versionNonce": 485991541,
+      "isDeleted": false,
+      "boundElements": null,
+      "updated": 1793127305421,
+      "link": null,
+      "locked": false,
+      "points": [
+        [
+          -23.400000000000002,
+          0
+        ],
+        [
+          0,
+          1.8
+        ],
+        [
+          1.8,
+          154.8
+        ],
+        [
+          -23.400000000000002,
+          156.6
+        ]
+      ],
+      "lastCommittedPoint": null,
+      "startBinding": null,
+      "endBinding": null,
+      "startArrowhead": null,
+      "endArrowhead": null
+    },
+    {
+      "id": "earth-brand-5",
+      "type": "ellipse",
+      "x": 53.4,
+      "y": 51.6,
+      "width": 133.20000000000002,
+      "height": 133.20000000000002,
+      "angle": 0,
+      "strokeColor": "#173f40",
+      "backgroundColor": "#d8ece0",
+      "fillStyle": "solid",
+      "strokeWidth": 3.06,
+      "strokeStyle": "solid",
+      "roughness": 1.2,
+      "opacity": 100,
+      "groupIds": [],
+      "frameId": null,
+      "index": "a4",
+      "roundness": null,
+      "seed": 4961,
+      "version": 2,
+      "versionNonce": 186304859,
+      "isDeleted": false,
+      "boundElements": null,
+      "updated": 1793127305421,
+      "link": null,
+      "locked": false
+    },
+    {
+      "id": "earth-brand-6",
+      "type": "ellipse",
+      "x": 97.5,
+      "y": 53.4,
+      "width": 45,
+      "height": 129.6,
+      "angle": 0,
+      "strokeColor": "#267b72",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 1.4400000000000002,
+      "strokeStyle": "solid",
+      "roughness": 1.1,
+      "opacity": 55,
+      "groupIds": [],
+      "frameId": null,
+      "index": "a5",
+      "roundness": null,
+      "seed": 5134,
+      "version": 2,
+      "versionNonce": 1607814613,
+      "isDeleted": false,
+      "boundElements": null,
+      "updated": 1793127305421,
+      "link": null,
+      "locked": false
+    },
+    {
+      "id": "earth-brand-7",
+      "type": "line",
+      "x": 58.800000000000004,
+      "y": 94.8,
+      "width": 122.4,
+      "height": 9.9,
+      "angle": 0,
+      "strokeColor": "#267b72",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 1.35,
+      "strokeStyle": "solid",
+      "roughness": 1.1,
+      "opacity": 50,
+      "groupIds": [],
+      "frameId": null,
+      "index": "a6",
+      "roundness": null,
+      "seed": 5307,
+      "version": 2,
+      "versionNonce": 760145403,
+      "isDeleted": false,
+      "boundElements": null,
+      "updated": 1793127305421,
+      "link": null,
+      "locked": false,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          30.6,
+          8.1
+        ],
+        [
+          61.2,
+          9.9
+        ],
+        [
+          93.60000000000001,
+          6.3
+        ],
+        [
+          122.4,
+          0
+        ]
+      ],
+      "lastCommittedPoint": null,
+      "startBinding": null,
+      "endBinding": null,
+      "startArrowhead": null,
+      "endArrowhead": null
+    },
+    {
+      "id": "earth-brand-8",
+      "type": "line",
+      "x": 55.2,
+      "y": 138,
+      "width": 127.8,
+      "height": 7.2,
+      "angle": 0,
+      "strokeColor": "#267b72",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 1.35,
+      "strokeStyle": "solid",
+      "roughness": 1.1,
+      "opacity": 50,
+      "groupIds": [],
+      "frameId": null,
+      "index": "a7",
+      "roundness": null,
+      "seed": 5480,
+      "version": 2,
+      "versionNonce": 1073138485,
+      "isDeleted": false,
+      "boundElements": null,
+      "updated": 1793127305421,
+      "link": null,
+      "locked": false,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          32.4,
+          -5.4
+        ],
+        [
+          66.60000000000001,
+          -7.2
+        ],
+        [
+          97.2,
+          -4.5
+        ],
+        [
+          127.8,
+          0
+        ]
+      ],
+      "lastCommittedPoint": null,
+      "startBinding": null,
+      "endBinding": null,
+      "startArrowhead": null,
+      "endArrowhead": null
+    },
+    {
+      "id": "earth-brand-9",
+      "type": "line",
+      "x": 75,
+      "y": 69.6,
+      "width": 42.300000000000004,
+      "height": 38.7,
+      "angle": 0,
+      "strokeColor": "#267b72",
+      "backgroundColor": "#267b72",
+      "fillStyle": "solid",
+      "strokeWidth": 0.9,
+      "strokeStyle": "solid",
+      "roughness": 1.1,
+      "opacity": 92,
+      "groupIds": [],
+      "frameId": null,
+      "index": "a8",
+      "roundness": null,
+      "seed": 5653,
+      "version": 2,
+      "versionNonce": 2014736027,
+      "isDeleted": false,
+      "boundElements": null,
+      "updated": 1793127305421,
+      "link": null,
+      "locked": false,
+      "points": [
+        [
+          0,
+          7.2
+        ],
+        [
+          14.4,
+          -1.8
+        ],
+        [
+          28.8,
+          0.9
+        ],
+        [
+          36,
+          10.8
+        ],
+        [
+          27,
+          22.5
+        ],
+        [
+          28.8,
+          32.4
+        ],
+        [
+          15.3,
+          36.9
+        ],
+        [
+          8.1,
+          28.8
+        ],
+        [
+          -2.7,
+          27.900000000000002
+        ],
+        [
+          -6.3,
+          17.1
+        ],
+        [
+          0,
+          7.2
+        ]
+      ],
+      "lastCommittedPoint": null,
+      "startBinding": null,
+      "endBinding": null,
+      "startArrowhead": null,
+      "endArrowhead": null
+    },
+    {
+      "id": "earth-brand-10",
+      "type": "line",
+      "x": 98.4,
+      "y": 112.8,
+      "width": 27,
+      "height": 37.800000000000004,
+      "angle": 0,
+      "strokeColor": "#267b72",
+      "backgroundColor": "#267b72",
+      "fillStyle": "solid",
+      "strokeWidth": 0.9,
+      "strokeStyle": "solid",
+      "roughness": 1.1,
+      "opacity": 92,
+      "groupIds": [],
+      "frameId": null,
+      "index": "a9",
+      "roundness": null,
+      "seed": 5826,
+      "version": 2,
+      "versionNonce": 230792341,
+      "isDeleted": false,
+      "boundElements": null,
+      "updated": 1793127305421,
+      "link": null,
+      "locked": false,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          18,
+          0
+        ],
+        [
+          27,
+          12.6
+        ],
+        [
+          19.8,
+          27
+        ],
+        [
+          12.6,
+          37.800000000000004
+        ],
+        [
+          5.4,
+          28.8
+        ],
+        [
+          0.9,
+          14.4
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "lastCommittedPoint": null,
+      "startBinding": null,
+      "endBinding": null,
+      "startArrowhead": null,
+      "endArrowhead": null
+    },
+    {
+      "id": "earth-brand-11",
+      "type": "line",
+      "x": 138,
+      "y": 75,
+      "width": 30.6,
+      "height": 27,
+      "angle": 0,
+      "strokeColor": "#267b72",
+      "backgroundColor": "#267b72",
+      "fillStyle": "solid",
+      "strokeWidth": 0.9,
+      "strokeStyle": "solid",
+      "roughness": 1.1,
+      "opacity": 92,
+      "groupIds": [],
+      "frameId": null,
+      "index": "aA",
+      "roundness": null,
+      "seed": 5999,
+      "version": 2,
+      "versionNonce": 1579410235,
+      "isDeleted": false,
+      "boundElements": null,
+      "updated": 1793127305421,
+      "link": null,
+      "locked": false,
+      "points": [
+        [
+          0,
+          0.9
+        ],
+        [
+          16.2,
+          -3.6
+        ],
+        [
+          27,
+          5.4
+        ],
+        [
+          25.2,
+          18
+        ],
+        [
+          14.4,
+          23.400000000000002
+        ],
+        [
+          5.4,
+          16.2
+        ],
+        [
+          -3.6,
+          10.8
+        ],
+        [
+          0,
+          0.9
+        ]
+      ],
+      "lastCommittedPoint": null,
+      "startBinding": null,
+      "endBinding": null,
+      "startArrowhead": null,
+      "endArrowhead": null
+    },
+    {
+      "id": "earth-brand-12",
+      "type": "rectangle",
+      "x": 143.4,
+      "y": 127.2,
+      "width": 18,
+      "height": 18,
+      "angle": 0,
+      "strokeColor": "#173f40",
+      "backgroundColor": "#267b72",
+      "fillStyle": "solid",
+      "strokeWidth": 1.53,
+      "strokeStyle": "solid",
+      "roughness": 0.9,
+      "opacity": 100,
+      "groupIds": [],
+      "frameId": null,
+      "index": "aB",
+      "roundness": {
+        "type": 2
+      },
+      "seed": 6172,
+      "version": 2,
+      "versionNonce": 1894466037,
+      "isDeleted": false,
+      "boundElements": null,
+      "updated": 1793127305421,
+      "link": null,
+      "locked": false
+    },
+    {
+      "id": "earth-brand-13",
+      "type": "rectangle",
+      "x": 163.20000000000002,
+      "y": 127.2,
+      "width": 18,
+      "height": 18,
+      "angle": 0,
+      "strokeColor": "#173f40",
+      "backgroundColor": "#1f5f58",
+      "fillStyle": "solid",
+      "strokeWidth": 1.53,
+      "strokeStyle": "solid",
+      "roughness": 0.9,
+      "opacity": 100,
+      "groupIds": [],
+      "frameId": null,
+      "index": "aC",
+      "roundness": {
+        "type": 2
+      },
+      "seed": 6345,
+      "version": 2,
+      "versionNonce": 1473889243,
+      "isDeleted": false,
+      "boundElements": null,
+      "updated": 1793127305421,
+      "link": null,
+      "locked": false
+    },
+    {
+      "id": "earth-brand-14",
+      "type": "rectangle",
+      "x": 132.60000000000002,
+      "y": 147,
+      "width": 18,
+      "height": 18,
+      "angle": 0,
+      "strokeColor": "#173f40",
+      "backgroundColor": "#e9e6f2",
+      "fillStyle": "solid",
+      "strokeWidth": 1.53,
+      "strokeStyle": "solid",
+      "roughness": 0.9,
+      "opacity": 100,
+      "groupIds": [],
+      "frameId": null,
+      "index": "aD",
+      "roundness": {
+        "type": 2
+      },
+      "seed": 6518,
+      "version": 2,
+      "versionNonce": 2121874261,
+      "isDeleted": false,
+      "boundElements": null,
+      "updated": 1793127305421,
+      "link": null,
+      "locked": false
+    },
+    {
+      "id": "earth-brand-15",
+      "type": "rectangle",
+      "x": 152.4,
+      "y": 147,
+      "width": 18,
+      "height": 18,
+      "angle": 0,
+      "strokeColor": "#173f40",
+      "backgroundColor": "#d98950",
+      "fillStyle": "solid",
+      "strokeWidth": 1.53,
+      "strokeStyle": "solid",
+      "roughness": 0.9,
+      "opacity": 100,
+      "groupIds": [],
+      "frameId": null,
+      "index": "aE",
+      "roundness": {
+        "type": 2
+      },
+      "seed": 6691,
+      "version": 2,
+      "versionNonce": 759861371,
+      "isDeleted": false,
+      "boundElements": null,
+      "updated": 1793127305421,
+      "link": null,
+      "locked": false
+    },
+    {
+      "id": "earth-brand-16",
+      "type": "rectangle",
+      "x": 121.8,
+      "y": 166.8,
+      "width": 18,
+      "height": 18,
+      "angle": 0,
+      "strokeColor": "#173f40",
+      "backgroundColor": "#f4e3d2",
+      "fillStyle": "solid",
+      "strokeWidth": 1.53,
+      "strokeStyle": "solid",
+      "roughness": 0.9,
+      "opacity": 100,
+      "groupIds": [],
+      "frameId": null,
+      "index": "aF",
+      "roundness": {
+        "type": 2
+      },
+      "seed": 6864,
+      "version": 2,
+      "versionNonce": 247531701,
+      "isDeleted": false,
+      "boundElements": null,
+      "updated": 1793127305421,
+      "link": null,
+      "locked": false
+    },
+    {
+      "id": "earth-brand-17",
+      "type": "rectangle",
+      "x": 141.6,
+      "y": 166.8,
+      "width": 18,
+      "height": 18,
+      "angle": 0,
+      "strokeColor": "#173f40",
+      "backgroundColor": "#267b72",
+      "fillStyle": "solid",
+      "strokeWidth": 1.53,
+      "strokeStyle": "solid",
+      "roughness": 0.9,
+      "opacity": 100,
+      "groupIds": [],
+      "frameId": null,
+      "index": "aG",
+      "roundness": {
+        "type": 2
+      },
+      "seed": 7037,
+      "version": 2,
+      "versionNonce": 3721499,
+      "isDeleted": false,
+      "boundElements": null,
+      "updated": 1793127305421,
+      "link": null,
+      "locked": false
+    },
+    {
+      "id": "earth-brand-18",
+      "type": "rectangle",
+      "x": 175.8,
+      "y": 149.70000000000002,
+      "width": 13.5,
+      "height": 13.5,
+      "angle": 0,
+      "strokeColor": "#173f40",
+      "backgroundColor": "#d8ece0",
+      "fillStyle": "solid",
+      "strokeWidth": 1.53,
+      "strokeStyle": "solid",
+      "roughness": 0.9,
+      "opacity": 100,
+      "groupIds": [],
+      "frameId": null,
+      "index": "aH",
+      "roundness": {
+        "type": 2
+      },
+      "seed": 7210,
+      "version": 2,
+      "versionNonce": 1399335445,
+      "isDeleted": false,
+      "boundElements": null,
+      "updated": 1793127305421,
+      "link": null,
+      "locked": false
+    },
+    {
+      "id": "earth-brand-19",
+      "type": "rectangle",
+      "x": 184.8,
+      "y": 112.8,
+      "width": 11.700000000000001,
+      "height": 11.700000000000001,
+      "angle": 0,
+      "strokeColor": "#173f40",
+      "backgroundColor": "#267b72",
+      "fillStyle": "solid",
+      "strokeWidth": 1.53,
+      "strokeStyle": "solid",
+      "roughness": 0.9,
+      "opacity": 100,
+      "groupIds": [],
+      "frameId": null,
+      "index": "aI",
+      "roundness": {
+        "type": 2
+      },
+      "seed": 7383,
+      "version": 2,
+      "versionNonce": 370601403,
+      "isDeleted": false,
+      "boundElements": null,
+      "updated": 1793127305421,
+      "link": null,
+      "locked": false
+    },
+    {
+      "id": "earth-brand-20",
+      "type": "rectangle",
+      "x": 165,
+      "y": 175.8,
+      "width": 11.700000000000001,
+      "height": 11.700000000000001,
+      "angle": 0,
+      "strokeColor": "#173f40",
+      "backgroundColor": "#e9e6f2",
+      "fillStyle": "solid",
+      "strokeWidth": 1.53,
+      "strokeStyle": "solid",
+      "roughness": 0.9,
+      "opacity": 100,
+      "groupIds": [],
+      "frameId": null,
+      "index": "aJ",
+      "roundness": {
+        "type": 2
+      },
+      "seed": 7556,
+      "version": 2,
+      "versionNonce": 761536373,
+      "isDeleted": false,
+      "boundElements": null,
+      "updated": 1793127305421,
+      "link": null,
+      "locked": false
+    }
+  ],
+  "appState": {
+    "viewBackgroundColor": "#faf8f1",
+    "exportBackground": false,
+    "exportWithDarkMode": false,
+    "exportEmbedScene": false,
+    "exportScale": 2,
+    "gridSize": null
+  },
+  "files": {},
+  "earthEmbeddingBrand": {
+    "title": "logo",
+    "originalArtwork": true,
+    "renderer": "@excalidraw/excalidraw@0.18.0",
+    "license": "Apache-2.0"
+  }
+}

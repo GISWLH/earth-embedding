@@ -20,8 +20,8 @@
         
       
       
-      <link rel="icon" href="assets/earth-embedding-logo.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <link rel="icon" href="assets/brand/logo.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
     
     
       
@@ -29,10 +29,10 @@
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -104,7 +104,7 @@
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="." title="Earth Embedding" class="md-header__button md-logo" aria-label="Earth Embedding" data-md-component="logo">
       
-  <img src="assets/earth-embedding-logo.svg" alt="logo">
+  <img src="assets/brand/logo.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -350,7 +350,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href="." title="Earth Embedding" class="md-nav__button md-logo" aria-label="Earth Embedding" data-md-component="logo">
       
-  <img src="assets/earth-embedding-logo.svg" alt="logo">
+  <img src="assets/brand/logo.svg" alt="logo">
 
     </a>
     Earth Embedding
@@ -2200,13 +2200,17 @@
   
 
 
+<p><picture>
+  <source media="(max-width: 760px)" srcset="assets/brand/banner-mobile.svg">
+  <img src="assets/brand/banner.svg" width="100%" alt="earth-embedding: imagery, places and products become Earth embeddings in one Python call">
+</picture></p>
 <h1 id="earth-embedding">Earth Embedding<a class="headerlink" href="#earth-embedding" title="Permanent link">&para;</a></h1>
 <div class="highlight"><pre><span></span><code><span class="n">emb</span> <span class="o">=</span> <span class="n">get_embedding</span><span class="p">(</span><span class="s2">"prithvi"</span><span class="p">,</span> <span class="n">spatial</span><span class="o">=</span><span class="n">spatial</span><span class="p">,</span> <span class="n">temporal</span><span class="o">=</span><span class="n">temporal</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="n">output</span><span class="p">)</span>
 </code></pre></div>
 <p><strong>One geographic API, 22 model configurations, and a shared comparison figure.</strong>
 Use <code>get_embedding</code> for one model, <code>compare_embeddings</code> for several models,
 and <code>plot_embedding_comparison</code> to display their results together.</p>
-<p><img alt="Sentinel-2 reference and 22 real model outputs" src="assets/comparison/all-models.png" /></p>
+<p><img alt="Sentinel-2 reference and 22 real model outputs" src="assets/comparison/all-models.webp" /></p>
 <p><a href="tutorials/model-comparison/">Run the comparison tutorial</a> ·
 <a href="model-resources/">Hugging Face weights and official resources</a> ·
 <a href="quickstart/">Quickstart</a></p>
@@ -2214,16 +2218,17 @@ and <code>plot_embedding_comparison</code> to display their results together.</p
 the same Wuhan extent. Each panel uses its own PCA colors and spatial support;
 this qualitative view is not a model ranking.</p>
 <p><picture>
-  <source media="(max-width: 760px)" srcset="assets/earth-embedding-hero-mobile.svg">
-  <img src="assets/earth-embedding-hero.svg" width="100%" alt="Earth Embedding: images, locations and precomputed products through a shared Python interface.">
+  <source media="(max-width: 760px)" srcset="assets/brand/how-it-works-mobile.svg">
+  <img src="assets/brand/how-it-works.svg" width="100%" alt="Earth Embedding: images, locations and precomputed products through a shared Python interface.">
 </picture></p>
 <p>Earth Embedding provides a shared Python interface for image encoders, location encoders, and precomputed geospatial embedding products. Its catalog contains 22 adapters across these three release classes. Choose the input you have, check the model's contract, and retain both embedding values and provenance for downstream analysis.</p>
 <p>This project is an independent extension of <a href="https://github.com/cybergis/rs-embed">CyberGIS rs-embed</a>, by Dingqi Ye and contributors. Its Apache-2.0 foundation and upstream attribution are retained. Read <a href="provenance/">provenance</a> for the relationship between the original project, this extension, and our manuscript.</p>
 <h2 id="choose-a-starting-point">Choose a starting point<a class="headerlink" href="#choose-a-starting-point" title="Permanent link">&para;</a></h2>
-<p><strong>Start with real results:</strong> <a href="tutorials/real-demos/">five-line AEF map, Esri GLE, spatial classification,
-and four executed notebooks</a>. Small real samples are
-bundled; the first map and downstream probe run on CPU without credentials.</p>
-<p><img alt="Bay Area spatial classification demo" src="assets/demos/bayarea-classification.png" /></p>
+<p><strong>Start with real results:</strong> <a href="tutorials/real-demos/">five-line AEF map, Esri GLE, two-fold spatial
+classification, and executed notebooks</a>. A complete
+6,336-cell Bay Area grid is bundled; the first map and downstream probe run on CPU
+without credentials.</p>
+<p><img alt="Bay Area two-fold spatial classification demo" src="assets/demos/bayarea-classification.png" /></p>
 <table>
 <thead>
 <tr>
@@ -2351,10 +2356,10 @@ earth-embedding<span class="w"> </span>models<span class="w"> </span>--json
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.tabs", "navigation.indexes", "navigation.sections", "navigation.expand", "navigation.top", "toc.follow", "content.code.copy", "content.code.annotate", "content.tabs.link", "search.suggest", "search.highlight"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "latest", "provider": "mike"}}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.tabs", "navigation.indexes", "navigation.sections", "navigation.expand", "navigation.top", "toc.follow", "content.code.copy", "content.code.annotate", "content.tabs.link", "search.suggest", "search.highlight"], "search": "assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="assets/javascripts/bundle.c21346df.min.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       

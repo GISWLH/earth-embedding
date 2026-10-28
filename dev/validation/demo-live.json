@@ -1,15 +1,15 @@
 {
   "scope": "Actual official COG reads and README snippet execution; not unit substitutes",
-  "python": "3.13.12",
-  "platform": "Windows",
+  "python": "3.12.2",
+  "platform": "Linux",
   "aef": {
     "status": "passed",
     "shape": [
-      5933,
+      6336,
       64
     ],
-    "seconds": 15.6,
-    "array_sha256": "e7884a00905a3049c376035883471714c72ad3ba0cde2b9f8220b3650d3b4783",
+    "seconds": 22.96,
+    "array_sha256": "d8282b820172e1f701a6d54216d75efda44f0d4ba62870bb0aa63385c1f24364",
     "sources": [
       "https://storage.googleapis.com/alphaearth_foundations/satellite_embedding/v1/annual/2021/10N/xgi48lqsqj8bcovwk-0000000000-0000000000.tiff",
       "https://storage.googleapis.com/alphaearth_foundations/satellite_embedding/v1/annual/2021/10N/xgi48lqsqj8bcovwk-0000000000-0000008192.tiff",
@@ -22,6 +22,6 @@
     "status": "passed",
     "identical_languages": 3,
     "executed_snippets": 3,
-    "seconds": 7.9
+    "seconds": 29.88
   }
 }

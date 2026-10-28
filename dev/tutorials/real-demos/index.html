@@ -22,8 +22,8 @@
         
       
       
-      <link rel="icon" href="../../assets/earth-embedding-logo.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <link rel="icon" href="../../assets/brand/logo.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
     
     
       
@@ -31,10 +31,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -106,7 +106,7 @@
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="../.." title="Earth Embedding" class="md-header__button md-logo" aria-label="Earth Embedding" data-md-component="logo">
       
-  <img src="../../assets/earth-embedding-logo.svg" alt="logo">
+  <img src="../../assets/brand/logo.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -352,7 +352,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="Earth Embedding" class="md-nav__button md-logo" aria-label="Earth Embedding" data-md-component="logo">
       
-  <img src="../../assets/earth-embedding-logo.svg" alt="logo">
+  <img src="../../assets/brand/logo.svg" alt="logo">
 
     </a>
     Earth Embedding
@@ -586,10 +586,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#encode-5933-locations-with-esri-gle" class="md-nav__link">
+  <a href="#encode-6336-locations-with-esri-gle" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Encode 5,933 locations with Esri GLE
+        Encode 6,336 locations with Esri GLE
       
     </span>
   </a>
@@ -619,10 +619,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#four-executed-notebooks" class="md-nav__link">
+  <a href="#executed-notebooks" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Four executed notebooks
+        Executed notebooks
       
     </span>
   </a>
@@ -2241,10 +2241,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#encode-5933-locations-with-esri-gle" class="md-nav__link">
+  <a href="#encode-6336-locations-with-esri-gle" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Encode 5,933 locations with Esri GLE
+        Encode 6,336 locations with Esri GLE
       
     </span>
   </a>
@@ -2274,10 +2274,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#four-executed-notebooks" class="md-nav__link">
+  <a href="#executed-notebooks" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Four executed notebooks
+        Executed notebooks
       
     </span>
   </a>
@@ -2305,11 +2305,13 @@
 
 
 <h1 id="real-regional-embeddings-maps-and-a-cpu-classifier">Real regional embeddings, maps and a CPU classifier<a class="headerlink" href="#real-regional-embeddings-maps-and-a-cpu-classifier" title="Permanent link">&para;</a></h1>
-<p>The San Francisco Bay Area and surroundings span approximately <strong>88 × 111 km</strong>
-inside <code>[-122.6, 37.3, -121.6, 38.3]</code> (west, south, east, north). The checked
-2.1 MB bundle contains <strong>5,933 real AEF 2021 cells</strong>, matching WorldCover 2021
-reference labels and cell polygons. This is a regional software demonstration,
-not a reproduction or extension of the paper's frozen 20-system global benchmark.</p>
+<p>The San Francisco Bay Area and surroundings span approximately <strong>92 × 113 km</strong>
+(about 122.54–121.48° W, 37.30–38.32° N). The checked 2.3 MB bundle is a <strong>complete
+72 × 88 grid of 6,336 real AEF 2021 cells</strong> on the official 1,280 m overview grid,
+with matching WorldCover 2021 reference labels and cell polygons. Every cell inside
+the frame is present, so maps have no clipped edges or no-data holes. This is a
+regional software demonstration, not a reproduction or extension of the paper's
+frozen 20-system global benchmark.</p>
 <h2 id="install-and-draw-your-first-map">Install and draw your first map<a class="headerlink" href="#install-and-draw-your-first-map" title="Permanent link">&para;</a></h2>
 <p>Python 3.12+, CPU. Install from the repository; no PyPI release is assumed.</p>
 <div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/GISWLH/earth-embedding.git
@@ -2319,7 +2321,7 @@ python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </sp
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">earth_embedding.demo</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_demo</span><span class="p">,</span> <span class="n">pca_colors</span><span class="p">,</span> <span class="n">plot_map</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">load_demo</span><span class="p">(</span><span class="s2">"aef"</span><span class="p">)</span>
 <span class="n">colors</span> <span class="o">=</span> <span class="n">pca_colors</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">features</span><span class="p">)</span>
-<span class="n">fig</span> <span class="o">=</span> <span class="n">plot_map</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">samples</span><span class="p">,</span> <span class="n">colors</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"San Francisco Bay Area | AEF 2021 | PCA RGB"</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plot_map</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">samples</span><span class="p">,</span> <span class="n">colors</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"San Francisco Bay Area · AEF 2021 · PCA RGB"</span><span class="p">)</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">"aef-pca.png"</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">160</span><span class="p">)</span>
 </code></pre></div>
 <p><img alt="AEF overview PCA" src="../../assets/demos/aef-pca.png" /></p>
@@ -2331,7 +2333,9 @@ Google's overviews encode normalized sums of native vectors. We decode signed
 int8 values using <code>sign(x) * (x / 127.5)**2</code>, with -128 treated as missing.
 RGB shows PCA components stretched at their 2nd/98th percentiles.
 <strong>PCA colors are not land-cover classes</strong> and cannot be compared between separately
-fitted maps. PCA is descriptive and is not used by the classifier.</p>
+fitted maps. PCA is descriptive and is not used by the classifier. Because the
+sample is a complete grid (<code>grid_row</code>, <code>grid_col</code>), <code>plot_map</code> draws it as one
+seamless curvilinear mesh with exact cell geometry, cropped to the inner frame.</p>
 <p>To reproduce official GCS reads (first call needs network access):</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">earth_embedding.demo</span><span class="w"> </span><span class="kn">import</span> <span class="n">fetch_aef_demo</span>
 <span class="n">fresh</span> <span class="o">=</span> <span class="n">fetch_aef_demo</span><span class="p">(</span><span class="n">cache_dir</span><span class="o">=</span><span class="s2">"cache/aef"</span><span class="p">)</span>
@@ -2344,13 +2348,13 @@ overhead and was not metered. Network failures and corrupted caches raise clear
 errors without substitute data. Advanced callers can use
 <code>sample_aef(points, tiles=urls, overview_level=6)</code> directly. Omitting
 <code>overview_level</code> retains existing native 10 m behavior.</p>
-<h2 id="encode-5933-locations-with-esri-gle">Encode 5,933 locations with Esri GLE<a class="headerlink" href="#encode-5933-locations-with-esri-gle" title="Permanent link">&para;</a></h2>
+<h2 id="encode-6336-locations-with-esri-gle">Encode 6,336 locations with Esri GLE<a class="headerlink" href="#encode-6336-locations-with-esri-gle" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">earth_embedding</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_location_embeddings</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">earth_embedding.demo</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_demo</span><span class="p">,</span> <span class="n">pca_colors</span><span class="p">,</span> <span class="n">plot_map</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">load_demo</span><span class="p">(</span><span class="s2">"bayarea"</span><span class="p">)</span>
 <span class="n">points</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">samples</span><span class="p">[[</span><span class="s2">"center_lon"</span><span class="p">,</span> <span class="s2">"center_lat"</span><span class="p">]]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
 <span class="n">gle</span> <span class="o">=</span> <span class="n">get_location_embeddings</span><span class="p">(</span><span class="s2">"esri_gle"</span><span class="p">,</span> <span class="n">points</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s2">"cpu"</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">128</span><span class="p">)</span>
-<span class="n">fig</span> <span class="o">=</span> <span class="n">plot_map</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">samples</span><span class="p">,</span> <span class="n">pca_colors</span><span class="p">(</span><span class="n">gle</span><span class="o">.</span><span class="n">data</span><span class="p">),</span> <span class="n">title</span><span class="o">=</span><span class="s2">"San Francisco Bay Area | Esri GLE | PCA RGB"</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plot_map</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">samples</span><span class="p">,</span> <span class="n">pca_colors</span><span class="p">(</span><span class="n">gle</span><span class="o">.</span><span class="n">data</span><span class="p">),</span> <span class="n">title</span><span class="o">=</span><span class="s2">"San Francisco Bay Area · Esri GLE · PCA RGB"</span><span class="p">)</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">"esri-gle-pca.png"</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">160</span><span class="p">)</span>
 </code></pre></div>
 <p><img alt="Location encoder PCA" src="../../assets/demos/esri-gle-pca.png" /></p>
@@ -2368,15 +2372,18 @@ not committed and remain subject to the
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plot_classification</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">"bayarea-classification.png"</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">160</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="Reference, held-out prediction, errors and confusion matrix" src="../../assets/demos/bayarea-classification.png" /></p>
-<p>The geographic split was fixed before scoring. South cells with <code>maxlat &lt;=37.88</code>
-train; north cells with <code>minlat &gt;=37.93</code> test. Intervening cells are unused.
-The minimum gap between footprints is 0.0501365° latitude (about 5.6 km).
+<p><img alt="Reference, out-of-fold prediction, errors and confusion matrix" src="../../assets/demos/bayarea-classification.png" /></p>
+<p>The geographic split was fixed before scoring: <strong>two spatial folds by grid column</strong>.
+A model fitted only on the west half (columns 0–32) predicts the east half
+(columns 39–71), and a model fitted only on the east half predicts the west half.
+Columns 33–38 form a 7.68 km buffer that is never fitted or scored; the minimum gap
+between fitted and predicted footprints is 0.0737° longitude (about 6.5 km). Every
+scored cell therefore has an out-of-fold prediction, and the maps are complete.
 Two bare cells remain in the reference map but are outside the four-class task.</p>
 <table>
 <thead>
 <tr>
-<th>Split</th>
+<th>Fold half</th>
 <th style="text-align: right;">Built</th>
 <th style="text-align: right;">Vegetation</th>
 <th style="text-align: right;">Cropland</th>
@@ -2387,51 +2394,44 @@ Two bare cells remain in the reference map but are outside the four-class task.<
 </thead>
 <tbody>
 <tr>
-<td>Train</td>
-<td style="text-align: right;">695</td>
-<td style="text-align: right;">1864</td>
-<td style="text-align: right;">9</td>
-<td style="text-align: right;">815</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">3383</td>
-</tr>
-<tr>
-<td>Test</td>
-<td style="text-align: right;">249</td>
-<td style="text-align: right;">1292</td>
-<td style="text-align: right;">239</td>
-<td style="text-align: right;">393</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">2173</td>
-</tr>
-<tr>
-<td>Buffer</td>
-<td style="text-align: right;">44</td>
-<td style="text-align: right;">254</td>
-<td style="text-align: right;">28</td>
-<td style="text-align: right;">49</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">375</td>
-</tr>
-<tr>
-<td>Excluded class</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">0</td>
+<td>West (columns 0–32)</td>
+<td style="text-align: right;">504</td>
+<td style="text-align: right;">1433</td>
+<td style="text-align: right;">51</td>
+<td style="text-align: right;">914</td>
 <td style="text-align: right;">2</td>
-<td style="text-align: right;">2</td>
+<td style="text-align: right;">2904</td>
+</tr>
+<tr>
+<td>East (columns 39–71)</td>
+<td style="text-align: right;">325</td>
+<td style="text-align: right;">1936</td>
+<td style="text-align: right;">512</td>
+<td style="text-align: right;">131</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">2904</td>
+</tr>
+<tr>
+<td>Buffer (columns 33–38)</td>
+<td style="text-align: right;">158</td>
+<td style="text-align: right;">299</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">70</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">528</td>
 </tr>
 </tbody>
 </table>
-<p><code>StandardScaler</code> and <code>LogisticRegression(C=1, tol=1e-8, max_iter=2000, random_state=42)</code> fit
-training features only. There is no tuning, balancing or random split.
-Predictions and scores are restricted to held-out rows. Explicit float64 training
-and a strict convergence tolerance avoid version-dependent float32 solver paths;
-the final confusion matrix matches on Windows/scikit-learn 1.9 and Linux/1.8.</p>
+<p>Each fold fits <code>StandardScaler</code> and
+<code>LogisticRegression(C=1, class_weight="balanced", tol=1e-8, max_iter=4000, random_state=42)</code>
+on its own half only. Class weights compensate for the uneven cropland and water
+split between halves; there is no tuning or random split. Explicit float64 training
+and a strict convergence tolerance avoid version-dependent float32 solver paths.</p>
 <table>
 <thead>
 <tr>
+<th>Scope</th>
+<th style="text-align: right;">Scored cells</th>
 <th style="text-align: right;">OA</th>
 <th style="text-align: right;">Macro-F1</th>
 <th style="text-align: right;">Balanced Accuracy</th>
@@ -2439,22 +2439,39 @@ the final confusion matrix matches on Windows/scikit-learn 1.9 and Linux/1.8.</p
 </thead>
 <tbody>
 <tr>
-<td style="text-align: right;">91.39%</td>
-<td style="text-align: right;">87.49%</td>
-<td style="text-align: right;">85.65%</td>
+<td>Pooled out-of-fold</td>
+<td style="text-align: right;">5806</td>
+<td style="text-align: right;">93.64%</td>
+<td style="text-align: right;">91.64%</td>
+<td style="text-align: right;">92.63%</td>
+</tr>
+<tr>
+<td>Fit west → predict east</td>
+<td style="text-align: right;">2904</td>
+<td style="text-align: right;">92.46%</td>
+<td style="text-align: right;">90.99%</td>
+<td style="text-align: right;">—</td>
+</tr>
+<tr>
+<td>Fit east → predict west</td>
+<td style="text-align: right;">2902</td>
+<td style="text-align: right;">94.83%</td>
+<td style="text-align: right;">87.85%</td>
+<td style="text-align: right;">—</td>
 </tr>
 </tbody>
 </table>
 <p>These are this run's measurements, saved in
 <a href="../../assets/demos/classification-metrics.json">metrics JSON</a> and
-<a href="../../assets/demos/classification-predictions.csv">ID-bearing predictions CSV</a>.
-Confusion-matrix rows are reference labels; columns are predictions, in the order
-built, vegetation, cropland, water. Gray map areas are unscored. Only nine training
-cells are cropland; cropland recall is 134/239. This single regional holdout has
-no uncertainty estimate or global generalization claim. WorldCover is a
-satellite-derived reference, not field-survey truth. Same-year products may share
-satellite signals, and the gap cannot remove all spatial autocorrelation.
-Coarse majority classes hide within-cell mixtures.</p>
+<a href="../../assets/demos/classification-predictions.csv">ID-bearing predictions CSV</a>
+(<code>predicted_by</code> names the fold model). Confusion-matrix rows are reference labels;
+columns are predictions, in the order built, vegetation, cropland, water. The hatched
+buffer is unscored. Most errors are vegetation/cropland confusions along field
+margins; pooled cropland recall is 470/563. Two regional folds give no uncertainty
+estimate or global generalization claim. WorldCover is a satellite-derived reference,
+not field-survey truth. Same-year products may share satellite signals, and the
+buffer cannot remove all spatial autocorrelation. Coarse majority classes hide
+within-cell mixtures.</p>
 <h2 id="sources-selection-and-independent-rebuilding">Sources, selection and independent rebuilding<a class="headerlink" href="#sources-selection-and-independent-rebuilding" title="Permanent link">&para;</a></h2>
 <p>The source inspection found the paper's existing global cache to be discrete
 samples, unsuitable for a continuous regional map. This replacement reads a
@@ -2464,29 +2481,30 @@ bounded subset of official public products; it does not change paper data/result
 <li><a href="https://esa-worldcover.org/en/data-access">ESA WorldCover data access</a>: 2021 v200, <code>N36W123</code>, native 10 m labels from the official public AWS COG. CC-BY-4.0.</li>
 <li>Attribution: The AlphaEarth Foundations Satellite Embedding dataset is produced by Google and Google DeepMind. © ESA WorldCover project 2021 / Contains modified Copernicus Sentinel data (2021) processed by ESA WorldCover consortium.</li>
 </ul>
-<p>Every 1,280 m cell with its center inside the bbox is considered: 5,963 candidates,
-5,933 retained and 30 excluded for missing AEF values. Each retained cell has at
+<p>The sample is the whole-cell rectangle <code>x 540960–633120 m, y 4129280–4241920 m</code>
+in EPSG:32610 on the official 1,280 m overview grid: 72 columns × 88 rows. It was
+chosen so that every cell has a complete AEF vector (open-ocean overview cells are
+no-data) and is checked again at build time; the earlier lon/lat-box selection
+clipped the rotated UTM grid into a staircase and left ocean holes. Each cell has at
 least 95% valid reference support. WorldCover native pixel <strong>centers inside the
 same AEF polygon</strong> are counted, grouped, then the most frequent group is assigned
 (alphabetic tie break). Codes 10/20/30/90/95/100 map to vegetation, 40 to cropland,
 50 to built, 80 to water, 60 to bare and 70 to snow. Zero is nodata. Selection
-does not use scores. Cells can extend slightly outside the center-selection bbox.
-Maps use transformed polygons, including south-up source rasters; neither file
-order nor raster row number determines north.</p>
+does not use scores. Maps use transformed polygons, including south-up source
+rasters; neither file order nor raster row number determines north.</p>
 <p>The installed <code>rs_embed/data/demos/bayarea/manifest.json</code> records exact source
 URLs, pixel hashes, decoded feature hash, payload sizes, selection and license.
-<code>excluded.csv</code> records omitted candidates. Large source rasters are not committed.
-Rebuild from pinned public URLs with no private paths or index file:</p>
+Large source rasters are not committed. Rebuild from pinned public URLs with no
+private paths or index file (<code>--repin</code> deliberately replaces the pins):</p>
 <div class="highlight"><pre><span></span><code>python<span class="w"> </span>scripts/prepare_bayarea_demo.py
 python<span class="w"> </span>examples/real_demos.py
 python<span class="w"> </span>scripts/run_demo_notebooks.py
 python<span class="w"> </span>scripts/validate_real_demos.py
 </code></pre></div>
-<p>Preparation reads four overviews and a bounded 12,142 × 12,176 WorldCover window
-(148 MB uncompressed; on-wire transfer varies). Initial acquisition took about
-92 seconds. Allow several minutes, network access and about 1 GB free memory.
-Source cache pixels are checked against pinned SHA-256 values. Normal examples
-and notebooks use only the 2.1 MB bundled subset.</p>
+<p>Preparation reads four overviews and a bounded 12,289 × 12,728 WorldCover window
+(156 MB uncompressed; on-wire transfer varies). Allow a few minutes, network access
+and about 1 GB free memory. Source cache pixels are checked against pinned SHA-256
+values. Normal examples and notebooks use only the 2.3 MB bundled subset.</p>
 <table>
 <thead>
 <tr>
@@ -2498,6 +2516,10 @@ and notebooks use only the 2.1 MB bundled subset.</p>
 <tr>
 <td><code>tile_id</code></td>
 <td>Stable UTM center identifier, shared with NPZ feature IDs</td>
+</tr>
+<tr>
+<td><code>grid_row</code>, <code>grid_col</code></td>
+<td>Position in the 88 × 72 grid; row 0 is the north edge</td>
 </tr>
 <tr>
 <td><code>center_lon</code>, <code>center_lat</code></td>
@@ -2520,12 +2542,12 @@ and notebooks use only the 2.1 MB bundled subset.</p>
 <td>Grouped majority and its fraction</td>
 </tr>
 <tr>
-<td><code>reference_valid_fraction</code>, <code>aef_valid</code></td>
-<td>Reference coverage and feature validity</td>
+<td><code>reference_valid_fraction</code></td>
+<td>Share of valid WorldCover pixels in the cell</td>
 </tr>
 <tr>
 <td><code>demo_split</code></td>
-<td>Fixed train/test/buffer assignment before class exclusion</td>
+<td>Fixed <code>west</code> / <code>buffer</code> / <code>east</code> fold assignment</td>
 </tr>
 <tr>
 <td><code>features</code></td>
@@ -2533,7 +2555,7 @@ and notebooks use only the 2.1 MB bundled subset.</p>
 </tr>
 </tbody>
 </table>
-<h2 id="four-executed-notebooks">Four executed notebooks<a class="headerlink" href="#four-executed-notebooks" title="Permanent link">&para;</a></h2>
+<h2 id="executed-notebooks">Executed notebooks<a class="headerlink" href="#executed-notebooks" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -2558,7 +2580,7 @@ and notebooks use only the 2.1 MB bundled subset.</p>
 </tr>
 <tr>
 <td><a href="https://github.com/GISWLH/earth-embedding/blob/main/examples/notebooks/03_regional_classification.ipynb">03</a></td>
-<td>Spatial holdout, metrics and maps</td>
+<td>Two-fold spatial holdout, metrics and maps</td>
 <td>&lt;1 minute</td>
 <td>None</td>
 </tr>
@@ -2632,10 +2654,10 @@ See separate receipts for <a href="../../validation/demo-notebooks.json">noteboo
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.indexes", "navigation.sections", "navigation.expand", "navigation.top", "toc.follow", "content.code.copy", "content.code.annotate", "content.tabs.link", "search.suggest", "search.highlight"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "latest", "provider": "mike"}}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.indexes", "navigation.sections", "navigation.expand", "navigation.top", "toc.follow", "content.code.copy", "content.code.annotate", "content.tabs.link", "search.suggest", "search.highlight"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
