@@ -95,7 +95,7 @@ the old small-Region-A / coarse-Region-B design unless the user explicitly asks
 for a historical comparison. Downstream runs should now be organized around the
 same Wuhan ROI, 500 m grid, label sources, and train/validation/test split rules.
 Use `survey_satellite_embedding/experiments/DOWNSTREAM_TASK_PLAN.md` and the
-root `part2_experiments_plan.md` as the current downstream-task planning docs.
+`survey_satellite_embedding/notes/part2_experiments_plan.md` as the current downstream-task planning docs.
 
 For immediate downstream-task work, distinguish these two scopes:
 

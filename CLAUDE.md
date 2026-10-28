@@ -41,7 +41,7 @@ so it covers 4x the previous single-block area. Treat
 
 Downstream planning lives in:
 
-- `part2_experiments_plan.md`
+- `survey_satellite_embedding/notes/part2_experiments_plan.md`
 - `survey_satellite_embedding/experiments/DOWNSTREAM_TASK_PLAN.md`
 
 The first implementation priority is classification and fraction/water
